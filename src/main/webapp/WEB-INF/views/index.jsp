@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2><a href="myboard/list">list</a></h2>
+	<h2><a href="kids/main">main</a></h2>
 </body>
 </html>
