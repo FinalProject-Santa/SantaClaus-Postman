@@ -1,0 +1,84 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+}
+.findId{
+    position: absolute;
+    padding: 20px;
+    width: 300px;
+    border-radius: 5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.findId > h2{
+    font-size: 22px;
+    color: black;
+    margin-bottom: 20px;
+}
+#findId-Result{
+    margin: 0 auto;
+}
+#findId-Result > input{
+    height: 48px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+    margin-bottom: 5px;
+    outline: none;
+}
+#loginbutton,#pwbutton{
+    font-size: 16px;
+    color: black;
+    background-color: white;
+    margin-top: 20px;
+    border-radius: 50px;
+    border: rgb(189, 185, 185) solid;
+    padding: 0px 20px;
+    height: 48px;
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+}
+#loginbutton:hover{
+    background-color: #ebebeb;
+}
+#pwbutton:hover{
+    background-color: #ebebeb;
+}
+#IdResult{
+    display: block;
+    margin-bottom: 20px;
+    font-size: 16px;
+    text-align: center;
+}
+.title{
+    float: left;
+}
+.closebutton{
+    display: flex;
+}
+#closebutton{
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: white;
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+#buttongroup{
+    display: flex;
+    margin-left: 30px;
+}
+#id{
+    margin-right: 20px;
+}
+#button{
+    margin-left: 160px;
+}
