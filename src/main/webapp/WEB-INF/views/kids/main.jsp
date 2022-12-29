@@ -11,14 +11,14 @@
 	<p>무엇을 하고 놀까요?</p>
     <div class="flex_container">
     <div class="kids_main" id="puzzle">
-        <img src="/resources/image/kids/img1.png" id="img1">
+        <img src="/resources/image/kids/img1.png" id="img1" onclick="location.href='/kids/puzzle'">
         <div id="text1">
             <b>퍼즐 맞추기</b><br>
             <span>신나는 퍼즐 맞추기</span>
             </div>
     </div>
     <div class="kids_main" id="draw">
-        <img src="/resources/image/kids/img2.png" id="img2">
+        <img src="/resources/image/kids/img2.png" id="img2" onclick="location.href='/kids/diary'">
         <div id="text2">
             <b>그림일기</b><br>
             <span>오늘 있었던 일을<br>그림으로 그려봐요</span>
