@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +9,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>공지사항</title>
 </head>
 <style>
   h1{display: inline;}
@@ -15,13 +17,41 @@
 <body>
         <h1>고객센터</h1>
         <button onclick="location.href='notice';">공지사항</button>
-    	<button onclick="location.href='qna';">Q&A</button>
+    	<button onclick="location.href='qna';">Q&amp;A</button>
     	<button onclick="location.href='faq';">FAQ</button>
-    	<h3>공지사항</h3>
-      	<div>배송은 우체국 택배를 이용하며, 14시 이전 주문건에 한해
-      	익일 우편으로 배송받으실 수 있습니다.
-      	</div>
-     
+    
+
+<table border="1">
+<col width="50">
+<col width="100">
+<col width="300">
+<col width="200">
+
+<tr>
+<th>NO</th>
+<th>작성자</th>
+<th>제목</th>
+<th>작성일</th>
+</tr> 
+<c:choose>
+<c:when test="${empty list}">
+<tr>
+<td colspan="4">----------작성된 글이 없습니다----------</td>
+</tr>
+</c:when>
+<c:otherwise>
+<c:forEach var="dto" items="${list}">
+<tr>
+<td>${dto.no}</td>
+<td>${dto.writer }</td>
+<td><a href="/customer/notice_detail?no=${dto.no}">${dto.title }</a></td>
+<td>${dto.regdate }</td>
+</tr>
+</c:forEach>
+</c:otherwise>
+</c:choose>
+
+</table>
 
   
 </body>
