@@ -1,0 +1,60 @@
+*{
+    box-sizing: border-box;
+}
+html {
+    width: 100%;
+    display: flex;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    justify-content: center;
+}
+nav p{
+    font-size: 10pt;
+    margin-bottom: -0.2pt;
+    background-color: lightgrey;
+}
+table{
+    border-collapse: collapse;
+}
+th, td {
+    border-top: 1px solid #646464;
+    border-bottom: 1px solid #646464;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+}
+form>input{
+    width: 70px;
+    border-radius: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.summary{
+    border: 4px solid lightgray;
+    text-align: center;
+    padding: 18px;
+}
+.end{
+    text-align: center;
+    padding-top: 80px;
+}
+.payment{
+    width: 150px;
+    height: 50px;
+    background-color: steelblue;
+    color: aliceblue;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.continue{
+    margin-left: 10px;
+    width: 150px;
+    height: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+table hr{
+    width: 80%;
+}
+
