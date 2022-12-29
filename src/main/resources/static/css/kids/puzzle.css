@@ -1,0 +1,29 @@
+@charset "EUC-KR";
+.santa_puzzle{
+    text-align: center;
+    font-size: 70px;
+    position: relative;
+    top: 180px;
+}
+.start_button{
+    text-align: center;
+    position: relative;
+    top: 300px;
+}
+.level1-button{
+    width: 150px;
+    height: 50px;
+}
+.level2-button{
+    width: 150px;
+    height: 50px;
+    margin-left: 20px;
+}
+p{
+    width: 400px;
+    height: 450px;
+    border: solid black 1px;
+    position: relative;
+    bottom: 100px;
+    left: 970px;
+}
