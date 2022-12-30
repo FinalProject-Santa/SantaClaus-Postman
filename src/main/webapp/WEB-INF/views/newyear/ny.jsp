@@ -19,10 +19,10 @@
     <link href="/resources/css/nytree/swiper.css" rel="stylesheet" type="text/css">
     <link href="/resources/css/nytree/respon.css" rel="stylesheet" type="text/css">
     <script language="JavaScript" src="https://code.jquery.com/jquery-3.6.3.min.js" charset="euc-kr"></script>
-    <script language="JavaScript" src="/resources/js/wow.min.js" charset="euc-kr"></script>
-    <script language="JavaScript" src="/resources/js/bootstrap.min.js" charset="euc-kr"></script>
-    <script language="JavaScript" src="/resources/js/swiper.6.4.8.min.js" charset="euc-kr"></script>
-    <script language="JavaScript" src="/resources/js/card.js" charset="euc-kr"></script>
+    <script language="JavaScript" src="/resources/js2/wow.min.js" charset="euc-kr"></script>
+    <script language="JavaScript" src="/resources/js2/bootstrap.min.js" charset="euc-kr"></script>
+    <script language="JavaScript" src="/resources/js2/swiper.6.4.8.min.js" charset="euc-kr"></script>
+    <script language="JavaScript" src="/resources/js2/nycard.js" charset="euc-kr"></script>
 
 
   </head>
