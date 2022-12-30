@@ -20,7 +20,7 @@ $(function() {
 
         if(!regExp.test($id.val())){
             var idchk = false;
-            $("#idChk").html("사용할 수 없는 아이디입니다");
+            $("#idChk").html("사용할 수 없는 아이디입니다.");
             $("#idChk").css({
                 "color" : "red",
                 "font-weight" : "bold",
@@ -28,15 +28,15 @@ $(function() {
             })
         } else{
             $.ajax({
-                url : "main/idChk",
+                url : "idChk",
                 type:"POST",
                 data : {
                         "type" : "user",
-                        "id" : $id.val()
+                        "user_id" : $id.val()
                 },
                 success : function(data){
                     if(data == 1){
-                        $("#idChk").html("이미 존재하는 아이디입니다");
+                        $("#idChk").html("이미 존재하는 아이디입니다.");
                         $("#idChk").css({
                             "color" : "red",
                             "font-weight" : "bold",
@@ -44,7 +44,7 @@ $(function() {
                         })
                     }else{
                         idchk=true;
-                        $("#idChk").html("사용가능한 아이디입니다");
+                        $("#idChk").html("사용 가능한 아이디입니다.");
 
                         $("#idChk").css({
                             "color" : "blue",
@@ -63,24 +63,25 @@ $(function() {
 	});
 
 	$pw.on("keyup", function(){
-		/* 영문, 숫자, 특수문자 중 2가지 이상 조합하여 10자리 이내의 암호 정규식 ( 2 가지 조합) */
-		var regExp = /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{10,}$/;
+		/* 영문, 숫자, 특수문자 중 2가지 이상 조합하여 7자리 이내의 암호 정규식 ( 2 가지 조합) */
+		var regExp = /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{7,}$/;
 	      if(!regExp.test($pw.val())){
 	    	  $("#pwConfirm").attr("disabled", true);
-	          $("#pwChk").html("비밀번호는 영문, 숫자, 특수문자를 포함 해 주세요.");
+	          $("#pwChk").html("비밀번호는 영문, 숫자, 특수문자를 포함해 주세요.");
 	          $("#pwChk").css({
 	              "color" : "red",
 	              "font-weight" : "bold",
 	              "font-size" : "15px"
 	          })
 	      }else{
-	    	  $("#pwChk").html("사용가능한 비밀번호 입니다.");
+	    	  $("#pwChk").html("사용 가능한 비밀번호입니다.");
 	    	  $("#pwChk").css({
 	              "color" : "blue",
 	              "font-weight" : "bold",
 	              "font-size" : "15px"
 	          })
 	    	  $("#pwConfirm").attr("disabled", false);
+	    	  $("#pwConfirm").attr("placeholder", "비밀번호를 다시 입력해주세요");
 	      }
 	});
     
@@ -89,14 +90,14 @@ $(function() {
 		var passwordConfirm = document.getElementById('pwConfirm');
 
 		if(password.value == passwordConfirm.value){
-            $("#pwConfirmChk").html("비밀번호 일치");
+            $("#pwConfirmChk").html("비밀번호가 일치합니다.");
             $("#pwConfirmChk").css({
                 "color" : "blue",
                 "font-weight" : "bold",
                 "font-size" : "15px"
             })
         }else{
-            $("#pwConfirmChk").html("비밀번호 불일치!");
+            $("#pwConfirmChk").html("비밀번호 일치하지 않습니다.");
             $("#pwConfirmChk").css({
                 "color" : "red",
                 "font-weight" : "bold",
@@ -131,6 +132,18 @@ $(function() {
             }
         }).open();
 	});
+    
+    $("#emailDomain").change(function(){
+		email();	
+	});
+
+	function email() {
+		var emailId = $("#emailId").val();
+		var emailDomain = $("#emailDomain").val();
+		if(emailId != "" && emailDomain != "") {
+			$("#email").val(emailId + '@' + emailDomain);
+		}
+	};
 });
 </script>
 </head>
@@ -142,7 +155,7 @@ $(function() {
 				<div>
 					<label for="id">아이디</label>
 					<div class="info">
-						<input id="id" name="user_id" type="text" placeholder="띄어쓰기 없이 영문,숫자 6~10자리" required="required">
+						<input id="id" name="user_id" type="text" placeholder="아이디를 입력해주세요." required="required">
 						<input id="idDupChk" type="button" class="button" value="중복확인">
 						<p id="idChk" class="error"></p>
 					</div>
@@ -150,14 +163,14 @@ $(function() {
 				<div>
 					<label for="pw">비밀번호</label>
 					<div class="info">
-						<input id="pw" name="password" type="password" placeholder="영문, 숫자, 특수문자 포함 8~15자리" required="required">
+						<input id="pw" name="password" type="password" placeholder="비밀번호를 입력해주세요." required="required">
 						<p id="pwChk" class="error"></p>
 					</div>
 				</div>
 				<div>
 					<label for="pwConfirm">비밀번호 확인</label>
 					<div class="info">
-						<input id="pwConfirm" type="password" placeholder="비밀번호를 다시 입력해주세요" required="required" disabled="disabled">
+						<input id="pwConfirm" type="password" required="required" disabled="disabled">
 						<p id="pwConfirmChk" class="error"></p>
 					</div>
 				</div>
@@ -195,12 +208,10 @@ $(function() {
 				<div>
 					<label for="email">이메일</label>
 					<div class="info">
-						<input id="user_email1" type="text" required="required">
-						<span id="user_email2">@</span>
-						<input id="user_email3" class="email" type="text" oninput="email_error2()" list="emailform"> 
-						
-						<datalist id="emailform" >
-							<option value="이메일 선택">-- 이메일 선택 --</option>
+						<input id="emailId" type="text" required="required">
+						<span>@</span>
+						<select id="emailDomain">
+							<option value="이메일 선택">이메일 선택</option>
 							<option value="naver.com">naver.com</option>
 							<option value="daum.net">daum.net</option>
 							<option value="gmail.com">gmail.com</option>
@@ -208,8 +219,8 @@ $(function() {
 							<option value="hanmail.net">hanmail.net</option>
 							<option value="outlook.com">outlook.com</option>
 							<option value="yahoo.com">yahoo.com</option>
-						</datalist>
-						<input type="hidden" id="totalemail" name="email" value="">
+						</select>
+						<input type="hidden" id="email" name="email" value="">
 					</div>
 				</div>
 				<div class="personalInfo">

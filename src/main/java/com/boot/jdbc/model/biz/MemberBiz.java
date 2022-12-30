@@ -4,8 +4,8 @@ import com.boot.jdbc.model.dto.MemberDto;
 
 public interface MemberBiz {
 	public int signUp(MemberDto dto);
-	public int login(String user_id);
-	public int idChk(String user_id);
-	public int findId(MemberDto dto);
-	public int findPw(MemberDto dto);
+	public String login(String user_id, String password);
+	public String idChk(String user_id);
+	public String findId(MemberDto dto);
+	public String findPw(MemberDto dto);
 }

@@ -18,22 +18,22 @@ public class MemberBizImpl implements MemberBiz{
 	}
 
 	@Override
-	public int login(String user_id) {
-		return memberMapper.login(user_id);
+	public String login(String user_id, String password) {
+		return memberMapper.login(user_id, password);
 	}
 
 	@Override
-	public int idChk(String user_id) {
+	public String idChk(String user_id) {
 		return memberMapper.idChk(user_id);
 	}
 	
 	@Override
-	public int findId(MemberDto dto) {
+	public String findId(MemberDto dto) {
 		return memberMapper.findId(dto);
 	}
 
 	@Override
-	public int findPw(MemberDto dto) {
+	public String findPw(MemberDto dto) {
 		return memberMapper.findPw(dto);
 	}
 }

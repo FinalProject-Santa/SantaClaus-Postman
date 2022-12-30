@@ -13,6 +13,7 @@
       rememberId();
       $("#errorid").hide();
       $("#errorpw").hide();
+      
    });
    
    function loginsubmit(){
@@ -75,7 +76,8 @@
             setCookie("saveId", $("#memberid").val(), expdate);
         }
     }
-   
+    
+    
 </script>
 </head>
 <body>
@@ -88,9 +90,9 @@
            </div>
         <form id="login-form" action="/main/login" method="post" onsubmit="return loginsubmit();">
             <input type="text" name="user_id" id="memberid" class="memberinfo" placeholder="아이디*">
-                <span id="errorid">아이디를 입력하세요.</span>
+                <span id="errorid">아이디를 입력해 주세요.</span>
             <input type="password" name="password" id="memberpw" class="memberinfo" placeholder="패스워드*">
-                <span id="errorpw">패스워드를 입력하세요.</span>
+                <span id="errorpw">비밀번호를 입력해 주세요.</span>
                 <p class="checkid">
                 <label for="remember-check" class="chk_box">
                     <input type="checkbox" class="save_id" name="check_id" id="remember-check"/>

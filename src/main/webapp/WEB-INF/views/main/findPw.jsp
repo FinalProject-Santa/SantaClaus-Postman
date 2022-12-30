@@ -10,41 +10,30 @@
 <script>
    $(function(){
       $("#errorid").hide();
-      $("#errorname").hide();
       $("#erroremail").hide();
    });
    
    function findPw(){
-      let memberid = $("#memberid").val().trim();
-      let membername = $("#membername").val().trim();
-      let memberemail = $("#memberemail").val().trim();
+      let id = $("#memberid").val().trim();
+      let email = $("#memberemail").val().trim();
    
-      let findPwVal = {
-         "memberid":memberid,
-         "membername":membername,
-         "memberemail":memberemail
-   };
-      
-      if(memberid == null || memberid == "" || membername == null || membername == "" || 
-                                    memberemail == null || memberemail == ""){
+      if(id == null || id == "" || email == null || email == ""){
          $("#errorid").show();
-         $("#errorname").show();
          $("#erroremail").show();   
       }else{
          $.ajax({
             url:"/main/findPw",
             type:"post",
-            data:JSON.stringify(findPwVal),
-            contentType:"application/json",
-            dataType:"json",
-            success:function(msg){
-               console.log(msg);
-               if(msg.check==true){
-                  location.href="/main/findPwResult"
+            data:{
+            	"user_id" : id, 
+                "email" : email
+            },
+            success:function(data){
+               if(data!=null){
+                  location.href="/main/findPwResult?pw=" + data;
                }else{
                   alert("일치하는 회원의 정보가 없습니다.");
                   $("#memberid").val("");
-                  $("#membername").val("");
                   $("#memberemail").val("");
                }
             },
@@ -69,8 +58,6 @@
         <div id="findPw-form">
            <input type="text" name="user_id" id="memberid" class="memberinfo" placeholder="아이디*">
                 <span id="errorid">아이디을 입력하세요.</span>
-            <input type="text" name="name" id="membername" class="memberinfo" placeholder="이름*">
-                <span id="errorname">이름을 입력하세요.</span>
             <input type="text" name="email" id="memberemail" class="memberinfo" placeholder="이메일*">
                 <span id="erroremail">이메일을 입력하세요.</span>
             <input type="button" id="checkbutton" value="확인" onclick="findPw();">
