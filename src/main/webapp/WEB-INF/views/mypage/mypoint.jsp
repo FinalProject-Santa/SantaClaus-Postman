@@ -45,7 +45,7 @@
                                 <tr>
                                     <td>$(dto.point_purpose)</td>
                                     <td>$(dto.point_date)</td>
-                                    <td>$(dto.point_save}or$(.point_use)</td>
+                                    <td>$(dto.point_save}or$(dto.point_use)</td>
                                     <td>$(dto.orderno)</td>
                                     <td>$(dto.point_content)</td>
                                 </tr>

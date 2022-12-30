@@ -41,19 +41,6 @@ html {
     border: 2.5px solid rgb(165, 165, 165);
     cursor: pointer;
 }
-b{
-    margin-right: 35px;
-}
-.box2>span{
-    display: inline-block;
-    width: 120px;
-    border: 1px solid rgb(165, 165, 165);
-}
-img{
-    width: 30px;
-    border: 1px solid lightgray;
-    cursor: pointer;
-}
 .box2>input{
     width: 80px;
     height: 40px;
@@ -63,6 +50,17 @@ img{
     border-radius: 5px;
     margin-left: 30px;
     cursor: pointer;
+}
+strong{
+	margin-left: 10px;
+	margin-right: -20px;
+}
+input[type="date"]{
+	background: white;
+	color: black;
+	border: 1px solid black;
+	width: 150px;
+	text-align: center;
 }
 table{
     margin-top: 50px;
