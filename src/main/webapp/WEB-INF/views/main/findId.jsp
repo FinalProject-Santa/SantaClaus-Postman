@@ -14,28 +14,23 @@
    });
    
    function findId(){
-      let membername = $("#membername").val().trim();
-      let memberemail = $("#memberemail").val().trim();
-   
-      let findIdVal = {
-         "membername":membername,
-         "memberemail":memberemail
-   };
+      let name = $("#membername").val().trim();
+      let email = $("#memberemail").val().trim();
       
-      if(membername == null || membername == "" || memberemail == null || memberemail == ""){
+      if(name == null || name == "" || email == null || email == ""){
          $("#errorname").show();
          $("#erroremail").show();   
       }else{
          $.ajax({
             url:"/main/findId",
             type:"post",
-            data:JSON.stringify(findIdVal),
-            contentType:"application/json",
-            dataType:"json",
-            success:function(msg){
-               console.log(msg);
-               if(msg.check==true){
-                  location.href="/main/findIdResult"
+            data: {
+            	"name" : name,
+                "email" : email
+            },
+            success:function(data){
+               if(data!=null){
+                  location.href="/main/findIdResult?id=" + data;
                }else{
                   alert("일치하는 회원의 정보가 없습니다.");
                   $("#membername").val("");
