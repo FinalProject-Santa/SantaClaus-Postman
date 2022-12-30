@@ -4,9 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.boot.jdbc.model.biz.ArticleBiz;
+import com.boot.jdbc.model.biz.QnaBiz;
+import com.boot.jdbc.model.dto.QnaDto;
 
 @Controller
 @RequestMapping("/customer")
@@ -43,5 +46,17 @@ public class CustomerController {
 	public String customer() {
 		return "customer/qna";
 	}
+	
+	
+	/**
+	@PostMapping("/qna_insert")
+	public String customer_qna(QnaDto dto){
+		if(QnaBiz.insert(dto)>0) {
+			return "customer/qna";		
+	}
+}
+
+**/
+	
 	
 }
