@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>주문조회</title>
     <link rel="stylesheet" href="/resources/css/mypage/myorder.css">
+
 </head>
 <body>
     <div id="wrapper">
@@ -16,18 +17,17 @@
             <hr class="h1">
             <div class="box2">
                 <b class="box3">
-                    <span>오늘</span>
-                    <span>1주일</span>
-                    <span>1개월</span>
-                    <span>3개월</span>
+                    <span onclick="dateSub(1)">오늘</span>
+                    <span onclick="dateSub(7)">1주일</span>
+                    <span onclick="dateSub(30)">1개월</span>
+                    <span onclick="dateSub(90)">3개월</span>
                 </b>
-                <span id="calender">nowdate</span>
-                <img src="/resources/image/mypage/calender.png">
-                <strong> ~ </strong>
-                <span id="calender">nowdate</span>
-                <img src="/resources/image/mypage/calender.png">
+                <input type="date" id="Date1" name="first">
+                <strong>~</strong>
+                <input type="date" id="Date2" name="second">
                 <input type="button" value="조회">
             </div>
+            
         </nav>
         <section>
             <div id="orderlist">
@@ -80,5 +80,17 @@
             </ul>
         </div>
     </div>
+    <script type="text/javascript">
+	    var now_utc = Date.now()
+	    var timeOff = new Date().getTimezoneOffset()*60000;
+	    var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
+	    var date1 = document.getElementById("Date1").value;
+	    document.getElementById("Date1").setAttribute("max", today);
+	    document.getElementById("Date2").setAttribute("max", today);
+		console.log(date1);
+	    document.getElementById("Date2").setAttribute("min", date1);
+		
+	    
+    </script>
 </body>
 </html>

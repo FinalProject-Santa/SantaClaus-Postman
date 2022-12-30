@@ -43,9 +43,7 @@ public class mypageController {
 	
 	
 	
-	
-	
-	
-	
-	
 }
+
+
+

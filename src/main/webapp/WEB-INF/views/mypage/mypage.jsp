@@ -12,7 +12,7 @@
         <nav>
             <h1>마이페이지</h1>
             <hr>
-            <span>$(memberid)님 안녕하세요!</span>
+            <span>$(dto.memberid)님 안녕하세요!</span>
             <button onclick="location.href='infoUpdateform'">회원정보 수정</button>
         </nav>
         <section>
