@@ -39,6 +39,16 @@
         <button id="success_btn">작성완료</button>
     </div>
     </div>
+    <div class="modal hidden">
+        <div class="bg"></div>
+        <div class="modalBox">
+          <p id="modal_text">착한 어린이다 임마</p>
+        <div class="modal_Btn">
+          <button class="stickerBtn">칭찬스티커</button>
+          <button class="mainBtn" onclick="location.href='/kids/main'">메인으로</button>
+        </div>
+        </div>
+      </div>
     <script src="/resources/js/kids/diary.js"></script>
 </body>
 </html>

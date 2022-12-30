@@ -8,6 +8,7 @@ const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
 const saveBtn = document.getElementById("jsSave");
 const erase = document.getElementById("jsErase");
+const success = document.getElementById("success_btn");
 
 const INITAL_COLOR = "#000000";
 const CANVAS_SIZE_WIDTH = 1000;
@@ -113,6 +114,19 @@ if(saveBtn){
 if(erase){
     erase.addEventListener("click", eraseClick);
 }
+
+const open = () => {
+    document.querySelector(".modal").classList.remove("hidden");
+}
+
+// const close = () => {
+//     document.querySelector(".modal").classList.add("hidden");
+// }
+
+document.querySelector("#success_btn").addEventListener("click", open);
+
+//document.querySelector(".closeBtn").addEventListener("click", close);
+//document.querySelector(".bg").addEventListener("click", close);
 
 // function onMouseUp(event){
 //     stopPainting();
