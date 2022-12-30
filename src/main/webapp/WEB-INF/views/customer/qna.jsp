@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@ section{margin-left: 30%; margin-right: 30%;}
     
     <section id="sec_qna">
         <h3>1:1문의</h3>
-        <form name="qna" action="#" method="post">
+        <form name="qna" action="/customer/qna_insert" method="post">
         <label for="title">제목</label>
         <input type="text" name="title" id="title"><br>
         <span>문의유형</span>
@@ -40,21 +41,33 @@ section{margin-left: 30%; margin-right: 30%;}
     <h3>내 문의내역</h3>
     <table border=1>
         <tr>
-            <th>no</th>
-            <th>제목</th>
-            <th>작성일</th>
-            <th>답변유무</th>
+           <th>no</th>
+           <th>문의유형</th>
+           <th>제목</th>
+           <th>작성일</th>
+           <th>답변유무</th>
         </tr>
-        
-        <td>${no}</td>
-        <td>${title}</td>
-        <td>${date}</td>
-        <td>${reply}</td>
-        
-    </table>
-    </section>        
-
-    
+        <c:choose>
+		<c:when test="${empty list}">
+		<tr>
+		<td colspan="4">----------작성된 글이 없습니다----------</td>
+		</tr>
+		</c:when>
+		<c:otherwise>
+		<c:forEach var="qna_dto" items="${list}">
+        <tr>
+        <td>${qna_dto.no}</td>
+        <td>${qna_dto.category}</td>
+        <td>${qna_dto.title}</td>
+        <td>${qna_dto.date}</td>
+        <td>${qna_dto.reply}</td>
+        </tr>
+        </c:forEach>
+   		</c:otherwise>
+   		</c:choose>
+   		 </table>
+     </section> 
+     
 
 </body>
 </html>

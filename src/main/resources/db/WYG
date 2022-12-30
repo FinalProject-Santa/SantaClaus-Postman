@@ -1,0 +1,11 @@
+CREATE TABLE board_article(
+article_no int auto_INCREMENT PRIMARY KEY,
+writer_name varchar(50) NOT NULL,
+title varchar(255)	NOT NULL,
+regdate datetime NOT NULL
+);
+
+CREATE TABLE board_article_content(
+article_no int PRIMARY KEY,
+COMMENT text
+);
