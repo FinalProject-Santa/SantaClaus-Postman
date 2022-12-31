@@ -48,15 +48,23 @@ public class CustomerController {
 	}
 	
 	
-	/**
+	
 	@PostMapping("/qna_insert")
-	public String customer_qna(QnaDto dto){
-		if(QnaBiz.insert(dto)>0) {
-			return "customer/qna";		
-	}
-}
+	public String customer_qna_insert(QnaDto dto){
+			if(QnaBiz.insert(dto)>0) {
+				return "customer/qna";		
+			}else {
+				return "redirect:/customer/qna";
+			}
+		}
 
-**/
-	
-	
+
+
+
+
 }
+	
+			
+	
+
+		
