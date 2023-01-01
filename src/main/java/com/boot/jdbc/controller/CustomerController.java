@@ -17,7 +17,8 @@ public class CustomerController {
 	
 	@Autowired
 	private ArticleBiz articlebiz;
-	private QnaBiz qnabiz;
+	
+	//private QnaBiz qnabiz;
 	
 	@GetMapping("/faq")
 	public String faq() {
