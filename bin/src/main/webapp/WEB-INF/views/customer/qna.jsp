@@ -21,7 +21,7 @@ section{margin-left: 30%; margin-right: 30%;}
     
     <section id="sec_qna">
         <h3>1:1문의</h3>
-        <form name="qna" action="/customer/qna_detail" method="post">
+        <form name="qna" action="/customer/qna" method="post">
         <label for="title">제목</label>
         <input type="text" name="title" id="title"><br>
         <span>문의유형</span>
@@ -33,19 +33,19 @@ section{margin-left: 30%; margin-right: 30%;}
         <br>
         <textarea cols="80px" rows="20px" name="content"></textarea><br>
         <input type="file"><br>
-        <input type="submit" value="등록">
+        <input type="submit" value="등록" >
     </form>
-    </section>  
+    </section> 
 
     <section id="sec_myqna">
     <h3>내 문의내역</h3>
     <table border=1>
     <col width="50">
- 	<col width="100">
-	<col width="200">	
-	<col width="100">
-	<col width="50">
-
+    <col width="100">
+    <col width="200">
+    <col width="100">
+    <col width="50">
+    
         <tr>
            <th>no</th>
            <th>문의유형</th>
@@ -56,7 +56,7 @@ section{margin-left: 30%; margin-right: 30%;}
         <c:choose>
 		<c:when test="${empty list}">
 		<tr>
-		<td colspan="5">----------작성된 뿡뿡이가 없습니다----------</td>
+		<td colspan="5">----------작성된글이 없습니다----------</td>
 		</tr>
 		</c:when>
 		<c:otherwise>
@@ -64,7 +64,7 @@ section{margin-left: 30%; margin-right: 30%;}
         <tr>
         <td>${qna_dto.no}</td>
         <td>${qna_dto.category}</td>
-        <td><a href="/customer/qna_detail?no=${qna_dto.no}">${qna_dto.title}</a></td>
+        <td>${qna_dto.title}</td>
         <td>${qna_dto.date}</td>
         <td>${qna_dto.reply}</td>
         </tr>

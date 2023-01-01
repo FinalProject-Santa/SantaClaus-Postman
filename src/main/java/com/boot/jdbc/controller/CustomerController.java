@@ -17,6 +17,7 @@ public class CustomerController {
 	
 	@Autowired
 	private ArticleBiz articlebiz;
+	private QnaBiz qnabiz;
 	
 	@GetMapping("/faq")
 	public String faq() {
@@ -49,16 +50,20 @@ public class CustomerController {
 	
 	
 	
-	@PostMapping("/qna_insert")
+	
+	
+	
+	/*
+	@PostMapping("/qna_detail")
 	public String customer_qna_insert(QnaDto dto){
-			if(QnaBiz.insert(dto)>0) {
+			if(qnabiz.insert(dto)>0) {
 				return "customer/qna";		
 			}else {
 				return "redirect:/customer/qna";
 			}
 		}
 
-
+	 */
 
 
 
