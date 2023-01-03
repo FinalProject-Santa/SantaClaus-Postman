@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="/resources/css/kids/diary.css">
 </head>
 <body>
+	<form action="/kids/insert" method="post">
+	<input type="hidden">
     <div class="diary">
     <div class="drawing">
         <span id="text">오늘 무엇을 했나요?</span>
@@ -44,11 +46,12 @@
         <div class="modalBox">
           <p id="modal_text">착한 어린이다 임마</p>
         <div class="modal_Btn">
-          <button class="stickerBtn">칭찬스티커</button>
+          <button class="stickerBtn" onclick="location.href='/kids/sticker'">칭찬스티커</button>
           <button class="mainBtn" onclick="location.href='/kids/main'">메인으로</button>
         </div>
         </div>
       </div>
+      </form>
     <script src="/resources/js/kids/diary.js"></script>
 </body>
 </html>

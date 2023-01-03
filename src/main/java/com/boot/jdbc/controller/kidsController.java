@@ -1,12 +1,18 @@
 package com.boot.jdbc.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.boot.jdbc.model.biz.DiaryBiz;
+
 @Controller
 @RequestMapping("/kids")
 public class kidsController {
+	
+	@Autowired
+	private DiaryBiz biz;
 	
 	@GetMapping("/main")
 	public String main() {
@@ -38,4 +44,15 @@ public class kidsController {
 		return "kids/diary";
 	}
 	
+	@GetMapping("/sticker")
+	public String sticker() {
+		
+		return "/kids/sticker";
+	}
+	
+	@GetMapping("/snow")
+	public String snow() {
+		
+		return "kids/snow";
+	}
 }

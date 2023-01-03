@@ -1,0 +1,27 @@
+@charset "EUC-KR";
+.santa_img{
+    float: left;
+    position: absolute;
+    top: 200px;
+}
+img{
+    width: 500px;
+    height: 500px;
+}
+.sticker{
+    width: 500px;
+    height: 480px;
+    display: grid; /*항상 일정한 비율로 개수가 정렬이 되도록 */
+    grid-template-columns: repeat(7, 1fr);
+    position: absolute;
+    top: 150px;
+    left: 500px;
+}
+.num{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid black;
+    text-align: center;
+}
