@@ -25,7 +25,7 @@
             </div>
     </div>
     <div class="kids_main" id="sticker">
-        <img src="/resources/image/kids/img3.png" id="img3">
+        <img src="/resources/image/kids/img3.png" id="img3" onclick="location.href='/kids/sticker'">
         <div id="text3">
             <b>칭찬 스티커</b><br>
             <span>내가 모은 칭찬 스티커</span>
