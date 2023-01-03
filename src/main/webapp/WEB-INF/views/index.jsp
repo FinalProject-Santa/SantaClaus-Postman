@@ -15,7 +15,7 @@
 	<h2><a href="customer/faq">faq</a></h2>
 	<h2><a href="customer/floatingMenu">floatingMenu</a></h2>
 	<h2><a href="customer/notice">notice</a></h2>
-	<h2><a href="customer/qna">qna</a></h2>
+	<h2><a href="customer/qnainsertform">qna</a></h2>
 	
 </body>
 </html>

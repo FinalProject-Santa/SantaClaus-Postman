@@ -16,30 +16,18 @@ section{margin-left: 30%; margin-right: 30%;}
 <body>
     <h1>고객센터</h1>
     <button onclick="location.href='notice';">공지사항</button>
-    <button onclick="location.href='qna';">Q&A</button>
+    <button onclick="location.href='qnainsertform';">Q&A</button>
     <button onclick="location.href='faq';">FAQ</button>
     
-    <section id="sec_qna">
-        <h3>1:1문의</h3>
-        <form name="qna" action="/customer/qna_insert" method="post">
-        <label for="title">제목</label>
-        <input type="text" name="title" id="title"><br>
-        <span>문의유형</span>
-        <select name="category">
-            <option>배송문의</option>
-            <option>상품문의</option>
-            <option>기타문의</option>
-        </select>
-        <br>
-        <textarea cols="80px" rows="20px" name="content"></textarea><br>
-        <input type="file"><br>
-        <input type="submit" value="등록">
-    </form>
-    </section>  
-
     <section id="sec_myqna">
     <h3>내 문의내역</h3>
     <table border=1>
+    <col width="50">
+ 	<col width="100">
+	<col width="200">	
+	<col width="100">
+	<col width="50">
+
         <tr>
            <th>no</th>
            <th>문의유형</th>
@@ -47,20 +35,21 @@ section{margin-left: 30%; margin-right: 30%;}
            <th>작성일</th>
            <th>답변유무</th>
         </tr>
+      
+        
         <c:choose>
-		<c:when test="${empty list}">
+		<c:when test="${empty qnalist}">
 		<tr>
-		<td colspan="4">----------작성된 글이 없습니다----------</td>
+		<td colspan="5">----------작성된 문의가 없습니다----------</td>
 		</tr>
 		</c:when>
 		<c:otherwise>
-		<c:forEach var="qna_dto" items="${list}">
+		<c:forEach var="dto" items="${qnalist}">
         <tr>
-        <td>${qna_dto.no}</td>
-        <td>${qna_dto.category}</td>
-        <td>${qna_dto.title}</td>
-        <td>${qna_dto.date}</td>
-        <td>${qna_dto.reply}</td>
+        <td>${dto.qna_no}</td>
+        <td>${dto.qna_type}</td>
+        <td><a href="/customer/qnadetail?qna_no=${dto.qna_no}">${dto.qna_title}</a></td>
+        <td>${dto.qna_date}</td>
         </tr>
         </c:forEach>
    		</c:otherwise>
@@ -68,6 +57,8 @@ section{margin-left: 30%; margin-right: 30%;}
    		 </table>
      </section> 
      
+   
 
+  
 </body>
 </html>

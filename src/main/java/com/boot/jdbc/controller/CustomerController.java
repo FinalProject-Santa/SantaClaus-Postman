@@ -1,5 +1,7 @@
 package com.boot.jdbc.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +19,11 @@ public class CustomerController {
 	
 	@Autowired
 	private ArticleBiz articlebiz;
+	@Autowired
+	private QnaBiz qnabiz;
 	
 	@GetMapping("/faq")
 	public String faq() {
-		
 		return "customer/faq";
 	}
 	
@@ -41,22 +44,50 @@ public class CustomerController {
 	public String floatingMenu() {
 		return "customer/floatingMenu";
 	}
+
 	
-	@GetMapping("/qna")
-	public String customer() {
-		return "customer/qna";
+	//QNA
+	
+	@GetMapping("/qnalist")
+	public String qnaList(Model model) {
+		model.addAttribute("qnalist",qnabiz.selectList());
+		return "customer/qnalist";
+	}
+
+	
+	@GetMapping("/qnainsertform")
+	public String qna() {
+		return "customer/qnainsert";
 	}
 	
+	//qnainsert -> form태그 action에서 받아와서 실행
+	@PostMapping("/qnainsert")
+	public String insert(QnaDto dto) {
+		System.out.println(dto.toString());
+		if(qnabiz.insert(dto)>0) {
+			return "redirect:/customer/qnalist";
+		}else {
+			return "redirect:/customer/qnainsert" ;
+		}
+	}
 	
-	/**
-	@PostMapping("/qna_insert")
-	public String customer_qna(QnaDto dto){
-		if(QnaBiz.insert(dto)>0) {
-			return "customer/qna";		
+	@GetMapping("/qnadetail")
+	public String qnadetail(Model model, Integer qna_no) {
+		model.addAttribute("dto",qnabiz.selectOne(qna_no));
+		return "customer/qnadetail";
+				
 	}
 }
 
-**/
+
 	
 	
-}
+
+
+
+
+	
+			
+	
+
+		

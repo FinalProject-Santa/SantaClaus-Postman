@@ -22,7 +22,7 @@
             <div><p>답변 답변</p></div>
             <input type="checkbox" id="answer02">
             <label for="answer02">자주묻는 질문2<em></em></label>
-            <div><p>답변 답변</p></div>
+            <div><p>답변을 입력하세요</p></div>
             <input type="checkbox" id="answer03">
             <label for="answer03">자주묻는 질문3<em></em></label>
             <div><p>답변 답변</p></div>
