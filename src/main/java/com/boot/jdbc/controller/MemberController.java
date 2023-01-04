@@ -1,15 +1,21 @@
 package com.boot.jdbc.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.boot.jdbc.model.biz.MemberBiz;
+import com.boot.jdbc.model.biz.SmsService;
 import com.boot.jdbc.model.dto.MemberDto;
+
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @Controller
 @RequestMapping("/main")
@@ -29,17 +35,23 @@ public class MemberController {
 		return "main/login";
 	}
 	
+	// 문자 인증
+	@GetMapping("/phoneAuth")
+	public @ResponseBody String sendSMS(@RequestParam(value="to") String to) throws CoolsmsException {  	
+		return SmsService.PhoneAuthentication(to);
+	}
+	
 	@GetMapping("/loginForm")
 	public String loginForm() {
 		return "main/login";
 	}
 	
 	@PostMapping("/login")
-	public String login(String user_id, String password) {
+	public String login(String user_id, String password, HttpSession session) {
 		String res = biz.login(user_id, password);
 		System.out.println(res);
 		if(res!=null) {
-			System.out.println("로그인 성공");
+			session.setAttribute("loginInfo", res);
 			return "index";
 		}else {
 			System.out.println("로그인 실패");
