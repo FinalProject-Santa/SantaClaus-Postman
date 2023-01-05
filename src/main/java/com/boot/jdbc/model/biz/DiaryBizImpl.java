@@ -15,7 +15,7 @@ public class DiaryBizImpl implements DiaryBiz{
 	@Override
 	public int insert(DiaryDto dto) {
 		
-		return 0;
+		return diaryMapper.insert(dto);
 	}
 	
 	

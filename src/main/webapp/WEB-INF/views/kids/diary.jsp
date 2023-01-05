@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,21 +9,25 @@
 <link rel="stylesheet" href="/resources/css/kids/diary.css">
 </head>
 <body>
-	<form action="/kids/insert" method="post">
-	<input type="hidden">
+	<form action="/kids/insert" method="post" id="diaryForm">
+	<input type="hidden" name="user_id" value="user01">
+	<input type="hidden" name="kids_no" value=1>
+	<input type="hidden" name="phone" value="1234">
     <div class="diary">
     <div class="drawing">
         <span id="text">오늘 무엇을 했나요?</span>
     </div>
+    <section id="diary_box">
     <canvas id="jsCanvas" class="canvas"></canvas>
+    </section>
     <div class="controls">
         <div class="controls_range">
             <input type="range" id="jsRange" min="0.1" max="5.0" value="2.5" step="0.1">
         </div>
         <div class="controls_btns">
-            <button id="jsMode">Fill</button>
-            <button id="jsErase">Erase</button>
-            <button id="jsSave">Save</button>
+            <button id="jsMode" type="button">Fill</button>
+            <button id="jsErase" type="button">Erase</button>
+            <button id="jsSave" type="button">Save</button>
         </div>
         <div class="controls_colors" id="JSColors">
             <div class="controls_color jsColor" style="background-color: black;"></div>
@@ -37,8 +42,9 @@
         </div>
     </div>
     <div class="btn_group">
-        <button id="send_btn">자랑하기</button>
-        <button id="success_btn">작성완료</button>
+        <button id="send_btn" type="button">자랑하기</button>
+        <button id="success_btn" type="button">작성완료</button>
+        <button id="screen_btn" type="button">저장하기</button>
     </div>
     </div>
     <div class="modal hidden">
@@ -46,12 +52,46 @@
         <div class="modalBox">
           <p id="modal_text">착한 어린이다 임마</p>
         <div class="modal_Btn">
-          <button class="stickerBtn" onclick="location.href='/kids/sticker'">칭찬스티커</button>
-          <button class="mainBtn" onclick="location.href='/kids/main'">메인으로</button>
+          <button class="stickerBtn" type="button" onclick="location.href='/kids/sticker'">칭찬스티커</button>
+          <button class="mainBtn" type="submit" onclick="location.href='/kids/main'">메인으로</button>
         </div>
         </div>
       </div>
-      </form>
     <script src="/resources/js/kids/diary.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script>
+    const canvasrr = document.getElementById("jsCanvas");
+    
+    $("#screen_btn").on("click",function(){
+    	screenShot($("#diary_box"));
+    });
+    
+    function screenShot(target){
+        if(target != null && target.length>0){
+            var t = target[0];
+            html2canvas(t).then(function(canvas){
+            	var myImg = canvasrr.toDataURL("image/png");
+                myImg = myImg.replace("data:image/png;base64,", "");
+
+                $.ajax({
+                    type:"POST",
+                    data:{
+                        "imgSrc":myImg
+                    },
+                    dataType:"text",
+                    url:"/kids/ImgSaveTest",
+                    success:function(data){
+                        console.log(data);
+                    },
+                    error:function(a,b,c){
+                        alert("error");
+                    }
+                });
+            })
+        }
+    }
+    </script>
+    </form>
 </body>
 </html>
