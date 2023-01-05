@@ -35,7 +35,7 @@
         
         <div class="buttons">
         <button onclick="location.href='notice';">공지사항</button>
-    	<button onclick="location.href='qna';">1:1문의</button>
+    	<button onclick="location.href='qnainsertform';">1:1문의</button>
     	<button onclick="location.href='faq';">자주묻는질문</button>
         </div>
     </div> 

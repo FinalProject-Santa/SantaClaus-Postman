@@ -1,17 +1,24 @@
 package com.boot.jdbc.controller;
 
-import java.util.List;
+import java.io.File;
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.boot.jdbc.model.biz.ArticleBiz;
 import com.boot.jdbc.model.biz.QnaBiz;
 import com.boot.jdbc.model.dto.QnaDto;
+import com.boot.jdbc.model.util.MD5Generator;
+
 
 @Controller
 @RequestMapping("/customer")
@@ -60,15 +67,27 @@ public class CustomerController {
 		return "customer/qnainsert";
 	}
 	
+	
 	//qnainsert -> form태그 action에서 받아와서 실행
+	//request URL이 qnainsert, view 페이지는 스트링 qnainsert
 	@PostMapping("/qnainsert")
-	public String insert(QnaDto dto) {
-		System.out.println(dto.toString());
-		if(qnabiz.insert(dto)>0) {
-			return "redirect:/customer/qnalist";
-		}else {
-			return "redirect:/customer/qnainsert" ;
+	public String insert(@RequestParam("file")MultipartFile files,QnaDto dto) throws NoSuchAlgorithmException {
+		try {
+			String file_oname = files.getOriginalFilename();
+			String file_name = new MD5Generator(file_oname).toString();
+			String file_path = System.getProperty("user.dir")+"\\file";
+			
+			if(qnabiz.insert(files,dto)>0) {
+				return "redirect:/customer/qnalist";
+			}else {
+				return "redirect:/customer/qnainsert" ;
+			}
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+		return null;
 	}
 	
 	@GetMapping("/qnadetail")
