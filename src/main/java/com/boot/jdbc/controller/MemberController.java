@@ -24,6 +24,11 @@ public class MemberController {
 	@Autowired
 	private MemberBiz biz;
 	
+	@GetMapping("/main")
+	public String mainPage() {
+		return "main/letterTemplate";
+	}
+	
 	@GetMapping("/signUpForm")
 	public String signUp() {
 		return "main/signUp";
@@ -52,7 +57,7 @@ public class MemberController {
 		System.out.println(res);
 		if(res!=null) {
 			session.setAttribute("loginInfo", res);
-			return "index";
+			return "main/profile";
 		}else {
 			System.out.println("로그인 실패");
 			return "redirect:/main/loginForm";
