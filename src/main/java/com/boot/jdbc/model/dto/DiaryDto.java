@@ -9,15 +9,11 @@ public class DiaryDto {
 	private String diary_content;
 	private Date write_date;
 	private String phone;
-	private int writer_count;
-	
 	
 	public DiaryDto() {
 		super();
 	}
-	
-	public DiaryDto(int diary_no, String user_id, int kids_no, String diary_content, Date write_date, String phone,
-			int writer_count) {
+	public DiaryDto(int diary_no, String user_id, int kids_no, String diary_content, Date write_date, String phone) {
 		super();
 		this.diary_no = diary_no;
 		this.user_id = user_id;
@@ -25,9 +21,7 @@ public class DiaryDto {
 		this.diary_content = diary_content;
 		this.write_date = write_date;
 		this.phone = phone;
-		this.writer_count = writer_count;
 	}
-
 	public int getDiary_no() {
 		return diary_no;
 	}
@@ -64,12 +58,7 @@ public class DiaryDto {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public int getWriter_count() {
-		return writer_count;
-	}
-	public void setWriter_count(int writer_count) {
-		this.writer_count = writer_count;
-	}
+	
 	
 }
 

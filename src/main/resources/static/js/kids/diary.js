@@ -82,6 +82,10 @@ function handleSaveClick(){
     link.href = image;
     link.download = "PaintJS[EXPORT]";
     link.click();
+    // const input = document.getElementsByName("diary_content");
+    // input.value = image;
+    // console.log(input.value);
+
 }
 
 function eraseClick(){
@@ -118,6 +122,8 @@ if(erase){
 const open = () => {
     document.querySelector(".modal").classList.remove("hidden");
 }
+
+
 
 // const close = () => {
 //     document.querySelector(".modal").classList.add("hidden");
