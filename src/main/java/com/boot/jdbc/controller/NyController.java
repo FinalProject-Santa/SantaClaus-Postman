@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class NyController {
 	
 	@GetMapping("/ny")
-	public String main() {
+	public String ny() {
 
 			
 		return "newyear/ny";
