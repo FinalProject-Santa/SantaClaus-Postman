@@ -1,5 +1,7 @@
 package com.boot.jdbc.model.biz;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,16 @@ public class DiaryBizImpl implements DiaryBiz{
 		
 		return diaryMapper.insert(dto);
 	}
+
+	@Override
+	public int saveImg(Map<Object, Object> param) {
+		
+		return diaryMapper.saveImg(param);
+	}
+
+	
+
+	
 	
 	
 }

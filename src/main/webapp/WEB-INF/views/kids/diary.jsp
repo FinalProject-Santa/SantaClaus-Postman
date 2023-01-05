@@ -10,9 +10,9 @@
 </head>
 <body>
 	<form action="/kids/insert" method="post" id="diaryForm">
-	<input type="hidden" name="user_id" value="user01">
-	<input type="hidden" name="kids_no" value=1>
-	<input type="hidden" name="phone" value="1234">
+	<input type="hidden" name="user_id" id="user" value="user01">
+	<input type="hidden" name="kids_no" id="kids" value=1>
+	<input type="hidden" name="phone" id="phoneNumber" value="1234">
     <div class="diary">
     <div class="drawing">
         <span id="text">오늘 무엇을 했나요?</span>
@@ -72,12 +72,18 @@
             var t = target[0];
             html2canvas(t).then(function(canvas){
             	var myImg = canvasrr.toDataURL("image/png");
+            	var userId = $("#user").val().trim();
+            	var kidsNo = $("#kids").val().trim();
+            	var phone = $("#phoneNumber").val().trim();
                 myImg = myImg.replace("data:image/png;base64,", "");
 
                 $.ajax({
                     type:"POST",
                     data:{
-                        "imgSrc":myImg
+                        "imgSrc":myImg,
+                        "userID":userId,
+                        "kidsNO":kidsNo,
+                        "phoneNum":phone
                     },
                     dataType:"text",
                     url:"/kids/ImgSaveTest",

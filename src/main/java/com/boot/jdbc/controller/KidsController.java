@@ -1,15 +1,13 @@
 package com.boot.jdbc.controller;
 
 import java.io.FileOutputStream;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.codec.binary.Base64;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,9 +23,9 @@ import com.boot.jdbc.model.dto.DiaryDto;
 
 @Controller
 @RequestMapping("/kids")
-public class kidsController {
+public class KidsController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(kidsController.class);
+	//private static final Logger logger = LoggerFactory.getLogger(kidsController.class);
 	
 	@Autowired
 	private DiaryBiz biz;
@@ -86,10 +84,11 @@ public class kidsController {
 	
 	@ResponseBody
 	@RequestMapping(value = {"ImgSaveTest"}, method = RequestMethod.POST)
-	public ModelMap ImgSaveTest(@RequestParam HashMap<Object, Object> param, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
-		ModelMap map = new ModelMap();
+	public ModelMap ImgSaveTest(@RequestParam Map<Object, Object> param, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
+		ModelMap Map = new ModelMap();
 		
 		String binaryData = request.getParameter("imgSrc");
+		String userId = request.getParameter("userID");
 		FileOutputStream stream = null;
 		try {
 		System.out.println("binary file " + binaryData);
@@ -100,8 +99,12 @@ public class kidsController {
 		byte[]file = Base64.decodeBase64(binaryData);
 		String fileName = UUID.randomUUID().toString();
 		
-		stream = new FileOutputStream("C:\\Users\\82105\\git\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\kids\\"+fileName+".png");
-		System.out.println("C:\\Users\\82105\\git\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\kids\\"+fileName+".png"); //변경 C:/image/
+		stream = new FileOutputStream("C:\\image\\"+fileName+".png");
+		String filePath = "C:\\image\\"+fileName+".png";
+		param.put("filePath", filePath);
+		biz.saveImg(param);
+		System.out.println(filePath);
+		System.out.println(userId);
 		stream.write(file);
 		stream.close();
 		System.out.println("저장 완료");
@@ -113,8 +116,8 @@ public class kidsController {
 				stream.close();
 			}
 		}
-		map.addAttribute("resultMap","");
-		return map;
+		Map.addAttribute("resultMap","");
+		return Map;
 	};
 	
 	
