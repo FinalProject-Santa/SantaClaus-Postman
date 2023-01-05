@@ -1,102 +1,163 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 <style>
-* {
-	padding: 0;
-	margin: 0;
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    width: 2000px;
+    
+}
+button{
+    border: none;
+}
+.menuBar{
+  position : relative;
+  display : inline-block;
+}
+.menuBtn{
+  border : 1px solid rgb(37, 37, 37);
+  border-radius : 4px;
+  background-color: #f5f5f5;
+  font-weight: 400;
+  color : rgb(37, 37, 37);
+  padding : 12px;
+  width :200px;
+  text-align: left;
+  cursor : pointer;
+  font-size : 12px;
+}
+.submenu{
+  display : none;
+  position : absolute;
+  z-index : 1; /*ë‹¤ë¥¸ ìš”ì†Œë“¤ë³´ë‹¤ ì•ì— ë°°ì¹˜*/
+  font-weight: 400;
+  background-color: #f9f9f9;
+  min-width : 200px;
 }
 
-body {
-	font-size: 14px;
-	font-family: 'Roboto', sans-serif;
-	width: 2000px;
+.submenu a{
+  display : block;
+  text-decoration : none;
+  color : rgb(37, 37, 37);
+  font-size: 12px;
+  padding : 12px 20px;
 }
 
-button {
-	border: none;
+.submenu a:hover{
+  background-color : #ececec
+}
+
+.menuBar:hover .submenu {
+  display: block;
 }
 </style>
 </head>
 <body>
-<c:choose>
-		<c:if test="${empty member}">
-			<li><a href="../member/logout">·Î±×¾Æ¿ô</a></li>
-		</c:when>
-		<c:otherwise>
-			<li><a href="../member/login">·Î±×ÀÎ</a></li>
-		</c:otherwise>
-</c:choose>
-	<h2>¿±¼­ ÅÛÇÃ¸´ ¸®½ºÆ®</h2>
-	<div class="content" style="display: flex;">
-		<div class="templateList" style="display: flex;">
-			<button>
-				<img src="./image/arrow1.JPG" style="width: 50px;">
-			</button>
-			<div class="card1">
-				<img src="./image/card1.JPG">
-				<input type="checkbox">
-			</div>
-			<div class="card2">
-				<img src="./image/card2.JPG">
-				<input type="checkbox">
-			</div>
-			<div class="card3">
-				<img src="./image/card3.JPG">
-				<input type="checkbox">
-			</div>
-			<div class="card4">
-				<img src="./image/card4.JPG">
-				<input type="checkbox">
-			</div>
-			<button>
-				<img src="./image/arrow2.JPG" style="width: 50px;">
-			</button>
-		</div>
-		<div class="pay">
-			<table border="1">
-				<tbody>
-					<tr>
-						<th>ÅÛÇÃ¸´¸í</th>
-						<td>»êÅ¸´Â ÈûµéÁö ¾Ê¾Æ</td>
-					</tr>
-					<tr>
-						<th colspan="2">ÅÛÇÃ¸´ ºóÄ­ Ã¤¿ì±â</th>
-					</tr>
-					<tr>
-						<th>ºóÄ­1</th>
-						<td><input type="text"></td>
-					</tr>
-					<tr>
-						<th>ºóÄ­2</th>
-						<td><input type="text"></td>
-					</tr>
-					<tr>
-						<th>ºóÄ­3</th>
-						<td><input type="text"></td>
-					</tr>
-					<tr>
-						<th>ºóÄ­4</th>
-						<td><input type="text"></td>
-					</tr>
-					<tr>
-						<th colspan="2">PS ¸àÆ® Ãß°¡</th>
-					</tr>
-					<tr>
-						<td colspan="2"><textarea></textarea></td>
-					</tr>
-				</tbody>
-			</table>
-			<input type="button" value="´ÙÀ½">
-			<input type="button" value="Àå¹Ù±¸´Ï">
-		</div>
-	</div>
+    <div class="header">   
+        <div class="menuBar">
+            <button class="menuBtn"> 
+                <span class="menu_icon"></span>
+                ë©”ë‰´
+            </button>
+            <div class="submenu">
+                <a href="#">About</a>
+                <a href="#">ì—½ì„œ ëª©ë¡</a>
+                <a href="#">íŠ¸ë¦¬ ê¾¸ë¯¸ê¸°</a>
+                <a href="#">ì—°í•˜ì¥ ì „ì†¡</a>
+                <a href="#">ë¦¬ë·° ê²Œì‹œíŒ</a>
+            </div>
+            <img class="logo">
+            <div class="nav">
+                <a>HOME</a>
+                <a>ë¡œê·¸ì¸</a>
+                <a>ì¥ë°”êµ¬ë‹ˆ</a>
+                <a>ë§ˆì´í˜ì´ì§€</a>
+            </div>
+        </div>
+    </div>
+    <div class="slider">
+        <div>
+            <img>
+        </div>
+        <div>
+            <img>
+        </div>
+        <div>
+            <img>
+        </div>
+    </div>
+    <div class="letterTplPage">
+        <button onclick="">ì—½ì„œ ëª©ë¡ í˜ì´ì§€</button>
+    </div>
+    <h2>ì—½ì„œ í…œí”Œë¦¿ ë¦¬ìŠ¤íŠ¸</h2>
+    <div class="content" style="display: flex;">
+        <div class="templateList" style="display: flex;">
+            <button><img src="./image/arrow1.JPG" style="width: 50px;"></button>
+            <div class="card1">
+                <img src="./image/card1.JPG">
+            <input type="checkbox">
+            </div>
+            <div class="card2">
+                <img src="./image/card2.JPG">
+                <input type="checkbox">
+            </div>
+            <div class="card3">
+                <img src="./image/card3.JPG">
+                <input type="checkbox">
+            </div>
+            <div class="card4">
+                <img src="./image/card4.JPG">
+                <input type="checkbox">
+            </div>
+            <button><img src="./image/arrow2.JPG" style="width: 50px;"></button>
+        </div>
+        <div class="pay">
+            <table border="1px">
+                <tbody>
+                    <tr>
+                        <th>í…œí”Œë¦¿ëª…</th>
+                        <td>ì‚°íƒ€ëŠ” í˜ë“¤ì§€ ì•Šì•„</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">í…œí”Œë¦¿ ë¹ˆì¹¸ ì±„ìš°ê¸°</th>
+                    </tr>
+                    <tr>
+                        <th>ë¹ˆì¹¸1</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th>ë¹ˆì¹¸2</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th>ë¹ˆì¹¸3</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th>ë¹ˆì¹¸4</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">PS ë©˜íŠ¸ ì¶”ê°€</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><textarea></textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="button" value="ë‹¤ìŒ">
+            <input type="button" value="ì¥ë°”êµ¬ë‹ˆ">
+        </div>
+    </div>
 </body>
 </html>
