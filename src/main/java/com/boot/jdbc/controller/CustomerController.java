@@ -1,14 +1,12 @@
 package com.boot.jdbc.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.boot.jdbc.model.biz.ArticleBiz;
 import com.boot.jdbc.model.biz.QnaBiz;
 import com.boot.jdbc.model.dto.QnaDto;
-import com.boot.jdbc.model.util.MD5Generator;
 
 
 @Controller
@@ -70,25 +67,16 @@ public class CustomerController {
 	
 	//qnainsert -> form태그 action에서 받아와서 실행
 	//request URL이 qnainsert, view 페이지는 스트링 qnainsert
+	//qnabiz.insert(dto)는 dto만을 파라미터로 갖는 메소드지만, 첨부파일이 있든 없든 dto만 들어가있으면 게시글이 작성된거니까 상관없다.
 	@PostMapping("/qnainsert")
-	public String insert(@RequestParam("file")MultipartFile files,QnaDto dto) throws NoSuchAlgorithmException {
-		try {
-			String file_oname = files.getOriginalFilename();
-			String file_name = new MD5Generator(file_oname).toString();
-			String file_path = System.getProperty("user.dir")+"\\file";
-			
-			if(qnabiz.insert(files,dto)>0) {
+	public String insert(@RequestParam Map<String, Object> param, @RequestParam("uploadFile") MultipartFile mFile ,QnaDto dto){
+			if(qnabiz.insert(dto)>0) {
 				return "redirect:/customer/qnalist";
 			}else {
-				return "redirect:/customer/qnainsert" ;
+				return "redirect:/customer/qnainsert";
 			}
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+		} 
+		
 	
 	@GetMapping("/qnadetail")
 	public String qnadetail(Model model, Integer qna_no) {
@@ -96,6 +84,9 @@ public class CustomerController {
 		return "customer/qnadetail";
 				
 	}
+	
+	
+	
 }
 
 

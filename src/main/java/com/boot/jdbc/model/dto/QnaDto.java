@@ -9,10 +9,11 @@ public class QnaDto {
 	private String qna_title;
 	private Date qna_date;
 	private String qna_content;
-	private String[] files;
+	private String qna_file;
 	
 	
-	public QnaDto(Integer qna_no, String user_id, String qna_type, String qna_title, Date qna_date, String qna_content) {
+	
+	public QnaDto(Integer qna_no, String user_id, String qna_type, String qna_title, Date qna_date, String qna_content, String qna_file) {
 		super();
 		this.qna_no = qna_no;
 		this.user_id = user_id;
@@ -20,19 +21,7 @@ public class QnaDto {
 		this.qna_title = qna_title;
 		this.qna_date = qna_date;
 		this.qna_content = qna_content;
-	}
-	
-	
-	public QnaDto(Integer qna_no, String user_id, String qna_type, String qna_title, Date qna_date, String qna_content,
-			String[] files) {
-		super();
-		this.qna_no = qna_no;
-		this.user_id = user_id;
-		this.qna_type = qna_type;
-		this.qna_title = qna_title;
-		this.qna_date = qna_date;
-		this.qna_content = qna_content;
-		this.files = files;
+		this.qna_file = qna_file;
 	}
 
 
@@ -75,11 +64,11 @@ public class QnaDto {
 		this.qna_content = qna_content;
 
 	}
-	public String[] getFiles() {
-		return files;
+	public String getQna_file() {
+		return qna_file;
 	}
-	public void setFiles(String[] files) {
-		this.files = files;
+	public void setQna_file(String qna_file) {
+		this.qna_file = qna_file;
 	}
 	
 	
