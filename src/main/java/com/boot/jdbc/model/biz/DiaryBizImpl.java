@@ -1,8 +1,11 @@
 package com.boot.jdbc.model.biz;
 
+import java.time.LocalDate;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.boot.jdbc.model.dao.DiaryMapper;
@@ -13,6 +16,8 @@ public class DiaryBizImpl implements DiaryBiz{
 	
 	@Autowired
 	private DiaryMapper diaryMapper;
+	@Autowired
+	private JavaMailSender mailSender;
 
 	@Override
 	public int insert(DiaryDto dto) {
@@ -26,8 +31,34 @@ public class DiaryBizImpl implements DiaryBiz{
 		return diaryMapper.saveImg(param);
 	}
 
-	
+	@Override
+	public String selectPath(String user_id) {
+		
+		return diaryMapper.selectPath(user_id);
+	}
 
+	@Override
+	public void sendMail(String userEmail, String filePath) {
+		
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setTo(userEmail);
+		message.setFrom("jiyoun_908@naver.com");
+		message.setSubject("제목");
+		message.setText(filePath);
+		
+		mailSender.send(message);
+		
+	}
+
+	@Override
+	public String selectDate(String userId, LocalDate now) {
+		
+		return diaryMapper.selectDate(userId, now);
+	}
+
+	
+	
+	
 	
 	
 	
