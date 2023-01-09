@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +51,8 @@ section{margin-left: 30%; margin-right: 30%;}
         <td>${dto.qna_no}</td>
         <td>${dto.qna_type}</td>
         <td><a href="/customer/qnadetail?qna_no=${dto.qna_no}">${dto.qna_title}</a></td>
-        <td>${dto.qna_date}</td>
+        <fmt:formatDate var="date" value="${dto.qna_date }" pattern="yyyy/MM/dd"/>
+        <td>${date}</td>
         
         </tr>
         </c:forEach>

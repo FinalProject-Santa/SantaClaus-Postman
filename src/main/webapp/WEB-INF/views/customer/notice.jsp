@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
     <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +46,8 @@
 <td>${dto.no}</td>
 <td>${dto.writer }</td>
 <td><a href="/customer/notice_detail?no=${dto.no}">${dto.title }</a></td>
-<td>${dto.regdate }</td>
+ <fmt:formatDate var="date" value="${dto.regdate }" pattern="yyyy/MM/dd"/>
+<td>${date }</td>
 </tr>
 </c:forEach>
 </c:otherwise>

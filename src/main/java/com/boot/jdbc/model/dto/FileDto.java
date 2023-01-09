@@ -1,8 +1,7 @@
 package com.boot.jdbc.model.dto;
 
+
 public class FileDto {
-
-
 private int file_id; //시퀀스
 private Integer qna_no;
 private String file_oname; // 오리지널 이름 
