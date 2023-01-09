@@ -50,6 +50,7 @@ section{margin-left: 30%; margin-right: 30%;}
         <td>${dto.qna_type}</td>
         <td><a href="/customer/qnadetail?qna_no=${dto.qna_no}">${dto.qna_title}</a></td>
         <td>${dto.qna_date}</td>
+        
         </tr>
         </c:forEach>
    		</c:otherwise>

@@ -1,14 +1,18 @@
 package com.boot.jdbc.controller;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.boot.jdbc.model.biz.DiaryBiz;
+import com.boot.jdbc.model.biz.MailHandler;
 import com.boot.jdbc.model.dto.DiaryDto;
 
 @Controller
@@ -29,6 +34,8 @@ public class KidsController {
 	
 	@Autowired
 	private DiaryBiz biz;
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	@GetMapping("/main")
 	public String main() {
@@ -83,13 +90,27 @@ public class KidsController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value = {"selectDate"}, method = RequestMethod.POST)
+	public String selectDate(HttpServletRequest request) {
+		
+		String userId = request.getParameter("userID");
+		LocalDate now = LocalDate.now();
+		
+		String today = biz.selectDate(userId,now); 
+		System.out.println("select: "+biz.selectDate(userId,now));
+		
+		return today;
+	};
+	
+	
+	@ResponseBody
 	@RequestMapping(value = {"ImgSaveTest"}, method = RequestMethod.POST)
 	public ModelMap ImgSaveTest(@RequestParam Map<Object, Object> param, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
 		ModelMap Map = new ModelMap();
-		
 		String binaryData = request.getParameter("imgSrc");
 		String userId = request.getParameter("userID");
 		FileOutputStream stream = null;
+		
 		try {
 		System.out.println("binary file " + binaryData);
 		if(binaryData == null || binaryData.trim().equals("")) {
@@ -117,12 +138,42 @@ public class KidsController {
 			}
 		}
 		Map.addAttribute("resultMap","");
+		
 		return Map;
 	};
 	
+	//@PostMapping("/selectPath")
+	public void select(String user_id,String userEmail) {
+		
+		System.out.println(user_id);
+		biz.selectPath(user_id);
+		
+		String filePath = biz.selectPath(user_id);
+		System.out.println(filePath);
+		
+		biz.sendMail(userEmail,filePath);
+		
+	}
 	
-	
-	
+	@ResponseBody
+	@RequestMapping(value = {"sendEmail"}, method = RequestMethod.POST)
+	public void sendMailWithFiles(@RequestParam Map<Object, Object> param, final HttpServletRequest request, final HttpServletResponse response) throws MessagingException, IOException {
+		
+		String path = request.getParameter("imgSrc");
+		System.out.println(path);
+		String userEmail = request.getParameter("userEmail");
+		System.out.println(userEmail);
+		MailHandler mailHandler = new MailHandler(mailSender);
+		
+		mailHandler.setFrom("jiyoun_908@naver.com");
+		mailHandler.setTo(userEmail);
+		mailHandler.setSubject("제목");
+		
+		String htmlContent = "<img src='data:image/png;base64,"+path+"'>";
+		mailHandler.setText(htmlContent,true);
+		//mailHandler.setInline("img1","classpath:resources/image/kids/img1.png");
+		mailHandler.send();
+	}
 	
 	
 	

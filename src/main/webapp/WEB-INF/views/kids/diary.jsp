@@ -9,10 +9,10 @@
 <link rel="stylesheet" href="/resources/css/kids/diary.css">
 </head>
 <body>
-	<form action="/kids/insert" method="post" id="diaryForm">
+	<form action="/kids/selectPath" method="post" id="diaryForm">
 	<input type="hidden" name="user_id" id="user" value="user01">
 	<input type="hidden" name="kids_no" id="kids" value=1>
-	<input type="hidden" name="phone" id="phoneNumber" value="1234">
+	<input type="hidden" name="userEmail" id="email" value="jiyeon908@naver.com">	
     <div class="diary">
     <div class="drawing">
         <span id="text">오늘 무엇을 했나요?</span>
@@ -27,7 +27,7 @@
         <div class="controls_btns">
             <button id="jsMode" type="button">Fill</button>
             <button id="jsErase" type="button">Erase</button>
-            <button id="jsSave" type="button">Save</button>
+            <button id="jsBack" type="button">Back</button>
         </div>
         <div class="controls_colors" id="JSColors">
             <div class="controls_color jsColor" style="background-color: black;"></div>
@@ -42,9 +42,9 @@
         </div>
     </div>
     <div class="btn_group">
-        <button id="send_btn" type="button">자랑하기</button>
-        <button id="success_btn" type="button">작성완료</button>
-        <button id="screen_btn" type="button">저장하기</button>
+        <!-- <button id="send_btn" type="submit">자랑하기</button> -->
+        <button id="save_btn" type="button">사진 저장하기</button>
+        <button id="success_btn" type="button" onclick="return false">작성완료</button>
     </div>
     </div>
     <div class="modal hidden">
@@ -53,7 +53,7 @@
           <p id="modal_text">착한 어린이다 임마</p>
         <div class="modal_Btn">
           <button class="stickerBtn" type="button" onclick="location.href='/kids/sticker'">칭찬스티커</button>
-          <button class="mainBtn" type="submit" onclick="location.href='/kids/main'">메인으로</button>
+          <button class="mainBtn" id="send_btn" type="button">자랑하기</button>
         </div>
         </div>
       </div>
@@ -61,12 +61,44 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script>
-    const canvasrr = document.getElementById("jsCanvas");
-    
-    $("#screen_btn").on("click",function(){
-    	screenShot($("#diary_box"));
+    $(function(){
+    	// 오늘 작성 여부
+        	var userId = $("#user").val().trim();
+        		$.ajax({
+        			type:"POST",
+                    data:{
+                        "userID":userId,
+                    },
+                    dataType:"text",
+                    url:"/kids/selectDate",
+                    success:function(date){
+                        console.log("날짜 :"+date);
+                        if(date!=""){
+                        	alert("오늘 작성했습니다.");
+                            $("#success_btn").attr("disabled",true);
+                            $("#success_btn").css('backgroundColor','yellow');
+                    	}
+                    },
+                    error:function(a,b,c){
+                        alert("error");
+                    }
+        		});
     });
     
+    
+    const canvasrr = document.getElementById("jsCanvas");
+    
+    $("#success_btn").on("click",function(){
+    	screenShot($("#diary_box"));
+    	
+    });
+    
+    $("#send_btn").on("click",function(){
+    	sendEmail();
+    });
+    
+    
+    // 이미지 저장
     function screenShot(target){
         if(target != null && target.length>0){
             var t = target[0];
@@ -74,7 +106,7 @@
             	var myImg = canvasrr.toDataURL("image/png");
             	var userId = $("#user").val().trim();
             	var kidsNo = $("#kids").val().trim();
-            	var phone = $("#phoneNumber").val().trim();
+            	var userEmail = $("#email").val().trim();
                 myImg = myImg.replace("data:image/png;base64,", "");
 
                 $.ajax({
@@ -83,7 +115,7 @@
                         "imgSrc":myImg,
                         "userID":userId,
                         "kidsNO":kidsNo,
-                        "phoneNum":phone
+                        "userEmail":userEmail
                     },
                     dataType:"text",
                     url:"/kids/ImgSaveTest",
@@ -93,10 +125,39 @@
                     error:function(a,b,c){
                         alert("error");
                     }
+                    
                 });
+                
             })
         }
     }
+    
+    
+    function sendEmail(){
+            	var myImg = canvasrr.toDataURL("image/png");
+            	var userId = $("#user").val().trim();
+            	var userEmail = $("#email").val().trim();
+                myImg = myImg.replace("data:image/png;base64,", "");
+
+               	$.ajax({
+                       type:"POST",
+                       data:{
+                           "imgSrc":myImg,
+                           "userID":userId,
+                           "userEmail":userEmail
+                       },
+                       dataType:"text",
+                       url:"/kids/sendEmail",
+                       success:function(data){
+        					alert("전송되었습니다.");
+        					location.href='/kids/main';
+                       },
+                       error:function(a,b,c){
+                           alert("error");
+                       }
+                   });
+        }
+    
     </script>
     </form>
 </body>

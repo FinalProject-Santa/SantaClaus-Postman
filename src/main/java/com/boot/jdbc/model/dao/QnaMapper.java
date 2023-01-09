@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.boot.jdbc.model.dto.QnaDto;
 
@@ -12,7 +13,7 @@ import com.boot.jdbc.model.dto.QnaDto;
 public interface QnaMapper {
 	
 	@Insert("INSERT INTO QNA(USER_ID, QNA_TYPE, QNA_TITLE, QNA_DATE, QNA_CONTENT) VALUES (#{user_id}, #{qna_type}, #{qna_title}, NOW(), #{qna_content})")
-	int insert(QnaDto dto);
+	int insert(MultipartFile files, QnaDto dto);
 	
 	@Select("SELECT * FROM QNA ORDER BY QNA_NO DESC")
 	List<QnaDto> selectList();

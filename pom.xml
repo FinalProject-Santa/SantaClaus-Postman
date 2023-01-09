@@ -59,6 +59,7 @@
 		    <version>4.2.7</version>
 		</dependency>
 		
+
 		    <!--Multipart File Up&Download -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -72,6 +73,18 @@
             <version>2.5</version>
         </dependency>
         
+
+		<!-- 메일 전송 -->
+		<dependency>
+    		<groupId>org.apache.commons</groupId>
+    		<artifactId>commons-email</artifactId>
+    		<version>1.5</version>
+  		</dependency>
+  		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+
 	</dependencies>
 	
 	<build>

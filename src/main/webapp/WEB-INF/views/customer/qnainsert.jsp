@@ -21,7 +21,7 @@ section{margin-left: 30%; margin-right: 30%;}
     
     <section id="sec_qna">
         <h3>1:1문의</h3>
-        <form action="/customer/qnainsert" method="post">
+        <form action="/customer/qnainsert" method="post"  enctype="multipart/form-data">
         <label for="qna_title">제목</label>
         <input type="text" name="qna_title" id="qna_title"><br>
         <span>문의유형</span>
@@ -32,8 +32,9 @@ section{margin-left: 30%; margin-right: 30%;}
         </select>
         <br>
         <textarea cols="80px" rows="20px" name="qna_content"></textarea><br>
-        <input type="file"><br>
+        <input type="file" name="uploadFile"><br>
         <input type="submit" value="등록">
+        
     </form>
     </section>  
 
