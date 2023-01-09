@@ -64,10 +64,10 @@ h1 {
 						${reviewdetail.review_content }</td>
 				</tr>
 				<tr>
-					<td colspan="4" class="text-right"><a
-						href="update.do?no=${vo.no }" class="btn btn-sm btn-success">수정</a>
-						<a href="delete.do?no=${vo.no }" class="btn btn-sm btn-info">삭제</a>
-						<a href="list.do" class="btn btn-sm btn-warning">목록</a></td>
+					<td colspan="4" class="text-right">
+					<button class="btn btn-primary" onclick="location.href='/review/reviewUpdate/${reviewdetail.review_no }'">수정</button> 
+					<button class="btn btn-primary" onclick="location.href='/review/reviewUpdate/${reviewdetail.review_no }'">삭제</button> 
+						<a href="" class="btn btn-sm btn-warning">목록</a></td>
 				</tr>
 			</table>
 		</div>

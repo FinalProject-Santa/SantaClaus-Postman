@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
 </head>
-<title>reviewInsert</title>
+<title>reviewUpdate</title>
 <style>
   * {
     font-family: 'Nanum Pen Script', cursive;
@@ -26,13 +26,14 @@
 <body>
 <div class="container" style="margin : 0 auto">
   <div>
-    <h3>리뷰 작성</h3>
+    <h3>리뷰 수정</h3>
     <hr>
   </div>
   
-<form action="/review/reviewinsert" method="post" enctype="multipart/form-data">
-	<input type="hidden" name="user_id" id="user" value="user01">
-	<input type="hidden" name="review_count" id="count" value="1">
+<form action="/review/reviewUpdate" method="post" enctype="multipart/form-data">
+<input type="hidden" name="user_id" id="user" value="user01">
+<input type="hidden" name="review_count" id="count" value="1">
+<input type="hidden" name="review_no" value="${review_no}"/>
     <div class="mb-3">
       <label for="formGroupExampleInput" class="form-label">제목</label>
       <input type="text" name="review_title" class="form-control" id="formGroupExampleInput" placeholder="제목을 입력하세요">
@@ -75,11 +76,11 @@
     </div>
   </div>
   <div class="mb-3">
-<label>사진 등록</label>
+<!--   <label>사진 등록</label>
   <div class="input-group mb-3">
-    <input type="file" class="form-control" id="inputGroupFile02" name="files">
+    <input type="file" class="form-control" id="inputGroupFile02" name="file">
     <label class="input-group-text" for="inputGroupFile02">Upload</label>
-  </div> 
+  </div> -->
 </div>
 <button type="submit" class="btn btn-primary btn-sm">작성</button>
 <button type="button" class="btn btn-secondary btn-sm">취소</button>

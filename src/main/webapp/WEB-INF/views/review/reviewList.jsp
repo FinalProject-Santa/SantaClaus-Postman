@@ -72,12 +72,10 @@
                                     </thead>
                                     <tbody>
                                     	<c:forEach items="${reviewlist }" var="review">
-                                    		<tr>
+                                    		<tr onclick="location.href='/review/reviewDetail/${review.review_no}'">
                                     			<td style="text-align: center;"><c:out value="${review.review_no }" /></td>
                                     			<td>
-                                    				<a  href='/review/reviewDetail?review_no=${review.review_no}'>
                                     					<c:out value="${review.review_title }" />
-                                    				</a>
                                     			</td>
                                           <td style="text-align: center;"><c:out value="${review.user_id}" /></td> 
                                           <td style="text-align: center;"><small class="text-muted ${review.review_best}"></small></td> 
