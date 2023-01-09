@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.boot.jdbc.model.dao.ReviewMapper;
 import com.boot.jdbc.model.dto.ReviewDto;
+import com.boot.jdbc.model.dto.rFileDto;
 
 @Service
 public class ReviewBizImpl implements ReviewBiz{
@@ -15,21 +16,39 @@ public class ReviewBizImpl implements ReviewBiz{
 	private ReviewMapper reviewMapper;
 	
 	@Override
-	public List<ReviewDto> rselectList() {
+	public List<ReviewDto> reviewList() {
 		// TODO Auto-generated method stub
-		return reviewMapper.rselectList();
+		return reviewMapper.reviewList();
 	}
 
 	@Override
-	public int insert(ReviewDto dto) {
+	public ReviewDto reviewDetail(int review_no) {
 		// TODO Auto-generated method stub
-		return 0;
+		return reviewMapper.reviewDetail(review_no);
 	}
 
 	@Override
-	public ReviewDto rselectOne(int Review_no) {
+	public int reviewInsert(ReviewDto reviewdto) {
 		// TODO Auto-generated method stub
-		return reviewMapper.rselectOne(Review_no);
+		return reviewMapper.reviewInsert(reviewdto);
+	}
+
+	@Override
+	public int reviewUpdate(ReviewDto reviewdto) {
+		// TODO Auto-generated method stub
+		return reviewMapper.reviewUpdate(reviewdto);
+	}
+
+	@Override
+	public int reviewDelete(int review_no) {
+		// TODO Auto-generated method stub
+		return reviewMapper.reviewDelete(review_no);
+	}
+
+	@Override
+	public int fileInsert(rFileDto file) {
+		// TODO Auto-generated method stub
+		return reviewMapper.fileInsert(file);
 	}
 
 }

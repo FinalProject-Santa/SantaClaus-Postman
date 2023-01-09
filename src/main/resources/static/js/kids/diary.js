@@ -6,9 +6,11 @@ const ctx = canvas.getContext('2d');
 const colors = document.getElementsByClassName("jsColor");
 const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
-const saveBtn = document.getElementById("jsSave");
+const back = document.getElementById("jsBack");
 const erase = document.getElementById("jsErase");
+const save = document.getElementById("save_btn");
 const success = document.getElementById("success_btn");
+
 
 const INITAL_COLOR = "#000000";
 const CANVAS_SIZE_WIDTH = 1000;
@@ -29,12 +31,18 @@ ctx.lineWidth = 2.5; //라인 굵기
 let painting = false;
 let filling = false;
 
+let restore_array=[];
+let index = -1;
+
 function stopPainting(){
     painting = false;
 }
 
 function startPainting(){
     painting = true;
+    restore_array.push(canvas.toDataURL());
+    index+=1;
+    console.log(restore_array);
 }
 
 function onMouseMove(event){
@@ -92,6 +100,30 @@ function eraseClick(){
     ctx.strokeStyle = "white";
 }
 
+function Undo(){
+    if(restore_array.length === 0){
+        return;
+    }
+    let previousDataUrl = restore_array.pop();
+    let previousImage = new Image();
+    previousImage.src = previousDataUrl;
+
+    previousImage.onload = () => {
+        ctx.clearRect(0,0,canvas.width, canvas.height);
+        ctx.drawImage(
+            previousImage,
+            0,
+            0,
+            canvas.width,
+            canvas.height,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+    }
+}
+
 if(canvas){
     canvas.addEventListener("mousemove", onMouseMove);
     canvas.addEventListener("mousedown", startPainting); //페인팅 시작
@@ -111,13 +143,18 @@ if(mode){
     mode.addEventListener("click", handleModeClick);
 }
 
-if(saveBtn){
-    saveBtn.addEventListener("click", handleSaveClick);
+if(save){
+	save.addEventListener("click", handleSaveClick);	
+}
+
+if(back){
+    back.addEventListener("click", Undo);
 }
 
 if(erase){
     erase.addEventListener("click", eraseClick);
 }
+
 
 const open = () => {
     document.querySelector(".modal").classList.remove("hidden");
