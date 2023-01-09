@@ -32,8 +32,8 @@ section{margin-left: 30%; margin-right: 30%;}
         </select>
         <br>
         <textarea cols="80px" rows="20px" name="qna_content"></textarea><br>
-        <input type="file" name="uploadFile"><br>
-        <input type="submit" value="등록">
+        <input type="file" name="qna_file"><br>
+        <input type="submit" value="등록" onclick="alert('등록되었습니다.')">
         
     </form>
     </section>  
