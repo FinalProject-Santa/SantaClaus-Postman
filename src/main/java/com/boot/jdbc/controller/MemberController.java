@@ -26,6 +26,11 @@ public class MemberController {
 	
 	@GetMapping("/main")
 	public String mainPage() {
+		return "main/mainPage";
+	}
+	
+	@GetMapping("/letterTemplate")
+	public String letterTemplate() {
 		return "main/letterTemplate";
 	}
 	

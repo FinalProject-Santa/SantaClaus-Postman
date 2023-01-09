@@ -98,6 +98,32 @@ button{
     </div>
     <div class="letterTplPage">
         <button onclick="">엽서 목록 페이지</button>
+	    <h2>엽서 템플릿 리스트</h2>
+	    <div class="content" style="display: flex;">
+	        <div class="templateList" style="display: flex;">
+	            <button><img src="/resources/image/main/arrow1.JPG" style="width: 50px;"></button>
+	            <div class="card1">
+	                <img src="/resources/image/main/card1.JPG">
+	            <input type="checkbox">
+	            </div>
+	            <div class="card2">
+	                <img src="/resources/image/main/card2.JPG">
+	                <input type="checkbox">
+	            </div>
+	            <div class="card3">
+	                <img src="/resources/image/main/card3.JPG">
+	                <input type="checkbox">
+	            </div>
+	            <div class="card4">
+	                <img src="/resources/image/main/card4.JPG">
+	                <input type="checkbox">
+	            </div>
+	            <button><img src="/resources/image/main/arrow2.JPG" style="width: 50px;"></button>
+	        </div>
+	    </div>
+	    <div>
+	    	<input type="button" value="엽서 목록 페이지" onclick="location.href='/main/letterTemplate'">
+	    </div>
     </div>
 	<div class="footer">
 	
