@@ -21,6 +21,9 @@ public interface ReviewMapper {
 	@Select("SELECT * FROM REVIEW WHERE REVIEW_NO=#{review_no}")
 	ReviewDto reviewDetail(int review_no);
 
+	@Select("SELECT * FROM RFILES WHERE REVIEW_NO=#{review_no}")
+	rFileDto rfileDetail(int review_no);
+	
 	@Insert("INSERT INTO REVIEW VALUES(#{review_no}, #{user_id}, #{review_title}, #{review_best}, #{review_content}, #{review_count}, NOW())")
 	@Options(useGeneratedKeys = true, keyProperty = "review_no")
 	int reviewInsert(ReviewDto reviewdto);
