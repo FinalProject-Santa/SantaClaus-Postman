@@ -48,4 +48,7 @@ th, td {
     padding-bottom: 15px;
     text-align: center;
 }
-
+table {
+	border-collapse:collapse;
+	margin-bottom: 10px;
+}

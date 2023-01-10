@@ -3,7 +3,7 @@ package com.boot.jdbc.model.dto;
 import java.util.Date;
 
 public class pointDto {
-	private String orderno;
+	private int order_no;
 	private String user_id;
 	private int point_save;
 	private Date point_date;
@@ -16,10 +16,10 @@ public class pointDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public pointDto(String orderno, String user_id, int point_save, Date point_date, String point_content,
+	public pointDto(int order_no, String user_id, int point_save, Date point_date, String point_content,
 			int point_use, int point_all, String point_purpose) {
 		super();
-		this.orderno = orderno;
+		this.order_no = order_no;
 		this.user_id = user_id;
 		this.point_save = point_save;
 		this.point_date = point_date;
@@ -29,11 +29,11 @@ public class pointDto {
 		this.point_purpose = point_purpose;
 	}
 	
-	public String getOrderno() {
-		return orderno;
+	public int getOrder_no() {
+		return order_no;
 	}
-	public void setOrderno(String orderno) {
-		this.orderno = orderno;
+	public void setOrder_no(int order_no) {
+		this.order_no = order_no;
 	}
 	public String getUser_id() {
 		return user_id;
@@ -76,6 +76,12 @@ public class pointDto {
 	}
 	public void setPoint_purpose(String point_purpose) {
 		this.point_purpose = point_purpose;
+	}
+	@Override
+	public String toString() {
+		return "pointDto [order_no=" + order_no + ", user_id=" + user_id + ", point_save=" + point_save
+				+ ", point_date=" + point_date + ", point_content=" + point_content + ", point_use=" + point_use
+				+ ", point_all=" + point_all + ", point_purpose=" + point_purpose + "]";
 	}
 	
 	
