@@ -43,6 +43,7 @@ public class ReviewController {
 	@RequestMapping("/reviewDetail/{review_no}")
 	public String reviewDetail(Model model, @PathVariable int review_no) {
 		model.addAttribute("reviewdetail", reviewbiz.reviewDetail(review_no));
+		model.addAttribute("files", reviewbiz.rfileDetail(review_no));
 		return "review/reviewDetail";
 	}
 	
@@ -55,7 +56,7 @@ public class ReviewController {
         String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
         File destinationFile; 
         String destinationFileName;
-        String fileUrl = "C:/Users/yg/git/SantaClaus-Postman/src/main/webapp/WEB-INF/uploadFiles/";
+        String fileUrl = "C:\\Users\\yg\\git\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\uploadFiles\\";
  
         
         do { 

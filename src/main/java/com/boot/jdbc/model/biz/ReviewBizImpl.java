@@ -51,4 +51,10 @@ public class ReviewBizImpl implements ReviewBiz{
 		return reviewMapper.fileInsert(file);
 	}
 
+	@Override
+	public rFileDto rfileDetail(int review_no) {
+		// TODO Auto-generated method stub
+		return reviewMapper.rfileDetail(review_no);
+	}
+
 }
