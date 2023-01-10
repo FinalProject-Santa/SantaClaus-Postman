@@ -8,12 +8,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.boot.jdbc.model.biz.ArticleBiz;
@@ -117,6 +122,59 @@ public class CustomerController {
 		FileCopyUtils.copy(fileData, target);
 		return createdFileName;
 		}
+	
+//	@ResponseBody
+//	@GetMapping("/qnadetail")
+//	public ResponseEntity<byte[]> displayFile(Integer qna_no) throws Exception {
+//	ResponseEntity<byte[]> entity = null;
+//
+//	String fileName = qnabiz.getPicture(qna_no);
+//
+//	logger.info("FILE NAME: " + fileName);
+//
+//	try {
+//
+//	String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
+//
+//	MediaType mediaType = getMediaType(formatName);
+//
+//	HttpHeaders headers = new HttpHeaders();
+//
+//	File file = new File(uploadPath + File.separator + fileName);
+//
+//	if (mediaType != null) {
+//	headers.setContentType(mediaType);
+//	}
+//
+//	entity = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file), headers, HttpStatus.CREATED);
+//	} catch (Exception e) {
+//	e.printStackTrace();
+//	entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
+//	}
+//
+//	return entity;
+//	}
+//
+//	private MediaType getMediaType(String formatName){
+//	if(formatName != null) {
+//	if(formatName.equals("JPG")) {
+//	return MediaType.IMAGE_JPEG;
+//	}
+//
+//	if(formatName.equals("GIF")) {
+//	return MediaType.IMAGE_GIF;
+//	}
+//
+//	if(formatName.equals("PNG")) {
+//	return MediaType.IMAGE_PNG;
+//	}
+//	}
+//
+//	return null;
+//	}
+//	
+	
+	
 	
 }
 

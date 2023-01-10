@@ -1,10 +1,6 @@
 package com.boot.jdbc.model.biz;
 
 import java.util.List;
-import java.util.Map;
-
-import org.springframework.web.multipart.MultipartFile;
-
 import com.boot.jdbc.model.dto.QnaDto;
 
 public interface QnaBiz {
