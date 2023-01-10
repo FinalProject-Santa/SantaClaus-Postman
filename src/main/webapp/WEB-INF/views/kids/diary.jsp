@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/resources/css/kids/diary.css">
 </head>
 <body>
-	<form action="/kids/selectPath" method="post" id="diaryForm">
+	<form action="/kids/sticker" method="post" id="diaryForm">
 	<input type="hidden" name="user_id" id="user" value="user01">
 	<input type="hidden" name="kids_no" id="kids" value=1>
 	<input type="hidden" name="userEmail" id="email" value="jiyeon908@naver.com">	
@@ -18,7 +18,7 @@
         <span id="text">오늘 무엇을 했나요?</span>
     </div>
     <section id="diary_box">
-    <canvas id="jsCanvas" class="canvas"></canvas>
+    <canvas id="jsCanvas" class="canvas" width='1000px' height='500px'></canvas>
     </section>
     <div class="controls">
         <div class="controls_range">
@@ -52,7 +52,7 @@
         <div class="modalBox">
           <p id="modal_text">착한 어린이다 임마</p>
         <div class="modal_Btn">
-          <button class="stickerBtn" type="button" onclick="location.href='/kids/sticker'">칭찬스티커</button>
+          <button class="stickerBtn" id="sticker_btn" type="submit">칭찬스티커</button>
           <button class="mainBtn" id="send_btn" type="button">자랑하기</button>
         </div>
         </div>
@@ -61,7 +61,29 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script>
+   
+    const canvasrr = document.getElementById("jsCanvas");
+    const content = canvasrr.getContext('2d');
+    
+    $("#success_btn").on("click",function(){
+    	screenShot($("#diary_box"));
+    	
+    });
+    
+    $("#send_btn").on("click",function(){
+    	sendEmail();
+    });
+    
+    /* $("#sticker_btn").on("click",function(){
+    	selectsticker();
+    }); */
+    
     $(function(){
+    	// 텍스트
+    	/* content.clearRect(0,0,canvasrr.width,canvasrr.height);
+    	content.fillText('년 월 일',30,50);
+    	content.font = '200px'; */
+    	
     	// 오늘 작성 여부
         	var userId = $("#user").val().trim();
         		$.ajax({
@@ -86,23 +108,11 @@
     });
     
     
-    const canvasrr = document.getElementById("jsCanvas");
-    
-    $("#success_btn").on("click",function(){
-    	screenShot($("#diary_box"));
-    	
-    });
-    
-    $("#send_btn").on("click",function(){
-    	sendEmail();
-    });
-    
-    
     // 이미지 저장
     function screenShot(target){
-        if(target != null && target.length>0){
-            var t = target[0];
-            html2canvas(t).then(function(canvas){
+	        if(target != null && target.length>0){
+	            var t = target[0];
+	            html2canvas(t).then(function(canvas){
             	var myImg = canvasrr.toDataURL("image/png");
             	var userId = $("#user").val().trim();
             	var kidsNo = $("#kids").val().trim();
@@ -127,36 +137,57 @@
                     }
                     
                 });
-                
-            })
-        }
-    }
+	                
+	            })
+	        }
+	    }
     
-    
-    function sendEmail(){
+	    // 메일 보내기
+	    function sendEmail(){
             	var myImg = canvasrr.toDataURL("image/png");
             	var userId = $("#user").val().trim();
             	var userEmail = $("#email").val().trim();
                 myImg = myImg.replace("data:image/png;base64,", "");
 
                	$.ajax({
-                       type:"POST",
-                       data:{
-                           "imgSrc":myImg,
-                           "userID":userId,
-                           "userEmail":userEmail
-                       },
-                       dataType:"text",
-                       url:"/kids/sendEmail",
-                       success:function(data){
-        					alert("전송되었습니다.");
-        					location.href='/kids/main';
-                       },
-                       error:function(a,b,c){
-                           alert("error");
-                       }
-                   });
+	                  type:"POST",
+	                  data:{
+	                      "imgSrc":myImg,
+	                      "userID":userId,
+	                      "userEmail":userEmail
+	                  },
+	                  dataType:"text",
+	                  url:"/kids/sendEmail",
+	                  success:function(data){
+	   					alert("전송되었습니다.");
+	   					location.href='/kids/main';
+	                  },
+	                  error:function(a,b,c){
+	                      alert("error");
+	                  }
+	              });
         }
+    
+	    // 칭찬 스티커
+	    /* function selectsticker(){
+		    	var userId = $("#user").val().trim();
+		    	
+		    	$.ajax({
+		            type:"POST",
+		            data:{
+		                "userID":userId,
+		            },
+		            dataType:"text",
+		            url:"/kids/sticker",
+		            success:function(data){
+						loction.href='';
+		            },
+		            error:function(a,b,c){
+		                alert("error");
+		            }
+		        });
+    	} */
+    
     
     </script>
     </form>
