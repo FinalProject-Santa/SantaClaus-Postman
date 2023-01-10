@@ -3,6 +3,7 @@ package com.boot.jdbc.controller;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
 
@@ -14,6 +15,7 @@ import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +26,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.boot.jdbc.model.biz.DiaryBiz;
 import com.boot.jdbc.model.biz.MailHandler;
-import com.boot.jdbc.model.dto.DiaryDto;
 
 @Controller
 @RequestMapping("/kids")
@@ -67,21 +68,6 @@ public class KidsController {
 		return "kids/diary";
 	}
 	
-	@PostMapping("/insert")
-	public String diaryInsert(DiaryDto dto) {
-		
-		if(biz.insert(dto)>0) {
-			return "redirect:/kids/main";
-		}else {
-			return "redirect:/kids/diary";
-		}
-	}
-	
-	@GetMapping("/sticker")
-	public String sticker() {
-		
-		return "/kids/sticker";
-	}
 	
 	@GetMapping("/snow")
 	public String snow() {
@@ -142,18 +128,6 @@ public class KidsController {
 		return Map;
 	};
 	
-	//@PostMapping("/selectPath")
-	public void select(String user_id,String userEmail) {
-		
-		System.out.println(user_id);
-		biz.selectPath(user_id);
-		
-		String filePath = biz.selectPath(user_id);
-		System.out.println(filePath);
-		
-		biz.sendMail(userEmail,filePath);
-		
-	}
 	
 	@ResponseBody
 	@RequestMapping(value = {"sendEmail"}, method = RequestMethod.POST)
@@ -175,9 +149,32 @@ public class KidsController {
 		mailHandler.send();
 	}
 	
+	@GetMapping("/stickerPage")
+	public String sticker() {
+		
+		return "/kids/sticker_Dec";
+	}
 	
-	
-	
+	@PostMapping("/sticker")
+	public String selectSticker(HttpServletRequest request,Model model) {
+		
+		int i;
+		String userId = request.getParameter("user_id");
+		System.out.println(userId);
+		
+		biz.selectStickerDate(userId);
+		
+		ArrayList<String> Date = biz.selectStickerDate(userId);
+		System.out.println(Date);
+		
+		for(i=0; i<Date.size(); i++) {
+			//substring 으로 다시 datelist에 넣기
+			System.out.println(Date.get(i).matches("(.*)-12-(.*)"));
+		}
+		
+		model.addAttribute("Date",Date);
+		return "/kids/sticker_Dec";
+	}
 	
 	
 	

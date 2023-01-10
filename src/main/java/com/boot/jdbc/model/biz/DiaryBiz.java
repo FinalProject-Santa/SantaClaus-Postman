@@ -1,6 +1,7 @@
 package com.boot.jdbc.model.biz;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Map;
 
 import com.boot.jdbc.model.dto.DiaryDto;
@@ -14,6 +15,9 @@ public interface DiaryBiz {
 	
 	public void sendMail(String userEmail, String filePath);
 	public String selectDate(String userId, LocalDate now);
+	
+	//칭찬스티커
+	public ArrayList<String> selectStickerDate(String userId);
 	
 	
 }

@@ -1,6 +1,7 @@
 package com.boot.jdbc.model.biz;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,12 @@ public class DiaryBizImpl implements DiaryBiz{
 	public String selectDate(String userId, LocalDate now) {
 		
 		return diaryMapper.selectDate(userId, now);
+	}
+
+	@Override
+	public ArrayList<String> selectStickerDate(String userId) {
+		
+		return diaryMapper.selectStickerDate(userId);
 	}
 
 	

@@ -1,6 +1,7 @@
 package com.boot.jdbc.model.dao;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
@@ -23,6 +24,9 @@ public interface DiaryMapper {
 	
 	@Select("SELECT WRITE_DATE FROM DIARY WHERE USER_ID=#{userId} AND WRITE_DATE=#{now}")
 	String selectDate(String userId, LocalDate now);
+	
+	@Select("SELECT WRITE_DATE FROM DIARY WHERE USER_ID=#{userId} AND WRITE_DATE<='2022-12-31'")
+	ArrayList<String> selectStickerDate(String userId);
 }
 
 //"userID":userId,
