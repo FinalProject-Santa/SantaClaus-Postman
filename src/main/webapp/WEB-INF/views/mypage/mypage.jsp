@@ -12,7 +12,11 @@
         <nav>
             <h1>마이페이지</h1>
             <hr>
-            <span>$(dto.memberid)님 안녕하세요!</span>
+            <c:choose>
+		      	<c:when test="${sessionScope.res != null }">
+		      		<p class="login__text"><span>${res.user_id }님</span> 반갑습니다</p>
+		      	</c:when>
+	      	</c:choose>
             <button onclick="location.href='infoUpdateform'">회원정보 수정</button>
         </nav>
         <section>
