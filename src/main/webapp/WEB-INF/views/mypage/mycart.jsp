@@ -62,8 +62,8 @@
                 <input type="button" class="btn" value="삭제">
                 <!-- <p class="summary">총 상품가격 <b></b>원 + 총 배송비 <b></b>원 = 총 주문금액 <b style="color: red;">?원</b></p>  -->
                 <div class="end">
-                    <input type="submit" class="payment" value="결제하기">
-                    <input type="button" class="continue" value="쇼핑 계속하기" onclick="location.href='template'">
+                    <input type="submit" class="payment" value="결제하기" onclick="location.href='/pay'">
+                    <input type="button" class="continue" value="쇼핑 계속하기" onclick="location.href='/keepShopping'">
                 </div>
             </form> 
         </section>
