@@ -2,7 +2,6 @@ package com.boot.jdbc.model.dto;
 
 import java.util.Date;
 
-import org.springframework.web.multipart.MultipartFile;
 
 public class QnaDto {
 	private Integer qna_no;
@@ -11,13 +10,10 @@ public class QnaDto {
 	private String qna_title;
 	private Date qna_date;
 	private String qna_content;
-	private MultipartFile qna_file;
-	private String qna_filepath;
 	
 	public QnaDto() {}
 
-	public QnaDto(Integer qna_no, String user_id, String qna_type, String qna_title, Date qna_date, String qna_content,
-			MultipartFile qna_file, String qna_filepath) {
+	public QnaDto(Integer qna_no, String user_id, String qna_type, String qna_title, Date qna_date, String qna_content) {
 		super();
 		this.qna_no = qna_no;
 		this.user_id = user_id;
@@ -25,8 +21,6 @@ public class QnaDto {
 		this.qna_title = qna_title;
 		this.qna_date = qna_date;
 		this.qna_content = qna_content;
-		this.qna_file = qna_file;
-		this.qna_filepath = qna_filepath;
 	}
 
 	public Integer getQna_no() {
@@ -77,21 +71,6 @@ public class QnaDto {
 		this.qna_content = qna_content;
 	}
 
-	public MultipartFile getQna_file() {
-		return qna_file;
-	}
-
-	public void setQna_file(MultipartFile qna_file) {
-		this.qna_file = qna_file;
-	}
-
-	public String getQna_filepath() {
-		return qna_filepath;
-	}
-
-	public void setQna_filepath(String qna_filepath) {
-		this.qna_filepath = qna_filepath;
-	};
 	
 	
 	
