@@ -34,6 +34,10 @@ public interface ReviewMapper {
 	@Update("UPDATE REVIEW SET REVIEW_TITLE=#{review_title}, REVIEW_BEST=#{review_best}, REVIEW_CONTENT=#{review_content} WHERE REVIEW_NO=#{review_no} ")
 	int reviewUpdate(ReviewDto reviewdto);
 	
+	//조회수 증가
+	@Update("UPDATE REVIEW SET REVIEW_COUNT=REVIEW_COUNT+1 WHERE REVIEW_NO=#{REVIEW_NO}")
+	int reviewCountUpdate(int review_no);
+	
 	@Delete(value = { "" })
 	int reviewDelete(int review_no);
 	

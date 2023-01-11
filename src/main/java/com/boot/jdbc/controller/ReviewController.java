@@ -42,8 +42,15 @@ public class ReviewController {
 	
 	@RequestMapping("/reviewDetail/{review_no}")
 	public String reviewDetail(Model model, @PathVariable int review_no) {
+		
+		//조회수 증가
+		reviewbiz.reviewCountUpdate(review_no);
+
+		
+		
 		model.addAttribute("reviewdetail", reviewbiz.reviewDetail(review_no));
 		model.addAttribute("files", reviewbiz.rfileDetail(review_no));
+		
 		return "review/reviewDetail";
 	}
 	
@@ -67,8 +74,8 @@ public class ReviewController {
         destinationFile.getParentFile().mkdirs(); 
         files.transferTo(destinationFile); 
         
-		System.out.println(reviewdto.getReview_no());
 		reviewbiz.reviewInsert(reviewdto);
+		System.out.println(reviewdto.getReview_no());
 		
 		 file.setReview_no(reviewdto.getReview_no());
          file.setRfileName(destinationFileName);
