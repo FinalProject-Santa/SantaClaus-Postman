@@ -2,7 +2,7 @@ package com.boot.jdbc.model.dto;
 
 import java.util.Date;
 
-public class cartDto {
+public class CartDto {
 	private int cart_no;
 	private String user_id;
 	private int template_no;
@@ -13,11 +13,11 @@ public class cartDto {
 	private int discount;
 	private int product_cost;
 	
-	public cartDto() {
+	public CartDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public cartDto(int cart_no, String user_id, int template_no, int option_no, int cart_amount, int product_quantity,
+	public CartDto(int cart_no, String user_id, int template_no, int option_no, int cart_amount, int product_quantity,
 			String cart_status, int discount, int product_cost) {
 		super();
 		this.cart_no = cart_no;

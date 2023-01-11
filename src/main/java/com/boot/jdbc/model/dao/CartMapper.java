@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 @Mapper
-public interface cartMapper {
+public interface CartMapper {
 	@Select(" SELECT PRODUCT_QUANTITY FROM CART WHERE USER_ID = #{user_id} ")
 	int QuantityChk(String user_id);
 	

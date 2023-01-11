@@ -15,13 +15,29 @@
   * {
     font-family: 'Nanum Pen Script', cursive;
     }
-  #star a{
-   text-decoration: none;
-   color: gray;
+ .star {
+    position: relative;
+    font-size: 2rem;
+    color: #ddd;
   }
-  #star a.on{
-   color: orange;
-  } 
+  
+  .star input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .star span {
+    width: 0;
+    position: absolute; 
+    left: 0;
+    color: red;
+    overflow: hidden;
+    pointer-events: none;
+  }
 </style>
 <body>
 <div class="container" style="margin : 0 auto">

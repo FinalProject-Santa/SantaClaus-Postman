@@ -25,10 +25,11 @@ public interface DiaryMapper {
 	@Select("SELECT WRITE_DATE FROM DIARY WHERE USER_ID=#{userId} AND WRITE_DATE=#{now}")
 	String selectDate(String userId, LocalDate now);
 	
-	@Select("SELECT WRITE_DATE FROM DIARY WHERE USER_ID=#{userId} AND WRITE_DATE<='2022-12-31'")
+	@Select("SELECT WRITE_DATE FROM DIARY WHERE USER_ID=#{userId}")
 	ArrayList<String> selectStickerDate(String userId);
 }
 
+//AND WRITE_DATE<='2022-12-31'
 //"userID":userId,
 //"kidsNO":kidsNo,
 //"phoneNum":phone
