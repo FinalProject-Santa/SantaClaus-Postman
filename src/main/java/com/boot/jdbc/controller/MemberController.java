@@ -29,11 +29,6 @@ public class MemberController {
 		return "main/mainPage";
 	}
 	
-	@GetMapping("/letterTemplate")
-	public String letterTemplate() {
-		return "main/letterTemplate";
-	}
-	
 	@GetMapping("/signUpForm")
 	public String signUp() {
 		return "main/signUp";
