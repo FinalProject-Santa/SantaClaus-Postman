@@ -73,11 +73,13 @@ button{
                     메뉴
                 </button>
                 <div class="submenu">
-                    <a href="#">About</a>
-                    <a href="#">엽서 목록</a>
+                    <a href="../mypage/main">마이 페이지</a>
+                    <a href="../letter/template">엽서 목록</a>
                     <a href="#">트리 꾸미기</a>
-                    <a href="#">연하장 전송</a>
-                    <a href="#">리뷰 게시판</a>
+                    <a href="../newyear/ny">연하장 전송</a>
+                    <a href="../review/reviewList">리뷰 게시판</a>
+                    <a href="../kids/main">키즈 페이지</a>
+					<a href="../customer/floatingMenu">고객센터</a>
                 </div>
             </div>
             <div class="nav" style="text-align: right">
