@@ -9,6 +9,8 @@
 </head>
 <body>
 	<p>무엇을 하고 놀까요?</p>
+	<form action="/kids/sticker" method="post" id="diaryForm">
+	<input type="hidden" name="user_id" id="user" value="user01">
     <div class="flex_container">
     <div class="kids_main" id="puzzle">
         <img src="/resources/image/kids/img1.png" id="img1" onclick="location.href='/kids/puzzle'">
@@ -25,7 +27,7 @@
             </div>
     </div>
     <div class="kids_main" id="sticker">
-        <img src="/resources/image/kids/img3.png" id="img3" onclick="location.href='/kids/stickerPage'">
+        <input type="image" src="/resources/image/kids/img3.png" id="img3">
         <div id="text3">
             <b>칭찬 스티커</b><br>
             <span>내가 모은 칭찬 스티커</span>
@@ -39,5 +41,6 @@
             </div>
     </div>
     </div>
+    </form>
 </body>
 </html>

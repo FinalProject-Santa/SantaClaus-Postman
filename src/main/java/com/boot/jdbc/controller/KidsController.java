@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -26,6 +27,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.boot.jdbc.model.biz.DiaryBiz;
 import com.boot.jdbc.model.biz.MailHandler;
+
+import edu.emory.mathcs.backport.java.util.Collections;
+
+
 
 @Controller
 @RequestMapping("/kids")
@@ -165,18 +170,54 @@ public class KidsController {
 		biz.selectStickerDate(userId);
 		
 		ArrayList<String> Date = biz.selectStickerDate(userId);
-		System.out.println(Date);
+		
+		List<String> DecDay = new ArrayList<>();
+		List<Integer> JanDay = new ArrayList<>();
+		List<String> tempDay = new ArrayList<>();
+		List<String> totalDay = new ArrayList<>();
+		
+		for(i=1; i<=31; i++) {
+			totalDay.add(Integer.toString(i));
+		}
+		model.addAttribute("totalDay",totalDay);
+		
+		//System.out.println(Date.get(i).matches("(.*)-12-(.*)"));
 		
 		for(i=0; i<Date.size(); i++) {
-			//substring 으로 다시 datelist에 넣기
-			System.out.println(Date.get(i).matches("(.*)-12-(.*)"));
+			if(Date.get(i).matches("(.*)-12-(.*)")) {
+				DecDay.add(Date.get(i).substring(8));
+				model.addAttribute("DecDay",DecDay);
+			}else if(Date.get(i).matches("(.*)-01-(.*)")) {
+				JanDay.add(Integer.parseInt(Date.get(i).substring(8)));
+				Collections.sort(JanDay);
+				System.out.println(Date.get(i).substring(8));
+//				JanDay.add(Date.get(i).substring(8));
+				
+				
+			}
 		}
 		
-		model.addAttribute("Date",Date);
+		
+//		for(i=1; i<=31; i++) {
+//			if(!(JanDay).equals(Integer.toString(i))) {
+//				tempDay.add(Integer.toString(i));
+//				//System.out.println("test :"+JanDay.get("JanDay"));
+//			}
+//		}
+		model.addAttribute("JanDay",JanDay);
+			
+//		for(i=0; i<JanDay.size(); i++) {
+//			System.out.println(JanDay);
+//		}
+		
+//		tempDay.removeAll(JanDay);
+//		tempDay.put("tempDay", tempDay);
+//		System.out.println(tempDay);
+//		model.addAttribute("tempDay",tempDay);
+		
+			
 		return "/kids/sticker_Dec";
 	}
-	
-	
 	
 	
 }
