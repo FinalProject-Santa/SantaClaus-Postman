@@ -6,11 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.boot.jdbc.model.biz.pointBiz;
+import com.boot.jdbc.model.biz.PointBiz;
 
 @Controller
 @RequestMapping("/mypage")
-public class mypageController {
+public class MypageController {
 	
 	@GetMapping("/main")
 	public String mainpage() {
@@ -28,15 +28,23 @@ public class mypageController {
 		return "mypage/myorder";
 	}
 	
+	//장바구니 페이지
 	@GetMapping("/cart")
 	public String cart() {
 		return "mypage/mycart";
 	}
-	
+	@GetMapping("/pay")
+	public String pay() {
+		return "/payment";
+	}
+	@GetMapping("/keepShopping")
+	public String keepShopping() {
+		return "/templateList";
+	}
 	
 	//마이포인트 페이지
 	@Autowired
-	private pointBiz pointBiz;
+	private PointBiz pointBiz;
 	
 	@GetMapping("/point")
 	public String point(Model model, String order_no) {

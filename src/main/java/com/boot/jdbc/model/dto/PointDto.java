@@ -2,7 +2,7 @@ package com.boot.jdbc.model.dto;
 
 import java.util.Date;
 
-public class pointDto {
+public class PointDto {
 	private int order_no;
 	private String user_id;
 	private int point_save;
@@ -12,11 +12,11 @@ public class pointDto {
 	private int point_all;
 	private String point_purpose;
 	
-	public pointDto() {
+	public PointDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public pointDto(int order_no, String user_id, int point_save, Date point_date, String point_content,
+	public PointDto(int order_no, String user_id, int point_save, Date point_date, String point_content,
 			int point_use, int point_all, String point_purpose) {
 		super();
 		this.order_no = order_no;

@@ -2,7 +2,7 @@ package com.boot.jdbc.model.dto;
 
 import java.util.Date;
 
-public class orderDto {
+public class OrderDto {
 	private int order_no;
 	private String user_id;
 	private Date order_date;
@@ -11,11 +11,11 @@ public class orderDto {
 	private int product_quantity;
 	private int product_cost;
 	
-	public orderDto() {
+	public OrderDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public orderDto(int order_no, String user_id, Date order_date, String review_status, String delivery_status,
+	public OrderDto(int order_no, String user_id, Date order_date, String review_status, String delivery_status,
 			int product_quantity, int product_cost) {
 		super();
 		this.order_no = order_no;

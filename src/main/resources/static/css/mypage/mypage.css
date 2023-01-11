@@ -14,12 +14,17 @@ h1{
 hr{
     width: 1000px;
 }
-button{
+#btn{
+	text-decoration: none;
+	color: black;
+	background: lightgray;
+	text-align: center;
+	padding-top: 5px;
     width: 160px;
     height: 40px;
     border-radius: 10px;
-    cursor: pointer;
     float: right;
+    display: inline-block;
 }
 img{
     width: 70px;

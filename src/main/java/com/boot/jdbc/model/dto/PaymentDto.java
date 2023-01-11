@@ -2,7 +2,7 @@ package com.boot.jdbc.model.dto;
 
 import java.util.Date;
 
-public class paymentDto {
+public class PaymentDto {
 	private int orderno;
 	private String user_id;
 	private int template_no;
@@ -15,10 +15,10 @@ public class paymentDto {
 	private int point;
 
 	
-	public paymentDto() {
+	public PaymentDto() {
 		super();
 	}
-	public paymentDto(int orderno, String user_id, int template_no, int option_no, String receiver, String email,
+	public PaymentDto(int orderno, String user_id, int template_no, int option_no, String receiver, String email,
 			String addr, String phone, Date deliverydate, int point) {
 		super();
 		this.orderno = orderno;

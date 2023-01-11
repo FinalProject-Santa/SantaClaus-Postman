@@ -17,7 +17,8 @@
 		      		<p class="login__text"><span>${res.user_id }님</span> 반갑습니다</p>
 		      	</c:when>
 	      	</c:choose>
-            <button onclick="location.href='infoUpdateform'">회원정보 수정</button>
+	      	<a href="/mypage/infoUpdateform" id="btn">회원정보 수정</a>
+            <img>회원정보 수정</button>
         </nav>
         <section>
             <div class="section1"><p><img src="/resources/image/mypage/bill.jpg"
