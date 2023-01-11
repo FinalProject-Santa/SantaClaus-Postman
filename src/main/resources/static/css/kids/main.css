@@ -100,3 +100,7 @@ img:hover {
 opacity: 0.9;
 animation: img-ani 0.9s linear 1;
 }
+#img3:hover {
+opacity: 0.9;
+animation: img-ani 0.9s linear 1;
+}
