@@ -12,7 +12,8 @@ public interface ReviewBiz {
 	public int reviewInsert(ReviewDto reviewdto);
 	public int fileInsert(rFileDto file);
 	public int reviewUpdate(ReviewDto reviewdto);
+	public int rfileUpdate(rFileDto rfiledto);
 	public int reviewCountUpdate(int review_no);
 	public int reviewDelete(int review_no);
-	
+	public int rfileDelete(int review_no);
 }

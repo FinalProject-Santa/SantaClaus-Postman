@@ -135,76 +135,17 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-    </div>
+            
     
-  
-    <script>
+<script>
+    
     $(".1").html("&#9733; &#9734; &#9734; &#9734; &#9734;");
     $(".2").html("&#9733; &#9733; &#9734; &#9734; &#9734;");
     $(".3").html("&#9733; &#9733; &#9733; &#9734; &#9734;");
     $(".4").html("&#9733; &#9733; &#9733; &#9733; &#9734;");
     $(".5").html("&#9733; &#9733; &#9733; &#9733; &#9733;"); 
   
-  
-    	$(document).ready(function () {
-    		
-    		var actionForm = $("#actionForm");
-    		
-    		$("li.pagination_button > a").on("click", function (e) {
-    			e.preventDefault();
-    			
-    			console.log("paging a tag click");
-    			
-    			actionForm.find("input[name='pageNum']").val($(this).attr("href"));
-    			
-    			actionForm.submit();
-    		});
-    		
-    		
-    		
-    		// 게시글의 제목 클릭 시 이동 이벤트 추가
-    		$("a.move").on("click", function (e) {
-    			e.preventDefault();
-    			actionForm.append("<input type='hidden' name='num' value='" + $(this).attr("href") + "' />");    			
-    			
-    			actionForm.attr("action", "/myhome4/board/view");
-    			actionForm.submit();
-    		});  
-    		
-    		$("button#keywordBtn").on("click", function (e) {
-    			let keyword = $("input#keyword").val();
-    			
-    			if (keyword == "") {
-    				alert("검색어를 입력하세요.");
-    				return;
-    			}
-    			
-    			actionForm.find("input[name='keyword']").val(keyword);
-    			actionForm.find("input[name='pageNum']").val("1");
-    			
-    			actionForm.submit();
-    		});
-    		
-    		$("input#keyword").on("keyup", function (e) {
-    			if (e.keyCode == 13) {
-    				$("button#keywordBtn").trigger("click");
-    			}
-    		})
-    		
-    		$("button#resetListBtn").on("click", function (e) {
-    			location.href = "/myhome4/board/list";
-    		});
-    		
-    		$("select#order").on("change", function (e) {
-    			actionForm.find("input[name='order']").val($(this).val());
-    			actionForm.find("input[name='pageNum']").val("1");
-    			
-    			actionForm.submit();
-    		});		
-    	});
-    </script>
+</script>
 	
 </body>
 </html>
