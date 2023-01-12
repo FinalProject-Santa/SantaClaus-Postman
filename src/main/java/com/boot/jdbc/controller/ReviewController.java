@@ -65,7 +65,6 @@ public class ReviewController {
         String destinationFileName;
         String fileUrl = "C:\\Users\\yg\\git\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\uploadFiles\\";
  
-        
         do { 
             destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension; 
             destinationFile = new File(fileUrl + destinationFileName); 
@@ -75,7 +74,6 @@ public class ReviewController {
         files.transferTo(destinationFile); 
         
 		reviewbiz.reviewInsert(reviewdto);
-		System.out.println(reviewdto.getReview_no());
 		
 		 file.setReview_no(reviewdto.getReview_no());
          file.setRfileName(destinationFileName);
@@ -117,7 +115,10 @@ public class ReviewController {
 	    }
 	
 	@RequestMapping("/reviewUpdate")
-    private String boardUpdate(HttpServletRequest request) throws Exception{
+    private String boardUpdate(HttpServletRequest request, @RequestPart MultipartFile files) throws Exception{
+		rFileDto file = new rFileDto();
+		
+		
 		ReviewDto reviewdto = new ReviewDto();
 		reviewdto.setReview_title(request.getParameter("review_title"));
 		reviewdto.setReview_content(request.getParameter("review_content"));
@@ -126,7 +127,15 @@ public class ReviewController {
         
         reviewbiz.reviewUpdate(reviewdto);
         
+	
+      
         return "redirect:/review/reviewDetail/"+request.getParameter("review_no"); 
     }
-
+	
+	@RequestMapping("/reviewDelete/{review_no}")
+	private String boardDelete(@PathVariable int review_no) throws Exception {
+		reviewbiz.reviewDelete(review_no);
+		reviewbiz.rfileDelete(review_no);
+	return "redirect:/review/reviewList";
+	}
 }
