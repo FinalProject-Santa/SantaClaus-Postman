@@ -1,5 +1,6 @@
 package com.boot.jdbc.controller;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -80,6 +81,7 @@ public class KidsController {
 		return "kids/snow";
 	}
 	
+	
 	@ResponseBody
 	@RequestMapping(value = {"selectDate"}, method = RequestMethod.POST)
 	public String selectDate(HttpServletRequest request) {
@@ -95,11 +97,13 @@ public class KidsController {
 	
 	
 	@ResponseBody
-	@RequestMapping(value = {"ImgSaveTest"}, method = RequestMethod.POST)
+	@RequestMapping(value = {"DiarySave"}, method = RequestMethod.POST)
 	public ModelMap ImgSaveTest(@RequestParam Map<Object, Object> param, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
 		ModelMap Map = new ModelMap();
 		String binaryData = request.getParameter("imgSrc");
 		String userId = request.getParameter("userID");
+		String fillDate = request.getParameter("fillDate");
+		System.out.println(fillDate);
 		FileOutputStream stream = null;
 		
 		try {
@@ -109,12 +113,22 @@ public class KidsController {
 		}
 		binaryData = binaryData.replaceAll("data:image/png;base64,","");
 		byte[]file = Base64.decodeBase64(binaryData);
-		String fileName = UUID.randomUUID().toString();
+		String fileName = UUID.randomUUID().toString()+".png";
 		
-		stream = new FileOutputStream("C:\\image\\"+fileName+".png");
-		String filePath = "C:\\image\\"+fileName+".png";
+		// 폴더 생성
+		File newfile = new File("C:\\그림일기");
+		newfile.mkdirs();
+		
+		stream = new FileOutputStream(newfile+"\\"+fileName);
+		String filePath = newfile+"\\"+fileName;
 		param.put("filePath", filePath);
-		biz.saveImg(param);
+		
+		if(fillDate==null) {
+			biz.saveDiary(param);
+		}else if(fillDate!=null) {
+			biz.fillDiary(param);
+		}
+		
 		System.out.println(filePath);
 		System.out.println(userId);
 		stream.write(file);
@@ -132,6 +146,17 @@ public class KidsController {
 		
 		return Map;
 	};
+	
+	
+	@GetMapping("/FillSticker")
+	public String FillSticker(HttpServletRequest request, Model model) {
+		
+		String fillDate = request.getParameter("write_date");
+		System.out.println(fillDate);
+		
+		model.addAttribute("Date",fillDate);
+		return "kids/diary";
+	}
 	
 	
 	@ResponseBody
@@ -154,11 +179,6 @@ public class KidsController {
 		mailHandler.send();
 	}
 	
-	@GetMapping("/stickerPage")
-	public String sticker() {
-		
-		return "/kids/sticker_Dec";
-	}
 	
 	@PostMapping("/sticker")
 	public String selectSticker(HttpServletRequest request,Model model) {
@@ -171,53 +191,37 @@ public class KidsController {
 		
 		ArrayList<String> Date = biz.selectStickerDate(userId);
 		
-		List<String> DecDay = new ArrayList<>();
-		List<Integer> JanDay = new ArrayList<>();
-		List<String> tempDay = new ArrayList<>();
-		List<String> totalDay = new ArrayList<>();
+		List<Integer> DecDay = new ArrayList<>();
+		List<Integer> JanDay = new ArrayList<>(); // 1월 데이터 날짜
+		List<String> totalDay = new ArrayList<>(); // 1일-31일
 		
-		for(i=1; i<=31; i++) {
+		
+		
+		for(i=1; i<10; i++) {
+			totalDay.add("0"+Integer.toString(i));
+		}
+		
+		for(i=10; i<=31; i++) {
 			totalDay.add(Integer.toString(i));
 		}
+		
 		model.addAttribute("totalDay",totalDay);
 		
-		//System.out.println(Date.get(i).matches("(.*)-12-(.*)"));
 		
 		for(i=0; i<Date.size(); i++) {
 			if(Date.get(i).matches("(.*)-12-(.*)")) {
-				DecDay.add(Date.get(i).substring(8));
+				DecDay.add(Integer.parseInt(Date.get(i).substring(8)));
+				Collections.sort(DecDay);
 				model.addAttribute("DecDay",DecDay);
 			}else if(Date.get(i).matches("(.*)-01-(.*)")) {
 				JanDay.add(Integer.parseInt(Date.get(i).substring(8)));
 				Collections.sort(JanDay);
-				System.out.println(Date.get(i).substring(8));
-//				JanDay.add(Date.get(i).substring(8));
-				
-				
+				model.addAttribute("JanDay",JanDay);
+				//System.out.println(Date.get(i).substring(8));
 			}
 		}
 		
-		
-//		for(i=1; i<=31; i++) {
-//			if(!(JanDay).equals(Integer.toString(i))) {
-//				tempDay.add(Integer.toString(i));
-//				//System.out.println("test :"+JanDay.get("JanDay"));
-//			}
-//		}
-		model.addAttribute("JanDay",JanDay);
-			
-//		for(i=0; i<JanDay.size(); i++) {
-//			System.out.println(JanDay);
-//		}
-		
-//		tempDay.removeAll(JanDay);
-//		tempDay.put("tempDay", tempDay);
-//		System.out.println(tempDay);
-//		model.addAttribute("tempDay",tempDay);
-		
-			
 		return "/kids/sticker_Dec";
 	}
-	
 	
 }

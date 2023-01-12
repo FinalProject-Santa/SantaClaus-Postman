@@ -8,16 +8,42 @@ img{
     width: 500px;
     height: 500px;
 }
-.sticker{
+#Dec_btn{
+    position: relative;
+    top: 350px;
+    left: 60px;
+    width: 50px;
+}
+#Jan_btn{
+    position: relative;
+    top: 350px;
+    left: 330px;
+    width: 50px;
+}
+#Dec{
+    font-size: 28px;
+    width: 100px;
+    position: relative;
+    top: 55px;
+    left: 710px;
+}
+#Jan{
+    font-size: 28px;
+    width: 100px;
+    position: relative;
+    top: 55px;
+    left: 715px;
+}
+.sticker_Jan, .sticker_Dec{
     width: 500px;
     height: 480px;
     display: grid; /*항상 일정한 비율로 개수가 정렬이 되도록 */
     grid-template-columns: repeat(7, 1fr);
     position: absolute;
-    top: 150px;
+    top: 160px;
     left: 500px;
 }
-.num{
+.num, .Dec_num, .Jan_num{
     width: 60px;
     height: 60px;
     border-radius: 50%;
