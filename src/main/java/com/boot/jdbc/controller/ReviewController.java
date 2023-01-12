@@ -63,7 +63,8 @@ public class ReviewController {
         String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
         File destinationFile; 
         String destinationFileName;
-        String fileUrl = "C:\\Users\\yg\\git\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\uploadFiles\\";
+        
+        String fileUrl = "C:\\workspace\\Final_Project\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\uploadFiles\\";
  
         
         do { 
