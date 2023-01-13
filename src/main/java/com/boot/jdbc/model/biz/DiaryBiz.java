@@ -10,7 +10,9 @@ public interface DiaryBiz {
 
 	public int insert(DiaryDto dto);
 	//public void method(Map<Object, Object> map);
-	public int saveImg(Map<Object, Object> param);
+	public int saveDiary(Map<Object, Object> param);
+	public int fillDiary(Map<Object, Object> param);
+	
 	public String selectPath(String user_id);
 	
 	public void sendMail(String userEmail, String filePath);

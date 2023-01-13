@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,7 @@
 <body>
     <div id="wrapper">
         <nav>
-        <h1>주문조회</h1>
+        <h1>주문조회</h1> 
             <p class="box1">주문내역조회</p>
             <hr class="h1">
             <div class="box2">
@@ -77,28 +78,29 @@
                         <th>주문처리상태</th>
                         <th>리뷰</th>
                     </tr>
-                    <c:choose>
-                            <c:when test="${empty list}">
+                    <%-- <c:choose> --%>
+                            <%-- <c:when test="${empty list}">
                                 <tr>
                                     <td colspan="6" align="center">
                                         주문 내역이 아직 없네요.<br>
                                         아이에게 산타를 선물해 보세요!
                                     </td>
                                 </tr>
-                            </c:when>
-                            <c:otherwise>
-                                <c:forEach items="${list}" var="dto">
+                            </c:when> --%>
+                            <%-- <c:otherwise> --%>
+                                <c:forEach items="${orderlist}" var="orderdto">
                                     <tr>
-                                        <td>${dto.order_date}<p>[${dto.order_no}]</p></td>
+                                        <td><fmt:formatDate pattern="yyyy-MM-dd" value="${orderdto.order_date}"/><p id="orderdate">[${orderdto.order_no}]</p></td>
                                         <td>${template_image}<hr>${option_image}</td>
                                         <td>${template_name}<hr>${option_name}</td>
-                                        <td>{판매가-배송비}</td>
-                                        <td>배송완료<br><input type="button" value="배송조회"></td>
-                                        <td><input type="button" value="리뷰작성"></td>
+                                        <td>${orderdto.product_cost}원</td>
+                                        <td>${orderdto.delivery_status}</td>
+                                        <td><input type="button" value="리뷰작성" onclick="location.href='/review/reviewinsertform'"></td>
+                                        <!-- 작성완료 시 status변경 > 리뷰작성버튼 display none, .append("작성 완료") -->
                                     </tr>
                                 </c:forEach>
-                            </c:otherwise>
-                        </c:choose>
+                            <%-- </c:otherwise> --%>
+                        <%-- </c:choose> --%>
                 </table>
             </div>
         </section>
@@ -143,7 +145,8 @@
                     $(".searchDate").find(".chkbox2").removeClass("on"); 
                 }
             }); 
-
+	
+            $()
             //시작일.
             /*$('#searchStartDate').datepicker("option","onClose", function( selectedDate ) {    
                 // 시작일 datepicker가 닫힐때

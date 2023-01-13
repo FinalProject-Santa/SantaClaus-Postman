@@ -17,7 +17,10 @@ public interface DiaryMapper {
 	int insert(DiaryDto dto);
 	
 	@Insert("INSERT INTO DIARY VALUES(NULL,#{userID},#{kidsNO},#{filePath},NOW(),#{userEmail})")
-	int saveImg(Map<Object, Object> param);
+	int saveDiary(Map<Object, Object> param);
+	
+	@Insert("INSERT INTO DIARY VALUES(NULL,#{userID},#{kidsNO},#{filePath},#{fillDate},#{userEmail})")
+	int fillDiary(Map<Object, Object> param);
 	
 	@Select("SELECT DIARY_CONTENT FROM DIARY WHERE USER_ID=#{user_id}")
 	String selectPath(String user_id);

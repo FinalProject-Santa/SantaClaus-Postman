@@ -18,7 +18,7 @@
 		      	</c:when>
 	      	</c:choose>
 	      	<a href="/mypage/infoUpdateform" id="btn">회원정보 수정</a>
-            <img>회원정보 수정</button>
+            <img src="${profileImg }"></img>
         </nav>
         <section>
             <div class="section1"><p><img src="/resources/image/mypage/bill.jpg"

@@ -13,6 +13,7 @@
 	<input type="hidden" name="user_id" id="user" value="user01">
 	<input type="hidden" name="kids_no" id="kids" value=1>
 	<input type="hidden" name="userEmail" id="email" value="jiyeon908@naver.com">	
+	<input type="hidden" name="fillDate" id="date" value="${Date }">
     <div class="diary">
     <div class="drawing">
         <span id="text">오늘 무엇을 했나요?</span>
@@ -117,6 +118,7 @@
             	var userId = $("#user").val().trim();
             	var kidsNo = $("#kids").val().trim();
             	var userEmail = $("#email").val().trim();
+            	var fillDate = $("#date").val().trim();
                 myImg = myImg.replace("data:image/png;base64,", "");
 
                 $.ajax({
@@ -125,10 +127,11 @@
                         "imgSrc":myImg,
                         "userID":userId,
                         "kidsNO":kidsNo,
-                        "userEmail":userEmail
+                        "userEmail":userEmail,
+                        "fillDate":fillDate
                     },
                     dataType:"text",
-                    url:"/kids/ImgSaveTest",
+                    url:"/kids/DiarySave",
                     success:function(data){
                         console.log(data);
                     },
@@ -167,26 +170,6 @@
 	                  }
 	              });
         }
-    
-	    // 칭찬 스티커
-	    /* function selectsticker(){
-		    	var userId = $("#user").val().trim();
-		    	
-		    	$.ajax({
-		            type:"POST",
-		            data:{
-		                "userID":userId,
-		            },
-		            dataType:"text",
-		            url:"/kids/sticker",
-		            success:function(data){
-						loction.href='';
-		            },
-		            error:function(a,b,c){
-		                alert("error");
-		            }
-		        });
-    	} */
     
     
     </script>
