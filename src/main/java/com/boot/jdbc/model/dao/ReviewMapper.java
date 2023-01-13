@@ -33,14 +33,19 @@ public interface ReviewMapper {
 	
 	@Update("UPDATE REVIEW SET REVIEW_TITLE=#{review_title}, REVIEW_BEST=#{review_best}, REVIEW_CONTENT=#{review_content} WHERE REVIEW_NO=#{review_no} ")
 	int reviewUpdate(ReviewDto reviewdto);
+
+	@Update("UPDATE RFILES SET RFILENAME=#{rfileName}, RFILEORINAME=#{rfileOriname} WHERE REVIEW_NO=#{review_no}")
+	int rfileUpdate(rFileDto rfiledto);
 	
 	//조회수 증가
-	@Update("UPDATE REVIEW SET REVIEW_COUNT=REVIEW_COUNT+1 WHERE REVIEW_NO=#{REVIEW_NO}")
+	@Update("UPDATE REVIEW SET REVIEW_COUNT=REVIEW_COUNT+1 WHERE REVIEW_NO=#{review_no}")
 	int reviewCountUpdate(int review_no);
 	
-	@Delete(value = { "" })
+	@Delete("DELETE FROM REVIEW WHERE REVIEW_NO=#{review_no}")
 	int reviewDelete(int review_no);
 	
+	@Delete("DELETE FROM RFILES WHERE REVIEW_NO=#{review_no}")	
+	int rfileDelete(int review_no);
 //	 review_no;
 //	 user_id;
 //	 review_title;

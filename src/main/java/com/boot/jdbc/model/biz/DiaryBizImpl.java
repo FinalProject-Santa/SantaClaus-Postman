@@ -27,9 +27,15 @@ public class DiaryBizImpl implements DiaryBiz{
 	}
 
 	@Override
-	public int saveImg(Map<Object, Object> param) {
+	public int saveDiary(Map<Object, Object> param) {
 		
-		return diaryMapper.saveImg(param);
+		return diaryMapper.saveDiary(param);
+	}
+	
+	@Override
+	public int fillDiary(Map<Object, Object> param) {
+		
+		return diaryMapper.fillDiary(param);
 	}
 
 	@Override

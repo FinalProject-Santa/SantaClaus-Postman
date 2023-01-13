@@ -28,7 +28,7 @@ h1 {
 <body>
 	<div class="container">
 		<div class="row">
-			<h1>리뷰상세${files.rfileName}</h1>
+			<h1>리뷰상세</h1>
 			<table class="table table-success table-striped">
 				<tr>
 					<th width=20% class="text-center primary">게시글 번호</th>
@@ -75,7 +75,7 @@ h1 {
 						<button class="btn btn-primary"
 							onclick="location.href='/review/reviewUpdate/${reviewdetail.review_no }'">수정</button>
 						<button class="btn btn-primary"
-							onclick="location.href='/review/reviewUpdate/${reviewdetail.review_no }'">삭제</button>
+							onclick="location.href='/review/reviewDelete/${reviewdetail.review_no }'">삭제</button>
 						<a href="" class="btn btn-sm btn-warning">목록</a>
 					</td>
 				</tr>

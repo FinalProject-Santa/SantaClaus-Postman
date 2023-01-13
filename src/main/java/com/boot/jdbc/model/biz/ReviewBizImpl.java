@@ -38,6 +38,13 @@ public class ReviewBizImpl implements ReviewBiz{
 		// TODO Auto-generated method stub
 		return reviewMapper.reviewUpdate(reviewdto);
 	}
+
+	@Override
+	public int rfileUpdate(rFileDto rfiledto) {
+		// TODO Auto-generated method stub
+		return reviewMapper.rfileUpdate(rfiledto);
+	}
+	
 	@Override
 	public int reviewCountUpdate(int review_no) {
 		// TODO Auto-generated method stub
@@ -48,6 +55,11 @@ public class ReviewBizImpl implements ReviewBiz{
 	public int reviewDelete(int review_no) {
 		// TODO Auto-generated method stub
 		return reviewMapper.reviewDelete(review_no);
+	}
+	@Override
+	public int rfileDelete(int review_no) {
+		// TODO Auto-generated method stub
+		return reviewMapper.rfileDelete(review_no);
 	}
 
 	@Override
@@ -61,6 +73,7 @@ public class ReviewBizImpl implements ReviewBiz{
 		// TODO Auto-generated method stub
 		return reviewMapper.rfileDetail(review_no);
 	}
+
 
 
 }

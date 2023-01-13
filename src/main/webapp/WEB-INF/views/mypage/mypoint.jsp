@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
         <nav>
             <h1>포인트</h1>
             <p class="color1">고객님의 사용가능 포인트 금액입니다.</p>
-            <p class="box1">총 포인트 $[dto.point_all ]</p>
+            <p class="box1">총 포인트 ${dto.point_save}+${dto.point_use}</p>
         </nav>
         <section>
             <div id="content">
@@ -44,7 +45,7 @@
                             <c:forEach items="${list}" var="dto">
                                 <tr>
                                     <td>${dto.point_purpose}</td>
-                                    <td>${dto.point_date}</td>
+                                    <td><fmt:formatDate pattern="yyyy-MM-dd" value="${dto.point_date}"/></td>
                                     <td><span id="save">${dto.point_save}</span><span id="use">${dto.point_use}</span></td>
                                     <td>${dto.order_no}</td>
                                     <td>${dto.point_content}</td>

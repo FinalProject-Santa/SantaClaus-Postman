@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.boot.jdbc.model.biz.OrderBiz;
 import com.boot.jdbc.model.biz.PointBiz;
 
 @Controller
@@ -22,11 +23,19 @@ public class MypageController {
 		return "mypage/myinfoUpdate";
 	}
 	
+	
+	
 	//주문 조회 페이지
+	@Autowired
+	private OrderBiz orderBiz;
+	
 	@GetMapping("/order")
-	public String order() {
+	public String order(Model model) {
+		model.addAttribute("orderlist",orderBiz.orderList());
 		return "mypage/myorder";
 	}
+	
+	
 	
 	//장바구니 페이지
 	@GetMapping("/cart")
@@ -41,6 +50,8 @@ public class MypageController {
 	public String keepShopping() {
 		return "/templateList";
 	}
+	
+	
 	
 	//마이포인트 페이지
 	@Autowired
