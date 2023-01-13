@@ -39,7 +39,12 @@ public class QnaBizImpl implements QnaBiz {
 		return qnaMapper.selectFile(qna_no);
 	}
 
-	
+
+	@Override
+	public int insertReply(QnaDto dto) {
+		return qnaMapper.insertReply(dto);
+	}
+
 	
 	
 	

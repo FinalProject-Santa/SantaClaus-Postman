@@ -2,15 +2,17 @@ package com.boot.jdbc.controller;
 
 
 import java.io.File;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.RandomStringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -27,7 +29,7 @@ import com.boot.jdbc.model.dto.QnaFileDto;
 public class CustomerController {
 	
 
-	
+	HttpSession session;
 	//private static Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
 	@Autowired
@@ -118,6 +120,25 @@ public class CustomerController {
 				
 	}
 	
+	//답글달기 눌러서 qnaReplyform으로 url 들어오면 세션에 원글 번호를 origin_no로 저장해서 qnaReply 리턴
+	@GetMapping("/qnaReply")
+	public String qnaReply(HttpServletRequest request, String origin_no){
+		origin_no = request.getParameter("qna_no"); //답글에 대한 부모글 번호를 저장
+		System.out.println(origin_no);
+		//session = request.getSession(); //세션생성
+		//session.setAttribute("origin_no",origin_no);//origin_no = qna_no로 세션에 저장
+		return "/customer/qnaReply";
+		
+	}
+	
+	//답변내용 form 데이터에서 qnainsertReply로 다시 요청.
+	@PostMapping("/qnainsertReply")
+	public String qnainsertReply(HttpServletRequest request, Integer origin_no, QnaDto dto){
+		session = request.getSession();
+		origin_no = (Integer) session.getAttribute("origin_no");
+		qnabiz.insertReply(dto);
+		return "/customer/qnalist";
+	}
 	
 }
 	

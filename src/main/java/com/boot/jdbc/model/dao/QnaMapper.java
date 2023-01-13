@@ -13,7 +13,8 @@ import com.boot.jdbc.model.dto.QnaFileDto;
 @Mapper
 public interface QnaMapper {
 	
-	@Insert("INSERT INTO QNA VALUES (#{qna_no},#{user_id}, #{qna_type}, #{qna_title}, NOW(), #{qna_content} )")
+	//새로운 글 insert
+	@Insert("INSERT INTO QNA VALUES (#{qna_no},#{user_id}, #{qna_type},#{qna_title},NOW(), #{qna_content},#{origin_no},0,0,#{secret})")
 	@Options(useGeneratedKeys = true, keyProperty = "qna_no")
 	int insert(QnaDto dto);
 	
@@ -36,4 +37,10 @@ public interface QnaMapper {
 
 	@Select("SELECT * FROM qnaFile WHERE QNA_NO=#{qna_no}")
 	QnaFileDto selectFile(Integer qna_no);
+
+	
+	//답글 insert
+	@Insert("INSERT INTO QNA VALUES (#{qna_no},#{user_id}, #{qna_type},#{qna_title},NOW(), #{qna_content},#{origin_no},1,1,#{secret})")
+	int insertReply(QnaDto dto);
+
 }
