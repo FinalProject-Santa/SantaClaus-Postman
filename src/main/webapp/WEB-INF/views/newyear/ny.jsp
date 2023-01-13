@@ -132,14 +132,14 @@
                 <div class='swiper-slide' data-slide-index='0'>
                   <div>
                     <img src='/resources/image/newyear/ny11.jpg' data-keyn='317'>
-                    <textarea name='content' style='' placeholder="걱정을 해서 걱정이 없다면 걱정이 없겠네."></textarea>
+                    <textarea name='content' style='' placeholder="Don't cry because it's over. Smile becuase it happened."></textarea>
                   </div>
                 </div>
   
                 <div class='swiper-slide' data-slide-index='1'>
                   <div>
                     <img src='/resources/image/newyear/ny21.jpg' data-keyn='318'>
-                    <textarea name='content' style=''>걱정을 해서 걱정이 없다면 걱정이 없겠네.</textarea>
+                    <textarea name='content' style=''>Don't cry because it's over. Smile becuase it happened.</textarea>
                   </div>
                 </div>
   

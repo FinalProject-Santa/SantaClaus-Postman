@@ -1,11 +1,13 @@
 package com.boot.jdbc.model.biz;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.boot.jdbc.model.dao.ReviewMapper;
+import com.boot.jdbc.model.dto.Criteria;
 import com.boot.jdbc.model.dto.ReviewDto;
 import com.boot.jdbc.model.dto.rFileDto;
 
@@ -16,10 +18,11 @@ public class ReviewBizImpl implements ReviewBiz{
 	private ReviewMapper reviewMapper;
 	
 	@Override
-	public List<ReviewDto> reviewList() {
+	public List<Map<String, Object>> reviewList(Criteria cri) {
 		// TODO Auto-generated method stub
-		return reviewMapper.reviewList();
+		return reviewMapper.reviewList(cri);
 	}
+
 
 	@Override
 	public ReviewDto reviewDetail(int review_no) {
@@ -73,6 +76,8 @@ public class ReviewBizImpl implements ReviewBiz{
 		// TODO Auto-generated method stub
 		return reviewMapper.rfileDetail(review_no);
 	}
+
+
 
 
 
