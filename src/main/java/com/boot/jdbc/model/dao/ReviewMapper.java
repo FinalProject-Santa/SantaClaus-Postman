@@ -1,6 +1,7 @@
 package com.boot.jdbc.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -9,6 +10,7 @@ import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.boot.jdbc.model.dto.Criteria;
 import com.boot.jdbc.model.dto.ReviewDto;
 import com.boot.jdbc.model.dto.rFileDto;
 
@@ -16,7 +18,7 @@ import com.boot.jdbc.model.dto.rFileDto;
 public interface ReviewMapper {
 	
 	@Select("SELECT * FROM REVIEW ORDER BY REVIEW_NO DESC")
-	List<ReviewDto> reviewList();
+	List<Map<String, Object>> reviewList(Criteria cri);
 
 	@Select("SELECT * FROM REVIEW WHERE REVIEW_NO=#{review_no}")
 	ReviewDto reviewDetail(int review_no);
@@ -34,7 +36,7 @@ public interface ReviewMapper {
 	@Update("UPDATE REVIEW SET REVIEW_TITLE=#{review_title}, REVIEW_BEST=#{review_best}, REVIEW_CONTENT=#{review_content} WHERE REVIEW_NO=#{review_no} ")
 	int reviewUpdate(ReviewDto reviewdto);
 
-	@Update("UPDATE RFILES SET RFILENAME=#{rfileName}, RFILEORINAME=#{rfileOriname} WHERE REVIEW_NO=#{review_no}")
+	@Update("UPDATE RFILES SET RFILENAME=#{rfileName}, RFILEORINAME=#{rfileOriName} WHERE REVIEW_NO=#{review_no}")
 	int rfileUpdate(rFileDto rfiledto);
 	
 	//조회수 증가
