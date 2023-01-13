@@ -36,7 +36,7 @@
 <input type="hidden" name="review_no" value="${review_no}"/>
     <div class="mb-3">
       <label for="formGroupExampleInput" class="form-label">제목</label>
-      <input type="text" name="review_title" class="form-control" id="formGroupExampleInput" placeholder="제목을 입력하세요">
+      <input type="text" name="review_title" class="form-control" id="formGroupExampleInput" placeholder="제목을 입력하세요" value="${reviewdetail.review_title}">
     </div>
     <div class="mb-3">
     <div class="review_rating">
@@ -71,18 +71,19 @@
   <div class="mb-3">
     <label>상세 내용</label>
     <div class="form-floating">
-      <textarea name="review_content" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+      <textarea name="review_content" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">${reviewdetail.review_title}</textarea>
       <label for="floatingTextarea2">Comments</label>
     </div>
   </div>
   <div class="mb-3">
 <label>사진 등록</label>
   <div class="input-group mb-3">
-    <input type="file" class="form-control" id="inputGroupFile02" name="files">
+    <input type="file" class="form-control" id="inputGroupFile02" name="files" value="test">
     <label class="input-group-text" for="inputGroupFile02">Upload</label>
   </div> 
 </div>
-<button type="submit" class="btn btn-primary btn-sm">작성</button>
+<input type="hidden" name="rfileName" value="${rfiles.rfileName}" />
+<button type="submit" class="btn btn-primary btn-sm">수정</button>
 <button type="button" class="btn btn-secondary btn-sm">취소</button>
 </form>
 </div>
