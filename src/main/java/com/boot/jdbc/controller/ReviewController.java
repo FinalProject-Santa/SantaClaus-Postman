@@ -36,17 +36,26 @@ public class ReviewController {
 	@Value("${file.upload.directory}")
 	String uploadFileDir;
 	
-	@GetMapping("/reviewList")
+	@RequestMapping(value = "/reviewList")
 	public ModelAndView openReviewList(Criteria cri) throws Exception {
-		ModelAndView mav = new ModelAndView("review/reviewList");
+		
+		ModelAndView mav = new ModelAndView("/review/reviewList");
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(100);
+		pageMaker.setTotalCount(reviewbiz.countBoardListTotal());
+		
+		System.out.println(reviewbiz.countBoardListTotal());
 		
 		List<Map<String,Object>> list = reviewbiz.reviewList(cri); 
+		
+		System.out.println(list);
+		System.out.println(pageMaker);
+		
 		mav.addObject("list", list);
+		
 		mav.addObject("pageMaker",pageMaker);
+		
 		return mav;
 	}
 	

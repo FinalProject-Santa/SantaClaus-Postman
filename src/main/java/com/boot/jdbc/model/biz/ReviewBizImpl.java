@@ -23,6 +23,11 @@ public class ReviewBizImpl implements ReviewBiz{
 		return reviewMapper.reviewList(cri);
 	}
 
+	@Override
+	public int countBoardListTotal() {
+		// TODO Auto-generated method stub
+		return reviewMapper.countBoardList();
+	}
 
 	@Override
 	public ReviewDto reviewDetail(int review_no) {
@@ -76,6 +81,8 @@ public class ReviewBizImpl implements ReviewBiz{
 		// TODO Auto-generated method stub
 		return reviewMapper.rfileDetail(review_no);
 	}
+
+
 
 
 
