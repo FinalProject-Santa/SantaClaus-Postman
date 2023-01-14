@@ -9,6 +9,7 @@ import com.boot.jdbc.model.dto.rFileDto;
 
 public interface ReviewBiz {
 	public List<Map<String, Object>> reviewList(Criteria cri);
+	int countBoardListTotal();
 	public ReviewDto reviewDetail(int review_no);
 	public rFileDto rfileDetail(int review_no);
 	public int reviewInsert(ReviewDto reviewdto);

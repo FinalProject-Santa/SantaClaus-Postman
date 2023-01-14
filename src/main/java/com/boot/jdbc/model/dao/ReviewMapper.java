@@ -17,9 +17,12 @@ import com.boot.jdbc.model.dto.rFileDto;
 @Mapper
 public interface ReviewMapper {
 	
-	@Select("SELECT * FROM REVIEW ORDER BY REVIEW_NO DESC")
+	@Select("SELECT * FROM REVIEW ORDER BY REVIEW_NO DESC LIMIT #{pageStart}, #{perPageNum}")
 	List<Map<String, Object>> reviewList(Criteria cri);
 
+	@Select("SELECT COUNT(*) FROM REVIEW")
+	int countBoardList();
+	
 	@Select("SELECT * FROM REVIEW WHERE REVIEW_NO=#{review_no}")
 	ReviewDto reviewDetail(int review_no);
 
