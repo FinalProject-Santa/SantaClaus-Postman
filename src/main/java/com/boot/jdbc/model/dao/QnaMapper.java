@@ -34,7 +34,7 @@ public interface QnaMapper {
 			+ "FROM CTE C JOIN QNA B ON C.QNA_NO = B.ORIGIN_NO\r\n"
 			+ ")\r\n"
 			+ "SELECT QNA_NO, USER_ID ,QNA_TYPE , CONCAT(REPEAT(\" \", LEVEL*4), QNA_TITLE) QNA_TITLE ,QNA_DATE, QNA_CONTENT, \r\n"
-			+ "ORIGIN_NO,DEP,SECRET, PATH, LEVEL FROM CTE ORDER BY PATH;\r\n"
+			+ "ORIGIN_NO,DEP,SECRET, PATH, LEVEL FROM CTE ORDER BY PATH DESC;\r\n"
 			+ "")
 	List<QnaDto> selectList();
 	
