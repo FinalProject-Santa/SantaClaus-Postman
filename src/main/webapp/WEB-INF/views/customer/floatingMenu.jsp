@@ -32,7 +32,6 @@
         </p>
         
 
-        
         <div class="buttons">
         <button onclick="location.href='notice';">공지사항</button>
     	<button onclick="location.href='qnainsertform';">1:1문의</button>

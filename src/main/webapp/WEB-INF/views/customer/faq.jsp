@@ -13,7 +13,7 @@
     <body>
         <h1>고객센터</h1>
     <button onclick="location.href='notice';">공지사항</button>
-    <button onclick="location.href='qnainsertform';">Q&A</button>
+   <button onclick="location.href='qnalist';">Q&A</button>
     <button onclick="location.href='faq';">FAQ</button>
    
         <div class="faq">

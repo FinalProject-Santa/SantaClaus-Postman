@@ -14,32 +14,38 @@
 </head>
 <style>
   h1{display: inline;}
+  section {
+	margin-left: 30%;
+	margin-right: 30%;
+		}
   </style>
 <body>
         <h1>고객센터</h1>
         <button onclick="location.href='notice';">공지사항</button>
-    	<button onclick="location.href='qnainsertform';">Q&amp;A</button>
+		<button onclick="location.href='qnalist';">Q&A</button>
     	<button onclick="location.href='faq';">FAQ</button>
     
 
+<section id="sec_notice">
+		<h3>공지사항</h3>
 <table border="1">
-<col width="50">
-<col width="100">
-<col width="300">
-<col width="200">
+	<col width="50">
+	<col width="100">
+	<col width="300">
+	<col width="200">
 
-<tr>
-<th>NO</th>
-<th>작성자</th>
-<th>제목</th>
-<th>작성일</th>
-</tr> 
+		<tr>
+			<th>NO</th>
+			<th>작성자</th>
+			<th>제목</th>
+			<th>작성일</th>
+		</tr> 
 <c:choose>
-<c:when test="${empty list}">
-<tr>
-<td colspan="4">----------작성된 글이 없습니다----------</td>
-</tr>
-</c:when>
+	<c:when test="${empty list}">
+		<tr>
+			<td colspan="4">----------작성된 글이 없습니다----------</td>
+		</tr>
+	</c:when>
 <c:otherwise>
 <c:forEach var="dto" items="${list}">
 <tr>
@@ -54,7 +60,7 @@
 </c:choose>
 
 </table>
-
+</section>
   
 </body>
 </html>

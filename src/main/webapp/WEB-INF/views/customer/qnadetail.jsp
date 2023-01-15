@@ -9,6 +9,36 @@
 <meta http-equiv="refresh">
 <title>Insert title here</title>
 </head>
+
+
+<script type="text/javascript">
+
+/* function fn_qnaReply(url,origin_no){
+	
+	var form = document.createElement("form");
+	form.setAttribute("action",url); //전달된 요청을 form 태그 action 속성값에 저장
+	form.setAttribute("method","post");
+	var origin_no_input = document.createElement("input");
+	
+	origin_no_input.setAttribute("type","hidden");
+	origin_no_input.setAttribute("name","origin_no");
+	origin_no_input.setAttribute("value",origin_no);
+	
+	form.appendChild(origin_no_input);
+	document.body.appendChild(form);
+	form.submit();	 
+} */
+
+</script>
+
+<style>
+  h1{display: inline;}
+  div {
+	margin-left: 30%;
+	margin-right: 30%;
+		}
+  </style>
+  
 <body>
 <div class="container">
 <table border="1">
@@ -28,14 +58,17 @@
 	<th>내용</th>
 		<td><textarea rows="10" cols="40" readonly="readonly">${dto.qna_content }</textarea></td>
 </tr>
+
+<c:if test="${not empty files.file_oname && files.file_oname != 'null'}">
 <tr>
 	<th></th>	
 		<td><img src="/resources/files/${files.file_name}"></td>
 </tr>
-
+</c:if>
 <tr>
 	<td colspan="2">	
 	<input type="button" value="목록" onclick="location.href='/customer/qnalist'">
+	<input type="button" value="답글쓰기" onclick="location.href='/customer/qnaReply?qna_no=${dto.qna_no}&qna_type=${dto.qna_type}&secret=${dto.secret}'">
 	</td>
 	
 </table>
