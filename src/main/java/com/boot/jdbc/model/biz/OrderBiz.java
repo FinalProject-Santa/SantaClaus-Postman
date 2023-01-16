@@ -2,7 +2,7 @@ package com.boot.jdbc.model.biz;
 
 import java.util.List;
 
-import com.boot.jdbc.model.dto.LetterTemplateDto;
+import com.boot.jdbc.model.dto.LetterDto;
 import com.boot.jdbc.model.dto.OrderDto;
 
 
