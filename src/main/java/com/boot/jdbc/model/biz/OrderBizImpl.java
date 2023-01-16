@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.boot.jdbc.model.dao.OrderMapper;
-import com.boot.jdbc.model.dto.LetterTemplateDto;
+import com.boot.jdbc.model.dto.LetterDto;
 import com.boot.jdbc.model.dto.OrderDto;
 
 @Service

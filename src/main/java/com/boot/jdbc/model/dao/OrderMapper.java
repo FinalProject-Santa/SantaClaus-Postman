@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
-import com.boot.jdbc.model.dto.LetterTemplateDto;
+import com.boot.jdbc.model.dto.LetterDto;
 import com.boot.jdbc.model.dto.OrderDto;
 
 
