@@ -8,7 +8,7 @@ import com.boot.jdbc.model.dto.OrderDto;
 
 public interface OrderBiz {
 	public List<OrderDto> orderList();
-	
+//	public List<OrderDto> selectOrder();
 //	public LetterTemplateDto templateDetail(int template_no);
 //	public OptionDto optionDetail(int option_no);
 	

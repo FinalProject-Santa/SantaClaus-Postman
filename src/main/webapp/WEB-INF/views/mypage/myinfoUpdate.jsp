@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>내정보수정</title>
     <link rel="stylesheet" href="/resources/css/mypage/myinfoUpdate.css">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script>
       function setThumbnail(event) {
         var reader = new FileReader();
@@ -22,32 +23,45 @@
 </head>
 <body>
     <div id="wrapper">
-        <form action="infoupdate.do?userid=${dto.userid}" method="post">
+        <form:form action="infoupdate.do?userid=${memberdto.user_id }" method="PUT">
+        	<input type="hidden" name="user_id" value="${memberdto.user_id }">
         	<h3>프로필 변경</h3>
 			    <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);"/>
 			    <div id="image_container"></div>
             <did id="info">
+            	<div>
+            		<label for="name">이름</label>
+            		<input type="text" name="name" value="${memberdto.name }" readonly><br>
+           		</div>
                 <div>
                     <label for="id">아이디</label>
-                    <span id="id">$(memberid)</span><br>
+                    <input type="text" name="user_id" value="${memberdto.user_id }" readonly><br>
                 </div>
                 <div>
-                    <label for="password">비밀번호</label>
-                    <input type="text" id="password">
+                    <label for="passwordck">현재 비밀번호</label>
+                    <input type="text" id="passwordck" required="required" placeholder="정보 수정 시 입력 필수">
                 </div>
                 <div>
+                    <label for="password">변경할 비밀번호</label>
+                    <input type="text" name="password" id="password">
+               	</div>
+               	<div>
                     <label for="passwordck">비밀번호 확인</label>
                     <input type="text" id="passwordck">
                 </div>
-                        <div>
-                 			 <label for="addr">주소</label>
-	               			  <input name="post_code" type="text" class="">
-           					 <div class="adress">
-			                  <input class="button" type="button" value="우편번호" onclick="userPostcode()"><br><br>
-			                  <input name="default_addr" type="text"> 기본 주소<br><br>
-			                  <input name="detail_addr" type="text" required="required"> 나머지 주소
-              				 </div>
-            			</div>
+                <div>
+        			 <label for="addr">주소</label><br>
+        			 <div id="addr">
+           				 <label for="post_code">우편번호</label>
+           				 <input name="post_code" id="post_code" type="text" value="${memberdto.post_code }">
+                 		 <input class="button" type="button" value="주소찾기" onclick="userPostcode()"><br>
+                 
+		                 <label for="default_addr">기본 주소</label>
+		                 <input name="default_addr" id="default_addr" type="text" value="${memberdto.default_addr}"><br>
+		                 <label for="detail_addr">나머지 주소</label>
+		                 <input name="detail_addr" id="detail_addr" type="text" value="${memberdto.detail_addr}" required="required">
+       				 </div>
+       			</div>
                 
                 <script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
                 <script>
@@ -77,21 +91,35 @@
                     }
                 </script>
                 
-                    </div>
+                <div>
+                	<label for="email">이메일</label>
+                	<input type="text" name="email" id="email" value="${memberdto.email}" required="required">
                 </div>
                 <div>
-                    <label for="phone1">휴대전화</label>
-                    <input type="text" class="phone" id="phone1"> - 
-                    <input type="text" class="phone" id="phone2"> - 
-                    <input type="text" class="phone" id="phone3">
+                    <label for="phone">휴대전화</label>
+                    <input type="text" name="phone" id="phone" value="${memberdto.phone}" required="required">
                     <input type="button" class="button" id="phoneck" value="휴대폰 인증">
+                    <br>기존의 핸드폰번호와 다른데 수정을 누를 시 alert("휴대폰 인증을 해주세요")
                 </div>
                 <div class="end">
                     <input type="submit" class="button" id="update" value="수정">
-                    <input type="button" class="button" id="cancel" value="취소" onclick="location.href='mypage'">
+                    <input type="button" class="button" id="cancel" value="취소" onclick="location.href='/mypage/main'">
+                    <input type="button" class="button" id="delete" value="삭제" >
                 </div>
+                <script>
+            		$(document).ready(function(){
+	                	$("#delete").click(function(){
+	                		var deleteCk = confirm("정말 삭제하시겠습니까?")
+	                		if(deleteCk){
+	                			location.href='/main/delete';
+	                		}
+	                	});
+	                	
+	                	
+            		});	
+                </script>
             </div>
-        </form>    
+        </form:form>    
     </div>
 </body>
 </html>

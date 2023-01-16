@@ -21,6 +21,12 @@ public class OrderBizImpl implements OrderBiz{
 	}
 
 //	@Override
+//	public List<OrderDto> selectOrder() {
+//		
+//		return orderMapper.selectOrder();
+//	}
+
+//	@Override
 //	public LetterTemplateDto templateDetail(int template_no) {
 //		// TODO Auto-generated method stub
 //		return null;
