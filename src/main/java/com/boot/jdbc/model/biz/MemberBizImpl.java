@@ -1,5 +1,7 @@
 package com.boot.jdbc.model.biz;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,4 +38,20 @@ public class MemberBizImpl implements MemberBiz{
 	public String findPw(MemberDto dto) {
 		return memberMapper.findPw(dto);
 	}
+
+	@Override
+	public MemberDto infoUpdateform(String user_id) {
+		return memberMapper.infoUpdateform(user_id);
+	}
+
+	@Override
+	public int myinfoUpdate(MemberDto dto) {
+		return memberMapper.myinfoUpdate(dto);
+	}
+
+	@Override
+	public int delete(String user_id) {
+		return memberMapper.delete(user_id);
+	}
+
 }
