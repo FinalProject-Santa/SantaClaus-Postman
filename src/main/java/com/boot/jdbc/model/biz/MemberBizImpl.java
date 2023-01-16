@@ -13,7 +13,7 @@ public class MemberBizImpl implements MemberBiz{
 	
 	@Autowired
 	private MemberMapper memberMapper;
-
+ 
 	@Override
 	public int signUp(MemberDto dto) {
 		return memberMapper.signUp(dto);

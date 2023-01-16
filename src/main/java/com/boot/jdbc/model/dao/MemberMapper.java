@@ -13,7 +13,7 @@ import com.boot.jdbc.model.dto.MemberDto;
 public interface MemberMapper {
 	@Insert("INSERT INTO MEMBER VALUES(#{user_id}, #{password}, #{name}, #{post_code}, #{default_addr}, #{detail_addr}, #{phone}, #{email})")
 	int signUp(MemberDto dto);
-
+ 
 	@Select("SELECT * FROM MEMBER WHERE USER_ID = #{user_id} AND PASSWORD = #{password}")
 	MemberDto login(String user_id, String password);
 	
