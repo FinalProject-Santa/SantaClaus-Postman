@@ -18,7 +18,7 @@ public class MemberBizImpl implements MemberBiz{
 	}
 
 	@Override
-	public String login(String user_id, String password) {
+	public MemberDto login(String user_id, String password) {
 		return memberMapper.login(user_id, password);
 	}
 

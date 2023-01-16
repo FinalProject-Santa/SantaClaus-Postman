@@ -53,11 +53,10 @@ public class MemberController {
 	
 	@PostMapping("/login")
 	public String login(String user_id, String password, HttpSession session) {
-		String res = biz.login(user_id, password);
-		System.out.println(res);
-		if(res!=null) {
-			session.setAttribute("loginInfo", res);
-			return "main/profile";
+		MemberDto member = biz.login(user_id, password);
+		if(member!=null) {
+			session.setAttribute("member", member);
+			return "main/main"; //고치쇼 profile
 		}else {
 			System.out.println("로그인 실패");
 			return "redirect:/main/loginForm";

@@ -16,10 +16,15 @@ public interface DiaryBiz {
 	public String selectPath(String user_id);
 	
 	public void sendMail(String userEmail, String filePath);
+	
 	public String selectDate(String userId, LocalDate now);
+	public String fillDate(String userId, LocalDate localdate);
 	
 	//칭찬스티커
 	public ArrayList<String> selectStickerDate(String userId);
+	public int selectDiary(String userId);
+	public int deleteSticker(String userId);
+	public int insertSticker(String userId, int stickerCount);
 	
 	
 }
