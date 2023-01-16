@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,17 @@
 				</button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
                     <ul class="navbar-nav">
-                    	<li><a href="../mypage/main">마이 페이지</a></li>
+                    	<c:choose>
+					      	<c:when test="${sessionScope.member != null }">
+						      	<li class=""><span>${member.name }님</span> 반갑습니다</li>
+						      	<li class=""></li>
+						      	<input type="button" value="로그아웃" onclick="location.href='#">
+		                    	<li><a href="../mypage/main">마이 페이지</a></li>
+					      	</c:when>
+					      	<c:otherwise>
+					      		<li class="" onclick="location.href='/main/loginForm'">로그인</li>
+					      	</c:otherwise>
+					    </c:choose>
 	                    <li><a href="../letter/template">엽서 목록</a></li>
 	                    <li><a href="#">트리 꾸미기</a></li>
 	                    <li><a href="../newyear/ny">연하장 전송</a></li>

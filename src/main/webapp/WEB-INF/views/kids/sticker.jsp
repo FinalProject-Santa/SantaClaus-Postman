@@ -26,6 +26,7 @@
     <button id="Jan_btn">1¿ù</button>
     </div>
     <div id="Dec">12¿ù</div>
+    <c:out value="${DecSize }"></c:out>
     <div class="sticker_Dec">
     	<c:set var="j" value="0"/>
        	<c:forEach var="i" items="${totalDay }">
@@ -45,6 +46,7 @@
       </c:forEach>
     </div>
     <div id="Jan">1¿ù</div>
+    <c:out value="${JanSize }"></c:out>
     <div class="sticker_Jan">
     	<c:set var="j" value="0"/>
        	<c:forEach var="i" items="${totalDay }">

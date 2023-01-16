@@ -62,11 +62,36 @@ public class DiaryBizImpl implements DiaryBiz{
 		
 		return diaryMapper.selectDate(userId, now);
 	}
+	
+
+	@Override
+	public String fillDate(String userId, LocalDate localdate) {
+		
+		return diaryMapper.fillDate(userId, localdate);
+	}
 
 	@Override
 	public ArrayList<String> selectStickerDate(String userId) {
 		
 		return diaryMapper.selectStickerDate(userId);
+	}
+
+	@Override
+	public int selectDiary(String userId) {
+		
+		return diaryMapper.selectDiary(userId);
+	}
+	
+	@Override
+	public int deleteSticker(String userId) {
+		
+		return diaryMapper.deleteSticker(userId);
+	}
+
+	@Override
+	public int insertSticker(String userId, int stickerCount) {
+		
+		return diaryMapper.insertSticker(userId, stickerCount);
 	}
 
 	

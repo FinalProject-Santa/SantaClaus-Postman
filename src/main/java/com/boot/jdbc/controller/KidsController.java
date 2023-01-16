@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -88,6 +90,7 @@ public class KidsController {
 		
 		String userId = request.getParameter("userID");
 		LocalDate now = LocalDate.now();
+		System.out.println(now);
 		
 		String today = biz.selectDate(userId,now); 
 		System.out.println("select: "+biz.selectDate(userId,now));
@@ -95,15 +98,28 @@ public class KidsController {
 		return today;
 	};
 	
+	@ResponseBody
+	@RequestMapping(value = {"fillDate"}, method = RequestMethod.POST)
+	public String fillDate(HttpServletRequest request) {
+		
+		String userId = request.getParameter("userID");
+		String fillDate = request.getParameter("fillDate");
+		LocalDate localdate = LocalDate.parse(fillDate, DateTimeFormatter.ofPattern("yyyyMMdd"));
+		System.out.println("test :"+localdate);
+		
+		String date = biz.fillDate(userId,localdate); 
+		System.out.println("select: "+biz.fillDate(userId,localdate));
+		
+		return date;
+	};
+	
 	
 	@ResponseBody
 	@RequestMapping(value = {"DiarySave"}, method = RequestMethod.POST)
-	public ModelMap ImgSaveTest(@RequestParam Map<Object, Object> param, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
+	public ModelMap DiarySave(@RequestParam Map<Object, Object> param, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
 		ModelMap Map = new ModelMap();
 		String binaryData = request.getParameter("imgSrc");
 		String userId = request.getParameter("userID");
-		String fillDate = request.getParameter("fillDate");
-		System.out.println(fillDate);
 		FileOutputStream stream = null;
 		
 		try {
@@ -123,11 +139,56 @@ public class KidsController {
 		String filePath = newfile+"\\"+fileName;
 		param.put("filePath", filePath);
 		
-		if(fillDate==null) {
-			biz.saveDiary(param);
-		}else if(fillDate!=null) {
-			biz.fillDiary(param);
+		biz.saveDiary(param);
+		
+		System.out.println(filePath);
+		System.out.println(userId);
+		stream.write(file);
+		stream.close();
+		System.out.println("저장 완료");
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("에러 발생");
+		}finally {
+			if(stream != null) {
+				stream.close();
+			}
 		}
+		Map.addAttribute("resultMap","");
+		
+		return Map;
+	};
+	
+	@ResponseBody
+	@RequestMapping(value = {"DiaryFill"}, method = RequestMethod.POST)
+	public ModelMap DiaryFill(@RequestParam Map<Object, Object> param, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
+		ModelMap Map = new ModelMap();
+		String binaryData = request.getParameter("imgSrc");
+		String userId = request.getParameter("userID");
+		String fillDate = request.getParameter("fillDate");
+		LocalDate localdate = LocalDate.parse(fillDate, DateTimeFormatter.ofPattern("yyyyMMdd"));
+		System.out.println(fillDate);
+		FileOutputStream stream = null;
+		
+		try {
+		System.out.println("binary file " + binaryData);
+		if(binaryData == null || binaryData.trim().equals("")) {
+			throw new Exception();
+		}
+		binaryData = binaryData.replaceAll("data:image/png;base64,","");
+		byte[]file = Base64.decodeBase64(binaryData);
+		String fileName = UUID.randomUUID().toString()+".png";
+		
+		// 폴더 생성
+		File newfile = new File("C:\\그림일기");
+		newfile.mkdirs();
+		
+		stream = new FileOutputStream(newfile+"\\"+fileName);
+		String filePath = newfile+"\\"+fileName;
+		param.put("filePath", filePath);
+		param.put("localdate", localdate);
+		
+		biz.fillDiary(param);
 		
 		System.out.println(filePath);
 		System.out.println(userId);
@@ -155,7 +216,7 @@ public class KidsController {
 		System.out.println(fillDate);
 		
 		model.addAttribute("Date",fillDate);
-		return "kids/diary";
+		return "kids/fill_diary";
 	}
 	
 	
@@ -187,6 +248,13 @@ public class KidsController {
 		String userId = request.getParameter("user_id");
 		System.out.println(userId);
 		
+		//스티커 개수
+		biz.selectDiary(userId);
+		int stickerCount = biz.selectDiary(userId);
+		biz.deleteSticker(userId);
+		biz.insertSticker(userId,stickerCount);
+		
+		//스티커 날짜
 		biz.selectStickerDate(userId);
 		
 		ArrayList<String> Date = biz.selectStickerDate(userId);
@@ -213,15 +281,16 @@ public class KidsController {
 				DecDay.add(Integer.parseInt(Date.get(i).substring(8)));
 				Collections.sort(DecDay);
 				model.addAttribute("DecDay",DecDay);
+				model.addAttribute("DecSize", DecDay.size());
 			}else if(Date.get(i).matches("(.*)-01-(.*)")) {
 				JanDay.add(Integer.parseInt(Date.get(i).substring(8)));
 				Collections.sort(JanDay);
 				model.addAttribute("JanDay",JanDay);
-				//System.out.println(Date.get(i).substring(8));
+				model.addAttribute("JanSize", JanDay.size());
 			}
 		}
 		
-		return "/kids/sticker_Dec";
+		return "/kids/sticker";
 	}
 	
 }

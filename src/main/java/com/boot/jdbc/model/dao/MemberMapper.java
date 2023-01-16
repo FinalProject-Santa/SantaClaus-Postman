@@ -12,7 +12,7 @@ public interface MemberMapper {
 	int signUp(MemberDto dto);
 
 	@Select("SELECT * FROM MEMBER WHERE USER_ID = #{user_id} AND PASSWORD = #{password}")
-	String login(String user_id, String password);
+	MemberDto login(String user_id, String password);
 	
 	@Select("SELECT USER_ID FROM MEMBER WHERE USER_ID = #{user_id}")
 	String idChk(String user_id);

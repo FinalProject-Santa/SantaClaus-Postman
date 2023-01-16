@@ -12,7 +12,8 @@
 	<form action="/kids/sticker" method="post" id="diaryForm">
 	<input type="hidden" name="user_id" id="user" value="user01">
 	<input type="hidden" name="kids_no" id="kids" value=1>
-	<input type="hidden" name="userEmail" id="email" value="jiyeon908@naver.com">
+	<input type="hidden" name="userEmail" id="email" value="jiyeon908@naver.com">	
+	<input type="hidden" name="fillDate" id="date" value="${Date }">
     <div class="diary">
     <div class="drawing">
         <span id="text">오늘 무엇을 했나요?</span>
@@ -84,28 +85,29 @@
     	content.fillText('년 월 일',30,50);
     	content.font = '200px'; */
     	
-    	// 오늘 작성 여부
+    	// 해당 날짜 작성 여부
         	var userId = $("#user").val().trim();
+    		var fillDate = $("#date").val().trim();
         		$.ajax({
         			type:"POST",
                     data:{
                         "userID":userId,
+                        "fillDate":fillDate
                     },
                     dataType:"text",
-                    url:"/kids/selectDate",
+                    url:"/kids/fillDate",
                     success:function(date){
                         console.log("날짜 :"+date);
                         if(date!=""){
-                        	alert("오늘 작성했습니다.");
-                        	$("#success_btn").hide();
-                            /* $("#success_btn").attr("disabled",true);
-                            $("#success_btn").css('backgroundColor','yellow'); */
+                        	alert("해당 날짜는 작성되었습니다.");
+                            $("#success_btn").attr("disabled",true);
+                            $("#success_btn").css('backgroundColor','yellow');
                     	}
                     },
                     error:function(a,b,c){
-                        alert("date_error");
+                        alert("dateerror");
                     }
-        		})
+        		});
     });
     
     
@@ -118,6 +120,7 @@
             	var userId = $("#user").val().trim();
             	var kidsNo = $("#kids").val().trim();
             	var userEmail = $("#email").val().trim();
+            	var fillDate = $("#date").val().trim();
                 myImg = myImg.replace("data:image/png;base64,", "");
 
                 $.ajax({
@@ -127,14 +130,15 @@
                         "userID":userId,
                         "kidsNO":kidsNo,
                         "userEmail":userEmail,
+                        "fillDate":fillDate
                     },
                     dataType:"text",
-                    url:"/kids/DiarySave",
+                    url:"/kids/DiaryFill",
                     success:function(data){
                         console.log(data);
                     },
                     error:function(a,b,c){
-                        alert("save_error");
+                        alert("error");
                     }
                     
                 });
@@ -164,7 +168,7 @@
 	   					location.href='/kids/main';
 	                  },
 	                  error:function(a,b,c){
-	                      alert("error");
+	                      alert("saveerror");
 	                  }
 	              });
         }
