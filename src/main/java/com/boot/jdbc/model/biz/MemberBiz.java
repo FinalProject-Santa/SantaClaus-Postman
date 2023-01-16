@@ -1,5 +1,6 @@
 package com.boot.jdbc.model.biz;
 
+import java.util.List;
 import com.boot.jdbc.model.dto.MemberDto;
 
 public interface MemberBiz {
@@ -8,4 +9,7 @@ public interface MemberBiz {
 	public String idChk(String user_id);
 	public String findId(MemberDto dto);
 	public String findPw(MemberDto dto);
+	public MemberDto infoUpdateform(String user_id);
+	public int myinfoUpdate(MemberDto dto);
+	public int delete(String user_id); 
 }

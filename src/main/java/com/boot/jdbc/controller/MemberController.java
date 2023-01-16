@@ -119,4 +119,31 @@ public class MemberController {
 		}
 		
 	}
+	 
+
+	//회원정보 수정
+	@PostMapping("/myinfoUpdate")
+	public String myinfoUpdate(MemberDto dto) {
+		if(biz.myinfoUpdate(dto)>0) {
+			System.out.println("회원정보 수정 완료");
+			return "redirect:/mypage/mypage?user_id="+dto.getUser_id();
+		}else {
+			System.out.println("회원정보 수정 실패");
+			return "redirect:/mypage/myinfoUpdate?user_id="+dto.getUser_id();
+		}
+	}
+	@GetMapping("/delete")
+	public String delete(String user_id) {
+		if(biz.delete(user_id)>0){
+			System.out.println("삭제되었습니다");
+			return "index";
+		}else {
+			System.out.println("삭제 실패");
+			return "mypage/myinfoUpdate";
+		}
+	}
+	
+	
+	
+	
 }
