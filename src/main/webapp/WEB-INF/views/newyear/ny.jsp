@@ -84,10 +84,10 @@
           <div class="col hidden-sm col-md-2 hidden-xs image-select">
             <p class="make-tit">템플릿 선택</p>
             <ul class="card-list" id='insamalSelectCard'>
-              <li id='slideMakePagination' data-index='0'><img src='/resources/image/newyear/ny11.jpg'></li>
-  <li id='slideMakePagination' data-index='1'><img src='/resources/image/newyear/ny21.jpg'></li>
-  <li id='slideMakePagination' data-index='2'><img src='/resources/image/newyear/ny31.jpg'></li>
-  <li id='slideMakePagination' data-index='3'><img src='/resources/image/newyear/ny41.jpg'></li>
+              <li id='slideMakePagination' data-index='0'><img src='/resources/image/newyear/ny1.png'></li>
+  <li id='slideMakePagination' data-index='1'><img src='/resources/image/newyear/ny2.png'></li>
+  <li id='slideMakePagination' data-index='2'><img src='/resources/image/newyear/ny3.png'></li>
+  <li id='slideMakePagination' data-index='3'><img src='/resources/image/newyear/ny4.png'></li>
             </ul>
           </div>
 
@@ -131,28 +131,28 @@
                 
                 <div class='swiper-slide' data-slide-index='0'>
                   <div>
-                    <img src='/resources/image/newyear/ny11.jpg' data-keyn='317'>
+                    <img src='/resources/image/newyear/ny1.png' data-keyn='317'>
                     <textarea name='content' style='' placeholder="Don't cry because it's over. Smile becuase it happened."></textarea>
                   </div>
                 </div>
   
                 <div class='swiper-slide' data-slide-index='1'>
                   <div>
-                    <img src='/resources/image/newyear/ny21.jpg' data-keyn='318'>
+                    <img src='/resources/image/newyear/ny2.png' data-keyn='318'>
                     <textarea name='content' style=''>Don't cry because it's over. Smile becuase it happened.</textarea>
                   </div>
                 </div>
   
                 <div class='swiper-slide' data-slide-index='2'>
                   <div>
-                    <img src='/resources/image/newyear/ny31.jpg' data-keyn='319'>
+                    <img src='/resources/image/newyear/ny3.png' data-keyn='319'>
                     <textarea name='content' style=''>걱정을 해서 걱정이 없다면 걱정이 없겠네.</textarea>
                   </div>
                 </div>
   
                 <div class='swiper-slide' data-slide-index='3'>
                   <div>
-                    <img src='/resources/image/newyear/ny41.jpg' data-keyn='320'>
+                    <img src='/resources/image/newyear/ny4.png' data-keyn='320'>
                     <textarea name='content' style=''>걱정을 해서 걱정이 없다면 걱정이 없겠네.</textarea>
                   </div>
                 </div>
