@@ -11,4 +11,5 @@ public interface QnaBiz {
 	int insertFile(QnaFileDto file); //파일넣기
 	QnaDto selectOne(Integer qna_no); //글상세보기
 	QnaFileDto selectFile(Integer qna_no);
+	int insertReply(QnaDto dto); //답변달기
 }
