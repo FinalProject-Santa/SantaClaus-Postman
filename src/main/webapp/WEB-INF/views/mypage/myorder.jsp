@@ -19,7 +19,8 @@
         <h1>주문조회</h1> 
             <p class="box1">주문내역조회</p>
             <hr class="h1">
-            <div class="box2">
+            <form action="/mypage/selectOrder" method="post" id="selectOrder" class="box2">
+            	<input type="hidden" name="order_date" value="${orderdto.order_date }">
                 <ul class="searchDate">
                     <li>
                         <span class="chkbox2">
@@ -56,8 +57,8 @@
                 <span class="dset">
                     <input type="text" class="datepicker inpType" name="searchEndDate" id="searchEndDate" placeholder="조회 끝 날짜">
                 </span>
-                <input type="button" value="조회" onclick="showList();">
-            </div>
+                <input type="button" id="selectbtn" value="조회">
+            </form>
         </nav>
         <section>
             <div id="orderlist">
@@ -78,29 +79,30 @@
                         <th>주문처리상태</th>
                         <th>리뷰</th>
                     </tr>
-                    <%-- <c:choose> --%>
-                            <%-- <c:when test="${empty list}">
-                                <tr>
-                                    <td colspan="6" align="center">
-                                        주문 내역이 아직 없네요.<br>
-                                        아이에게 산타를 선물해 보세요!
-                                    </td>
-                                </tr>
-                            </c:when> --%>
-                            <%-- <c:otherwise> --%>
-                                <c:forEach items="${orderlist}" var="orderdto">
-                                    <tr>
-                                        <td><fmt:formatDate pattern="yyyy-MM-dd" value="${orderdto.order_date}"/><p id="orderdate">[${orderdto.order_no}]</p></td>
-                                        <td>${template_image}<hr>${option_image}</td>
-                                        <td>${template_name}<hr>${option_name}</td>
-                                        <td>${orderdto.product_cost}원</td>
-                                        <td>${orderdto.delivery_status}</td>
-                                        <td><input type="button" value="리뷰작성" onclick="location.href='/review/reviewinsertform'"></td>
-                                        <!-- 작성완료 시 status변경 > 리뷰작성버튼 display none, .append("작성 완료") -->
-                                    </tr>
-                                </c:forEach>
-                            <%-- </c:otherwise> --%>
-                        <%-- </c:choose> --%>
+                    <c:choose>
+                        <c:when test="${empty orderlist}">
+                             <tr>
+                                 <td colspan="6" align="center">
+                                     주문 내역이 아직 없네요.<br>
+                                     아이에게 산타를 선물해 보세요!
+                                 </td>
+                             </tr>
+                        </c:when>
+                        <c:otherwise>
+                             <c:forEach items="${orderlist}" var="orderdto">
+                                 <tr>
+                                     <td><fmt:formatDate pattern="yyyy-MM-dd" value="${orderdto.order_date}"/><p id="orderdate">[${orderdto.order_no}]</p></td>
+                                     <td>${template_image}<hr>${option_image}</td>
+                                     <td>${template_name}<hr>${option_name}</td>
+                                     <td>${orderdto.product_cost}원</td>
+                                     <td>${orderdto.delivery_status}</td>
+                                     <td><input type="button" value="리뷰작성" id="reviewbtn" 
+                                     onclick="location.href='/review/reviewinsertform?order_no=${orderdto.order_no}'"></td>
+                                     <!-- 작성완료 시 status변경 > 리뷰작성버튼 hide(), .append("작성 완료") -->
+                                 </tr>
+                             </c:forEach>
+                       	</c:otherwise>
+                    </c:choose>
                 </table>
             </div>
         </section>
@@ -113,26 +115,29 @@
     </div>
     <script type="text/javascript">
 	    
-	    document.getElementById("orderlist").style.display="none";
-	    
-	    function showList(){
-	    	document.getElementById("orderlist").style.display="block";
-	    }
-
 	    $(document).ready(function() {
+			$("#orderlist").hide();
+			
+	    	$("#selectbtn").click(function(){
+	    		$("#selectOrder").submit();
+	    		$("#orderlist").show();
+	    		
+   			});
 
-            //datepicker 한국어로 사용하기 위한 언어설정
-            $.datepicker.setDefaults($.datepicker.regional['ko']);     
-        
-            // Datepicker            
+	    	// Datepicker            
             $(".datepicker").datepicker({
                 showButtonPanel: true,
                 dateFormat: "yy-mm-dd",
+                language: "kr",
                 onClose : function ( selectedDate ) {
                 
                     var eleId = $(this).attr("id");
                     var optionName = "";
+                    var today = new Date();
 
+                    $("#searchStartDate").datepicker( "option", "maxDate", today );
+                    $("#searchEndDate").datepicker( "option", "maxDate", today );
+                     
                     if(eleId.indexOf("StartDate") > 0) {
                         eleId = eleId.replace("StartDate", "EndDate");
                         optionName = "minDate";
@@ -143,10 +148,14 @@
 
                     $("#"+eleId).datepicker( "option", optionName, selectedDate );        
                     $(".searchDate").find(".chkbox2").removeClass("on"); 
+                },
+                onSelect: function(dateText, inst){
+                	var selectedDate = $(this).val();
                 }
+				            
+            
             }); 
 	
-            $()
             //시작일.
             /*$('#searchStartDate').datepicker("option","onClose", function( selectedDate ) {    
                 // 시작일 datepicker가 닫힐때
@@ -202,7 +211,7 @@
             
             var endDate = $.datepicker.formatDate('yy-mm-dd', today);
             $('#searchEndDate').val(endDate);
-            
+
             if(str == 'd'){
                 today.setDate(today.getDate() - num);
             }else if (str == 'w'){
@@ -211,19 +220,18 @@
                 today.setMonth(today.getMonth() - num);
                 today.setDate(today.getDate() + 1);
             }
-
+			
             var startDate = $.datepicker.formatDate('yy-mm-dd', today);
             $('#searchStartDate').val(startDate);
                     
             // 종료일은 시작일 이전 날짜 선택하지 못하도록 비활성화
-            $("#searchEndDate").datepicker( "option", "minDate", startDate );
+            //$("#searchEndDate").datepicker( "option", "minDate", startDate );
             
             // 시작일은 종료일 이후 날짜 선택하지 못하도록 비활성화
-            $("#searchStartDate").datepicker( "option", "maxDate", endDate );
-            
+            //$("#searchStartDate").datepicker( "option", "maxDate", endDate );
         }
-
-	    
     </script>
+    
+    
 </body>
 </html>

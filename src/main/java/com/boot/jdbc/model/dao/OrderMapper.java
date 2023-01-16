@@ -15,6 +15,9 @@ public interface OrderMapper {
 	@Select(" SELECT * FROM MYORDER ORDER BY ORDER_NO DESC ")
 	List<OrderDto> orderList();
 
+//	@Select(" SELECT * FROM MYORDER WHERE ORDER_DATE BETWEEN #{ORDER_DATE ")
+//	List<OrderDto> selectOrder();
+
 	
 //	@Select(" SELECT * FROM TEMPLATE WHERE TEMPLATE_NO=#{template_no} ")
 //	LetterTemplateDto templateDetail(int template_no);

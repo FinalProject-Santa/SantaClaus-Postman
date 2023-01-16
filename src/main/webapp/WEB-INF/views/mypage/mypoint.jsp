@@ -14,7 +14,7 @@
         <nav>
             <h1>포인트</h1>
             <p class="color1">고객님의 사용가능 포인트 금액입니다.</p>
-            <p class="box1">총 포인트 ${dto.point_save}+${dto.point_use}</p>
+            <p class="box1">총 포인트 ${dto.point_save} 3000${dto.point_use}</p>
         </nav>
         <section>
             <div id="content">
