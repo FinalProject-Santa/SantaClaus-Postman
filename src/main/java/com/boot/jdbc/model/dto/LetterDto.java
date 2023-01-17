@@ -8,18 +8,22 @@ public class LetterDto {
 	private String child_name;
 	private String address;
 	private String ps;
-
+	
 	public LetterDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public LetterDto(int letter_no, String letter_name, int letter_price, String letter_img) {
+	public LetterDto(int letter_no, String letter_name, int letter_price, String letter_img, String child_name,
+			String address, String ps) {
 		super();
 		this.letter_no = letter_no;
 		this.letter_name = letter_name;
 		this.letter_price = letter_price;
 		this.letter_img = letter_img;
+		this.child_name = child_name;
+		this.address = address;
+		this.ps = ps;
 	}
 
 	public int getLetter_no() {
@@ -54,11 +58,11 @@ public class LetterDto {
 		this.letter_img = letter_img;
 	}
 
-	public String getchild_name() {
+	public String getChild_name() {
 		return child_name;
 	}
 
-	public void setchild_name(String child_name) {
+	public void setChild_name(String child_name) {
 		this.child_name = child_name;
 	}
 
@@ -77,5 +81,4 @@ public class LetterDto {
 	public void setPs(String ps) {
 		this.ps = ps;
 	}
-
 }

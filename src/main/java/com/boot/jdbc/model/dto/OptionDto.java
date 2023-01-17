@@ -1,10 +1,13 @@
 package com.boot.jdbc.model.dto;
 
+import java.util.List;
+
 public class OptionDto {	
 	private int option_no;
 	private String option_name;
 	private int option_price;
 	private String option_img;
+	public List<OptionDto> optionDtoList;
 	
 	public OptionDto() {
 		super();
@@ -51,5 +54,11 @@ public class OptionDto {
 		this.option_img = option_img;
 	}
 	
+	public List<OptionDto> getOptionDtoList() {
+		return optionDtoList;
+	}
 
+	public void setOptionDtoList(List<OptionDto> optionDtoList) {
+		this.optionDtoList = optionDtoList;
+	}
 }

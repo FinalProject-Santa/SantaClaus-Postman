@@ -6,7 +6,7 @@ import com.boot.jdbc.model.dto.LetterDto;
 import com.boot.jdbc.model.dto.OptionDto;
 
 public interface LetterBiz {
-	public List<LetterDto> mainList();
+	public List<String> mainList();
 	public List<LetterDto> letterList();
 	public List<OptionDto> optionList();
 }

@@ -22,7 +22,7 @@ public class LetterController {
 	// 메인화면의 엽서
 	@ResponseBody
 	@GetMapping("/mainLetter")
-	public List<LetterDto> mainLetter() {
+	public List<String> mainLetter() {
 		return biz.mainList();
 	}
 	
