@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,7 +98,7 @@
             var idx = random(0,15-i);
             var img = cards.splice(idx,1); //idx부터 한개씩 뽑기
             
-            imgTableCode += '<td id="card'+i+'"><img src="./img/game/'+img+'"><span>?</span></td>';
+            imgTableCode += '<td id="card'+i+'"><img src="/resources/image/kids/'+img+'"><span>?</span></td>';
         }
         imgTableCode += '</tr>';
         $("#imgTable").html(imgTableCode);
@@ -164,7 +165,22 @@
                 openCardId2 = '';
                 scorePlus();
                 if(++successCard == 8){
-                    alert('성공!!\n' +score+ '점 입니다!');
+                	var kids_no = $("#kids").val().trim();
+                	$.ajax({
+                		type:"POST",
+                		data:{
+                			"kids_no":kids_no
+                		},
+                		url:"/kids/gamePoint",
+                		success:function(data){
+         					console.log(data);
+                		},
+                		error:function(){
+                			alert("point_error");
+                		}
+                	});
+                	
+                	alert('성공!!\n' +score+ '점 입니다!');   
                 }
             //불일치
             }else{
@@ -217,6 +233,7 @@
 </script>
 </head>
 <body>
+	<input type="hidden" name="kids_no" id="kids" value="1">
 	<div class="game">
         <div>
             <p>같은 그림을 찾아라</p>

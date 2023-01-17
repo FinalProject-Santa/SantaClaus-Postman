@@ -293,4 +293,19 @@ public class KidsController {
 		return "/kids/sticker";
 	}
 	
+	@GetMapping("/samegame")
+	public String sameGame() {
+		
+		return "kids/same_game";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = {"gamePoint"}, method = RequestMethod.POST)
+	public String gamePoint(HttpServletRequest request) {
+		int kidsNO = Integer.parseInt(request.getParameter("kids_no"));
+		
+		biz.insertPoint(kidsNO);
+		return "point";
+	}
+	
 }

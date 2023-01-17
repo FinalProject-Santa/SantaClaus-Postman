@@ -26,5 +26,8 @@ public interface DiaryBiz {
 	public int deleteSticker(String userId);
 	public int insertSticker(String userId, int stickerCount);
 	
+	//포인트
+	public int insertPoint(int kidsNO);
+	
 	
 }

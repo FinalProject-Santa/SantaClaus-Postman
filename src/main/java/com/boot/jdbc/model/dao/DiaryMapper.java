@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.boot.jdbc.model.dto.DiaryDto;
 
@@ -43,8 +44,11 @@ public interface DiaryMapper {
 	
 	@Insert("INSERT INTO STICKER VALUES(#{userId},#{stickerCount})")
 	int insertSticker(String userId, int stickerCount);
+	
+	@Update("UPDATE KIDS_SETTING SET KIDS_POINT=KIDS_POINT+5 WHERE KIDS_NO=${kidsNO}")
+	int insertPoint(int kidsNO);
 }
-
+//UPDATE KIDS_SETTING SET KIDS_POINT=KIDS_POINT+5 WHERE KIDS_NO=1;
 //AND WRITE_DATE<='2022-12-31'
 //"userID":userId,
 //"kidsNO":kidsNo,

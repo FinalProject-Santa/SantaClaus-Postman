@@ -94,6 +94,12 @@ public class DiaryBizImpl implements DiaryBiz{
 		return diaryMapper.insertSticker(userId, stickerCount);
 	}
 
+	@Override
+	public int insertPoint(int kidsNO) {
+		
+		return diaryMapper.insertPoint(kidsNO);
+	}
+
 	
 	
 	

@@ -15,8 +15,8 @@
     <div class="start_button">
     <input type="button" class="level1-button" value="1단계 시작" 
     												onclick="location.href='/kids/onelevel'">
-    <input type="button" class="level2-button" value="2단계 시작" 
-    												onclick="location.href='/kids/twolevel'">
+    <input type="button" class="level2-button" value="같은 그림" 
+    												onclick="location.href='/kids/samegame'">
     </div>
     <p>
     <img>
