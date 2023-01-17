@@ -24,6 +24,7 @@ public class MemberController {
 	@Autowired
 	private MemberBiz biz;
 	
+	// 메인페이지
 	@GetMapping("/main")
 	public String mainPage() {
 		return "main/mainPage";

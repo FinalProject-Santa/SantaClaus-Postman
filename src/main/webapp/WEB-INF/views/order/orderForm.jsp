@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,17 +23,16 @@
     </div>
     <form class="payment" method="post">
         <div class="orderList">
-            <table border="1px">
+            <table border="1">
                 <tbody>
                 <colgroup>
                     <col width="50"/>		
                     <col width="70"/>		
                     <col width="500"/>		
-                    <col width="100"/>		
+                    <col width="200"/>		
                     <col width="100"/>	
                     <col width="100"/>		
                     <col width="100"/>
-                    <col width="100"/>		
                 </colgroup>
                 <tr>
                     <th><input type="checkbox"></th>
@@ -42,53 +42,53 @@
                     <th>판매가</th>
                     <th>수량</th>
                     <th>포인트</th>
-                    <th>배송구분</th>
-                    <th>합계</th>
                 </tr>
                 <tr>
                     <td><input type="checkbox"></td>
                     <td>엽서</td>
-                    <td></td>
+                    <td><img src="${letterDto.letter_img }"></td>
                     <td>
                         <p class="itemName">
-                            [구슬톡]헤이타이거 스노우볼
+                            ${letterDto.letter_name }
                         </p>
                         <p class="blanks">
-                            <span>아이 이름 : ${child_name }</span><br>
-                            <span>거주지 : ${address }</span><br>
-                            <span>PS 멘트 : ${ps }</span>
+                            <span>아이 이름 : ${letterDto.child_name }</span><br>
+                            <span>거주지 : ${letterDto.address }</span><br>
+                            <span>PS 멘트 : ${letterDto.ps }</span>
                         </p>
                     </td>
-                    <td>9,900원</td>
+                    <td>${letterDto.letter_price }</td>
                     <td>1</td>
-                    <td>90원</td>
-                    <td>기본배송</td>
-                    <td>9,900원</td>
+                    <td>
+                    	<fmt:parseNumber var="point" value="${letterDto.letter_price * 0.01 }" integerOnly="true" />
+                    	${point }<span>pt</span>
+					</td>
                 </tr>
-                <c:forEach var="list" >
+                <c:forEach var="dto" items="${dtoList }" >
 	                <tr>
 	                    <td><input type="checkbox"></td>
 	                    <td>옵션</td>
-	                    <td></td>
+	                    <td><img src="${dto.option_img }"></td>
 	                    <td>
 	                        <p class="itemName">
-	                            [구슬톡]헤이타이거 스노우볼
-	                        </p>
-	                        <p class="blanks">
-	                            <span>아이 이름 : ${child_name }</span><br>
-	                            <span>거주지 : ${address }</span><br>
-	                            <span>PS 멘트 : ${ps }</span>
+	                            ${dto.option_name }
 	                        </p>
 	                    </td>
-	                    <td>9,900원</td>
+	                    <td>${dto.option_price }</td>
 	                    <td>1</td>
-	                    <td>90원</td>
-	                    <td>기본배송</td>
-	                    <td>9,900원</td>
+	                    <td>
+	                    	<fmt:parseNumber var="point" value="${dto.option_price * 0.01 }" integerOnly="true" />
+	                    	${point }<span>pt</span>
+						</td>
 	                </tr>
                 </c:forEach>
                 <tr>
-                    <td colspan="8">합계 : 9,900원</td>
+                    <td colspan="8">
+                    	<span id="delivery">[기본 배송]</span>
+                    	<span id="totalPirce">합계 : 9,900원</span>
+                    	<span>[포인트]</span>
+                    	<span id="totalPoint">적립 예정 : pt</span>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -126,11 +126,10 @@
                         <th>주소 <img src="./image/important.JPG" style="width: 10px;"></th>
                         <td>
                             <input type="text" disabled="disabled">
-                            <input type="button" value="우편번호"><br>
-                            <input type="text">&nbsp;
-                            <label>기본 주소</label><br>
-                            <input type="text">&nbsp;
-                            <label>나머지 주소</label>
+                            <input name="post_code" type="text">
+							<input id="userPostcode" class="button" type="button" value="우편번호"><br><br>
+							<input name="default_addr" type="text"> 기본 주소<br><br>
+							<input name="detail_addr" type="text" required="required"> 나머지 주소
                         </td>
                     </tr>
                     <tr>

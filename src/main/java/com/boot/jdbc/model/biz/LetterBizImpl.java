@@ -16,7 +16,7 @@ public class LetterBizImpl implements LetterBiz{
 	private LetterMapper mapper;
 	
 	@Override
-	public List<LetterDto> mainList() {
+	public List<String> mainList() {
 		return mapper.mainList();
 	}
 

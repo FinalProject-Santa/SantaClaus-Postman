@@ -29,7 +29,7 @@
 					      		<li class="" onclick="location.href='/main/loginForm'">로그인</li>
 					      	</c:otherwise>
 					    </c:choose>
-	                    <li><a href="../letter/template">엽서 목록</a></li>
+	                    <li><a href="../letter/letterList">엽서 목록</a></li>
 	                    <li><a href="#">트리 꾸미기</a></li>
 	                    <li><a href="../newyear/ny">연하장 전송</a></li>
 	                    <li><a href="../review/reviewList">리뷰 게시판</a></li>
