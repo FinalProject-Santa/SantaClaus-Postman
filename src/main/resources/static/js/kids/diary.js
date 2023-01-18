@@ -88,7 +88,7 @@ function handleSaveClick(){
     const image = canvas.toDataURL("image/png");
     const link = document.createElement("a");
     link.href = image;
-    link.download = "PaintJS[EXPORT]";
+    link.download = "그림일기";
     link.click();
     // const input = document.getElementsByName("diary_content");
     // input.value = image;
