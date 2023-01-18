@@ -14,7 +14,7 @@
     
     
     <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link href="/resources/css/nytree/reset.css" rel="stylesheet" type="text/css">
     <link href="/resources/css/nytree/swiper.css" rel="stylesheet" type="text/css">
     <link href="/resources/css/nytree/respon.css" rel="stylesheet" type="text/css">
@@ -23,7 +23,7 @@
     <script language="JavaScript" src="/resources/js2/bootstrap.min.js" charset="euc-kr"></script>
     <script language="JavaScript" src="/resources/js2/swiper.6.4.8.min.js" charset="euc-kr"></script>
     <script language="JavaScript" src="/resources/js2/nycard.js" charset="euc-kr"></script>
-
+	<script src="/resources/js2/html2canvas.js"></script>
 
   </head>
 <title></title>
@@ -35,6 +35,7 @@
   </style>
 <body>
 
+                  <div class="save_btn"><a class="hover" href='javascript:void(0);' onclick="PrintDiv($('#bar_chart2'));">이미지로 저장</a></div>
     <a name="cardsend"></a>
     <section class="section02 cardBox" style='display:none;' id='insamalCardImage'>
       <div class="content">
@@ -130,8 +131,8 @@
               <div class="swiper-wrapper" id='insamalSlideCard'>
                 
                 <div class='swiper-slide' data-slide-index='0'>
-                  <div>
-                    <img src='/resources/image/newyear/ny1.png' data-keyn='317'>
+                  <div id="bar_chart2">
+                    <img src='/resources/image/newyear/ny1.png' data-keyn='317' crossorigin="anonymous">
                     <textarea name='content' style='' placeholder="Don't cry because it's over. Smile becuase it happened."></textarea>
                   </div>
                 </div>
@@ -139,21 +140,21 @@
                 <div class='swiper-slide' data-slide-index='1'>
                   <div>
                     <img src='/resources/image/newyear/ny2.png' data-keyn='318'>
-                    <textarea name='content' style=''>Don't cry because it's over. Smile becuase it happened.</textarea>
+                    <textarea name='content' style='' placeholder="Don't cry because it's over. Smile becuase it happened."></textarea>
                   </div>
                 </div>
   
                 <div class='swiper-slide' data-slide-index='2'>
                   <div>
                     <img src='/resources/image/newyear/ny3.png' data-keyn='319'>
-                    <textarea name='content' style=''>걱정을 해서 걱정이 없다면 걱정이 없겠네.</textarea>
+                    <textarea name='content' style='' placeholder="Don't cry because it's over. Smile becuase it happened."></textarea>
                   </div>
                 </div>
   
                 <div class='swiper-slide' data-slide-index='3'>
                   <div>
                     <img src='/resources/image/newyear/ny4.png' data-keyn='320'>
-                    <textarea name='content' style=''>걱정을 해서 걱정이 없다면 걱정이 없겠네.</textarea>
+                    <textarea name='content' style='' placeholder="Don't cry because it's over. Smile becuase it happened."></textarea>
                   </div>
                 </div>
   
@@ -185,6 +186,23 @@
     <input type='hidden' name='fcolor'>
     <input type='hidden' name='image_keyn' value=''>
     <input type='hidden' name='custom_keyn' value='317'>
-  
+<script type="text/javascript">
+function PrintDiv(div){
+	div = div[0]
+	html2canvas(div).then(function(canvas){
+		var myImage = canvas.toDataURL();
+		downloadURI(myImage, "저장이미지이름.png") 
+	});
+}
+
+function downloadURI(uri, name){
+	var link = document.createElement("a")
+	link.download = name;
+	link.href = uri;
+	document.body.appendChild(link);
+	link.click();
+}
+</script>
+
 
 </body>

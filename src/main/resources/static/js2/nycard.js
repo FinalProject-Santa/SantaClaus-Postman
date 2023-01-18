@@ -7,7 +7,7 @@ $(document).ready(function() {
   var mobile_login_url = mobile_member_url+'/login.php?urlstr='+resuri;
   var mobile_naver_url = mobile_member_url+'/naverIdLogin.php?urlstr='+resuri;
 
- 
+ /*
   $.chkLoginCard = function() {
     if(cUserInfo===undefined) {
       if(isMobile===true) {
@@ -28,7 +28,7 @@ $(document).ready(function() {
       }
     }
   }
-
+*/
   new WOW().init();
 
   
@@ -446,11 +446,11 @@ $(document).ready(function() {
   });
 
   // textarea 클릭 시, 로그인 체크
-  $(document).on('focus', "textarea", function() {
+  /* $(document).on('focus', "textarea", function() {
     var rChk = $.chkLoginCard();
     if(rChk===false) return false;
   });
-
+*/
   //Reload swiper
   $(window).resize(function() {
      if(swiperSendM) swiperSendM.updateSize();
