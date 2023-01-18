@@ -121,6 +121,7 @@ public class KidsController {
 		String binaryData = request.getParameter("imgSrc");
 		String userId = request.getParameter("userID");
 		FileOutputStream stream = null;
+		LocalDate today = LocalDate.now();
 		
 		try {
 		System.out.println("binary file " + binaryData);
@@ -129,7 +130,7 @@ public class KidsController {
 		}
 		binaryData = binaryData.replaceAll("data:image/png;base64,","");
 		byte[]file = Base64.decodeBase64(binaryData);
-		String fileName = UUID.randomUUID().toString()+".png";
+		String fileName = today+" 그림일기.png"; //UUID.randomUUID().toString()
 		
 		// 폴더 생성
 		File newfile = new File("C:\\그림일기");
@@ -177,7 +178,7 @@ public class KidsController {
 		}
 		binaryData = binaryData.replaceAll("data:image/png;base64,","");
 		byte[]file = Base64.decodeBase64(binaryData);
-		String fileName = UUID.randomUUID().toString()+".png";
+		String fileName = localdate+" 그림일기.png";
 		
 		// 폴더 생성
 		File newfile = new File("C:\\그림일기");

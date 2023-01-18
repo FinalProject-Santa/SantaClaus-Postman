@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/css/kids/diary.css">
 </head>
@@ -15,7 +15,7 @@
 	<input type="hidden" name="userEmail" id="email" value="jiyeon908@naver.com">
     <div class="diary">
     <div class="drawing">
-        <span id="text">¿À´Ã ¹«¾ùÀ» Çß³ª¿ä?</span>
+        <span id="text">ì˜¤ëŠ˜ ë¬´ì—‡ì„ í–ˆë‚˜ìš”?</span>
     </div>
     <section id="diary_box">
     <canvas id="jsCanvas" class="canvas" width='1000px' height='500px'></canvas>
@@ -42,18 +42,18 @@
         </div>
     </div>
     <div class="btn_group">
-        <!-- <button id="send_btn" type="submit">ÀÚ¶ûÇÏ±â</button> -->
-        <button id="save_btn" type="button">»çÁø ÀúÀåÇÏ±â</button>
-        <button id="success_btn" type="button" onclick="return false">ÀÛ¼º¿Ï·á</button>
+        <!-- <button id="send_btn" type="submit">ìë‘í•˜ê¸°</button> -->
+        <button id="save_btn" type="button">ì‚¬ì§„ ì €ì¥í•˜ê¸°</button>
+        <button id="success_btn" type="button" onclick="return false">ì‘ì„±ì™„ë£Œ</button>
     </div>
     </div>
     <div class="modal hidden">
         <div class="bg"></div>
         <div class="modalBox">
-          <p id="modal_text">ÂøÇÑ ¾î¸°ÀÌ´Ù ÀÓ¸¶</p>
+          <p id="modal_text">ì°©í•œ ì–´ë¦°ì´ë‹¤ ì„ë§ˆ</p>
         <div class="modal_Btn">
-          <button class="stickerBtn" id="sticker_btn" type="submit">ÄªÂù½ºÆ¼Ä¿</button>
-          <button class="mainBtn" id="send_btn" type="button">ÀÚ¶ûÇÏ±â</button>
+          <button class="stickerBtn" id="sticker_btn" type="submit">ì¹­ì°¬ìŠ¤í‹°ì»¤</button>
+          <button class="mainBtn" id="send_btn" type="button">ìë‘í•˜ê¸°</button>
         </div>
         </div>
       </div>
@@ -79,12 +79,12 @@
     }); */
     
     $(function(){
-    	// ÅØ½ºÆ®
+    	// í…ìŠ¤íŠ¸
     	/* content.clearRect(0,0,canvasrr.width,canvasrr.height);
-    	content.fillText('³â ¿ù ÀÏ',30,50);
+    	content.fillText('ë…„ ì›” ì¼',30,50);
     	content.font = '200px'; */
     	
-    	// ¿À´Ã ÀÛ¼º ¿©ºÎ
+    	// ì˜¤ëŠ˜ ì‘ì„± ì—¬ë¶€
         	var userId = $("#user").val().trim();
         		$.ajax({
         			type:"POST",
@@ -94,9 +94,9 @@
                     dataType:"text",
                     url:"/kids/selectDate",
                     success:function(date){
-                        console.log("³¯Â¥ :"+date);
+                        console.log("ë‚ ì§œ :"+date);
                         if(date!=""){
-                        	alert("¿À´Ã ÀÛ¼ºÇß½À´Ï´Ù.");
+                        	alert("ì˜¤ëŠ˜ ì‘ì„±í–ˆìŠµë‹ˆë‹¤.");
                         	$("#success_btn").hide();
                             /* $("#success_btn").attr("disabled",true);
                             $("#success_btn").css('backgroundColor','yellow'); */
@@ -109,7 +109,7 @@
     });
     
     
-    // ÀÌ¹ÌÁö ÀúÀå
+    // ì´ë¯¸ì§€ ì €ì¥
     function screenShot(target){
 	        if(target != null && target.length>0){
 	            var t = target[0];
@@ -143,7 +143,7 @@
 	        }
 	    }
     
-	    // ¸ŞÀÏ º¸³»±â
+	    // ë©”ì¼ ë³´ë‚´ê¸°
 	    function sendEmail(){
             	var myImg = canvasrr.toDataURL("image/png");
             	var userId = $("#user").val().trim();
@@ -160,7 +160,7 @@
 	                  dataType:"text",
 	                  url:"/kids/sendEmail",
 	                  success:function(data){
-	   					alert("Àü¼ÛµÇ¾ú½À´Ï´Ù.");
+	   					alert("ì „ì†¡ë˜ì—ˆìŠµë‹ˆë‹¤.");
 	   					location.href='/kids/main';
 	                  },
 	                  error:function(a,b,c){
