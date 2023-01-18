@@ -16,6 +16,105 @@
 	row-gap: 30px;
 }
 </style>
+<script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+<script>
+	$(function(){
+		
+		// 전체 체크 박스
+		$("#chkAll").click(function() {
+			if($("#chkAll").is(":checked")) $("input[name=chkBox]").prop("checked", true);
+			else $("input[name=chkBox]").prop("checked", false);
+		});
+		
+		// 나머지 체크 박스
+		$("input[name=chkBox]").click(function() {
+			var total = $("input[name=chkBox]").length;
+			var checked = $("input[name=chkBox]:checked").length;
+			
+			if(total != checked){
+				$("#chkAll").prop("checked", false);
+			}else{
+				$("#chkAll").prop("checked", true); 
+			}
+		});
+		
+		// 옵션 상품 삭제
+		$("#deleteOption").click(function() {
+			$( "input[name='chkBox']:checked" ).each (function (){
+				$(this).parent("td").parent("tr").remove();
+			});
+		});
+		
+		// 새로운 배송지 : 초기화
+		$("#newDestination").click(function(){
+			$("input[name=receiver]").val('');
+			$("input[name=post_code]").val('');
+			$("input[name=default_addr]").val('');
+			$("input[name=detail_addr]").val('');
+			$("#frontNum").val('');
+			$("#backNum").val('');
+			$("#emailId").val('');
+			$("#emailDomain").val('');
+			$("textarea[name=delivery_message]").val('');
+			$("input[name=delivery_date]").val('');
+			
+		});
+		
+		// 우편번호
+		$("#userPostcode").click(function(){
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+	                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+	                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	                var addr = ''; // 주소 변수
+
+	                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+	                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+	                    addr = data.roadAddress;
+	                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+	                    addr = data.jibunAddress;
+	                }
+
+	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	                document.getElementsByName('post_code')[0].value = data.zonecode;
+	                document.getElementsByName("default_addr")[0].value = addr;
+	                // 커서를 상세주소 필드로 이동한다.
+	                document.getElementsByName("default_addr")[0].focus();
+	            }
+	        }).open();
+		});
+		
+		// 휴대폰 번호
+		$("#backNum").change(function(){
+			phone();	
+		});
+
+		function phone() {
+			var frontNum = $("#frontNum").val();
+			var backNum = $("#backNum").val();
+			if(frontNum != "" && backNum != "") {
+				$("#phone").val('010-' + frontNum + '-' + backNum);
+			}
+		};
+		
+		// 이메일
+		$("#emailDomain").change(function(){
+			email();	
+		});
+
+		function email() {
+			var emailId = $("#emailId").val();
+			var emailDomain = $("#emailDomain").val();
+			if(emailId != "" && emailDomain != "") {
+				$("#email").val(emailId + '@' + emailDomain);
+			}
+		};
+		
+	})
+</script>
 </head>
 <body>
 	<div class="title">
@@ -35,7 +134,7 @@
                     <col width="100"/>
                 </colgroup>
                 <tr>
-                    <th><input type="checkbox"></th>
+                    <th><input type="checkbox" id="chkAll"></th>
                     <th>구분</th>
                     <th>이미지</th>
                     <th>상품정보</th>
@@ -44,7 +143,7 @@
                     <th>포인트</th>
                 </tr>
                 <tr>
-                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox" name="chkBox"></td>
                     <td>엽서</td>
                     <td><img src="${letterDto.letter_img }"></td>
                     <td>
@@ -57,37 +156,52 @@
                             <span>PS 멘트 : ${letterDto.ps }</span>
                         </p>
                     </td>
-                    <td>${letterDto.letter_price }</td>
+                    <td>
+                 		<fmt:formatNumber type="number" value="${letterDto.letter_price }"/>
+                    </td>
                     <td>1</td>
                     <td>
-                    	<fmt:parseNumber var="point" value="${letterDto.letter_price * 0.01 }" integerOnly="true" />
-                    	${point }<span>pt</span>
+                    	<fmt:parseNumber var="letterPoint" value="${letterDto.letter_price * 0.01 }" integerOnly="true" />
+                    	<fmt:formatNumber type="number" value="${letterPoint }"/>pt
 					</td>
                 </tr>
+                <c:set var="totalOptionPrice"/>
+                <c:set var="totalOptionPoint"/>
                 <c:forEach var="dto" items="${dtoList }" >
-	                <tr>
-	                    <td><input type="checkbox"></td>
-	                    <td>옵션</td>
-	                    <td><img src="${dto.option_img }"></td>
-	                    <td>
-	                        <p class="itemName">
-	                            ${dto.option_name }
-	                        </p>
-	                    </td>
-	                    <td>${dto.option_price }</td>
-	                    <td>1</td>
-	                    <td>
-	                    	<fmt:parseNumber var="point" value="${dto.option_price * 0.01 }" integerOnly="true" />
-	                    	${point }<span>pt</span>
-						</td>
-	                </tr>
+                	<c:if test="${ not empty dto.option_img}">
+		                <c:set var="totalOptionPrice" value="${totalOptionPrice + dto.option_price}"/>
+		                <tr>
+		                    <td><input type="checkbox" name="chkBox"></td>
+		                    <td>옵션</td>
+		                    <td><img src="${dto.option_img }"></td>
+		                    <td>
+		                        <p class="itemName">
+		                            ${dto.option_name }
+		                        </p>
+		                    </td>
+		                    <td>
+		                    	<fmt:formatNumber type="number" value="${dto.option_price }"/>
+		                    </td>
+		                    <td>1</td>
+		                    <td>
+		                    	<fmt:parseNumber var="point" value="${dto.option_price * 0.01 }" integerOnly="true" />
+				                <c:set var="totalOptionPoint" value="${totalOptionPoint + point}"/>
+				                <fmt:formatNumber type="number" value="${point }"/>pt
+							</td>
+		                </tr>
+               		</c:if>
                 </c:forEach>
                 <tr>
-                    <td colspan="8">
+                	<td>
+                		<button type="button" id="deleteOption">삭제</button>
+                	</td>
+                    <td colspan="7">
                     	<span id="delivery">[기본 배송]</span>
-                    	<span id="totalPirce">합계 : 9,900원</span>
+                    	<span id="totalPirce">합계 :
+                    		<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice }"/></span>
                     	<span>[포인트]</span>
-                    	<span id="totalPoint">적립 예정 : pt</span>
+                    	<span id="totalPoint">적립 예정 : 
+                    		<fmt:formatNumber type="number" value="${letterPoint + totalOptionPoint }"/>pt</span>
                     </td>
                 </tr>
                 </tbody>
@@ -103,29 +217,31 @@
                         <th>배송지 선택</th>
                         <td>
                             <div class="address">
-                                <input type="radio">
-                                <label>회원 정보와 동일</label>&nbsp;
-                                <input type="radio">
-                                <label>새로운 배송지</label>&nbsp;&nbsp;
+                            	
+                                <input type="radio" name="addr" id="sameDestination">
+                                <label for ="sameDestination">회원 정보와 동일</label>&nbsp;
+                                <input type="radio" name="addr" id="newDestination">
+                                <label for ="newDestination">새로운 배송지</label>&nbsp;&nbsp;
                                 <span>
                                     최근배송지 :
-                                    <input type="radio">
-                                    <label>우리집</label>&nbsp;
-                                    <input type="radio">
+                                    <span id="latestAddr">
+	                                    <input type="radio">
+	                                    <label>우리집</label>&nbsp;
+	                                    <input type="radio">
                                     <label>친구집</label>
+                                    </span>
                                 </span>
                             </div>
                             
                         </td>
                     </tr>
                     <tr>
-                        <th>받으시는 분 <img src="./image/important.JPG" style="width: 10px;"></th>
-                        <td><input type="text"></td>
+                        <th>받으시는 분</th>
+                        <td><input type="text" name="receiver"></td>
                     </tr>
                     <tr>
-                        <th>주소 <img src="./image/important.JPG" style="width: 10px;"></th>
+                        <th>주소</th>
                         <td>
-                            <input type="text" disabled="disabled">
                             <input name="post_code" type="text">
 							<input id="userPostcode" class="button" type="button" value="우편번호"><br><br>
 							<input name="default_addr" type="text"> 기본 주소<br><br>
@@ -133,28 +249,38 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>휴대전화 <img src="./image/important.JPG" style="width: 10px;"></th>
-                        <td><input type="text">&nbsp;-<input type="text">&nbsp;-<input type="text">&nbsp;</td>
+                        <th>휴대전화</th>
+                        <td>
+                        	<input type="text" value="010">&nbsp;-<input type="text" id="frontNum">&nbsp;-<input type="text" id="backNum">&nbsp;
+                        	<input type="hidden" id="phone" name="phone">
+                       	</td>
                     </tr>
                     <tr>
-                        <th>이메일 <img src="./image/important.JPG" style="width: 10px;"></th>
+                        <th>이메일</th>
                         <td>
-                            <input type="text">&nbsp;@&nbsp;<input type="text">&nbsp;
-                            <select>
-                                <option value="이메일 선택">-이메일 선택-</option>
-                                <option value="naver.com">naver.com</option>
-                                <option value="nate.com">nate.com</option>
-                            </select>
+                            <input id="emailId" type="text" required="required">
+							<span>@</span>
+							<select id="emailDomain">
+								<option value="이메일 선택">이메일 선택</option>
+								<option value="naver.com">naver.com</option>
+								<option value="daum.net">daum.net</option>
+								<option value="gmail.com">gmail.com</option>
+								<option value="nate.com">nate.com</option>
+								<option value="hanmail.net">hanmail.net</option>
+								<option value="outlook.com">outlook.com</option>
+								<option value="yahoo.com">yahoo.com</option>
+							</select>
+							<input type="hidden" id="email" name="email">
                         </td>
                     </tr>
                     <tr>
                             <th>배송메세지</th>
-                            <td><textarea></textarea></td>
+                            <td><textarea name="delivery_message"></textarea></td>
                     </tr>
                     <tr>
                         <th>배송일</th>
                         <td>
-                            <input type="date"><br>
+                            <input type="date" name="delivery_date"><br>
                             <span>* 배송일 선택시 예약배송으로 취급되어 해당 일자에 배송됩니다.</span>
                         </td>
                 </tr>
@@ -185,7 +311,7 @@
                     <tr>
                         <th>포인트</th>
                         <td colspan="2">
-                            <p><input type="text">원(사용가능 포인트 : <span id="mypoint">pt</span>)</p>
+                            <p><input type="text">원(사용가능 포인트 : ${myPoint }pt</span>)</p>
                             <ul>
                                 <li>포인트는 1포인트 이상일 때 결제가 가능합니다.</li>
                                 <li>최대 사용금액은 제한이 없습니다.</li>
