@@ -55,6 +55,16 @@ section>div {
 	column-gap: 30px;
 	row-gap: 30px;
 }
+.shopList{
+	overflow: scroll;
+    overflow-x: hidden;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 </style>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <script>
@@ -67,60 +77,38 @@ $(function(){
 		price = price.slice(0, price.length-1);
 		var shopList = $(".shopList");
 		shopList.append("<div class='selectedItem'><p class='selectedItem_name'>" + name + 
-				"</p><div class='selectedItem_setting'><span class='selectedItem_counter'><input type='button' value='-'></button><input type='number' min='1' max='99'><input type='button' value='+'></span><span class='selectedItem_price'>" + price + "원</span><input class='deleteItem' type='button' value='X'><input type='hidden' value='"+name+"' name='optionDtoList["+ count + "].option_name'><input type='hidden' value='"+price+"' name='optionDtoList["+ count + "].option_price'><input type='hidden' value='"+ img +"' name='optionDtoList["+ count + "].option_img'></div>");
+				"</p><div class='selectedItem_setting'><span><input type='button' id='minus' value='-' disabled='disabled'><input type='number' value='1' min='1' max='99'><input type='button' id='plus' value='+'></span><span>" + price + "</span>원<input type='hidden' value='" + price + "'><input class='deleteItem' type='button' value='X'><input type='hidden' value='"+name+"' name='optionDtoList["+ count + "].option_name'><input type='hidden' value='"+price+"' name='optionDtoList["+ count + "].option_price'><input type='hidden' value='"+ img +"' name='optionDtoList["+ count + "].option_img'></div>");
 		count ++;
 	});
 	
+	var num = 0;
+	var price = 0;
 	
-	$(".deleteItem").on("click", function(){
-		alert("test");
-		$(this).parent("div").parent("div").remove();
-		/* if (length==1){
-	         $('.btn-del').css('display','none')
-	     }else{
-	         $('.btn-del').css('display','inline-block')
-	     }
-		alert('test'); */
-	});
-	
-	/* $("#shopCart").on("click", function(){
-		var nameList = new Array();
-		var priceList = new Array();
+	// 수량 버튼 : -
+ 	$(document).on("click","#minus",function(event){
+ 		num = parseInt($(this).next().val()) - 1;
+		price = parseInt($(this).parent("span").next().next().val());
+		price = price * num;
+		$(this).next().val(num);
+		$(this).parent("span").next().text(price);
 		
-		$(".selectedItem").each(function(i){
-			var name = $(this).children('p').html();
-			var price = $(this).children('div').children('span').next().html();
-			
-			nameList.push(name);
-			priceList.push(price);
-		})
-			
-	}); */
+				
+    });
 	
-	$("#userPostcode").click(function(){
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementsByName('post_code')[0].value = data.zonecode;
-                document.getElementsByName("default_addr")[0].value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementsByName("default_addr")[0].focus();
-            }
-        }).open();
-	});
+ 	// 수량 버튼 : +
+ 	$(document).on("click","#plus",function(event){
+		$(this).prev().prev().attr("disabled", false);
+		num = parseInt($(this).prev().val()) + 1;
+		price = parseInt($(this).parent("span").next().next().val());
+		price = price * num;
+		$(this).prev().val(num);
+		$(this).parent("span").next().text(price);
+    });
+	
+	// X 버튼 클릭 시 선택한 옵션 삭제
+ 	$(document).on("click",".deleteItem",function(event){
+		$(this).parent("div").parent("div").remove();
+    });
 	
 	$("#buy").click(function(){
 		if(count==0){

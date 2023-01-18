@@ -9,7 +9,7 @@ import com.boot.jdbc.model.dto.PointDto;
 
 @Mapper
 public interface PointMapper {
-	@Select(" SELECT POINT_ALL FROM POINT ")
+	@Select(" SELECT POINT_ALL FROM POINT WHERE USER_ID=#{user_id}")
 	int pointAll(String user_id);
 
 	@Select(" SELECT * FROM POINT ORDER BY ORDER_NO DESC ")
