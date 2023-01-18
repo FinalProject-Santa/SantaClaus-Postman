@@ -7,13 +7,13 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.boot.jdbc.model.dto.LetterDto;
-import com.boot.jdbc.model.dto.OrderDto;
+import com.boot.jdbc.model.dto.OrderInfoDto;
 
 
 @Mapper
-public interface OrderMapper {
+public interface OrderInfoMapper {
 	@Select(" SELECT * FROM MYORDER ORDER BY ORDER_NO DESC ")
-	List<OrderDto> orderList();
+	List<OrderInfoDto> orderList();
 
 //	@Select(" SELECT * FROM MYORDER WHERE ORDER_DATE BETWEEN #{ORDER_DATE ")
 //	List<OrderDto> selectOrder();

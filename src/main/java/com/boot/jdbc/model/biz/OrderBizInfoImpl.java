@@ -5,18 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.boot.jdbc.model.dao.OrderMapper;
+import com.boot.jdbc.model.dao.OrderInfoMapper;
 import com.boot.jdbc.model.dto.LetterDto;
-import com.boot.jdbc.model.dto.OrderDto;
+import com.boot.jdbc.model.dto.OrderInfoDto;
 
 @Service
-public class OrderBizImpl implements OrderBiz{
+public class OrderBizInfoImpl implements OrderInfoBiz{
 
 	@Autowired
-	private OrderMapper orderMapper;
+	private OrderInfoMapper orderMapper;
 	
 	@Override
-	public List<OrderDto> orderList() {
+	public List<OrderInfoDto> orderList() {
 		return orderMapper.orderList();
 	}
 

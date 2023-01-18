@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.boot.jdbc.model.biz.OrderBiz;
+import com.boot.jdbc.model.biz.OrderInfoBiz;
 import com.boot.jdbc.model.biz.PointBiz;
 import com.boot.jdbc.model.dto.LetterDto;
 import com.boot.jdbc.model.dto.MemberDto;
@@ -24,7 +24,7 @@ import com.boot.jdbc.model.dto.OptionDto;
 public class OrderController {
 	
 	@Autowired
-	private OrderBiz orderBiz;
+	private OrderInfoBiz orderBiz;
 	@Autowired
 	private PointBiz pointBiz;
 	

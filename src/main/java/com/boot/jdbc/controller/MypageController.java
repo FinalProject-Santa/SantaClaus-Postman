@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.boot.jdbc.model.biz.MemberBiz;
-import com.boot.jdbc.model.biz.OrderBiz;
+import com.boot.jdbc.model.biz.OrderInfoBiz;
 import com.boot.jdbc.model.biz.PointBiz;
 
 @Controller
@@ -33,7 +33,7 @@ public class MypageController {
 	
 	//주문 조회 페이지
 	@Autowired
-	private OrderBiz orderBiz;
+	private OrderInfoBiz orderBiz;
 	
 	@GetMapping("/order")
 	public String order(Model model) {
