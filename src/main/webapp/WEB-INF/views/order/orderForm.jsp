@@ -41,9 +41,53 @@
 		
 		// 옵션 상품 삭제
 		$("#deleteOption").click(function() {
-			$( "input[name='chkBox']:checked" ).each (function (){
+			// toLocaleString : 세자리마다 콤마
+			var totalPrice = 0;
+			var totalPoint = 0;
+			var price = 0;
+			var point = 0;
+			var count = $('input[type="checkbox"]').length;
+			
+			$("input[name='chkBox']:checked").each (function (i){
+				if(i==0){
+					totalPrice = parseInt($("#totalPirce > input").val());
+					totalPoint = parseInt($("#totalPoint > input").val());
+					$("#totalPirce").children().remove();
+					$("#totalPoint").children().remove();
+				}else{
+					totalPrice = parseInt($("#totalPirce").html());
+					totalPoint = parseInt($("#totalPoint").html());
+				}
+				price = parseInt($(this).parent("td").next().next().next().next().children("input").val());
+				point = parseInt($(this).parent("td").next().next().next().next().next().next().children("input").val());
+				totalPrice = totalPrice - price;
+				totalPoint = totalPoint - point;
+				
+				$("#totalPirce").html(totalPrice);
+				$("#totalPoint").html(totalPoint);
+				
 				$(this).parent("td").parent("tr").remove();
 			});
+			
+			// 결제 금액의 총 주문금액, 배송비, 총 결제금액 표기
+			if(totalPrice > 20000 ){
+				alert(totalPrice);
+				$("#paymentInfo_totalPrice").html(totalPrice.toLocaleString()  + '원');
+				$("#paymentInfo_totalPricePlusDeliv").html(totalPrice.toLocaleString()  + '원');
+				$("#paymentInfo_deliveryCharge").html("0원");
+				
+				$("#deliveryCharge").html("배송비 : 무료");
+			}else{
+				$("#paymentInfo_totalPrice").html(totalPrice.toLocaleString() + '원');
+				$("#paymentInfo_totalPricePlusDeliv").html((totalPrice + 2500).toLocaleString() + '원');
+				$("#paymentInfo_deliveryCharge").html("2,500원");
+				
+				$("#deliveryCharge").html("배송비 : 2,500원");
+			}
+			
+			$("#totalPirce").html(totalPrice.toLocaleString() + '원');
+			$("#totalPoint").html(totalPoint.toLocaleString() + 'pt');
+			
 		});
 		
 		// 새로운 배송지 : 초기화
@@ -112,7 +156,6 @@
 				$("#email").val(emailId + '@' + emailDomain);
 			}
 		};
-		
 	})
 </script>
 </head>
@@ -143,7 +186,7 @@
                     <th>포인트</th>
                 </tr>
                 <tr>
-                    <td><input type="checkbox" name="chkBox"></td>
+                    <td><input type="checkbox" disabled="disabled"></td>
                     <td>엽서</td>
                     <td><img src="${letterDto.letter_img }"></td>
                     <td>
@@ -157,7 +200,7 @@
                         </p>
                     </td>
                     <td>
-                 		<fmt:formatNumber type="number" value="${letterDto.letter_price }"/>
+                 		<fmt:formatNumber type="number" value="${letterDto.letter_price }"/>원
                     </td>
                     <td>1</td>
                     <td>
@@ -180,13 +223,15 @@
 		                        </p>
 		                    </td>
 		                    <td>
-		                    	<fmt:formatNumber type="number" value="${dto.option_price }"/>
+		                    	<input type='hidden' value="${dto.option_price }"/>
+		                    	<fmt:formatNumber type="number" value="${dto.option_price }"/>원
 		                    </td>
-		                    <td>1</td>
+		                    <td>${dto.option_quantity}</td>
 		                    <td>
 		                    	<fmt:parseNumber var="point" value="${dto.option_price * 0.01 }" integerOnly="true" />
 				                <c:set var="totalOptionPoint" value="${totalOptionPoint + point}"/>
 				                <fmt:formatNumber type="number" value="${point }"/>pt
+		                    	<input type='hidden' value="${point }"/>
 							</td>
 		                </tr>
                		</c:if>
@@ -197,11 +242,27 @@
                 	</td>
                     <td colspan="7">
                     	<span id="delivery">[기본 배송]</span>
-                    	<span id="totalPirce">합계 :
-                    		<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice }"/></span>
+               			<input type='hidden' value="${letterDto.letter_price + totalOptionPrice }"/>
+               			<span id="deliveryCharge">
+               				<c:choose>
+	                			<c:when test="${letterDto.letter_price + totalOptionPrice ge 20000}">
+	                				배송비 : 무료
+	                			</c:when>
+	                			<c:otherwise>
+	                				배송비 : 2,500원
+	                			</c:otherwise>
+               				</c:choose>
+               			</span>
+                    	[합계] : <span id="totalPirce">
+                    		<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice }"/>원
+                    		<input type='hidden' value="${letterDto.letter_price + totalOptionPrice }"/>
+                    	</span>
+                    		
                     	<span>[포인트]</span>
-                    	<span id="totalPoint">적립 예정 : 
-                    		<fmt:formatNumber type="number" value="${letterPoint + totalOptionPoint }"/>pt</span>
+                    		적립 예정 : <span id="totalPoint"> 
+                    		<fmt:formatNumber type="number" value="${letterPoint + totalOptionPoint }"/>pt
+                    		<input type='hidden' value="${letterPoint + totalOptionPoint }"/>
+                    	</span>
                     </td>
                 </tr>
                 </tbody>
@@ -304,14 +365,34 @@
                         <th>총 결제 금액</th>
                     </tr>
                     <tr>
-                        <td>30,000원</td>
-                        <td>0원</td>
-                        <td>30,000원</td>
+                        <td id="paymentInfo_totalPrice">
+							<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice }"/>원
+						</td>
+                        <td id="paymentInfo_deliveryCharge">
+                        	<c:choose>
+	                			<c:when test="${letterDto.letter_price + totalOptionPrice ge 20000}">
+	                				0원
+	                			</c:when>
+	                			<c:otherwise>
+	                				2,500원
+	                			</c:otherwise>
+               				</c:choose>
+						</td>
+                        <td id="paymentInfo_totalPricePlusDeliv">
+							<c:choose>
+	                			<c:when test="${letterDto.letter_price + totalOptionPrice ge 20000}">
+									<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice }"/>원
+	                			</c:when>
+	                			<c:otherwise>
+									<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice + 2500}"/>원
+	                			</c:otherwise>
+               				</c:choose>
+						</td>
                     </tr>
                     <tr>
                         <th>포인트</th>
                         <td colspan="2">
-                            <p><input type="text">원(사용가능 포인트 : ${myPoint }pt</span>)</p>
+                            <p><input type="text">원(사용가능 포인트 : ${myPoint }pt)</p>
                             <ul>
                                 <li>포인트는 1포인트 이상일 때 결제가 가능합니다.</li>
                                 <li>최대 사용금액은 제한이 없습니다.</li>

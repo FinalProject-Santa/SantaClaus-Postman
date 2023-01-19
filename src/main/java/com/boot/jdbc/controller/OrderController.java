@@ -31,19 +31,19 @@ public class OrderController {
 	@PostMapping("/orderForm")
 	public String test(Model model, LetterDto letterDto, OptionDto optionDtoList, HttpServletRequest request) {
 		List<OptionDto> dtoList = new ArrayList<OptionDto>();
-		for(int i=0; i<optionDtoList.getOptionDtoList().size(); i++) {
-			dtoList.add(optionDtoList.getOptionDtoList().get(i));
-		}
 		
+		// 옵션 상품을 구매할 경우
+		if(optionDtoList.getOptionDtoList() != null) {
+			for(int i=0; i<optionDtoList.getOptionDtoList().size(); i++) {
+				dtoList.add(optionDtoList.getOptionDtoList().get(i));
+			}
+			model.addAttribute("dtoList", dtoList);
+		}
 		HttpSession session = request.getSession();
 		String user_id = ((MemberDto)session.getAttribute("member")).getUser_id();
-		System.out.println("아이디 : " + user_id);
 		int myPoint = pointBiz.pointAll(user_id);
-		System.out.println("포인트 : " +myPoint);
 		model.addAttribute("myPoint", myPoint);
 		model.addAttribute("letterDto", letterDto);
-		model.addAttribute("dtoList", dtoList);
-		
 		return "/order/orderForm";
 	}
 }
