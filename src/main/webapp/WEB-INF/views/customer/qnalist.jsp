@@ -47,6 +47,16 @@ i{
 					<th>작성일</th>
 				</tr>
 
+<!-- 비밀글 숨김... -->
+			<c:if test="${dto.secret == true}">
+       		
+                                           
+			</c:if>
+
+
+
+
+<!--여기는 리스트뿌리기 -->
 			<c:choose>		
 				<c:when test="${empty qnalist}">
 					<tr>

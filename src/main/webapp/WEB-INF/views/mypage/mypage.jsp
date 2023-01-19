@@ -26,7 +26,7 @@
             <div class="section2"><p><img src="/resources/image/mypage/cart.png"
              onclick="location.href='/mypage/cart'"><a href="/mypage/cart"> 장바구니</a></p></div>
             <div class="section3"><p><img src="/resources/image/mypage/kids.jpg"
-             onclick="location.href='/mypage/kids'"><a href="/mypage/"> 키즈 모드</a></p></div>
+             onclick="location.href='/mypage/kids'"><a href="/kidsaccount/main"> 키즈 모드</a></p></div>
             <div class="section4"><p><img src="/resources/image/mypage/coin.png"
              onclick="location.href='/mypage/point'"><a href="/mypage/point"> 마이 포인트</a></p></div>
         </section>
