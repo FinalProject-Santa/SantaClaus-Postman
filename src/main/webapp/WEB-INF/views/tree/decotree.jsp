@@ -27,18 +27,23 @@
 <title></title>
 <body>
 <div id="or-container">
-   <img src='/resources/image/treeimg/snowman.png' alt="" class="ornament" draggable="true" data-key="o1" id="o1"><input type="hidden" class="or" name="o1" value="1">
-   <img src='/resources/image/treeimg/star.png' alt="" class="ornament" draggable="true" data-key="o2" id="o2"><input type="hidden" class="or" name="o2" value="2">
-   <img src='/resources/image/treeimg/wreath.png' alt="" class="ornament" draggable="true" data-key="o3" id="o3"><input type="hidden" class="or" name="o3" value="3">
+   <img src='/resources/image/treeimg/snowman.png' alt="" class="ornament" draggable="true" data-key="o1"><input type="hidden" class="img" name="or_name" value="o1">
+   <img src='/resources/image/treeimg/star.png' alt="" class="ornament" draggable="true" data-key="o2"><input type="hidden" class="img" name="or_name" value="o2">
+   <img src='/resources/image/treeimg/wreath.png' alt="" class="ornament" draggable="true" data-key="o3"><input type="hidden" class="img" name="or_name" value="o3">
 </div>
   
-
+<form action="/tree/treeOrder" method='post'>
 <div id="tree-container">
   <div id="tree-or-container">
-    <img src='/resources/image/treeimg/cartoon-tree.png' alt="" class="tree" onclick="makeTree();">
+    <img src='/resources/image/treeimg/cartoon-tree.png' alt="" class="tree">
   </div>
 </div>
 
+<div>
+	<input type="button" id="" value="다시 꾸미기">
+	<input type="submit" id="" value="구매">
+</div>
+</form>
 
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
  <script>
@@ -87,9 +92,11 @@ const posY = event.offsetX;
 
    //const ornaId = event.dataTransfer.getData("text/plain");
    const ornaElement = document.querySelector(`#or-container .ornament[data-key=\${id}]`);
+   const imgElement = document.querySelector(`#or-container .ornament[data-key=\${id}] + input`);
 	
 
    const clonedOrnaElement = ornaElement.cloneNode();
+   const clonedImgElement = imgElement.cloneNode();
 
    console.log(relativeX);
    console.log(relativeY);
@@ -99,16 +106,12 @@ const posY = event.offsetX;
 
    
    document.querySelector("#tree-container #tree-or-container").appendChild(clonedOrnaElement);
-
-
+   document.querySelector("#tree-container #tree-or-container").appendChild(clonedImgElement);
+// ornaElement.remove();
    console.log(clonedOrnaElement);
  });
 
-function makeTree(){
-	var orId = $("div div .ornament").attr('id');
-	console.log(orId);
-};
- 
+
  </script>
  
 </body>
