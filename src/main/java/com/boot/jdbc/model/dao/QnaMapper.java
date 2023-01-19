@@ -18,10 +18,6 @@ public interface QnaMapper {
 	@Options(useGeneratedKeys = true, keyProperty = "qna_no")
 	int insert(QnaDto dto);
 	
-//	@Select("SELECT * FROM QNA ORDER BY QNA_NO DESC")
-//	List<QnaDto> selectList();
-
-	
 	@Select("WITH RECURSIVE CTE AS\r\n"
 			+ "(\r\n"
 			+ "SELECT QNA_NO, USER_ID, QNA_TYPE, QNA_TITLE, QNA_DATE,QNA_CONTENT,ORIGIN_NO,GROUPORD,DEP,SECRET,\r\n"
