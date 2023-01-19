@@ -353,7 +353,7 @@ input.nickname {
                                  </div>
                                  <div class="form-group">
                                     <div class="nickname-box">
-                                        <input type="text" class="nickname" placeholder="닉네임을 입력해주세요" required minlength="2" maxlength="8">
+                                        <input type="text" name="kids_nickname" class="nickname" placeholder="닉네임을 입력해주세요" required="required" minlength="2" maxlength="8">
                                         <br>
                                         <small>2글자 이상 8글자 이하</small>
                                        </div>
@@ -383,8 +383,7 @@ input.nickname {
                                     <div class="uld-bt-box">
                                     <label for="file2" class="upload-btn">
                                         <form action="/kidsaccount/AddProfile" method="post">
-                                        <input id="file2" type="file" name="santa-mail">
-                                        </form>
+                                        <input id="file2" type="file" name="santamail">
                                         <span>편지 업로드</span>
                                     
                                         </label>
@@ -394,7 +393,8 @@ input.nickname {
 
                         <div class="submitbt"><br>
                             <input type="submit" value="등록">
-                            </div>
+                              </form>
+                       </div>
                 </div>
             </div>
         </section>

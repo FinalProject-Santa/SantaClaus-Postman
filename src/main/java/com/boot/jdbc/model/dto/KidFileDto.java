@@ -6,15 +6,17 @@ public class KidFileDto {
 	private String file_oname;
 	private String file_name;
 	private int kids_no;
+	private int file_type;
 	
 	public KidFileDto() {}
-	public KidFileDto(int file_id, String file_path, String file_oname, String file_name, int kids_no) {
+	public KidFileDto(int file_id, String file_path, String file_oname, String file_name, int kids_no, int file_type) {
 		super();
 		this.file_id = file_id;
 		this.file_path = file_path;
 		this.file_oname = file_oname;
 		this.file_name = file_name;
 		this.kids_no = kids_no;
+		this.file_type = file_type;
 	}
 	public int getFile_id() {
 		return file_id;
@@ -45,6 +47,13 @@ public class KidFileDto {
 	}
 	public void setKids_no(int kids_no) {
 		this.kids_no = kids_no;
+	}
+	
+	public int getFile_type() {
+		return file_type;
+	}
+	public void setFile_type(int file_type) {
+		this.file_type = file_type;
 	}
 	
 	

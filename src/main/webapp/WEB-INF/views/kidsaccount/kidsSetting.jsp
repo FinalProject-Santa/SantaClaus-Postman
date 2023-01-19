@@ -104,8 +104,8 @@ p{
         <h1>키즈계정</h1> 
         <hr>
         <c:choose>
-		      	<c:when test="${sessionScope.res != null }">
-		      		<p class="login__text"><span>${res.user_id }님</span>의 키즈 계정 입니다.</p>
+		      	<c:when test="${name != null }">
+		      		<p class="login_text"><span>${name }님</span>의 키즈 계정 입니다.</p>
 		      	</c:when>
 	      	</c:choose>
          
@@ -114,43 +114,108 @@ p{
        <div class="row">
            <div class="card">
                 <div class="inner-card">
-                    <div class="kid-img">
-                    <!-- c태그 수정중!!!! -->
-                   		 <c:choose>
-                    	   <c:when test="${empty user.kids_no}">
-                        <img src="/resources/image/kids-account/user-account.png" class="img-box" alt="">
-                    </div>
+                   		 
+                   		<c:choose>
+                    
+                    	   <c:when test="${empty list[0] }">  	 
+                    
+                    	<div class="kid-img">
+            
+                       		 <img src="/resources/image/kids-account/user-account.png" class="img-box" alt="프로필 사진">
+                    	</div>
                         <div class="content">
                             <span><a href="form" class="nick">계정 추가하기</a></span>
                             <p class="message">슬롯 1</p>                    
+                       </div>
+                          
                            </c:when>
-                		</c:choose>    	
-                     </div>
+                           
+                           
+                           <c:when test="${!empty list[0]}">
+                          
+                           
+                           	<div class="kid-img">            
+                       	<img src="/resources/files/${list[0].kids_thumbnail}" class="img-box" alt="프로필 사진">
+                    	
+                    	</div>
+                        <div class="content">
+                            <span><a href="form" class="nick">${list[0].kids_nickname}</a></span>
+                            <p class="message">상태메세지</p>                    
+                       </div>
+                           </c:when>
+                		 </c:choose>     	
                  </div><!--end inner-card-->
             </div><!--end card-->
         
             <div class="card">
                 <div class="inner-card">
-                    <div class="kid-img">
-                        <img src="/resources/image/kids-account/user-account.png" class="img-box" alt="">
-                    </div>
+                
+                    	 
+                   		<c:choose>
+                    
+                    	   <c:when test="${empty list[1] }">  	 
+                    
+                    	<div class="kid-img">
+            
+                       		 <img src="/resources/image/kids-account/user-account.png" class="img-box" alt="프로필 사진">
+                    	
+                    	</div>
                         <div class="content">
                             <span><a href="form" class="nick">계정 추가하기</a></span>
-                            <p class="message">슬롯 2</p> 
-               		   </div>
+                            <p class="message">슬롯 2</p>                    
+                       </div>
+                          
+                           </c:when>
+                           
+                          
+                           <c:when test="${!empty list[1]}">
+                          
+                           
+                           	<div class="kid-img"> 
+                           	     
+                        	<img src="/resources/files/${list[1].kids_thumbnail}" class="img-box" alt="프로필 사진">
+                    
+                    	</div>
+                        <div class="content">
+                            <span><a href="form" class="nick">${list[1].kids_nickname}</a></span>
+                            <p class="message">상태메세지</p>                    
+                       </div>
+                           </c:when>
+                		 </c:choose>     	
                 </div><!--end inner-card-->
             </div><!--end card-->
     
             <div class="card">
                 <div class="inner-card">
-                     <div class="kid-img">
-                         <img src="/resources/image/kids-account/user-account.png" class="img-box" alt="">
-                     </div>
+                  	 
+                   		<c:choose>
+                    
+                    	   <c:when test="${empty list[2] }">  	 
+                    
+                    	<div class="kid-img">
+            					
+                       		 <img src="/resources/image/kids-account/user-account.png" class="img-box" alt="프로필 사진">
+                    	</div>
                         <div class="content">
                             <span><a href="form" class="nick">계정 추가하기</a></span>
-                            <p class="message">슬롯 3</p>
-                		</div>
-                		
+                            <p class="message">슬롯 3</p>                    
+                       </div>
+                          
+                           </c:when>
+                           
+                           
+                           <c:when test="${!empty list[2]}">
+                          
+                           
+                           	<div class="kid-img">            
+                         	<img src="/resources/files/${list[2].kids_thumbnail}" class="img-box" alt="프로필 사진">
+                    	</div>
+                        <div class="content">
+                            <span><a href="form" class="nick">${list[2].kids_nickname}</a></span>
+                            <p class="message">상태메세지</p>                    
+                       </div>
+                           </c:when>
+                		 </c:choose>     	
                 </div><!--inner-card-->
             </div><!--card-->
 
