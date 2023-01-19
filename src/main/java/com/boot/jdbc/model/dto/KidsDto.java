@@ -59,6 +59,14 @@ public class KidsDto {
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "KidsDto [kids_no=" + kids_no + ", kids_point=" + kids_point + ", kids_nickname=" + kids_nickname
+				+ ", kids_thumbnail=" + kids_thumbnail + ", kids_letter_img=" + kids_letter_img + ", user_id=" + user_id
+				+ "]";
+	}
+	
+	
 	
 	
 }
