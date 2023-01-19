@@ -19,8 +19,7 @@ public class KidsBizImpl implements KidsBiz {
 	
 	@Override
 	public List<KidsDto> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return kidsmapper.allKids();
 	}
 
 	@Override
