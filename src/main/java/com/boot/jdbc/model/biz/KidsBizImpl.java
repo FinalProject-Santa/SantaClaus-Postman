@@ -9,6 +9,7 @@ import com.boot.jdbc.model.dao.KidsMapper;
 import com.boot.jdbc.model.dto.KidFileDto;
 import com.boot.jdbc.model.dto.KidsDto;
 import com.boot.jdbc.model.dto.MemberDto;
+import com.boot.jdbc.model.dto.StickerDto;
 
 
 @Service
@@ -55,5 +56,11 @@ public class KidsBizImpl implements KidsBiz {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public List<StickerDto> sticker() {
+		return kidsmapper.sticker();
+	}
+
 
 }

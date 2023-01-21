@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.boot.jdbc.model.dto.KidFileDto;
 import com.boot.jdbc.model.dto.KidsDto;
+import com.boot.jdbc.model.dto.StickerDto;
 
 @Mapper
 public interface KidsMapper {
@@ -28,6 +29,9 @@ public interface KidsMapper {
 
 	@Select("SELECT * FROM KIDS_SETTING")
 	List<KidsDto> allKids();
+	
+	@Select("SELECT * FROM STICKER")
+	List<StickerDto> sticker();
 
 
 }
