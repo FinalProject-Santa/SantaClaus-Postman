@@ -72,7 +72,7 @@ public class ReviewController {
 		reviewbiz.reviewCountUpdate(review_no);
 
 		
-		
+		System.out.println("test:" + reviewbiz.reviewDetail(124));
 		model.addAttribute("reviewdetail", reviewbiz.reviewDetail(review_no));
 		model.addAttribute("files", reviewbiz.rfileDetail(review_no));
 		
