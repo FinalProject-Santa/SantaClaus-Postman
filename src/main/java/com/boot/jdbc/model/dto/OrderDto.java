@@ -2,12 +2,13 @@ package com.boot.jdbc.model.dto;
 
 import java.util.Date;
 
-public class PaymentDto {
+public class OrderDto {
 	private int order_no;
 	private String user_id;
 	private int letter_no;
 	private int option_no;
 	private Date order_date;
+	private int total_price;
 	private String receiver;
 	private String email;
 	private String post_code;
@@ -18,12 +19,12 @@ public class PaymentDto {
 	private Date delivery_date;
 	private int point;
 	
-	public PaymentDto() {
+	public OrderDto() {
 		super();
 	}
 
-	public PaymentDto(int order_no, String user_id, int letter_no, int option_no, Date order_date, String receiver,
-			String email, String post_code, String default_addr, String detail_addr, String phone,
+	public OrderDto(int order_no, String user_id, int letter_no, int option_no, Date order_date, int total_price,
+			String receiver, String email, String post_code, String default_addr, String detail_addr, String phone,
 			String delivery_message, Date delivery_date, int point) {
 		super();
 		this.order_no = order_no;
@@ -31,6 +32,7 @@ public class PaymentDto {
 		this.letter_no = letter_no;
 		this.option_no = option_no;
 		this.order_date = order_date;
+		this.total_price = total_price;
 		this.receiver = receiver;
 		this.email = email;
 		this.post_code = post_code;
@@ -80,6 +82,14 @@ public class PaymentDto {
 
 	public void setOrder_date(Date order_date) {
 		this.order_date = order_date;
+	}
+
+	public int getTotal_price() {
+		return total_price;
+	}
+
+	public void setTotal_price(int total_price) {
+		this.total_price = total_price;
 	}
 
 	public String getReceiver() {
