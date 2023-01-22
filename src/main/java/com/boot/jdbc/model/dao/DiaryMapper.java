@@ -36,14 +36,14 @@ public interface DiaryMapper {
 	@Select("SELECT WRITE_DATE FROM DIARY WHERE USER_ID=#{userId}")
 	ArrayList<String> selectStickerDate(String userId);
 	
-	@Select("SELECT COUNT(*) FROM DIARY WHERE USER_ID=#{userId}")
-	int selectDiary(String userId);
+	@Select("SELECT COUNT(*) FROM DIARY WHERE KIDS_NO=#{kidsNo}")
+	int selectDiary(String kidsNo);
 	
-	@Delete("DELETE FROM STICKER WHERE USER_ID=#{userId}")
-	int deleteSticker(String userId);
+	@Delete("DELETE FROM STICKER WHERE KIDS_NO=#{kidsNo}")
+	int deleteSticker(String kidsNo);
 	
-	@Insert("INSERT INTO STICKER VALUES(#{userId},#{stickerCount})")
-	int insertSticker(String userId, int stickerCount);
+	@Insert("INSERT INTO STICKER VALUES(#{kidsNo},#{stickerCount})")
+	int insertSticker(String kidsNo, int stickerCount);
 	
 	@Update("UPDATE KIDS_SETTING SET KIDS_POINT=KIDS_POINT+5 WHERE KIDS_NO=${kidsNO}")
 	int insertPoint(int kidsNO);

@@ -1,0 +1,203 @@
+@charset "UTF-8";
+html{
+    margin: 0;
+}
+body {
+    height: auto;
+    margin: 0;
+    font-family: 'Nanum Myeongjo', serif;
+}
+.header{
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    background-color: white;
+    z-index: 1;
+    border-bottom: solid 0.5px lightgray;
+}
+#logo{
+    position: relative;
+    font-weight: bold;
+    font-size: 40px;
+    left: 480px;
+    top: 12px;
+    cursor: pointer;
+}
+#sidemenu{
+    position: relative;
+    list-style: none;
+    float: right;
+    cursor: pointer;
+    right: 30px;
+    top: 14px;
+}
+#sidemenu li{
+    float: left;
+    margin-right: 20px;
+    font-size: 16px;
+}
+#menu{
+    position: relative;
+    float: left;
+    font-size: 16px;
+    cursor: pointer;
+    top: 30px;
+    left: 40px;
+    width: 150px;
+    height: 50px;
+}
+#menubox{
+    position: absolute;
+    top: 40.5px;
+    /* left: -40px; */
+    left: -265px;
+    width: 225px;
+    height: 749px;
+    background-color: white;
+    transition: left .3s;
+    /* display: none; */
+}
+#menubar{
+    position: fixed;
+    list-style: none;
+    cursor: pointer;
+}
+#menubar li{
+    position: relative;
+    font-size: 16px;
+    margin-bottom: 30px;
+    top: 40px;
+    left: 10px;
+}
+#menu:hover > #menubox{
+    left: -40px;
+}
+#body-wrapper {
+    min-height: 100px;
+    position: relative;
+    width: 100%;
+}
+#img_box{
+    position: relative;
+    left: 0px;
+    margin-top: 150px;
+}
+#img{
+    padding-left: 300px;
+    width: 370px;
+    height: 725px;
+}
+#about{
+    height: auto;
+    padding: auto;
+}
+#aboutmsg{
+    position: absolute;
+    top: 870px;
+}
+#message{
+    width: 300px;
+    text-align: center;
+    position: absolute;
+    left: 800px;
+    top: 180px;
+}
+#Help{
+    width: 350px;
+    text-align: center;
+    position: absolute;
+    left: 775px;
+    top: 430px;
+}
+#Insta{
+    width: 300px;
+    text-align: center;
+    position: absolute;
+    left: 800px;
+    top: 555px;
+}
+#title,#title2,#title3{
+    font-weight: bold;
+}
+#content,#content2,#content3{
+    line-height: 180%;
+}
+hr{
+    width: 330px;
+    position: absolute;
+    left: 787px;
+    top: 385px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+#letterbox{
+    margin-top: 150px;
+    margin-left: 50px;
+    width: 1300px;
+    height: 500px;
+    top: 1000px;
+    left: 55px;
+}
+#letter{
+    position: relative;
+    list-style: none;
+    margin: auto;
+}
+#letter li{
+    float: left;
+    margin-right: 15px;
+}
+#letter li img{
+    width: 300px;
+    height: 400px;
+}
+#letter div{
+    text-align: center;
+    font-size: 13px;
+    margin-top: 5px;
+}
+#lettermore{
+    position: relative;
+    width: 430px;
+    height: 700px;
+    left: 500px;
+    top: 50px;
+}
+#moreImg{
+    width: 430px;
+    height: 560px;
+}
+#moremsg{
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+}
+#more_btn{
+    width: 180px;
+    height: 30px;
+    font-family: 'Nanum Myeongjo', serif;
+    margin-top: 30px;
+    background-color: white;
+    border: 1px solid rgb(166, 166, 166);
+    cursor: pointer;
+}
+footer {
+    margin-top: 150px;
+    height: 120px;
+    font-size:12px;
+    line-height:20px;
+    margin-bottom: 30px;
+}
+#footer1{
+    position: absolute;
+    float: left;
+    left: 50px;
+}
+#footer2{
+    position: relative;
+    float: right;
+    text-align: right;
+    right: 50px;
+}

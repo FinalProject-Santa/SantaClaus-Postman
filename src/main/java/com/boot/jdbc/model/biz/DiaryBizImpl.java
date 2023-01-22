@@ -77,21 +77,21 @@ public class DiaryBizImpl implements DiaryBiz{
 	}
 
 	@Override
-	public int selectDiary(String userId) {
+	public int selectDiary(String kidsNo) {
 		
-		return diaryMapper.selectDiary(userId);
+		return diaryMapper.selectDiary(kidsNo);
 	}
 	
 	@Override
-	public int deleteSticker(String userId) {
+	public int deleteSticker(String kidsNo) {
 		
-		return diaryMapper.deleteSticker(userId);
+		return diaryMapper.deleteSticker(kidsNo);
 	}
 
 	@Override
-	public int insertSticker(String userId, int stickerCount) {
+	public int insertSticker(String kidsNo, int stickerCount) {
 		
-		return diaryMapper.insertSticker(userId, stickerCount);
+		return diaryMapper.insertSticker(kidsNo, stickerCount);
 	}
 
 	@Override

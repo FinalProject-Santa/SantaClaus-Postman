@@ -22,9 +22,9 @@ public interface DiaryBiz {
 	
 	//칭찬스티커
 	public ArrayList<String> selectStickerDate(String userId);
-	public int selectDiary(String userId);
-	public int deleteSticker(String userId);
-	public int insertSticker(String userId, int stickerCount);
+	public int selectDiary(String kidsNo);
+	public int deleteSticker(String kidsNo);
+	public int insertSticker(String kidsNo, int stickerCount);
 	
 	//포인트
 	public int insertPoint(int kidsNO);
