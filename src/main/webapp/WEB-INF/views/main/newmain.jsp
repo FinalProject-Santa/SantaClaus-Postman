@@ -6,32 +6,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<link rel="stylesheet" href="/resources/css/main/newmain.css">
+	<!-- font / font-family: 'Nanum Myeongjo', serif; -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
 </head>
 <body>
-<!-- header -->
-    <div class="header">
-        <span id="logo"><a href="/">Dear Santa</a></span>
-        <ul id="sidemenu">
-            <li>Login</li>
-            <li>Cart</li>
-        </ul>
-        <span id="menu">= Menu
-        <div id="menubox">
-                <ul id="menubar">
-                    <li>&nbsp;Letter</li>
-                    <li>&nbsp;Tree</li>
-                    <li>&nbsp;Review</li>
-                    <li>&nbsp;My Page</li>
-                    <br>
-                    <br>
-                    <li><a href="#aboutmsg" id="scroll_move">&nbsp;About</a></li>
-                </ul>
-            </div>
-        </span>
-    </div>
+	
+	<!-- header -->
+	<%@include file="../include/newheader.jsp" %>
 
     <!-- main Img -->
     <div id="body-wrapper">
@@ -94,22 +77,9 @@
         </div>
     </div>
 
-    <!-- footer -->
-    <footer>
-        <div id="footer1">
-            <b>(주)디어산타</b><br>
-            Team: 산타국 우체부<br>
-            221206, 서울특별시 산타구 우체동 12-25 2층<br><br>
-            Copyright © 2022 Dear Santa. All rights reserved.
-        </div>
-        <div id="footer2">
-            CONTACT<br><br>
-            T.02212061225 | am 10 ~ pm 5 , sat/sun/holiday off<br>
-            business mail _ dearsanta@gmail.com<br>
-            Instagram _ @dearsanta_official<br>
-        </div>
-    </footer>
-
+	<!-- footer -->
+	<%@include file="../include/newfooter.jsp" %>
+	
 </body>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script>

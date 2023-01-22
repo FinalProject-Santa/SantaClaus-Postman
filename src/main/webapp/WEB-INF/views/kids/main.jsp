@@ -1,46 +1,54 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Å°Áî¸ÞÀÎ</title>
-<link rel="stylesheet" href="/resources/css/kids/main.css">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<link rel="stylesheet" href="/resources/css/kids/main.css">
 </head>
 <body>
-	<p>¹«¾ùÀ» ÇÏ°í ³î±î¿ä?</p>
+
+	<!-- header -->
+	<%@include file="../include/kidsheader.jsp" %>
+	
+	<!-- main Img -->
+    <div id="body-wrapper">
+        <div>
+    <div class="main-fullwidth" style="background: url(&quot;/resources/image/kids/main/1.jpg&quot;)
+    center center / cover no-repeat; color: rgb(0, 0, 0); height: 749px;">
+    </div>
+        </div>
+    </div><!--bodywrapper-->
+
+    <!-- box -->
+    <p>ë¬´ì—‡ì„ í•˜ê³  ë†€ê¹Œìš”?</p>
+	
 	<form action="/kids/sticker" method="post" id="diaryForm">
+	<!-- ì„¸ì…˜ì²˜ë¦¬ -->
 	<input type="hidden" name="user_id" id="user" value="user01">
+	<input type="hidden" name="kids_no" id="kids" value=1>
+	
     <div class="flex_container">
-    <div class="kids_main" id="puzzle">
-        <img src="/resources/image/kids/img1.png" id="img1" onclick="location.href='/kids/puzzle'">
-        <div id="text1">
-            <b>ÆÛÁñ ¸ÂÃß±â</b><br>
-            <span>½Å³ª´Â ÆÛÁñ ¸ÂÃß±â</span>
-            </div>
+    <ul id="boximg">
+        <li><img src="/resources/image/kids/main/img1.png" id="img1" onclick="location.href='/kids/puzzle'">
+            <div id="minidiv"><b>ë¯¸ë‹ˆê²Œìž„</b><br>ìž¬ë°ŒëŠ” í¼ì¦ ë§žì¶”ê¸°ì™€<br>ê°™ì€ ê·¸ë¦¼ ì°¾ê¸°ë¥¼ í•´ë´ìš”</div></li>
+        <li><img src="/resources/image/kids/main/img2.png" id="img2" onclick="location.href='/kids/diary'">
+            <div><b>ê·¸ë¦¼ì¼ê¸°</b><br>ì˜¤ëŠ˜ ìžˆì—ˆë˜ ì¼ì„<br>ê·¸ë¦¼ìœ¼ë¡œ ê·¸ë ¤ë´ìš”</div></li>
+        <li><input type="image" src="/resources/image/kids/main/img3.png" id="img3">
+            <div><b>ì¹­ì°¬ ìŠ¤í‹°ì»¤</b><br>ë‚´ê°€ ëª¨ì€ ì¹­ì°¬ ìŠ¤í‹°ì»¤ë¥¼<br>í™•ì¸í•´ë´ìš”</div></li>
+        <li><img src="/resources/image/kids/main/img4.png" id="img4">
+            <div><b>ì‚°íƒ€ ìš°íŽ¸í•¨</b><br>ë‚´ íŽ¸ì§€ê°€ ì‚°íƒ€í• ì•„ë²„ì§€ê»˜<br>ì „í•´ ì¡Œì„ê¹Œìš”?</div></li>
+    </ul>
+    </div> <!-- flext container -->
+    </form> 
+
+    <div id="down">
+        <img src="/resources/image/kids/main/down.png" id="downImg">
     </div>
-    <div class="kids_main" id="draw">
-        <img src="/resources/image/kids/img2.png" id="img2" onclick="location.href='/kids/diary'">
-        <div id="text2">
-            <b>±×¸²ÀÏ±â</b><br>
-            <span>¿À´Ã ÀÖ¾ú´ø ÀÏÀ»<br>±×¸²À¸·Î ±×·ÁºÁ¿ä</span>
-            </div>
-    </div>
-    <div class="kids_main" id="sticker">
-        <input type="image" src="/resources/image/kids/img3.png" id="img3">
-        <div id="text3">
-            <b>ÄªÂù ½ºÆ¼Ä¿</b><br>
-            <span>³»°¡ ¸ðÀº ÄªÂù ½ºÆ¼Ä¿</span>
-            </div>
-    </div>
-    <div class="kids_main" id="mail">
-        <img src="/resources/image/kids/img4.png" id="img4">
-        <div id="text4">
-            <b>»êÅ¸ ÆíÁöÇÔ</b><br>
-            <span>³» ÆíÁö°¡ »êÅ¸ÇÒ¾Æ¹öÁö²²<br>ÀüÇØ Á³À»±î¿ä?</span>
-            </div>
-    </div>
-    </div>
-    </form>
+    
+    <!-- footer -->
+    <%@include file="../include/kidsfooter.jsp" %>
+    
 </body>
 </html>
