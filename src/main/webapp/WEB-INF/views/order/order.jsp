@@ -89,7 +89,7 @@
                 <td colspan="5" style="text-align: right;">
                 	상품구매금액 : <strong><fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice }"/>원</strong> +
                	 	<c:choose>
-             			<c:when test="${orderDto.total_price ge 20000}">
+             			<c:when test="${letterDto.letter_price + totalOptionPrice ge 20000}">
            					배송비 : <strong>무료</strong> = 합계 : <strong><fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice}"/>원</strong>
              			</c:when>
              			<c:otherwise>

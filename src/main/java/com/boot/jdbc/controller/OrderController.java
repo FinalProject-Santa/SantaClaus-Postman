@@ -23,8 +23,9 @@ import com.boot.jdbc.model.dto.OrderDto;
 @RequestMapping("/order")
 public class OrderController {
 	
-	@Autowired
-	private OrderBiz orderBiz;
+	/*
+	 * @Autowired private OrderBiz orderBiz;
+	 */
 	@Autowired
 	private PointBiz pointBiz;
 	
@@ -36,10 +37,10 @@ public class OrderController {
 		// 리스트 초기화
 		dtoList.clear();
 		
-		// 전역변수 letter_dto에 letterDto 데이터 넣기
+		// 주문완료 후 보여주기 위하여 전역변수 dto에 담기
 		letter_dto = letterDto;
 		
-		// 옵션 상품을 구매 할 경우
+		// 옵션 상품을 구매할 경우
 		if(optionDtoList.getOptionDtoList() != null) {
 			for(int i=0; i<optionDtoList.getOptionDtoList().size(); i++) {
 				dtoList.add(optionDtoList.getOptionDtoList().get(i));
@@ -53,10 +54,12 @@ public class OrderController {
 		int myPoint = pointBiz.pointAll(user_id);
 		
 		// 회원 정보 가져오기
-		MemberDto memberDto = orderBiz.memberInfo(user_id);
-		model.addAttribute("memberDto", memberDto);
+		/*
+		 * MemberDto memberDto = orderBiz.memberInfo(user_id);
+		 * model.addAttribute("memberDto", memberDto);
+		 */
 		
-		// 주문 테이블에서 최근 결제 내역 3개 가져오기
+		// 최근 배송지 데이터 가져오기
 		
 		
 		model.addAttribute("myPoint", myPoint);
@@ -66,9 +69,6 @@ public class OrderController {
 	
 	@PostMapping("/order")
 	public String order(Model model, OrderDto orderDto) {
-		// 리스트 초기화
-		dtoList.clear();
-		
 		model.addAttribute("optionList", dtoList);
 		model.addAttribute("orderDto", orderDto);
 		model.addAttribute("letterDto", letter_dto);
