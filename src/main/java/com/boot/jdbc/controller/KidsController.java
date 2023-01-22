@@ -119,6 +119,7 @@ public class KidsController {
 	public ModelMap DiarySave(@RequestParam Map<Object, Object> param, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
 		ModelMap Map = new ModelMap();
 		String binaryData = request.getParameter("imgSrc");
+		System.out.println("abc: "+binaryData);
 		String userId = request.getParameter("userID");
 		FileOutputStream stream = null;
 		LocalDate today = LocalDate.now();
@@ -247,13 +248,14 @@ public class KidsController {
 		
 		int i;
 		String userId = request.getParameter("user_id");
+		String kidsNo = request.getParameter("kids_no");
 		System.out.println(userId);
 		
 		//스티커 개수
-		biz.selectDiary(userId);
-		int stickerCount = biz.selectDiary(userId);
-		biz.deleteSticker(userId);
-		biz.insertSticker(userId,stickerCount);
+		biz.selectDiary(kidsNo);
+		int stickerCount = biz.selectDiary(kidsNo);
+		biz.deleteSticker(kidsNo);
+		biz.insertSticker(kidsNo,stickerCount);
 		
 		//스티커 날짜
 		biz.selectStickerDate(userId);
