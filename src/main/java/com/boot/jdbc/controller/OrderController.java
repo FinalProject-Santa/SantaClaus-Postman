@@ -9,41 +9,69 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.boot.jdbc.model.biz.OrderInfoBiz;
+import com.boot.jdbc.model.biz.OrderBiz;
 import com.boot.jdbc.model.biz.PointBiz;
 import com.boot.jdbc.model.dto.LetterDto;
 import com.boot.jdbc.model.dto.MemberDto;
 import com.boot.jdbc.model.dto.OptionDto;
+import com.boot.jdbc.model.dto.OrderDto;
 
 @Controller
 @RequestMapping("/order")
 public class OrderController {
 	
 	@Autowired
-	private OrderInfoBiz orderBiz;
+	private OrderBiz orderBiz;
 	@Autowired
 	private PointBiz pointBiz;
 	
+	List<OptionDto> dtoList = new ArrayList<OptionDto>();
+	LetterDto letter_dto;
+	
 	@PostMapping("/orderForm")
-	public String test(Model model, LetterDto letterDto, OptionDto optionDtoList, HttpServletRequest request) {
-		List<OptionDto> dtoList = new ArrayList<OptionDto>();
+	public String orderForm(Model model, LetterDto letterDto, OptionDto optionDtoList, HttpServletRequest request) {
+		// 리스트 초기화
+		dtoList.clear();
 		
-		// 옵션 상품을 구매할 경우
+		// 전역변수 letter_dto에 letterDto 데이터 넣기
+		letter_dto = letterDto;
+		
+		// 옵션 상품을 구매 할 경우
 		if(optionDtoList.getOptionDtoList() != null) {
 			for(int i=0; i<optionDtoList.getOptionDtoList().size(); i++) {
 				dtoList.add(optionDtoList.getOptionDtoList().get(i));
 			}
 			model.addAttribute("dtoList", dtoList);
 		}
+		
+		// 세션에 담긴 값 꺼내기
 		HttpSession session = request.getSession();
 		String user_id = ((MemberDto)session.getAttribute("member")).getUser_id();
 		int myPoint = pointBiz.pointAll(user_id);
+		
+		// 회원 정보 가져오기
+		MemberDto memberDto = orderBiz.memberInfo(user_id);
+		model.addAttribute("memberDto", memberDto);
+		
+		// 주문 테이블에서 최근 결제 내역 3개 가져오기
+		
+		
 		model.addAttribute("myPoint", myPoint);
 		model.addAttribute("letterDto", letterDto);
 		return "/order/orderForm";
+	}
+	
+	@PostMapping("/order")
+	public String order(Model model, OrderDto orderDto) {
+		// 리스트 초기화
+		dtoList.clear();
+		
+		model.addAttribute("optionList", dtoList);
+		model.addAttribute("orderDto", orderDto);
+		model.addAttribute("letterDto", letter_dto);
+		return "/order/order";
 	}
 }
