@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
@@ -39,6 +39,24 @@
 <style>
 * {
 	font-family: 'Poor Story', cursive !important;
+}
+
+span.star-prototype, span.star-prototype>* {
+	height: 16px;
+	background: url(http://i.imgur.com/YsyS5y8.png) 0 -16px repeat-x;
+	width: 80px;
+	display: inline-block;
+	text-align: left;
+}
+
+span.star-prototype>* {
+	background-position: 0 0;
+	max-width: 80px;
+}
+ul {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
 
@@ -79,67 +97,74 @@
 								</tr>
 							</thead>
 							<tbody>
-							
-							<c:choose>
-							
-                      <c:when test="${fn:length(list) > 0 }">
-								<c:forEach items="${list }" var="review">
-									<tr
-										onclick="location.href='/review/reviewDetail/${review.REVIEW_NO}'">
-										<td style="text-align: center;">${review.REVIEW_NO }</td>
-										<td>${review.REVIEW_TITLE }</td>
-										<td style="text-align: center;">${review.USER_ID}</td>
-										<td style="text-align: center;"><small
-											class="text-muted ${review.REVIEW_BEST}"></small></td>
-										<td style="text-align: center;">${review.REVIEW_COUNT }</td>
-										<td style="text-align: center;"><fmt:formatDate
-												pattern="yyyy-MM-dd" value="${review.REVIEW_DATE }" /></td>
-									</tr>
-								</c:forEach>
-								</c:when>
-								<c:otherwise>
-								<tr>
-									<td colspan="7">조회된 결과가 없습니다.</td>
-								</tr>
-								</c:otherwise>
+
+								<c:choose>
+
+									<c:when test="${fn:length(list) > 0 }">
+										<c:forEach items="${list }" var="review">
+											<tr
+												onclick="location.href='/review/reviewDetail/${review.REVIEW_NO}'">
+												<td style="text-align: center;">${review.REVIEW_NO }</td>
+												<td>${review.REVIEW_TITLE }</td>
+												<td style="text-align: center;">${review.USER_ID}</td>
+												<td style="text-align: center;"><span
+													class="star-prototype">${review.REVIEW_BEST}</span>(${review.REVIEW_BEST})</td>
+												<td style="text-align: center;">${review.REVIEW_COUNT }</td>
+												<td style="text-align: center;"><fmt:formatDate
+														pattern="yyyy-MM-dd" value="${review.REVIEW_DATE }" /></td>
+											</tr>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<td colspan="7">조회된 결과가 없습니다.</td>
+										</tr>
+									</c:otherwise>
 								</c:choose>
 							</tbody>
 							<tr>
-								<td colspan="4" align="right"><input type="button"
+								<td colspan="6" align="right"><input type="button"
 									value="글작성" onclick="location.href='/review/reviewinsertform'">
-								</td>
+									
+									<ul class="btn-group pagination">
+										<c:if test="${pageMaker.prev }">
+											<li><a
+												href='<c:url value="/review/reviewList?page=${pageMaker.startPage-1 }"/>'>&lt;<i
+													class="fa fa-chevron-left"></i></a></li>
+										</c:if>
+										<c:forEach begin="${pageMaker.startPage }"
+											end="${pageMaker.endPage }" var="pageNum">
+											<li><a
+												href='<c:url value="/review/reviewList?page=${pageNum }"/>'><i
+													class="fa">${pageNum }</i></a></li>
+										</c:forEach>
+										<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
+											<li><a
+												href='<c:url value="/review/reviewList?page=${pageMaker.endPage+1 }"/>'>&gt;<i
+													class="fa fa-chevron-right"></i></a></li>
+										</c:if>
+									</ul></td>
 							</tr>
 						</table>
 					</div>
-				
+
 				</div>
 			</div>
 		</div>
-<ul class="btn-group pagination">
-    <c:if test="${pageMaker.prev }">
-    <li>
-        <a href='<c:url value="/review/reviewList?page=${pageMaker.startPage-1 }"/>'>&lt;<i class="fa fa-chevron-left"></i></a>
-    </li>
-    </c:if>
-    <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
-    <li>
-        <a href='<c:url value="/review/reviewList?page=${pageNum }"/>'><i class="fa">${pageNum }</i></a>
-    </li>
-    </c:forEach>
-    <c:if test="${pageMaker.next && pageMaker.endPage >0 }">
-    <li>
-        <a href='<c:url value="/review/reviewList?page=${pageMaker.endPage+1 }"/>'>&gt;<i class="fa fa-chevron-right"></i></a>
-    </li>
-    </c:if>
-</ul>
+	</div>
 
+	<script type="text/javascript"
+		src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 
 	<script>
-		$(".1").html("&#9733; &#9734; &#9734; &#9734; &#9734;");
-		$(".2").html("&#9733; &#9733; &#9734; &#9734; &#9734;");
-		$(".3").html("&#9733; &#9733; &#9733; &#9734; &#9734;");
-		$(".4").html("&#9733; &#9733; &#9733; &#9733; &#9734;");
-		$(".5").html("&#9733; &#9733; &#9733; &#9733; &#9733;");
+		$.fn.generateStars = function() {
+			return this.each(function(i, e) {
+				$(e).html($('<span/>').width($(e).text() * 16));
+			});
+		};
+
+		// 숫자 평점을 별로 변환하도록 호출하는 함수
+		$('.star-prototype').generateStars();
 	</script>
 
 </body>
