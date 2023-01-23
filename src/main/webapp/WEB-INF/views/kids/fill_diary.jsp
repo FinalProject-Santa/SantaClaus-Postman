@@ -10,9 +10,9 @@
 </head>
 <body>
 	<form action="/kids/sticker" method="post" id="diaryForm">
-	<input type="hidden" name="user_id" id="user" value="user01">
+	<!-- <input type="hidden" name="user_id" id="user" value="user01">
 	<input type="hidden" name="kids_no" id="kids" value=1>
-	<input type="hidden" name="userEmail" id="email" value="jiyeon908@naver.com">	
+	<input type="hidden" name="userEmail" id="email" value="jiyeon908@naver.com"> -->	
 	<input type="hidden" name="fillDate" id="date" value="${Date }">
     <div class="diary">
     <div class="drawing">
@@ -86,12 +86,12 @@
     	content.font = '200px'; */
     	
     	// 해당 날짜 작성 여부
-        	var userId = $("#user").val().trim();
+        	/* var userId = $("#user").val().trim(); */
     		var fillDate = $("#date").val().trim();
         		$.ajax({
         			type:"POST",
                     data:{
-                        "userID":userId,
+                        /* "userID":userId, */
                         "fillDate":fillDate
                     },
                     dataType:"text",

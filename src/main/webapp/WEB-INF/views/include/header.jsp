@@ -94,9 +94,10 @@ body {
         <div id="menubox">
                 <ul id="menubar">
                     <li><a href="../letter/letterList">&nbsp;Letter</a></li>
-                    <li>&nbsp;Tree</li>
+                    <li><a href="../tree/decotree">&nbsp;Tree</a></li>
                     <li><a href="../review/reviewList">&nbsp;Review</a></li>
                     <li><a href="../mypage/main">&nbsp;My Page</a></li>
+                    <li><a href="../customer/floatingMenu">&nbsp;Help Center</a></li>
                     <br>
                     <br>
                     <li><a href="#aboutmsg" id="scroll_move">&nbsp;About</a></li>

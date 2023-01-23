@@ -6,14 +6,13 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +29,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.boot.jdbc.model.biz.DiaryBiz;
 import com.boot.jdbc.model.biz.MailHandler;
+import com.boot.jdbc.model.biz.StickerBiz;
+import com.boot.jdbc.model.dto.MemberDto;
 
 import edu.emory.mathcs.backport.java.util.Collections;
 
@@ -43,6 +44,8 @@ public class KidsController {
 	
 	@Autowired
 	private DiaryBiz biz;
+//	@Autowired
+//	private StickerBiz stickerbiz;
 	@Autowired
 	private JavaMailSender mailSender;
 	
@@ -88,7 +91,10 @@ public class KidsController {
 	@RequestMapping(value = {"selectDate"}, method = RequestMethod.POST)
 	public String selectDate(HttpServletRequest request) {
 		
-		String userId = request.getParameter("userID");
+		HttpSession session = request.getSession();
+		String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
+		
+		//String userId = request.getParameter("userID");
 		LocalDate now = LocalDate.now();
 		System.out.println(now);
 		
@@ -102,7 +108,10 @@ public class KidsController {
 	@RequestMapping(value = {"fillDate"}, method = RequestMethod.POST)
 	public String fillDate(HttpServletRequest request) {
 		
-		String userId = request.getParameter("userID");
+		HttpSession session = request.getSession();
+		String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
+		
+		//String userId = request.getParameter("userID");
 		String fillDate = request.getParameter("fillDate");
 		LocalDate localdate = LocalDate.parse(fillDate, DateTimeFormatter.ofPattern("yyyyMMdd"));
 		System.out.println("test :"+localdate);
@@ -118,9 +127,17 @@ public class KidsController {
 	@RequestMapping(value = {"DiarySave"}, method = RequestMethod.POST)
 	public ModelMap DiarySave(@RequestParam Map<Object, Object> param, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
 		ModelMap Map = new ModelMap();
+		
 		String binaryData = request.getParameter("imgSrc");
-		System.out.println("abc: "+binaryData);
-		String userId = request.getParameter("userID");
+		
+		HttpSession session = request.getSession();
+		String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
+		String userEmail = ((MemberDto)session.getAttribute("member")).getEmail();
+//		int kidsNo = ((KidsDto)session.getAttribute("kids")).getKids_no();
+				
+		
+		
+		
 		FileOutputStream stream = null;
 		LocalDate today = LocalDate.now();
 		
