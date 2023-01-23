@@ -29,17 +29,17 @@ public interface ReviewMapper {
 	@Select("SELECT * FROM RFILES WHERE REVIEW_NO=#{review_no}")
 	rFileDto rfileDetail(int review_no);
 	
-	@Insert("INSERT INTO REVIEW VALUES(#{review_no}, #{user_id}, #{review_title}, #{review_best}, #{review_content}, #{review_count}, NOW())")
+	@Insert("INSERT INTO REVIEW VALUES(NULL, #{user_id}, #{review_title}, #{review_best}, #{review_content}, #{review_count}, NOW())")
 	@Options(useGeneratedKeys = true, keyProperty = "review_no")
 	int reviewInsert(ReviewDto reviewdto);
 	
-	@Insert("INSERT INTO RFILES (RFNO, REVIEW_NO, RFILENAME, RFILEORINAME, RFILEURL) VALUES (#{rfno},#{review_no},#{rfileName},#{rfileOriName},#{rfileUrl})")
+	@Insert("INSERT INTO RFILES (RF_NO, REVIEW_NO, RFILE_NAME, RFILE_ORINAME, RFILE_URL) VALUES (NULL,#{review_no},#{rfile_name},#{rfile_oriname},#{rfile_url})")
 	int fileInsert(rFileDto file);
 	
 	@Update("UPDATE REVIEW SET REVIEW_TITLE=#{review_title}, REVIEW_BEST=#{review_best}, REVIEW_CONTENT=#{review_content} WHERE REVIEW_NO=#{review_no} ")
 	int reviewUpdate(ReviewDto reviewdto);
 
-	@Update("UPDATE RFILES SET RFILENAME=#{rfileName}, RFILEORINAME=#{rfileOriName} WHERE REVIEW_NO=#{review_no}")
+	@Update("UPDATE RFILES SET RFILE_NAME=#{rfile_name}, RFILE_ORINAME=#{rfile_oriname} WHERE REVIEW_NO=#{review_no}")
 	int rfileUpdate(rFileDto rfiledto);
 	
 	//조회수 증가

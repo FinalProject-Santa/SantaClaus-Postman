@@ -9,6 +9,15 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <style>
+
+img{
+	display: block;
+
+margin-left: auto;
+
+margin-right: auto;
+}
+
 .ornament{
   width: 90px;
   height: 90px;
@@ -25,6 +34,7 @@
 }
 
 #or-container{
+	margin: 100px auto;
 	width: 300px;
 	height: 500px;
 	float:right;
@@ -35,6 +45,7 @@
 #container{
 	width: 500px;
 	float:left;
+	
 }
 #btnarea{
 	position:absolute
@@ -42,39 +53,40 @@
 
 </style>
 <title></title>
-<body style="margin: 100px auto;">
-<div style="width:1200px;">
-	<div id="or-container" style="border: 2px solid black;">
-	   <img src='/resources/image/treeimg/snowman.png' alt="" class="ornament" draggable="true" data-key="o1"><input type="hidden" class="img" name="or_name" value="o1">
-	   <img src='/resources/image/treeimg/snowman.png' alt="" class="ornament" draggable="true" data-key="o1"><input type="hidden" class="img" name="or_name" value="o1">
-	   <img src='/resources/image/treeimg/snowman.png' alt="" class="ornament" draggable="true" data-key="o1"><input type="hidden" class="img" name="or_name" value="o1">
-	   <img src='/resources/image/treeimg/snowman.png' alt="" class="ornament" draggable="true" data-key="o1"><input type="hidden" class="img" name="or_name" value="o1">
-	   <img src='/resources/image/treeimg/star.png' alt="" class="ornament" draggable="true" data-key="o2"><input type="hidden" class="img" name="or_name" value="o2">
-	   <img src='/resources/image/treeimg/star.png' alt="" class="ornament" draggable="true" data-key="o2"><input type="hidden" class="img" name="or_name" value="o2">
-	   <img src='/resources/image/treeimg/star.png' alt="" class="ornament" draggable="true" data-key="o2"><input type="hidden" class="img" name="or_name" value="o2">
-	   <img src='/resources/image/treeimg/star.png' alt="" class="ornament" draggable="true" data-key="o2"><input type="hidden" class="img" name="or_name" value="o2">
-	   <img src='/resources/image/treeimg/star.png' alt="" class="ornament" draggable="true" data-key="o2"><input type="hidden" class="img" name="or_name" value="o2">
-	   <img src='/resources/image/treeimg/wreath.png' alt="" class="ornament" draggable="true" data-key="o3"><input type="hidden" class="img" name="or_name" value="o3">
-	   <img src='/resources/image/treeimg/wreath.png' alt="" class="ornament" draggable="true" data-key="o3"><input type="hidden" class="img" name="or_name" value="o3">
-	   <img src='/resources/image/treeimg/wreath.png' alt="" class="ornament" draggable="true" data-key="o3"><input type="hidden" class="img" name="or_name" value="o3">
-	   <img src='/resources/image/treeimg/wreath.png' alt="" class="ornament" draggable="true" data-key="o3"><input type="hidden" class="img" name="or_name" value="o3">
-	   <img src='/resources/image/treeimg/wreath.png' alt="" class="ornament" draggable="true" data-key="o3"><input type="hidden" class="img" name="or_name" value="o3">
-	   <img src='/resources/image/treeimg/wreath.png' alt="" class="ornament" draggable="true" data-key="o3"><input type="hidden" class="img" name="or_name" value="o3">
+<body style="margin: 100px 500px;">
+<div style="width:900px;">
+	<div id="or-container">
+	   <img src='/resources/image/treeimg/오너1.png' alt="" class="ornament" draggable="true" data-key="o1"><input type="hidden" class="img" name="or_name" value="o1">
+	   <img src='/resources/image/treeimg/오너2.png' alt="" class="ornament" draggable="true" data-key="o2"><input type="hidden" class="img" name="or_name" value="o2">
+	   <img src='/resources/image/treeimg/오너3.png' alt="" class="ornament" draggable="true" data-key="o3"><input type="hidden" class="img" name="or_name" value="o3">
+	   <img src='/resources/image/treeimg/오너4.png' alt="" class="ornament" draggable="true" data-key="o4"><input type="hidden" class="img" name="or_name" value="o4">
+	   <img src='/resources/image/treeimg/오너5.png' alt="" class="ornament" draggable="true" data-key="o5"><input type="hidden" class="img" name="or_name" value="o5">
+	   <img src='/resources/image/treeimg/오너6.png' alt="" class="ornament" draggable="true" data-key="o6"><input type="hidden" class="img" name="or_name" value="o6">
+	   <img src='/resources/image/treeimg/오너7.png' alt="" class="ornament" draggable="true" data-key="o7"><input type="hidden" class="img" name="or_name" value="o7">
+	   <img src='/resources/image/treeimg/오너8.png' alt="" class="ornament" draggable="true" data-key="o8"><input type="hidden" class="img" name="or_name" value="o8">
+	   <img src='/resources/image/treeimg/오너9.png' alt="" class="ornament" draggable="true" data-key="o9"><input type="hidden" class="img" name="or_name" value="o9">
+	   <img src='/resources/image/treeimg/오너10.png' alt="" class="ornament" draggable="true" data-key="o10"><input type="hidden" class="img" name="or_name" value="o10">
+	   <img src='/resources/image/treeimg/오너11.png' alt="" class="ornament" draggable="true" data-key="o11"><input type="hidden" class="img" name="or_name" value="o11">
+	   <img src='/resources/image/treeimg/오너12.png' alt="" class="ornament" draggable="true" data-key="o12"><input type="hidden" class="img" name="or_name" value="o12">
+	   <img src='/resources/image/treeimg/오너13.png' alt="" class="ornament" draggable="true" data-key="o13"><input type="hidden" class="img" name="or_name" value="o13">
+	   <img src='/resources/image/treeimg/오너16.png' alt="" class="ornament" draggable="true" data-key="o16"><input type="hidden" class="img" name="or_name" value="o16">
+	   <img src='/resources/image/treeimg/오너17.png' alt="" class="ornament" draggable="true" data-key="o17"><input type="hidden" class="img" name="or_name" value="o17">
 	</div>
 	 
-		<form action="/tree/treeOrder" method='post' id="myfrom">
-	<div id="container" style="border: 1px solid black;">
+<form action="/tree/treeOrder" method='post' id="myfrom">
+	<div id="container">
 		<div id="tree-container">
 		  <div id="tree-or-container">
-		    <img alt="" src="/resources/image/treeimg/cartoon-tree.png">
+		    <img alt="" src="/resources/image/treeimg/트리1.png">
 		  </div>
 		</div>
 	</div>
 	<div id="btnarea">
-		<input type="submit" id="buy_btn" value="구매">
+		<input type="button" id="re_btn" value="다시 꾸미기" onClick="window.location.reload()">
 		<input type="button" id="save_btn" value="저장">
+		<input type="submit" id="buy_btn" value="구매">
 	</div>
-		</form>
+</form>
 </div>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
