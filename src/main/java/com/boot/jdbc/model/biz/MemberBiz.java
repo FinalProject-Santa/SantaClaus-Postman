@@ -11,5 +11,7 @@ public interface MemberBiz {
 	public String findPw(MemberDto dto);
 	public MemberDto infoUpdateform(String user_id);
 	public int myinfoUpdate(MemberDto dto);
-	public int delete(String user_id); 
+	public int delete(String user_id);
+	public String pwChk(String user_id);
+	public String phoneChk(String user_id); 
 }

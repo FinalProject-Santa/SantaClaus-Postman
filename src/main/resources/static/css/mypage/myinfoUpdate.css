@@ -14,9 +14,13 @@ label{
     text-align: left;
     width: 170px;
 }
+
 .test{
     position: absolute;
     width: 30px;
+}
+.readonly{
+	border: none;
 }
 h3{
 	text-align: center; 
@@ -37,7 +41,11 @@ div {
     right: 50px;
     margin: 20px;
 }
+span{
+	font-size: 19px;
+}
 input{
+	font-size: 19px;
     padding: 6px;
     border-radius: 3px;
     margin-bottom: 5px;

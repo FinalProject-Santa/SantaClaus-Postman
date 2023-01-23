@@ -52,3 +52,16 @@ table {
 	border-collapse:collapse;
 	margin-bottom: 10px;
 }
+ul {
+	list-style: none;
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+}
+a{
+	text-decoration: none;
+	color: blue;
+}
+i{
+	font-style: Arial;
+}

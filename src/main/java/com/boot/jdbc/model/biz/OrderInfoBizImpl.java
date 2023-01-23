@@ -10,7 +10,7 @@ import com.boot.jdbc.model.dto.LetterDto;
 import com.boot.jdbc.model.dto.OrderInfoDto;
 
 @Service
-public class OrderBizInfoImpl implements OrderInfoBiz{
+public class OrderInfoBizImpl implements OrderInfoBiz{
 
 	@Autowired
 	private OrderInfoMapper orderMapper;

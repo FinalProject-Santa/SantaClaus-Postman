@@ -19,7 +19,8 @@
         <h1>주문조회</h1> 
             <p class="box1">주문내역조회</p>
             <hr class="h1">
-            <form action="/mypage/selectOrder" method="post" id="selectOrder" class="box2">
+            <div action="/mypage/selectOrder" method="post" id="selectOrder" class="box2">
+            <!-- div > form으로 변경하기 -->
             	<input type="hidden" name="order_date" value="${orderdto.order_date }">
                 <ul class="searchDate">
                     <li>
@@ -58,7 +59,7 @@
                     <input type="text" class="datepicker inpType" name="searchEndDate" id="searchEndDate" placeholder="조회 끝 날짜">
                 </span>
                 <input type="button" id="selectbtn" value="조회">
-            </form>
+            </div>
         </nav>
         <section>
             <div id="orderlist">
