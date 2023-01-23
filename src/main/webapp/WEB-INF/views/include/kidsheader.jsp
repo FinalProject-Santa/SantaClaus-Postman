@@ -94,10 +94,10 @@ body {
         <span id="menu">= 메뉴
         <div id="menubox">
                 <ul id="menubar">
-                    <li>&nbsp;미니게임</li>
-                    <li>&nbsp;그림일기</li>
-                    <li>&nbsp;칭찬 스티커</li>
-                    <li>&nbsp;산타 우편함</li>
+                    <li onclick="location.href='/kids/puzzle'">&nbsp;미니게임</li>
+                    <li onclick="location.href='/kids/diary'">&nbsp;그림일기</li>
+                    <li onclick="location.href='/kids/sticker'">&nbsp;칭찬 스티커</li>
+                    <li><a href="">&nbsp;산타 우편함</a></li>
                     <br>
                     <br>
                     <li><a>&nbsp;프로필 선택</a></li>
