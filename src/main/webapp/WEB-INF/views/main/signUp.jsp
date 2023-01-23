@@ -180,8 +180,15 @@ $(function() {
 	<div id="wrap" class="wrapper">
 		<h1>회 원 가 입</h1>
 		<div class="writeform">
-			<form action="/main/signUp" method="post">
+			<form action="/main/signUp" method="post" enctype="multipart/form-data">
 				<div>
+					<div class="mb-3">
+						<label for="inputGroupFile02">사진 등록</label>
+						<div class="input-group mb-3">
+						    <input type="file" class="form-control" id="inputGroupFile02" name="files">
+						    <label class="input-group-text" for="inputGroupFile02">Upload</label>
+						</div> 
+					</div>
 					<label for="id">아이디</label>
 					<div class="info">
 						<input id="id" name="user_id" type="text" placeholder="아이디를 입력해주세요." required="required">
@@ -229,7 +236,7 @@ $(function() {
 				<div>
 					<label for="phoneckcode">인증코드 입력</label>
 					<div>
-						<input id="phoneckcode" type="text" required="required">
+						<input id="phoneckcode" type="text" ><!-- required="required" -->
 						<input id="phoneck" class="button" type="button" value="인증하기">
 						<span id="authSuccess"></span>
 					</div>

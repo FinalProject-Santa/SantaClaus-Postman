@@ -11,7 +11,8 @@ import com.boot.jdbc.model.dto.MemberDto;
 
 @Mapper
 public interface MemberMapper {
-	@Insert("INSERT INTO MEMBER VALUES(#{user_id}, #{password}, #{name}, #{post_code}, #{default_addr}, #{detail_addr}, #{phone}, #{email})")
+	@Insert("INSERT INTO MEMBER VALUES(#{user_id}, #{password}, #{name}, #{post_code}, #{default_addr},"
+			+ " #{detail_addr}, #{phone}, #{email}, #{rfileName}, #{rfileOriName}, #{rfileUrl}) ")
 	int signUp(MemberDto dto);
  
 	@Select("SELECT * FROM MEMBER WHERE USER_ID = #{user_id} AND PASSWORD = #{password}")
@@ -26,16 +27,22 @@ public interface MemberMapper {
 	@Select("SELECT PASSWORD FROM MEMBER WHERE USER_ID = #{user_id} AND EMAIL = #{email}")
 	String findPw(MemberDto dto);
 	
-	//회원정보 수정 (로그인 세션 연결되면 조건 변경하기)
-	@Select(" SELECT * FROM MEMBER WHERE USER_ID = 'user01' ")
+	@Select(" SELECT * FROM MEMBER WHERE USER_ID = #{user_id} ")
 	MemberDto infoUpdateform(String user_id);
 
 	@Update("  UPDATE MEMBER SET \n"
-			+ " PASSWORD=#{password}, POST_CODE=#{post_code}, DEFAULT_ADDR=#{default_addr}, DETAIL_ADDR=#{detail_addr}, EMAIL=#{email}, PHONE=#{phone} \n"
+			+ " PASSWORD=#{password}, POST_CODE=#{post_code}, DEFAULT_ADDR=#{default_addr}, DETAIL_ADDR=#{detail_addr}, EMAIL=#{email}, PHONE=#{phone}, "
+			+ " RFILENAME=#{rfileName}, RFILEORINAME=#{rfileOriName}, RFILEURL=#{rfileUrl} \n"
 			+ " WHERE USER_ID=#{user_id} ")
 	int myinfoUpdate(MemberDto dto);
 
-	@Delete(" DELETE FROM MEMBER WHERE USER_ID = 'user01' ")
+	@Delete(" DELETE FROM MEMBER WHERE USER_ID = #{user_id} ")
 	int delete(String user_id);
+
+	@Select(" SELECT PASSWORD FROM MEMBER WHERE USER_ID = #{user_id} ")
+	String pwChk(String user_id);
+
+	@Select(" SELECT PHONE FROM MEMBER WHERE USER_ID = #{user_id} ")
+	String phoneChk(String user_id);
 
 }
