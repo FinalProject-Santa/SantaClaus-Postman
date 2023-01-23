@@ -31,6 +31,7 @@ import com.boot.jdbc.model.biz.DiaryBiz;
 import com.boot.jdbc.model.biz.MailHandler;
 import com.boot.jdbc.model.biz.StickerBiz;
 import com.boot.jdbc.model.dto.MemberDto;
+import com.boot.jdbc.model.dto.KidsDto;
 
 import edu.emory.mathcs.backport.java.util.Collections;
 
@@ -44,8 +45,8 @@ public class KidsController {
 	
 	@Autowired
 	private DiaryBiz biz;
-//	@Autowired
-//	private StickerBiz stickerbiz;
+	@Autowired
+	private StickerBiz stickerbiz;
 	@Autowired
 	private JavaMailSender mailSender;
 	
@@ -131,13 +132,11 @@ public class KidsController {
 		String binaryData = request.getParameter("imgSrc");
 		
 		HttpSession session = request.getSession();
+		
 		String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
 		String userEmail = ((MemberDto)session.getAttribute("member")).getEmail();
-//		int kidsNo = ((KidsDto)session.getAttribute("kids")).getKids_no();
+		int kidsNo = ((KidsDto)session.getAttribute("kids")).getKids_no();
 				
-		
-		
-		
 		FileOutputStream stream = null;
 		LocalDate today = LocalDate.now();
 		
@@ -156,12 +155,12 @@ public class KidsController {
 		
 		stream = new FileOutputStream(newfile+"\\"+fileName);
 		String filePath = newfile+"\\"+fileName;
-		param.put("filePath", filePath);
+//		param.put("filePath", filePath);
 		
-		biz.saveDiary(param);
+		biz.saveDiary(userId,kidsNo,filePath,userEmail);
 		
 		System.out.println(filePath);
-		System.out.println(userId);
+		
 		stream.write(file);
 		stream.close();
 		System.out.println("저장 완료");
@@ -183,10 +182,17 @@ public class KidsController {
 	public ModelMap DiaryFill(@RequestParam Map<Object, Object> param, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
 		ModelMap Map = new ModelMap();
 		String binaryData = request.getParameter("imgSrc");
-		String userId = request.getParameter("userID");
+		
+		HttpSession session = request.getSession();
+		
+		String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
+		String userEmail = ((MemberDto)session.getAttribute("member")).getEmail();
+		int kidsNo = ((KidsDto)session.getAttribute("kids")).getKids_no();
+		
 		String fillDate = request.getParameter("fillDate");
 		LocalDate localdate = LocalDate.parse(fillDate, DateTimeFormatter.ofPattern("yyyyMMdd"));
 		System.out.println(fillDate);
+		
 		FileOutputStream stream = null;
 		
 		try {
@@ -204,10 +210,8 @@ public class KidsController {
 		
 		stream = new FileOutputStream(newfile+"\\"+fileName);
 		String filePath = newfile+"\\"+fileName;
-		param.put("filePath", filePath);
-		param.put("localdate", localdate);
 		
-		biz.fillDiary(param);
+		biz.fillDiary(userId,kidsNo,filePath,localdate,userEmail);
 		
 		System.out.println(filePath);
 		System.out.println(userId);
@@ -228,25 +232,18 @@ public class KidsController {
 	};
 	
 	
-	@GetMapping("/FillSticker")
-	public String FillSticker(HttpServletRequest request, Model model) {
-		
-		String fillDate = request.getParameter("write_date");
-		System.out.println(fillDate);
-		
-		model.addAttribute("Date",fillDate);
-		return "kids/fill_diary";
-	}
-	
-	
 	@ResponseBody
 	@RequestMapping(value = {"sendEmail"}, method = RequestMethod.POST)
 	public void sendMailWithFiles(@RequestParam Map<Object, Object> param, final HttpServletRequest request, final HttpServletResponse response) throws MessagingException, IOException {
 		
 		String path = request.getParameter("imgSrc");
 		System.out.println(path);
-		String userEmail = request.getParameter("userEmail");
-		System.out.println(userEmail);
+		
+		HttpSession session = request.getSession();
+		
+		//String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
+		String userEmail = ((MemberDto)session.getAttribute("member")).getEmail();
+
 		MailHandler mailHandler = new MailHandler(mailSender);
 		
 		mailHandler.setFrom("jiyoun_908@naver.com");
@@ -259,25 +256,36 @@ public class KidsController {
 		mailHandler.send();
 	}
 	
+	@GetMapping("/FillSticker")
+	public String FillSticker(HttpServletRequest request, Model model) {
+		
+		String fillDate = request.getParameter("write_date");
+		System.out.println(fillDate);
+		
+		model.addAttribute("Date",fillDate);
+		return "kids/fill_diary";
+	}
+	
 	
 	@PostMapping("/sticker")
 	public String selectSticker(HttpServletRequest request,Model model) {
 		
 		int i;
-		String userId = request.getParameter("user_id");
-		String kidsNo = request.getParameter("kids_no");
-		System.out.println(userId);
+		HttpSession session = request.getSession();
+		
+		String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
+		int kidsNo = ((KidsDto)session.getAttribute("kids")).getKids_no();
 		
 		//스티커 개수
-		biz.selectDiary(kidsNo);
-		int stickerCount = biz.selectDiary(kidsNo);
-		biz.deleteSticker(kidsNo);
-		biz.insertSticker(kidsNo,stickerCount);
+		stickerbiz.selectDiary(kidsNo);
+		int stickerCount = stickerbiz.selectDiary(kidsNo);
+		stickerbiz.deleteSticker(kidsNo);
+		stickerbiz.insertSticker(kidsNo,stickerCount);
 		
 		//스티커 날짜
-		biz.selectStickerDate(userId);
+		stickerbiz.selectStickerDate(userId);
 		
-		ArrayList<String> Date = biz.selectStickerDate(userId);
+		ArrayList<String> Date = stickerbiz.selectStickerDate(userId);
 		
 		List<Integer> DecDay = new ArrayList<>();
 		List<Integer> JanDay = new ArrayList<>(); // 1월 데이터 날짜
@@ -322,9 +330,12 @@ public class KidsController {
 	@ResponseBody
 	@RequestMapping(value = {"gamePoint"}, method = RequestMethod.POST)
 	public String gamePoint(HttpServletRequest request) {
-		int kidsNO = Integer.parseInt(request.getParameter("kids_no"));
 		
-		biz.insertPoint(kidsNO);
+		HttpSession session = request.getSession();
+		
+		int kidsNo = ((KidsDto)session.getAttribute("kids")).getKids_no();
+		
+		biz.insertPoint(kidsNo);
 		return "point";
 	}
 	

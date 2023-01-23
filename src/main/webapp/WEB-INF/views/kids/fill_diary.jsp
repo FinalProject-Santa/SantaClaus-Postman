@@ -117,9 +117,6 @@
 	            var t = target[0];
 	            html2canvas(t).then(function(canvas){
             	var myImg = canvasrr.toDataURL("image/png");
-            	var userId = $("#user").val().trim();
-            	var kidsNo = $("#kids").val().trim();
-            	var userEmail = $("#email").val().trim();
             	var fillDate = $("#date").val().trim();
                 myImg = myImg.replace("data:image/png;base64,", "");
 
@@ -127,9 +124,6 @@
                     type:"POST",
                     data:{
                         "imgSrc":myImg,
-                        "userID":userId,
-                        "kidsNO":kidsNo,
-                        "userEmail":userEmail,
                         "fillDate":fillDate
                     },
                     dataType:"text",
@@ -150,16 +144,14 @@
 	    // 메일 보내기
 	    function sendEmail(){
             	var myImg = canvasrr.toDataURL("image/png");
-            	var userId = $("#user").val().trim();
-            	var userEmail = $("#email").val().trim();
                 myImg = myImg.replace("data:image/png;base64,", "");
 
                	$.ajax({
 	                  type:"POST",
 	                  data:{
 	                      "imgSrc":myImg,
-	                      "userID":userId,
-	                      "userEmail":userEmail
+	                      /* "userID":userId,
+	                      "userEmail":userEmail */
 	                  },
 	                  dataType:"text",
 	                  url:"/kids/sendEmail",

@@ -165,11 +165,10 @@
                 openCardId2 = '';
                 scorePlus();
                 if(++successCard == 8){
-                	var kids_no = $("#kids").val().trim();
                 	$.ajax({
                 		type:"POST",
                 		data:{
-                			"kids_no":kids_no
+                			/* "kids_no":kids_no */
                 		},
                 		url:"/kids/gamePoint",
                 		success:function(data){
@@ -233,7 +232,6 @@
 </script>
 </head>
 <body>
-	<input type="hidden" name="kids_no" id="kids" value="1">
 	<div class="game">
         <div>
             <p>같은 그림을 찾아라</p>
