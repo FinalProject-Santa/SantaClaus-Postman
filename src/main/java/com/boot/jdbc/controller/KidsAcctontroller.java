@@ -4,10 +4,12 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.RandomStringUtils;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,7 +53,13 @@ public class KidsAcctontroller {
 	}
 
 	@GetMapping("/modify")
-	public String kidsModify() {
+	public String kidsModify(Model model, HttpServletRequest request) {
+		
+		model.addAttribute("list",kidsbiz.selectAll());
+		model.addAttribute("sticker",kidsbiz.sticker());
+		int i = Integer.parseInt(request.getParameter("no"));
+		request.setAttribute("no", i);
+		 
 		return "/kidsaccount/kidsModify";
 	}
 
@@ -65,7 +73,7 @@ public class KidsAcctontroller {
 		  
 		  KidFileDto file = new KidFileDto();
 		  
-		  String uploadPath ="C:/Users/Home/git/SantaClaus-Postman/src/main/resources/static/files/";
+		  String uploadPath ="C:/Users/USER/git/SantaClaus-Postman/src/main/resources/static/files/";
 		  String sourceFileName = files.getOriginalFilename(); 
 		  String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
 		  File destinationFile; 
@@ -88,22 +96,13 @@ public class KidsAcctontroller {
 		  
 		  
 		  file.setKids_no(dto.getKids_no()); 
+		  if(!files.isEmpty()) {
 		  file.setFile_name(destinationFileName);
 		  file.setFile_oname(sourceFileName); 
-		  file.setFile_path(uploadPath);
-		  
-		  if(files.isEmpty()) {
-			  file.setKids_no(dto.getKids_no()); 
-			  file.setFile_name("user-account.png");
-			  file.setFile_oname("디폴트사진"); 
-			  file.setFile_path(uploadPath);
-			  dto.setKids_thumbnail("user-account.png");
-		  }
-		 
+		  file.setFile_path(uploadPath);}
+		  	 
 		  kidsbiz.addFile(file);
 		  
-		  System.out.println(dto);
-
 		return "redirect:/kidsaccount/main";
 	}
 

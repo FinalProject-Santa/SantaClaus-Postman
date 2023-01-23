@@ -134,12 +134,20 @@ p{
                            <c:when test="${!empty list[0]}">
                           
                            
-                           	<div class="kid-img">            
+                           	<div class="kid-img">     
+                        
+                        
+                           	<c:if test="${!empty list[0].kids_thumbnail}">       
                        	<img src="/resources/files/${list[0].kids_thumbnail}" class="img-box" alt="프로필 사진">
+                    		</c:if>
+                    	
+                    		<c:if test="${empty list[0].kids_thumbnail}">  
+                    	<img src="/resources/image/kids-account/bossbaby.jpg" class="img-box" alt="프로필 사진">
+                    		</c:if>	
                     	
                     	</div>
                         <div class="content">
-                            <span><a href="form" class="nick">${list[0].kids_nickname}</a></span>
+                            <span><a href="modify?no=1" class="nick">${list[0].kids_nickname}</a></span>
                             <p class="message">상태메세지</p>                    
                        </div>
                            </c:when>
@@ -173,11 +181,20 @@ p{
                            
                            	<div class="kid-img"> 
                            	     
-                        	<img src="/resources/files/${list[1].kids_thumbnail}" class="img-box" alt="프로필 사진">
-                    
+ 								<c:if test="${!empty list[1].kids_thumbnail}">       
+                       				<img src="/resources/files/${list[1].kids_thumbnail}" class="img-box" alt="프로필 사진">
+                    			</c:if>
+                    	
+                    			<c:if test="${empty list[1].kids_thumbnail}">  
+                    				<img src="/resources/image/kids-account/bossbaby.jpg" class="img-box" alt="프로필 사진">
+                    			</c:if>	           
                     	</div>
+                    	
+                    	
                         <div class="content">
-                            <span><a href="form" class="nick">${list[1].kids_nickname}</a></span>
+                        	
+                            <span><a href="modify?no=2" class="nick">${list[1].kids_nickname}</a></span>
+                           
                             <p class="message">상태메세지</p>                    
                        </div>
                            </c:when>
@@ -208,10 +225,18 @@ p{
                           
                            
                            	<div class="kid-img">            
-                         	<img src="/resources/files/${list[2].kids_thumbnail}" class="img-box" alt="프로필 사진">
-                    	</div>
+ 								<c:if test="${!empty list[2].kids_thumbnail}">       
+                       				<img src="/resources/files/${list[0].kids_thumbnail}" class="img-box" alt="프로필 사진">
+                    			</c:if>
+                    	
+                    			<c:if test="${empty list[2].kids_thumbnail}">  
+                    				<img src="/resources/image/kids-account/bossbaby.jpg" class="img-box" alt="프로필 사진">
+                    			</c:if>
+                    				                    	
+                    		</div>
+                       
                         <div class="content">
-                            <span><a href="form" class="nick">${list[2].kids_nickname}</a></span>
+                            <span><a href="modify?no=3" class="nick">${list[2].kids_nickname}</a></span>
                             <p class="message">상태메세지</p>                    
                        </div>
                            </c:when>
