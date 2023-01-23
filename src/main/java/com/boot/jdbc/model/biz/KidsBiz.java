@@ -10,6 +10,7 @@ import com.boot.jdbc.model.dto.StickerDto;
 public interface KidsBiz {
 	List<KidsDto> selectAll();
 	int add(KidsDto dto);
+	int addmail(KidsDto dto);
 	int addFile(KidFileDto file);
 	int modify(KidsDto dto);
 	int fileModify(KidFileDto file);

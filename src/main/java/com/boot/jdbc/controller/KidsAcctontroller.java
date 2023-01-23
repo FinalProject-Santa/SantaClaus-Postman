@@ -103,7 +103,50 @@ public class KidsAcctontroller {
 		  	 
 		  kidsbiz.addFile(file);
 		  
+		  session.setAttribute("kids", dto);
+		  
 		return "redirect:/kidsaccount/main";
 	}
+	
+	
+	@PostMapping("/AddSantamail")
+	public String kidsInsertSantamail(KidsDto dto, @RequestPart MultipartFile files, HttpServletRequest request) throws IllegalStateException, IOException {
 
+		  session = request.getSession();
+		  
+		  KidFileDto file = new KidFileDto();
+		  
+		  String uploadPath ="C:/Users/USER/git/SantaClaus-Postman/src/main/resources/static/files/";
+		  String sourceFileName = files.getOriginalFilename(); 
+		  String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
+		  File destinationFile; 
+		  String destinationFileName;
+		  
+		  
+		  do { 
+		  destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension; 
+		  destinationFile = new File(uploadPath + destinationFileName); 
+		  } while (destinationFile.exists());
+		  
+
+		  destinationFile.getParentFile().mkdirs(); 
+		  files.transferTo(destinationFile);
+		  
+		  if(!files.isEmpty()){
+		  dto.setKids_letter_img(destinationFileName);}
+		  
+		  kidsbiz.addmail(dto);
+		  
+		  
+		  file.setKids_no(dto.getKids_no()); 
+		  if(!files.isEmpty()) {
+		  file.setFile_name(destinationFileName);
+		  file.setFile_oname(sourceFileName); 
+		  file.setFile_path(uploadPath);}
+		  	 
+		  kidsbiz.addFile(file);
+		
+		
+		return "redirect:/kidsaccount/kidsModify";
+	}
 }
