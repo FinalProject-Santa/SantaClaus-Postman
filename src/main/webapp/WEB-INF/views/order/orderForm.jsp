@@ -17,11 +17,14 @@
 }
 </style>
 <script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <script>
 	$(function(){
-		
-		// 전체 체크 박스
+		// 상품 전체 체크 박스
 		$("#chkAll").click(function() {
 			if($("#chkAll").is(":checked")) $("input[name=chkBox]").prop("checked", true);
 			else $("input[name=chkBox]").prop("checked", false);
@@ -95,7 +98,21 @@
 			
 		});
 		
-		// 
+		// 회원 정보와 동일
+		$("#sameDestination").click(function(){
+			$("input[name=receiver]").val("${memberDto.name }");
+			$("input[name=post_code]").val("${memberDto.post_code }");
+			$("input[name=default_addr]").val("${memberDto.default_addr }");
+			$("input[name=detail_addr]").val("${memberDto.detail_addr }");
+			$("#frontNum").val("${memberDto.phone }".substr(4,4));
+			$("#backNum").val("${memberDto.phone }".substr(9,4));
+			var idx = "${memberDto.email }".indexOf('@');
+			$("#emailId").val("${memberDto.email }".substring(0, idx));
+			$("#emailDomain").val(("${memberDto.email }".substring(idx+1)).toLowerCase()).prop("selected", true);
+			
+			// 휴대폰 번호 합치기
+			phone();
+		});
 		
 		// 새로운 배송지 : 초기화
 		$("#newDestination").click(function(){
@@ -108,7 +125,6 @@
 			$("#emailId").val('');
 			$("#emailDomain").val('');
 			$("textarea[name=delivery_message]").val('');
-			$("input[name=delivery_date]").val('');
 			
 		});
 		
@@ -195,7 +211,64 @@
 			} 
 		});
 		
-	})
+
+		// 주문번호 생성
+		function createOrderNum(){
+			const date = new Date();
+			const year = date.getFullYear();
+			const month = String(date.getMonth() + 1).padStart(2, "0");
+			const day = String(date.getDate()).padStart(2, "0");
+			
+			let orderNum = year + month + day;
+			for(let i=0; i<5; i++) {
+				orderNum += Math.floor(Math.random() * 8);	
+			}
+			return orderNum;
+		};
+		
+		$("#payment").click(function(){
+			const data = {
+				orderNum : createOrderNum(),
+				name : $("#letterName").val(),
+				price : parseInt($("input[name=total_price]").val())
+			}
+			console.log("주문번호 : " + data.orderNum);
+			
+			IMP.init("imp71363636");
+			
+			// KG이니시스
+			IMP.request_pay({
+			    pg : 'html5_inicis.INIpayTest', 
+			    pay_method : 'card',
+			    merchant_uid: data.orderNum, // 주문번호
+			    name : data.name,
+			    amount : data.price,
+			    buyer_tel : '010-1234-5678',   //필수 파라미터 입니다.
+			    m_redirect_url : '{모바일에서 결제 완료 후 리디렉션 될 URL}',
+			    /* escrow : true, //에스크로 결제인 경우 설정
+			    bypass : {
+			        acceptmethod : "noeasypay" // 간편결제 버튼을 통합결제창에서 제외(PC)
+			    }, */
+			}, function(rsp) { // callback 로직
+			});
+			
+			// 카카오 페이
+			/* IMP.request_pay({
+			    pg : 'kakaopay.TC0ONETIME',
+			    pay_method : 'card',  //생략가
+			    merchant_uid: "order_no_0004", //상점에서 생성한 고유 주문번호
+			    name : '주문명:결제테스트',
+			    amount : 1004,
+			    buyer_email : 'iamport@siot.do',
+			    buyer_name : '구매자이름',
+			    buyer_tel : '010-1234-5678',
+			    buyer_addr : '서울특별시 강남구 삼성동',
+			    buyer_postcode : '123-456',
+			    m_redirect_url : '{모바일에서 결제 완료 후 리디렉션 될 URL}'
+			}, function(rsp) { // callback 로직
+			}); */
+		});
+	});
 </script>
 </head>
 <body>
@@ -228,7 +301,7 @@
                    <td>엽서</td>
                    <td><img src="${letterDto.letter_img }"></td>
                    <td>
-                       <p class="itemName">
+                       <p id="letterName">
                            ${letterDto.letter_name }
                        </p>
                        <p class="blanks">
@@ -336,15 +409,15 @@
                    </tr>
                    <tr>
                        <th>받으시는 분</th>
-                       <td><input type="text" name="receiver"></td>
+                       <td><input type="text" value="" name="receiver"></td>
                    </tr>
                    <tr>
                        <th>주소</th>
                        <td>
-                           <input name="post_code" type="text">
+                       	<input name="post_code" type="text">
 						<input id="userPostcode" class="button" type="button" value="우편번호"><br><br>
 						<input name="default_addr" type="text"> 기본 주소<br><br>
-						<input name="detail_addr" type="text" required="required"> 나머지 주소
+						<input name="detail_addr" type="text"> 나머지 주소
                        </td>
                    </tr>
                    <tr>
@@ -385,141 +458,115 @@
                	</tr> -->
                </tbody>
            </table>
-       <div class="title">
-           <h3>결제 금액</h3>
-       </div>
-       <div class="paymentInfo">
-           <table border="1">
-               <tbody>
-                   <colgroup>
-                       <col width="300"/>		
-                       <col width="300"/>		
-                       <col width="300"/>
-                   </colgroup>
-                   <tr>
-                       <th>총 주문 금액</th>
-                       <th>배송비</th>
-                       <th>총 결제 금액</th>
-                   </tr>
-                   <tr>
-                       <td id="paymentInfo_totalPrice">
-						<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice }"/>원
-					</td>
-                       <td id="paymentInfo_deliveryCharge">
-                       	<c:choose>
-                			<c:when test="${letterDto.letter_price + totalOptionPrice ge 20000}">
-                				0원
-                			</c:when>
-                			<c:otherwise>
-                				2,500원
-                			</c:otherwise>
-              				</c:choose>
-					</td>
-                       	<td id="paymentInfo_totalPricePlusDeliv">
-							<c:choose>
+	       <div class="title">
+	           <h3>결제 금액</h3>
+	       </div>
+	       <div class="paymentInfo" style="display:flex">
+	           <table border="1">
+	               <tbody>
+	                   <colgroup>
+	                       <col width="300"/>		
+	                       <col width="300"/>		
+	                       <col width="300"/>
+	                   </colgroup>
+	                   <tr>
+	                       <th>총 주문 금액</th>
+	                       <th>배송비</th>
+	                       <th>총 결제 금액</th>
+	                   </tr>
+	                   <tr>
+	                       <td id="paymentInfo_totalPrice">
+							<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice }"/>원
+						</td>
+	                       <td id="paymentInfo_deliveryCharge">
+	                       	<c:choose>
 	                			<c:when test="${letterDto.letter_price + totalOptionPrice ge 20000}">
-									<input type="hidden" name="total_price" value="${letterDto.letter_price + totalOptionPrice }">
-									<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice }"/>원
+	                				0원
 	                			</c:when>
 	                			<c:otherwise>
-									<input type="hidden" name="total_price" value="${letterDto.letter_price + totalOptionPrice + 2500}">
-									<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice + 2500}"/>원
+	                				2,500원
 	                			</c:otherwise>
-              				</c:choose>
+	              				</c:choose>
 						</td>
-                   </tr>
-                   <tr>
-                       <th>포인트</th>
-                       <td colspan="2">
-                           <p>
-                           	<c:choose>
-                            	<c:when test="${myPoint >= 1000}">
-                            		<input type="text" id="myPoint" value="${myPoint}">원 (내 포인트 : <fmt:formatNumber type='number' value='${myPoint}'/>pt)
-                            		<input type="hidden" value="${myPoint}">
-                            	</c:when>
-                            	<c:otherwise>
-                            		<input type="text" disabled="disabled" value="">원 (내 포인트 : ${myPoint }pt)
-                            	</c:otherwise>
-                           	</c:choose>
-                          	</p>
-                           <ul>
-                               <li>포인트는 <b>1,000 포인트 이상</b>부터 결제가 가능합니다.</li>
-                               <li>최대 사용금액은 제한이 없습니다.</li>
-                           </ul>
-                       </td>
-                   </tr>
-               </tbody>
-           </table>
-       </div>
-       <div class="title">
-           <h3>결제 수단</h3>
-       </div>
-       <div class="paymentArea" style="display: flex;">     
-           <div class="paymentMethod">
-               <span>
-                   <input type="radio">
-                   <label>카드결제</label>
-               </span>
-               <span>
-                   <input type="radio">
-                   <label>실시간 계좌이체</label>
-               </span>
-               <span>
-                   <input type="radio">
-                   <label>휴대폰 결제</label>
-               </span>
-               <span>
-                   <input type="radio">
-                   <label>무통장 입금</label>
-               </span>
-           </div>
-           <div class="paymentArea" style="margin-left: 100px;">
-               <h4>
-                   <strong id="paymentType">무통장 입금</strong>
-                   <span>최종결제 금액</span>
-               </h4>
-               <p>
-               	<span id="paymentInfo_totalPriceMinusPoint">
-                   	<c:choose>
-               			<c:when test="${letterDto.letter_price + totalOptionPrice ge 20000}">
-               				<c:choose>
-               					<c:when test="${myPoint ge 1000}">
-									<fmt:formatNumber type="number" value="${(letterDto.letter_price + totalOptionPrice) - myPoint }"/>원
-								</c:when>
-								<c:otherwise>
-									<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice }"/>원
-								</c:otherwise>
-							</c:choose>
-               			</c:when>
-               			<c:otherwise>
-							<c:choose>
-								<c:when test="${myPoint ge 1000}">
-									<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice + 2500  - myPoint}"/>원
-								</c:when>
-								<c:otherwise>
-									<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice + 2500}"/>원
-								</c:otherwise>
-							</c:choose>
-               			</c:otherwise>
-          				</c:choose>
-				</span>
-               </p>
-               <p class="agreement">
-                   <input type="checkbox">
-                   <label>결제정보를 확인하였으며, 구매진행에 동의합니다.</label>
-               </p>
-               <p class="payBtn">
-                   <input type="submit" value="결제하기">
-               </p>
-               <p>
-                   <strong>총 적립예정금액</strong>
-                   <span id="paymentInfo_totalPoint">
-                   	<fmt:formatNumber type="number" value="${letterPoint + totalOptionPoint }"/>pt
-                  		<input type='hidden' value="${letterPoint + totalOptionPoint }"/>
-                   </span>
-               </p>
-           </div>
-       </div>
-   </form>
+	                       	<td id="paymentInfo_totalPricePlusDeliv">
+								<c:choose>
+		                			<c:when test="${letterDto.letter_price + totalOptionPrice ge 20000}">
+										<input type="hidden" name="total_price" value="${letterDto.letter_price + totalOptionPrice }">
+										<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice }"/>원
+		                			</c:when>
+		                			<c:otherwise>
+										<input type="hidden" name="total_price" value="${letterDto.letter_price + totalOptionPrice + 2500}">
+										<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice + 2500}"/>원
+		                			</c:otherwise>
+	              				</c:choose>
+							</td>
+	                   </tr>
+	                   <tr>
+	                       <th>포인트</th>
+	                       <td colspan="2">
+	                           <p>
+	                           	<c:choose>
+	                            	<c:when test="${myPoint >= 1000}">
+	                            		<input type="text" id="myPoint" value="${myPoint}">원 (내 포인트 : <fmt:formatNumber type='number' value='${myPoint}'/>pt)
+	                            		<input type="hidden" value="${myPoint}">
+	                            	</c:when>
+	                            	<c:otherwise>
+	                            		<input type="text" disabled="disabled" value="">원 (내 포인트 : ${myPoint }pt)
+	                            	</c:otherwise>
+	                           	</c:choose>
+	                          	</p>
+	                           <ul>
+	                               <li>포인트는 <b>1,000 포인트 이상</b>부터 결제가 가능합니다.</li>
+	                               <li>최대 사용금액은 제한이 없습니다.</li>
+	                           </ul>
+	                       </td>
+	                   </tr>
+	               </tbody>
+	           </table>
+	           <div style="margin-left: 100px;">
+	               <p>
+                  	<strong>최종결제 금액</strong>
+	               	<span id="paymentInfo_totalPriceMinusPoint">
+	                   	<c:choose>
+	               			<c:when test="${letterDto.letter_price + totalOptionPrice ge 20000}">
+	               				<c:choose>
+	               					<c:when test="${myPoint ge 1000}">
+										<fmt:formatNumber type="number" value="${(letterDto.letter_price + totalOptionPrice) - myPoint }"/>원
+									</c:when>
+									<c:otherwise>
+										<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice }"/>원
+									</c:otherwise>
+								</c:choose>
+	               			</c:when>
+	               			<c:otherwise>
+								<c:choose>
+									<c:when test="${myPoint ge 1000}">
+										<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice + 2500  - myPoint}"/>원
+									</c:when>
+									<c:otherwise>
+										<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice + 2500}"/>원
+									</c:otherwise>
+								</c:choose>
+	               			</c:otherwise>
+	          				</c:choose>
+					</span>
+	               </p>
+	               <p>
+	               	   <strong>총 적립예정금액</strong>
+	                   <span id="paymentInfo_totalPoint">
+	                   	<fmt:formatNumber type="number" value="${letterPoint + totalOptionPoint }"/>pt
+	                  		<input type='hidden' value="${letterPoint + totalOptionPoint }"/>
+	                   </span>
+	               </p>
+	               <p class="agreement">
+	                   <input type="checkbox" id="agree" required="required">
+	                   <label for="agree">결제정보를 확인하였으며, 구매진행에 동의합니다.</label>
+	               </p>
+	               <p class="payBtn">
+	                   <input type="submit" value="결제하기" id="payment">
+	               </p>
+	           </div>
+	       </div>
+       </form>
 </body>
 </html>
