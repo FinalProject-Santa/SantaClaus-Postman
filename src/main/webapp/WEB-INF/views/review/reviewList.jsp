@@ -14,20 +14,15 @@
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
 
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
 	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 	crossorigin="anonymous"></script>
 
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
+
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -102,8 +97,7 @@ ul {
 
 									<c:when test="${fn:length(list) > 0 }">
 										<c:forEach items="${list }" var="review">
-											<tr
-												onclick="location.href='/review/reviewDetail/${review.REVIEW_NO}'">
+											<tr onclick="location.href='/review/reviewDetail/${review.REVIEW_NO}'" style="cursor:pointer;">
 												<td style="text-align: center;">${review.REVIEW_NO }</td>
 												<td>${review.REVIEW_TITLE }</td>
 												<td style="text-align: center;">${review.USER_ID}</td>
@@ -126,24 +120,28 @@ ul {
 								<td colspan="6" align="right"><input type="button"
 									value="글작성" onclick="location.href='/review/reviewinsertform'">
 									
-									<ul class="btn-group pagination">
+								<nav aria-label="Page navigation example">
+									<ul class="pagination">
 										<c:if test="${pageMaker.prev }">
-											<li><a
-												href='<c:url value="/review/reviewList?page=${pageMaker.startPage-1 }"/>'>&lt;<i
-													class="fa fa-chevron-left"></i></a></li>
+											<li class="page-item">
+											<a class="page-link" href='<c:url value="/review/reviewList?page=${pageMaker.startPage-1 }"/>'><span aria-hidden="true">&laquo;</span>
+											</a>
+											</li>
 										</c:if>
 										<c:forEach begin="${pageMaker.startPage }"
 											end="${pageMaker.endPage }" var="pageNum">
-											<li><a
-												href='<c:url value="/review/reviewList?page=${pageNum }"/>'><i
-													class="fa">${pageNum }</i></a></li>
+											<li class="page-item"><a class="page-link"
+												href='<c:url value="/review/reviewList?page=${pageNum }"/>'>${pageNum }
+												</a>
+											</li>
 										</c:forEach>
 										<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
-											<li><a
-												href='<c:url value="/review/reviewList?page=${pageMaker.endPage+1 }"/>'>&gt;<i
-													class="fa fa-chevron-right"></i></a></li>
+											<li class="page-item"><a class="page-link"
+												href='<c:url value="/review/reviewList?page=${pageMaker.endPage+1 }"/>' aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
 										</c:if>
-									</ul></td>
+									</ul>
+									</nav>
+									</td>
 							</tr>
 						</table>
 					</div>

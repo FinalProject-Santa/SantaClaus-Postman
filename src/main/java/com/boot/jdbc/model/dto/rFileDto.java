@@ -1,28 +1,28 @@
 package com.boot.jdbc.model.dto;
 
 public class rFileDto {
-	private int rfno;
+	private int rf_no;
     private int review_no;
-    private String rfileName;     //저장할 파일
-    private String rfileOriName;  //실제 파일
-    private String rfileUrl;
+    private String rfile_name;     //저장할 파일
+    private String rfile_oriname;  //실제 파일
+    private String rfile_url;
 	public rFileDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public rFileDto(int rfno, int review_no, String rfileName, String rfileOriName, String rfileUrl) {
+	public rFileDto(int rf_no, int review_no, String rfile_name, String rfile_oriname, String rfile_url) {
 		super();
-		this.rfno = rfno;
+		this.rf_no = rf_no;
 		this.review_no = review_no;
-		this.rfileName = rfileName;
-		this.rfileOriName = rfileOriName;
-		this.rfileUrl = rfileUrl;
+		this.rfile_name = rfile_name;
+		this.rfile_oriname = rfile_oriname;
+		this.rfile_url = rfile_url;
 	}
-	public int getRfno() {
-		return rfno;
+	public int getRf_no() {
+		return rf_no;
 	}
-	public void setRfno(int rfno) {
-		this.rfno = rfno;
+	public void setRf_no(int rf_no) {
+		this.rf_no = rf_no;
 	}
 	public int getReview_no() {
 		return review_no;
@@ -30,23 +30,24 @@ public class rFileDto {
 	public void setReview_no(int review_no) {
 		this.review_no = review_no;
 	}
-	public String getRfileName() {
-		return rfileName;
+	public String getRfile_name() {
+		return rfile_name;
 	}
-	public void setRfileName(String rfileName) {
-		this.rfileName = rfileName;
+	public void setRfile_name(String rfile_name) {
+		this.rfile_name = rfile_name;
 	}
-	public String getRfileOriName() {
-		return rfileOriName;
+	public String getRfile_oriname() {
+		return rfile_oriname;
 	}
-	public void setRfileOriName(String rfileOriName) {
-		this.rfileOriName = rfileOriName;
+	public void setRfile_oriname(String rfile_oriname) {
+		this.rfile_oriname = rfile_oriname;
 	}
-	public String getRfileUrl() {
-		return rfileUrl;
+	public String getRfile_url() {
+		return rfile_url;
 	}
-	public void setRfileUrl(String rfileUrl) {
-		this.rfileUrl = rfileUrl;
+	public void setRfile_url(String rfile_url) {
+		this.rfile_url = rfile_url;
 	}
 
+	
 }

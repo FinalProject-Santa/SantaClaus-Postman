@@ -76,7 +76,7 @@ span.star-prototype > * {
 				</c:if>  -->
 				<tr>
 					<td colspan="4" class="text-left" valign="top" height=200>
-						<img alt="" src="/resources/image/uploadFiles/${files.rfileName}"></td>
+						<img alt="" src="/resources/image/uploadFiles/${files.rfile_name}"></td>
 				</tr>
 				<tr>
 					<td colspan="4" class="text-left" valign="top" height=200>

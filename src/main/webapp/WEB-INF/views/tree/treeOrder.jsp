@@ -13,8 +13,8 @@
 		<c:forEach items="${dtolist}" var="dto">
 			<p>${dto.or_id }</p>
 			<p>${dto.or_price }</p>
-			<p>${dto.or_img }</p>
-			<p>${dto.or_name }</p>
+			<img alt="" src="/resources/image/treeimg/${dto.or_name }.png">
+			
 		</c:forEach>
 	
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>

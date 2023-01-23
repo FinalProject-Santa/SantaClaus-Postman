@@ -101,9 +101,9 @@ public class ReviewController {
 		reviewbiz.reviewInsert(reviewdto);
 		
 		 file.setReview_no(reviewdto.getReview_no());
-         file.setRfileName(destinationFileName);
-         file.setRfileOriName(sourceFileName);
-         file.setRfileUrl(uploadFileDir);
+         file.setRfile_name(destinationFileName);
+         file.setRfile_oriname(sourceFileName);
+         file.setRfile_url(uploadFileDir);
          
          reviewbiz.fileInsert(file); //file insert
          return "redirect:/review/reviewList";
@@ -171,20 +171,20 @@ public class ReviewController {
             System.out.println(sourcefileName);
             System.out.println(uploadFileDir);
             
-            file.setRfileName(destinationFileName);
-            file.setRfileOriName(sourcefileName);
+            file.setRfile_name(destinationFileName);
+            file.setRfile_oriname(sourcefileName);
 		}else {  // 새로운 파일이 등록되지 않았다면
 			  // 기존 이미지를 그대로 사용
 			System.out.println("testtest");
-			  file.setRfileName(request.getParameter("rfileName"));
+			  file.setRfile_name(request.getParameter("rfileName"));
 		}
 			  
 		 file.setReview_no(Integer.parseInt(request.getParameter("review_no")));
          
-         file.setRfileUrl(uploadFileDir);
+         file.setRfile_url(uploadFileDir);
 		reviewdto.setReview_title(request.getParameter("review_title"));
 		reviewdto.setReview_content(request.getParameter("review_content"));
-		reviewdto.setReview_best(Integer.parseInt(request.getParameter("review_best")));
+		reviewdto.setReview_best(Double.parseDouble(request.getParameter("review_best")));
         reviewdto.setReview_no(Integer.parseInt(request.getParameter("review_no")));
         
         reviewbiz.reviewUpdate(reviewdto);
