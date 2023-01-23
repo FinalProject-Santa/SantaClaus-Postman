@@ -229,7 +229,7 @@
 		$("#payment").click(function(){
 			const data = {
 				orderNum : createOrderNum(),
-				name : $("#letterName").val(),
+				name : $("#letterName").html().trim(),
 				price : parseInt($("input[name=total_price]").val())
 			}
 			console.log("주문번호 : " + data.orderNum);
@@ -250,23 +250,12 @@
 			        acceptmethod : "noeasypay" // 간편결제 버튼을 통합결제창에서 제외(PC)
 			    }, */
 			}, function(rsp) { // callback 로직
+				if(rsp.success){
+					$('#form').submit();
+					
+				}
+				
 			});
-			
-			// 카카오 페이
-			/* IMP.request_pay({
-			    pg : 'kakaopay.TC0ONETIME',
-			    pay_method : 'card',  //생략가
-			    merchant_uid: "order_no_0004", //상점에서 생성한 고유 주문번호
-			    name : '주문명:결제테스트',
-			    amount : 1004,
-			    buyer_email : 'iamport@siot.do',
-			    buyer_name : '구매자이름',
-			    buyer_tel : '010-1234-5678',
-			    buyer_addr : '서울특별시 강남구 삼성동',
-			    buyer_postcode : '123-456',
-			    m_redirect_url : '{모바일에서 결제 완료 후 리디렉션 될 URL}'
-			}, function(rsp) { // callback 로직
-			}); */
 		});
 	});
 </script>
@@ -382,7 +371,7 @@
        <div class="title">
            <h3>배송 정보</h3>
        </div>
-       <form action="/order/order" method="post">
+       <form action="/order/order" method="post" id="form">
            <table border="1">
                <tbody>
                    <tr>
@@ -563,10 +552,9 @@
 	                   <label for="agree">결제정보를 확인하였으며, 구매진행에 동의합니다.</label>
 	               </p>
 	               <p class="payBtn">
-	                   <input type="submit" value="결제하기" id="payment">
+	                   <input type="button" value="결제하기" id="payment">
 	               </p>
 	           </div>
 	       </div>
        </form>
 </body>
-</html>
