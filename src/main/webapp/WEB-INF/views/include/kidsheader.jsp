@@ -27,7 +27,7 @@ body {
     position: relative;
     font-weight: bold;
     font-size: 45px;
-    left: 470px;
+    left: 535px;
     top: 9px;
     cursor: pointer;
 }
@@ -86,7 +86,7 @@ body {
 <body>
 	<!-- header -->
     <div class="header">
-        <span id="logo"><a href="/">Dear Santa</a></span>
+        <span id="logo"><a href="./main">Dear Santa</a></span>
         <ul id="sidemenu">
             <li>oo야 만나서 반가워!</li>
             <!-- <li>Cart</li> -->

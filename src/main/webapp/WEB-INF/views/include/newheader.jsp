@@ -26,7 +26,7 @@ body {
     position: relative;
     font-weight: bold;
     font-size: 40px;
-    left: 480px;
+    left: 550px;
     top: 12px;
     cursor: pointer;
 }
