@@ -356,7 +356,7 @@ input.nickname {
                                             <form action="#">
                                             <input id="file" type="file" accept="image/*" name="#">
                                             
-                                                <span>프로필 사진 설정</span>
+                                            <span>프로필 사진 설정</span>
                                         </label>
                                
                                  </div>

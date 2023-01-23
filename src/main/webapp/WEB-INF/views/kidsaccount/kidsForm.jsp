@@ -338,7 +338,6 @@ input.nickname {
                     <h2 class="title">키즈 계정 설정</h2>
                      <fieldset class="fieldset">
                         <h3 class="fieldset-title">프로필 설정</h3>
-                     		<form action="/kidsaccount/AddProfile" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             
                             <div class="imgbox">
@@ -346,6 +345,7 @@ input.nickname {
                             </div>
                             <div class="uld-bt-box">    
                                 <label for="file" class="upload-btn">
+                     		<form action="/kidsaccount/AddProfile" method="post" enctype="multipart/form-data">
                                            <input id="file" type="file" accept="image/*" name="files">
                                                 <span>프로필 사진 설정</span>
                                         </label>
@@ -382,7 +382,7 @@ input.nickname {
                                 </div>
                                     <div class="uld-bt-box">
                                     <label for="file2" class="upload-btn">
-                                        <form action="/kidsaccount/AddProfile" method="post">
+                                        <form action="/kidsaccount/AddSantamail" method="post">
                                         <input id="file2" type="file" name="santamail">
                                         <span>편지 업로드</span>
                                     

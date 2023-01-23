@@ -14,7 +14,7 @@ import com.boot.jdbc.model.dto.QnaFileDto;
 public interface QnaMapper {
 	
 	//새로운 글 insert
-	@Insert("INSERT INTO QNA VALUES (#{qna_no},#{user_id}, #{qna_type},#{qna_title},NOW(), #{qna_content},0,0,0,#{secret})")
+	@Insert("INSERT INTO QNA VALUES (#{qna_no},#{user_id}, #{qna_type},#{qna_title},NOW(), #{qna_content},#{secret},0,0,0)")
 	@Options(useGeneratedKeys = true, keyProperty = "qna_no")
 	int insert(QnaDto dto);
 	
@@ -40,22 +40,22 @@ public interface QnaMapper {
 	QnaDto selectOne(Integer qna_no);
 
 	
-	@Select("SELECT * FROM qnaFile WHERE QNA_NO=#{qna_no}")
+	@Select("SELECT * FROM QNA_FILE WHERE QNA_NO=#{qna_no}")
 	QnaDto getPicture(Integer qna_no);
 
-	@Select("SELECT * FROM qnaFile")
+	@Select("SELECT * FROM QNA_FILE")
 	QnaDto selectAll();
 
-	@Insert("INSERT INTO qnaFile(qna_no, file_id, file_oname,file_name,file_path) VALUES (#{qna_no}, #{file_id}, #{file_oname},#{file_name},#{file_path})")
-	@Options(useGeneratedKeys = true, keyProperty = "file_id")
+	@Insert("INSERT INTO QNA_FILE(qna_no, file_no, file_oname,file_name,file_path) VALUES (#{qna_no}, #{file_no}, #{file_oname},#{file_name},#{file_path})")
+	@Options(useGeneratedKeys = true, keyProperty = "file_no")
 	int insertFile(QnaFileDto file);
 
-	@Select("SELECT * FROM qnaFile WHERE QNA_NO=#{qna_no}")
+	@Select("SELECT * FROM QNA_FILE WHERE QNA_NO=#{qna_no}")
 	QnaFileDto selectFile(Integer qna_no);
 
 	
 	//답글 insert
-	@Insert("INSERT INTO QNA VALUES (#{qna_no}, #{user_id}, #{qna_type}, #{qna_title}, NOW(), #{qna_content},#{origin_no},1,1,#{secret})")
+	@Insert("INSERT INTO QNA VALUES (#{qna_no},'ADMIN', #{qna_type}, #{qna_title}, NOW(), #{qna_content},#{secret},#{origin_no},1,1)")
 	int insertReply(QnaDto dto);
 
 }

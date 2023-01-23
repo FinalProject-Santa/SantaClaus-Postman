@@ -62,5 +62,10 @@ public class KidsBizImpl implements KidsBiz {
 		return kidsmapper.sticker();
 	}
 
+	@Override
+	public int addmail(KidsDto dto) {
+		return kidsmapper.addmail(dto);
+	}
+
 
 }

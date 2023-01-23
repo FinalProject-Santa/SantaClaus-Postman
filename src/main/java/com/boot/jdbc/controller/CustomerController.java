@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.boot.jdbc.model.biz.ArticleBiz;
 import com.boot.jdbc.model.biz.QnaBiz;
+import com.boot.jdbc.model.dto.MemberDto;
 import com.boot.jdbc.model.dto.QnaDto;
 import com.boot.jdbc.model.dto.QnaFileDto;
 
@@ -78,16 +79,24 @@ public class CustomerController {
 	//에러나면 파라미터 확인
 	@GetMapping("/qnainsertform")
 	public String qna(Model model) {
-		model.addAttribute(new QnaDto());
+		
+		 model.addAttribute(new QnaDto());
+		
 		return "customer/qnainsert";
 		
 	}
 	
 	@PostMapping("/qnainsert")
-	public String Insert(QnaDto dto, @RequestPart MultipartFile files) throws Exception{
+	public String Insert(QnaDto dto, @RequestPart MultipartFile files,HttpServletRequest request) throws Exception{
+		
+		session = request.getSession();
+		String user_id = ((MemberDto) session.getAttribute("member")).getUser_id();
+		dto.setUser_id(user_id);
+		
+		
 		QnaFileDto file = new QnaFileDto();
 		
-		String uploadPath = "C:/Users/Home/git/SantaClaus-Postman/src/main/resources/static/files/";
+		String uploadPath = "C:/Users/USER/git/SantaClaus-Postman/src/main/resources/static/files/";
 		String sourceFileName = files.getOriginalFilename(); 
         String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
         File destinationFile; 
