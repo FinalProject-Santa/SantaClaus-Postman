@@ -23,9 +23,8 @@ import com.boot.jdbc.model.dto.OrderDto;
 @RequestMapping("/order")
 public class OrderController {
 	
-	/*
-	 * @Autowired private OrderBiz orderBiz;
-	 */
+	@Autowired
+	private	OrderBiz orderBiz;
 	@Autowired
 	private PointBiz pointBiz;
 	
@@ -47,20 +46,17 @@ public class OrderController {
 			}
 			model.addAttribute("dtoList", dtoList);
 		}
-		
 		// 세션에 담긴 값 꺼내기
 		HttpSession session = request.getSession();
 		String user_id = ((MemberDto)session.getAttribute("member")).getUser_id();
 		int myPoint = pointBiz.pointAll(user_id);
-		
+
 		// 회원 정보 가져오기
-		/*
-		 * MemberDto memberDto = orderBiz.memberInfo(user_id);
-		 * model.addAttribute("memberDto", memberDto);
-		 */
+		MemberDto memberDto = orderBiz.memberInfo(user_id);
+		model.addAttribute("memberDto", memberDto);
 		
 		// 최근 배송지 데이터 가져오기
-		
+		/* orderBiz.S */
 		
 		model.addAttribute("myPoint", myPoint);
 		model.addAttribute("letterDto", letterDto);
