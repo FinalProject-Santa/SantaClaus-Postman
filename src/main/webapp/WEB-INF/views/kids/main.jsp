@@ -25,9 +25,6 @@
     <p>무엇을 하고 놀까요?</p>
 	
 	<form action="/kids/sticker" method="post" id="diaryForm">
-	<!-- 세션처리 -->
-	<input type="hidden" name="user_id" id="user" value="user01">
-	<input type="hidden" name="kids_no" id="kids" value=1>
 	
     <div class="flex_container">
     <ul id="boximg">

@@ -96,7 +96,7 @@ body {
                 <ul id="menubar">
                     <li onclick="location.href='/kids/puzzle'">&nbsp;미니게임</li>
                     <li onclick="location.href='/kids/diary'">&nbsp;그림일기</li>
-                    <li onclick="location.href='/kids/sticker'">&nbsp;칭찬 스티커</li>
+                    <li onclick="location.href='/kids/menusticker'">&nbsp;칭찬 스티커</li>
                     <li><a href="">&nbsp;산타 우편함</a></li>
                     <br>
                     <br>

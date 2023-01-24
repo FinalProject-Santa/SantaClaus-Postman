@@ -3,9 +3,11 @@ package com.boot.jdbc.model.biz;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.boot.jdbc.model.dao.StickerMapper;
 
+@Service
 public class StickerBizImpl implements StickerBiz{
 
 	@Autowired
