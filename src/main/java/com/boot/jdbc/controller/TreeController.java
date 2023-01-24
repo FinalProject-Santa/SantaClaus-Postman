@@ -81,6 +81,7 @@ public class TreeController {
 //		}
 		model.addAttribute("dtolist",dtoList);
 		model.addAttribute("myimg", myimg);
+		System.out.println(dtoList);
 		return "tree/treeOrder";
 	}
 	

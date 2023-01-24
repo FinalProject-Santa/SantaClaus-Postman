@@ -117,9 +117,12 @@ ul {
 								</c:choose>
 							</tbody>
 							<tr>
-								<td colspan="6" align="right"><input type="button"
+							
+								<td colspan="6" align="right">
+								<c:if test="${sessionScope.member != null}"><input type="button"
 									value="글작성" onclick="location.href='/review/reviewinsertform'">
-									
+								</c:if>
+						
 								<nav aria-label="Page navigation example">
 									<ul class="pagination">
 										<c:if test="${pageMaker.prev }">
@@ -141,7 +144,7 @@ ul {
 										</c:if>
 									</ul>
 									</nav>
-									</td>
+									
 							</tr>
 						</table>
 					</div>
