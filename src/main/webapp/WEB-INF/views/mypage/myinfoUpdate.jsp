@@ -7,28 +7,11 @@
     <title>내정보수정</title>
     <link rel="stylesheet" href="/resources/css/mypage/myinfoUpdate.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    <script>
-      function setThumbnail(event) {
-        var reader = new FileReader();
-
-        reader.onload = function(event) {
-          var img = document.createElement("img");
-          img.setAttribute("src", event.target.result);
-          document.querySelector("div#image_container").appendChild(img);
-        };
-
-        reader.readAsDataURL(event.target.files[0]);
-      }
-    </script>
 </head>
 <body>
     <div id="wrapper">
         <form action="/main/myinfoUpdate" id="submit" method="post" enctype="multipart/form-data">
-        	<%-- <input type="hidden" name="user_id" value="${memberdto.user_id }"> --%>
-<!--         	<h3>프로필 변경</h3>
-			    <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);"/>
-			    <div id="image_container"></div> -->
-			    <label>사진 등록</label>
+			    <label>프로필 변경</label>
 			  	<div class="input-group mb-3">
 				    <input type="file" class="form-control" id="inputGroupFile02" name="files" value="test">
 				    <label class="input-group-text" for="inputGroupFile02">Upload</label>
@@ -102,6 +85,18 @@
     </div>
                 <script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
                 <script type="text/javascript">
+                //프로필 변경
+                $("#inputGroupFile02").change(function(){
+             		if(this.files && this.files[0]) {
+             	    	var reader = new FileReader;
+             	    	reader.onload = function(data) {
+             	     		$(".select_img img").attr("src", data.target.result).width(100);        
+             	    	}
+             	    	reader.readAsDataURL(this.files[0]);
+             		}
+           	  	});
+             		
+					//비밀번호 유효성 검사        
 	                var $pw = $("#pw");
 	                var $pwChk = $("#pwConfirm");
 	                
@@ -205,7 +200,7 @@
                 	});
                     
                 	$("#update").click(function() {
-                		$.ajax({
+                	/* 	$.ajax({
                 			url: "/main/phoneChk",
                 			type: 'POST',
                 			data: {
@@ -218,7 +213,7 @@
                 					return false;
                 				}
                 			}
-               			});
+               			}); */
                 		
                 		var id = $('#id').val();
                 		var pwChk = $('#passwordck').val();

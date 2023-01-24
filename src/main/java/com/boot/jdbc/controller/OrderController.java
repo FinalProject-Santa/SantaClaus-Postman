@@ -50,6 +50,7 @@ public class OrderController {
 		}
 		// 세션에 담긴 값 꺼내기
 		HttpSession session = request.getSession();
+    
 		user_id = ((MemberDto)session.getAttribute("member")).getUser_id();
 		int myPoint = pointBiz.pointAll(user_id);
 
@@ -60,7 +61,7 @@ public class OrderController {
 		// 최근 배송지 데이터 가져오기
 		/* orderBiz.S */
 		
-		model.addAttribute("myPoint", myPoint);
+//		model.addAttribute("myPoint", myPoint);
 		model.addAttribute("letterDto", letterDto);
 		return "/order/orderForm";
 	}

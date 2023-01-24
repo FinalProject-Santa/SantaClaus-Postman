@@ -312,8 +312,7 @@
                    </td>
                    <td>1</td>
                    <td>
-                   	<fmt:parseNumber var="letterPoint" value="${letterDto.letter_price * 0.01 }" integerOnly="true" />
-                   	<fmt:formatNumber type="number" value="${letterPoint }"/>pt
+                   	 
 				</td>
                </tr>
                <c:set var="totalOptionPrice"/>

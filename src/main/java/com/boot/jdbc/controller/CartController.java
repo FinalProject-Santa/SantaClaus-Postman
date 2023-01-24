@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.boot.jdbc.model.biz.CartBiz;
@@ -26,31 +27,29 @@ public class CartController {
 	//장바구니 페이지 이동
 	@Autowired
 	private CartBiz cartBiz;
-	@GetMapping("/cartpage")
+	@PostMapping("/cartpage")
 	public String cartpage(Model model, LetterDto letterDto, OptionDto optionDto, CartDto cartDto, HttpServletRequest request) {
-		List<OptionDto> dtoList = new ArrayList<OptionDto>();
+		List<OptionDto> optiondtoList = new ArrayList<OptionDto>();
+		String option_no = "";
 		
 		if(optionDto.getOptionDtoList()!= null) {
 			for(int i=0; i<optionDto.getOptionDtoList().size(); i++) {
-				dtoList.add(optionDto.getOptionDtoList().get(i));
+				optiondtoList.add(optionDto.getOptionDtoList().get(i));
+				option_no += optionDto.getOptionDtoList().get(i).getOption_no() + ",";
 			}
-			model.addAttribute("dtoList", dtoList);
+			model.addAttribute("optiondtoList", optiondtoList);
 		}
+		
+		int letter_no = letterDto.getLetter_no();
+		
 		HttpSession session = request.getSession();
-//		String user_id = ((MemberDto)session.getAttribute("member")).getUser_id();
-		System.out.println("왜이래");
-		String user_id = "qwerqwer";
+		String user_id = ((MemberDto)session.getAttribute("member")).getUser_id();
 
-		System.out.println("test : " + cartDto);
 		
-		List<CartDto> cartDto1 = cartBiz.cartList(user_id);
+//		List<CartDto> cartDto1 = cartBiz.cartList(user_id, letter_no, option_no);
 		
-		System.out.println("test" + cartDto1);
-		System.out.println("test" + cartDto);
-		System.out.println("왜이래2");
-		model.addAttribute("cartDto", cartBiz.cartList(user_id));
+		//model.addAttribute("cartDto", cartBiz.cartList(user_id));
 		model.addAttribute("letterDto", letterDto);
-		
 		return "/mypage/mycart";
 		
 		
