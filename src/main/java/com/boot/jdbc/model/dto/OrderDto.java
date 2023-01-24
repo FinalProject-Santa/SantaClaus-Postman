@@ -5,8 +5,8 @@ import java.util.Date;
 public class OrderDto {
 	private int order_no;
 	private String user_id;
-	private int letter_no;
-	private int option_no;
+	private String letter_name;
+	private String option_name;
 	private Date order_date;
 	private int total_price;
 	private String receiver;
@@ -16,21 +16,21 @@ public class OrderDto {
 	private String detail_addr;
 	private String phone;
 	private String delivery_message;
-	private Date delivery_date;
-	private int point;
-	
+	private int use_point;
+	private int save_point;
+
 	public OrderDto() {
 		super();
 	}
 
-	public OrderDto(int order_no, String user_id, int letter_no, int option_no, Date order_date, int total_price,
-			String receiver, String email, String post_code, String default_addr, String detail_addr, String phone,
-			String delivery_message, Date delivery_date, int point) {
+	public OrderDto(int order_no, String user_id, String letter_name, String option_name, Date order_date,
+			int total_price, String receiver, String email, String post_code, String default_addr, String detail_addr,
+			String phone, String delivery_message, int use_point, int save_point) {
 		super();
 		this.order_no = order_no;
 		this.user_id = user_id;
-		this.letter_no = letter_no;
-		this.option_no = option_no;
+		this.letter_name = letter_name;
+		this.option_name = option_name;
 		this.order_date = order_date;
 		this.total_price = total_price;
 		this.receiver = receiver;
@@ -40,8 +40,8 @@ public class OrderDto {
 		this.detail_addr = detail_addr;
 		this.phone = phone;
 		this.delivery_message = delivery_message;
-		this.delivery_date = delivery_date;
-		this.point = point;
+		this.use_point = use_point;
+		this.save_point = save_point;
 	}
 
 	public int getOrder_no() {
@@ -60,20 +60,20 @@ public class OrderDto {
 		this.user_id = user_id;
 	}
 
-	public int getLetter_no() {
-		return letter_no;
+	public String getLetter_name() {
+		return letter_name;
 	}
 
-	public void setLetter_no(int letter_no) {
-		this.letter_no = letter_no;
+	public void setLetter_name(String letter_name) {
+		this.letter_name = letter_name;
 	}
 
-	public int getOption_no() {
-		return option_no;
+	public String getOption_name() {
+		return option_name;
 	}
 
-	public void setOption_no(int option_no) {
-		this.option_no = option_no;
+	public void setOption_name(String option_name) {
+		this.option_name = option_name;
 	}
 
 	public Date getOrder_date() {
@@ -148,19 +148,21 @@ public class OrderDto {
 		this.delivery_message = delivery_message;
 	}
 
-	public Date getDelivery_date() {
-		return delivery_date;
+	public int getUse_point() {
+		return use_point;
 	}
 
-	public void setDelivery_date(Date delivery_date) {
-		this.delivery_date = delivery_date;
+	public void setUse_point(int use_point) {
+		this.use_point = use_point;
 	}
 
-	public int getPoint() {
-		return point;
+	public int getSave_point() {
+		return save_point;
 	}
 
-	public void setPoint(int point) {
-		this.point = point;
+	public void setSave_point(int save_point) {
+		this.save_point = save_point;
 	}
+	
+	
 }

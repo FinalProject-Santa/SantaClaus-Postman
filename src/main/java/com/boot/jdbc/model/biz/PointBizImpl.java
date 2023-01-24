@@ -43,6 +43,11 @@ public class PointBizImpl implements PointBiz{
 		return pointMapper.selectList(cri);
 	}
 
+	@Override
+	public int insertPoint(PointDto pointDto) {
+		return pointMapper.insertPoint(pointDto);
+	}
+
 	
 	//결제 창에서 결제하기 눌렀을 때 삽입 실행
 //	@Override

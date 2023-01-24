@@ -12,6 +12,7 @@ public interface PointBiz {
 	public int pointAlll(String user_id);
 	public int countBoardListTotal();
 	public List<PointDto> selectList(Criteria cri);
+	public int insertPoint(PointDto pointDto);
 	
 	//결제 창에서 결제하기 눌렀을 때 삽입 실행
 //	public pointDto pointsave(pointDto dto);
