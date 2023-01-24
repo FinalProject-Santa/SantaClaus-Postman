@@ -1,7 +1,19 @@
 @charset "UTF-8";
+html{
+    margin: 0;
+}
+body {
+    height: auto;
+    margin: 0;
+    font-family: 'Nanum Myeongjo', serif;
+}
 #body-wrapper {
     min-height: 100px;
     position: relative;
+}
+.inner{
+    width: 1400px;
+    margin: 0 auto;
 }
 #img_box{
     margin-top: 200px;
@@ -52,8 +64,8 @@ hr{
     left: 787px;
     top: 385px;
 }
-a{
-    text-decoration: none;
+.atag{
+	text-decoration: none;
     color: black;
 }
 #letterbox{

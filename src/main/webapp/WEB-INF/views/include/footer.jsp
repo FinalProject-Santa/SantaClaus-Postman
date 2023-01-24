@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -11,7 +10,7 @@
 <style>
 footer {
     padding: 15px;
-    margin-top: 100px;
+    margin-top: 120px;
     height: 120px;
     font-size:12px;
     line-height:20px;
@@ -24,6 +23,9 @@ footer {
     width:400px;
     text-align: right;
 }
+.footerbr{
+	margin-bottom: 27px;
+}
 
 .header2, .footer2{
     display: flex;
@@ -32,20 +34,18 @@ footer {
 }
 </style>
 </head>
-<body>
+
 	<!-- footer -->
     <footer>
         <div class="footer2">
             <div id="footer1">
                 <b>(주)디어산타</b>
                 <p>Team: 산타국 우체부</p>
-                <p>221206, 서울특별시 산타구 우체동 12-25 2층</p>
-                <p>&nbsp;</p>
+                <p class="footerbr">221206, 서울특별시 산타구 우체동 12-25 2층</p>
                 <p>Copyright © 2022 Dear Santa. All rights reserved.</p>
             </div>
             <div id="footer2">
-                <p>CONTACT</p>
-                <p>&nbsp;</p>
+                <p class="footerbr">CONTACT</p>
                 <p>T.02212061225 | am 10 ~ pm 5 , sat/sun/holiday off</p>
                 <p></p>business mail _ dearsanta@gmail.com</p>
                 <p>Instagram _ @dearsanta_official</p>
@@ -54,4 +54,9 @@ footer {
     </footer>
     
 </body>
+	<script>
+    function maintoggle(){
+        $('#menubox').toggle(400);
+    }
+    </script>
 </html>

@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" /> -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
@@ -55,45 +56,41 @@ body {
     width: 150px;
     height: 50px;
     padding-top: 8px;
-    padding-left: 10px;
+    padding-left: 20px;
 }
-
-
-
-/* 여기 수정하세요 */
 #menubox{
     position: absolute;
     width: 225px;
     height: 860px;
-    margin-top: -9.5px;
-    margin-left: -30px;
+    margin-top: 7px;
+    margin-left: -50px;
     display: none;
     background-color: white;
-    border-right: solid 0.5px lightgray;	
-  
+    border-right: solid 0.5px lightgray;
 }
-
-  
 #menubar{
     position: fixed;
     list-style: none;
     cursor: pointer;
     margin-top: 55px;
-    margin-left: 55px;
+    margin-left: 25px;
 }
 #menubar li{
     font-size: 16px;
     margin-bottom: 40px;
 }
-
-
+#nbsp{
+	padding-bottom: 35px;
+}
 .header2, .footer2{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
-
+.atag{
+	text-decoration: none;
+    color: black;
+}
 </style>
 </head>
 <body>
@@ -102,37 +99,25 @@ body {
         <div class="header2">
        
         <div style="position: relative;">
-            <p id="menu"onclick="maintoggle();">= Menu
+            <div id="menu"onclick="maintoggle();">= Menu
             <div id="menubox">
                     <ul id="menubar">
-                        <li><a href="../letter/letterList">Letter</a></li>
-                    	<li><a href="../tree/decotree">Tree</a></li>
-                    	<li><a href="../review/reviewList">Review</a></li>
-                    	<li><a href="../mypage/main">My Page</a></li>
-                        <p>&nbsp;</p>
-                        <p>&nbsp;</p>
-                        <li><a href="#about" id="scroll_move">About</a></li>
+                        <li><a href="../letter/letterList" class="atag">Letter</a></li>
+                    	<li><a href="../tree/decotree" class="atag">Tree</a></li>
+                    	<li><a href="../review/reviewList" class="atag">Review</a></li>
+                    	<li id="nbsp"><a href="../mypage/main" class="atag">My Page</a></li>
+                        <li><a href="#about" id="scroll_move" class="atag">About</a></li>
                     </ul>
                 </div>
-                </p>
+                </div>
         </div>
 
-        <h1 id="logo"><a href="/">Dear Santa</a></h1>
+        <h1 id="logo"><a href="/" class="atag">Dear Santa</a></h1>
 
         <ul id="sidemenu">
-            <li>Login</li>
-            <li>Kids</li>
+             <li onclick="location.href='/main/loginForm'">Login</li>
+            <li><a href="../kids/main" class="atag">Kids</a></li>
         </ul>
         </div>
     </div>
-
-    
-</body>
-
-  <script>    
-    function maintoggle(){
-        $('#menubox').toggle(400);
-    }
-    </script>
-
-</html>
+<!-- header end -->
