@@ -194,6 +194,10 @@
 		$("#myPoint").change(function(){
 			var myPoint = parseInt($("#myPoint").next().val());
 			var usePoint = parseInt($(this).val());
+			
+			// dto에 사용 포인트 set
+			$("input[name=use_point]").val(usePoint);
+			
 			var totalPrice = parseInt($("#paymentInfo_totalPricePlusDeliv > input").val());
 			var finalAmount = $("#paymentInfo_totalPriceMinusPoint");
 			finalAmount.children().remove();
@@ -223,6 +227,9 @@
 			for(let i=0; i<5; i++) {
 				orderNum += Math.floor(Math.random() * 8);	
 			}
+			// input 태그에 주문번호 넣기
+			$("input[name=order_no]").val(orderNum);
+			
 			return orderNum;
 		};
 		
@@ -292,6 +299,7 @@
                    <td>
                        <p id="letterName">
                            ${letterDto.letter_name }
+                           <input type="hidden" value="${letterDto.letter_name }" name="letter_name">
                        </p>
                        <p class="blanks">
                            <span>아이 이름 : ${letterDto.child_name }</span><br>
@@ -544,15 +552,17 @@
 	               	   <strong>총 적립예정금액</strong>
 	                   <span id="paymentInfo_totalPoint">
 	                   	<fmt:formatNumber type="number" value="${letterPoint + totalOptionPoint }"/>pt
-	                  		<input type='hidden' value="${letterPoint + totalOptionPoint }"/>
+	                  		<input type="hidden" name="save_point" value="${letterPoint + totalOptionPoint }"/>
 	                   </span>
+	                   <input type="hidden" name="use_point">
 	               </p>
 	               <p class="agreement">
 	                   <input type="checkbox" id="agree" required="required">
 	                   <label for="agree">결제정보를 확인하였으며, 구매진행에 동의합니다.</label>
 	               </p>
 	               <p class="payBtn">
-	                   <input type="button" value="결제하기" id="payment">
+	                   <input type="submit" value="결제하기" id="payment">
+	                   <input type="hidden" value="" name="order_no">
 	               </p>
 	           </div>
 	       </div>
