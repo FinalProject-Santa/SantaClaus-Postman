@@ -47,8 +47,7 @@
   </div>
   
 <form action="/review/reviewUpdate" method="post" enctype="multipart/form-data">
-<input type="hidden" name="user_id" id="user" value="user01">
-<input type="hidden" name="review_count" id="count" value="1">
+<input type="hidden" name="review_count" id="count" value="${review_count }">
 <input type="hidden" name="review_no" value="${review_no}"/>
     <div class="mb-3">
       <label for="formGroupExampleInput" class="form-label">제목</label>

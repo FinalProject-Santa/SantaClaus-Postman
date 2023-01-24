@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.RandomStringUtils;
@@ -25,6 +26,7 @@ import com.boot.jdbc.model.dto.Criteria;
 import com.boot.jdbc.model.dto.PageMaker;
 import com.boot.jdbc.model.dto.ReviewDto;
 import com.boot.jdbc.model.dto.rFileDto;
+import com.boot.jdbc.model.dto.MemberDto;
 
 @Controller
 @RequestMapping("/review")
@@ -59,11 +61,6 @@ public class ReviewController {
 		return mav;
 	}
 	
-	@GetMapping("/reviewinsertform")
-	public String rinsertform() {
-		return "review/reviewInsertForm";
-				
-	}
 	
 	@RequestMapping("/reviewDetail/{review_no}")
 	public String reviewDetail(Model model, @PathVariable int review_no) {
@@ -72,16 +69,28 @@ public class ReviewController {
 		reviewbiz.reviewCountUpdate(review_no);
 
 		
-		System.out.println("test:" + reviewbiz.reviewDetail(124));
 		model.addAttribute("reviewdetail", reviewbiz.reviewDetail(review_no));
 		model.addAttribute("files", reviewbiz.rfileDetail(review_no));
 		
 		return "review/reviewDetail";
 	}
+
+	@GetMapping("/reviewinsertform")
+	public String rinsertform() {
+		// 세션에 담긴 값 꺼내기
+
+		return "review/reviewInsertForm";
+		
+	}
 	
 	@RequestMapping(value="/reviewinsert", method=RequestMethod.POST)
-	public String reviewInsert(ReviewDto reviewdto, @RequestPart MultipartFile files) throws Exception{
+	public String reviewInsert(ReviewDto reviewdto, @RequestPart MultipartFile files, HttpServletRequest request) throws Exception{
         
+		// 세션에 담긴 값 꺼내기
+		HttpSession session = request.getSession();
+		String user_id = ((MemberDto)session.getAttribute("member")).getUser_id();
+		reviewdto.setUser_id(user_id);
+		
 		rFileDto file = new rFileDto();
 		
 		String sourceFileName = files.getOriginalFilename(); 
@@ -144,6 +153,11 @@ public class ReviewController {
 		rFileDto file = new rFileDto();
 		ReviewDto reviewdto = new ReviewDto();
 		String uploadPath = "C:\\Users\\yg\\git\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\uploadFiles\\";
+		
+		// 세션에 담긴 값 꺼내기
+		HttpSession session = request.getSession();
+		String user_id = ((MemberDto)session.getAttribute("member")).getUser_id();
+		reviewdto.setUser_id(user_id);
 		
 		if(files.getOriginalFilename()!= null && !files.getOriginalFilename().equals("")) {
 			String sourcefileName = files.getOriginalFilename(); 
