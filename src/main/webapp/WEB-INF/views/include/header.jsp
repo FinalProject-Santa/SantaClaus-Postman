@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,10 +18,7 @@ body {
     margin: 0;
     font-family: 'Nanum Myeongjo', serif;
 }
-.inner{
-    width: 1400px;
-    margin: 0 auto;
-}
+
 .header{
     position: fixed;
     display: flex;
@@ -60,6 +58,8 @@ body {
     padding-left: 10px;
 }
 
+
+
 /* 여기 수정하세요 */
 #menubox{
     position: absolute;
@@ -67,11 +67,13 @@ body {
     height: 860px;
     margin-top: -9.5px;
     margin-left: -30px;
-    /* display: none; */
+    display: none;
     background-color: white;
-    transition: left .3s;
-    border-right: solid 0.5px lightgray;
+    border-right: solid 0.5px lightgray;	
+  
 }
+
+  
 #menubar{
     position: fixed;
     list-style: none;
@@ -83,16 +85,15 @@ body {
     font-size: 16px;
     margin-bottom: 40px;
 }
-/* #menu:hover > #menubox{
-    display: block;
-} */
-/* 여기까지 */
+
 
 .header2, .footer2{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
+
 </style>
 </head>
 <body>
@@ -101,7 +102,7 @@ body {
         <div class="header2">
        
         <div style="position: relative;">
-            <p id="menu">= Menu</p>
+            <p id="menu"onclick="maintoggle();">= Menu
             <div id="menubox">
                     <ul id="menubar">
                         <li><a href="../letter/letterList">Letter</a></li>
@@ -113,6 +114,7 @@ body {
                         <li><a href="#about" id="scroll_move">About</a></li>
                     </ul>
                 </div>
+                </p>
         </div>
 
         <h1 id="logo"><a href="/">Dear Santa</a></h1>
@@ -123,6 +125,14 @@ body {
         </ul>
         </div>
     </div>
+
     
 </body>
+
+  <script>    
+    function maintoggle(){
+        $('#menubox').toggle(400);
+    }
+    </script>
+
 </html>
