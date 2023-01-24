@@ -322,10 +322,11 @@ input.nickname {
             <div class="module-inner">
                 <div class="side-bar">
                     <div class="user-info">
-                        <img class="img-profile img-circle img-responsive center-block" src="https://i0.wp.com/adventure.co.kr/wp-content/uploads/2020/09/no-image.jpg" alt="">
                    
                     		
-                    		<c:set var="i" value="${no-1}"/>
+                    	<c:set var="i" value="${no-1}"/>
+                        
+                        <img class="img-profile img-circle img-responsive center-block" src="/resources/files/${list[i].kids_thumbnail}" alt="">
                     		
                     		
                             <p>${list[i].kids_nickname}</p>
@@ -349,7 +350,7 @@ input.nickname {
                         <div class="form-group avatar">
                             
                             <div class="imgbox">
-                                <img src="https://i0.wp.com/adventure.co.kr/wp-content/uploads/2020/09/no-image.jpg" class="image-box" />
+                                <img src="/resources/files/${list[i].kids_thumbnail}" class="image-box" />
                             </div>
                             <div class="uld-bt-box">    
                                 <label for="file" class="upload-btn">
@@ -375,8 +376,8 @@ input.nickname {
                  
 
                  <div class="submitbt"><br>
-                 <input type="submit" value="등록">
-                 <input type="button" value="삭제" onclick="">
+                 <input type="submit" value="등록" onclick="location.href=">
+                 <input type="button" value="삭제" onclick="location.href='profileDelete/${list[i].kids_no}'">
                 </div>
                  </div>
 

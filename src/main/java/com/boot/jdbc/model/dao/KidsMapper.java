@@ -2,6 +2,7 @@ package com.boot.jdbc.model.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -44,5 +45,12 @@ public interface KidsMapper {
 	@Update("UPDATE KIDS_SETTING SET KIDS_NICKNAME , KIDS_THUMBNAIL = #{kids_thumbnail} , KIDS_NICKNAME = #{kids_nickname}) WHERE USER_ID=#{user_id}")
 	int modify(KidsDto dto);
 
+	@Delete("DELETE FROM KIDS_FILE WHERE KIDS_NO=#{kids_no}")
+	int deletefile(KidFileDto dto);
+	
+	@Delete("DELETE FROM KIDS_SETTING WHERE KIDS_NO=#{kids_no}")
+	int delete(KidsDto dto);
+	
+	
 
 }

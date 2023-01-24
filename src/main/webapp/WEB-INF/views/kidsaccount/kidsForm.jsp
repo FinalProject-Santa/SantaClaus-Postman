@@ -382,8 +382,8 @@ input.nickname {
                                 </div>
                                     <div class="uld-bt-box">
                                     <label for="file2" class="upload-btn">
-                                        <form action="/kidsaccount/AddSantamail" method="post">
-                                        <input id="file2" type="file" name="santamail">
+                                        <form action="/kidsaccount/AddSantamail" method="post" enctype="multipart/form-data">
+                                        <input id="file2" type="file" name="files">
                                         <span>편지 업로드</span>
                                     
                                         </label>
@@ -415,7 +415,7 @@ input.nickname {
       reader.readAsDataURL(fileDOM.files[0]);
     });
     
-    const fileDOM2 = document.querySelector('#file2');
+    const fileDOM2 = document.querySelector('#files');
     
     fileDOM2.addEventListener('change', () => {
       const imageSrc = URL.createObjectURL(fileDOM2.files[0]);
