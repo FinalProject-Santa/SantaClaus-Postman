@@ -1,21 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <link rel="stylesheet" href="/resources/css/kids/puzzle.css">
-</head>
+
 <body>
+	<%@include file="../include/header.jsp" %>
 	<div class="santa_puzzle">
-        <span>ªÍ≈∏</span><br>
-        <span>∆€¡Ò ∏¬√ﬂ±‚</span>
+        <span>ÏÇ∞ÌÉÄ</span><br>
+        <span>ÌçºÏ¶ê ÎßûÏ∂îÍ∏∞</span>
     </div>
     <div class="start_button">
-    <input type="button" class="level1-button" value="1¥‹∞Ë Ω√¿€" 
+    <input type="button" class="level1-button" value="1Îã®Í≥Ñ ÏãúÏûë" 
     												onclick="location.href='/kids/onelevel'">
-    <input type="button" class="level2-button" value="∞∞¿∫ ±◊∏≤" 
+    <input type="button" class="level2-button" value="Í∞ôÏùÄ Í∑∏Î¶º" 
     												onclick="location.href='/kids/samegame'">
     </div>
     <p>

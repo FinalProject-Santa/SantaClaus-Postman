@@ -5,8 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<link rel="stylesheet" href="/resources/css/main/newmain.css">
-	<!-- font / font-family: 'Nanum Myeongjo', serif; -->
+	<link rel="stylesheet" href="/resources/css/main/main.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
@@ -51,7 +50,7 @@
 
             <div id="Insta">
                 <span id="title3">Instagram</span><br><br>
-                <span id="content3"><a href="https://www.instagram.com/dearsanta_official/?next=%2F&hl=ko" target='_blank'>@dearsanta_official</a></span>
+                <span id="content3"><a href="https://www.instagram.com/dearsanta_official/?next=%2F&hl=ko" target='_blank' class="atag">@dearsanta_official</a></span>
             </div>
 
         </div>
@@ -61,10 +60,10 @@
         <div id="letterbox">
             <div class="letterdiv">
             <ul id="letter">
-                <li><a><img src="/resources/image/main/letter1.jpg"><div>케빈엽서<br>\2,000</div></a></li>
-                <li><a><img src="/resources/image/main/letter1.jpg"><div>케빈엽서<br>\2,000</div></a></li>
-                <li><a><img src="/resources/image/main/letter1.jpg"><div>케빈엽서<br>\2,000</div></a></li>
-                <li><a><img src="/resources/image/main/letter1.jpg"><div>케빈엽서<br>\2,000</div></a></li>
+                <li><a class="atag"><img src="/resources/image/main/letter1.jpg"><div>케빈엽서<br>\2,000</div></a></li>
+                <li><a class="atag"><img src="/resources/image/main/letter1.jpg"><div>케빈엽서<br>\2,000</div></a></li>
+                <li><a class="atag"><img src="/resources/image/main/letter1.jpg"><div>케빈엽서<br>\2,000</div></a></li>
+                <li><a class="atag"><img src="/resources/image/main/letter1.jpg"><div>케빈엽서<br>\2,000</div></a></li>
             </ul>
             </div>
         </div>
