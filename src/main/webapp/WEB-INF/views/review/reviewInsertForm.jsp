@@ -49,6 +49,8 @@
 }
 </style>
 <body>
+<%@include file="../include/floatingMenu.jsp" %>
+
 	<div class="container" style="margin: 0 auto">
 		<div>
 			<h3>리뷰 작성</h3>
