@@ -321,6 +321,62 @@ public class KidsController {
 		return "/kids/sticker";
 	}
 	
+	
+	@GetMapping("/menusticker")
+	public String selectSticker_menu(HttpServletRequest request,Model model) {
+		
+		int i;
+		HttpSession session = request.getSession();
+		
+		String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
+		int kidsNo = ((KidsDto)session.getAttribute("kids")).getKids_no();
+		
+		//스티커 개수
+		stickerbiz.selectDiary(kidsNo);
+		int stickerCount = stickerbiz.selectDiary(kidsNo);
+		stickerbiz.deleteSticker(kidsNo);
+		stickerbiz.insertSticker(kidsNo,stickerCount);
+		
+		//스티커 날짜
+		stickerbiz.selectStickerDate(userId);
+		
+		ArrayList<String> Date = stickerbiz.selectStickerDate(userId);
+		
+		List<Integer> DecDay = new ArrayList<>();
+		List<Integer> JanDay = new ArrayList<>(); // 1월 데이터 날짜
+		List<String> totalDay = new ArrayList<>(); // 1일-31일
+		
+		
+		
+		for(i=1; i<10; i++) {
+			totalDay.add("0"+Integer.toString(i));
+		}
+		
+		for(i=10; i<=31; i++) {
+			totalDay.add(Integer.toString(i));
+		}
+		
+		model.addAttribute("totalDay",totalDay);
+		
+		
+		for(i=0; i<Date.size(); i++) {
+			if(Date.get(i).matches("(.*)-12-(.*)")) {
+				DecDay.add(Integer.parseInt(Date.get(i).substring(8)));
+				Collections.sort(DecDay);
+				model.addAttribute("DecDay",DecDay);
+				model.addAttribute("DecSize", DecDay.size());
+			}else if(Date.get(i).matches("(.*)-01-(.*)")) {
+				JanDay.add(Integer.parseInt(Date.get(i).substring(8)));
+				Collections.sort(JanDay);
+				model.addAttribute("JanDay",JanDay);
+				model.addAttribute("JanSize", JanDay.size());
+			}
+		}
+		
+		return "/kids/sticker";
+	}
+	
+	
 	@GetMapping("/samegame")
 	public String sameGame() {
 		
