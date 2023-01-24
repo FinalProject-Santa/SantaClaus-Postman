@@ -3,6 +3,7 @@ package com.boot.jdbc.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.http.HttpRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -71,7 +72,12 @@ public class CustomerController {
 	//QNA
 	
 	@GetMapping("/qnalist")
-	public String qnaList(Model model) {
+	public String qnaList(Model model, HttpServletRequest request) {
+	
+		session = request.getSession();
+		String user_id = ((MemberDto) session.getAttribute("member")).getUser_id();
+		model.addAttribute("user_id",user_id);
+		
 		model.addAttribute("qnalist",qnabiz.selectList());
 		return "customer/qnalist";
 	}
@@ -127,6 +133,10 @@ public class CustomerController {
 
 	@GetMapping("/qnadetail")
 	public String qnadetail(Model model,Integer qna_no) {
+		
+		String user_id = ((MemberDto) session.getAttribute("member")).getUser_id();
+		model.addAttribute("user_id",user_id);
+		
 		model.addAttribute("dto",qnabiz.selectOne(qna_no)); //쿼리문 실행한 결과를 "dto"에 담는다
 		model.addAttribute("files",qnabiz.selectFile(qna_no)); // 파일경로
 		return "customer/qnadetail";

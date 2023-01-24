@@ -35,26 +35,22 @@ public class KidsBizImpl implements KidsBiz {
 
 	@Override
 	public int modify(KidsDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return kidsmapper.modify(dto);
 	}
 
 	@Override
 	public int fileModify(KidFileDto file) {
-		// TODO Auto-generated method stub
-		return 0;
+		return kidsmapper.addFile(file);
 	}
 
 	@Override
 	public int delete(KidsDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return kidsmapper.delete(dto);
 	}
 
 	@Override
 	public int delete(KidFileDto file) {
-		// TODO Auto-generated method stub
-		return 0;
+		return kidsmapper.deletefile(file);
 	}
 
 	@Override

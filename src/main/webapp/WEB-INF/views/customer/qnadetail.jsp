@@ -66,9 +66,12 @@
 </tr>
 </c:if>
 <tr>
-	<td colspan="2">	
+
+	<td colspan="2">
 	<input type="button" value="목록" onclick="location.href='/customer/qnalist'">
+	<c:if test="${user_id == 'admin' || user_id == 'ADMIN'}">
 	<input type="button" value="답글쓰기" onclick="location.href='/customer/qnaReply?qna_no=${dto.qna_no}&qna_type=${dto.qna_type}&secret=${dto.secret}'">
+	</c:if>
 	</td>
 	
 </table>

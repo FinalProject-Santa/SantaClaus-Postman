@@ -21,8 +21,9 @@ section {
 	margin-right: 30%;
 }
 
-i{ 
-	background: url(../../image/customer/lock.png); 
+img{ 
+	width: 15px;
+	hight: 15px;
 }
 </style>
 <body>
@@ -37,7 +38,7 @@ i{
 			<col width="50">
 			<col width="100">
 			<col width="100">
-			<col width="300">
+			<col width="500">
 			
 				<tr>
 					<th>no</th>
@@ -47,17 +48,10 @@ i{
 					<th>작성일</th>
 				</tr>
 
-<!-- 비밀글 숨김... -->
-			<c:if test="${dto.secret == true}">
-       		
-                                           
-			</c:if>
 
-
-
-
-<!--여기는 리스트뿌리기 -->
+			<!--여기는 리스트뿌리기 -->
 			<c:choose>		
+			
 				<c:when test="${empty qnalist}">
 					<tr>
 						<td colspan="4">----------작성된 문의가 없습니다----------</td>
@@ -70,29 +64,64 @@ i{
 							<td>${dto.qna_no}</td>
 							<td>${dto.user_id }</td>
 							<td>${dto.qna_type}</td>
- 								   
- 								   
 							<td>
-					 <c:choose>
-						<c:when test="${dto.dep > 0}">
-								<c:forEach var="i" begin="0" end="${dto.dep}">
-									<span style="padding-left:20px"></span>
-								</c:forEach>
-								<span style="font-size":7px">re:</span>
-								<a class="clas1" href="/customer/qnadetail?qna_no=${dto.qna_no}">${dto.qna_title}</a>
+					
+				<c:choose>
+					 
+					 <%-- 답글이면 들여쓰기와 답변 표시 --%>
+						<c:when test="${dto.dep > 0}"> 
+							<span style="padding-left:30px"></span>
+							<span style="font-size:10pt">답변:</span>
+						
+						
+						<%-- 답글이면서 공개글 --%>
+						
+							<c:if test="${dto.secret eq 'false'}">
+								<a href="/customer/qnadetail?qna_no=${dto.qna_no}">${dto.qna_title}</a>
+							 </c:if>
+								
+						<%-- 답글이면서 + 비공개글 --%>	
+							<c:if test="${dto.secret eq 'true'}">	
+								<c:if test="${dto.user_id ne user_id || dto.user_id ne 'ADMIN' || dto.user_id ne 'admin'}">
+							 	  <img src="../resources/image/customer/lock.png"> 비밀글입니다.
+								</c:if>
+							</c:if>	
+						
+								
 						</c:when> 
 
+					<%--원글이면--%>
+						
 						<c:otherwise>
-							 <a class="clas1" href="/customer/qnadetail?qna_no=${dto.qna_no}">${dto.qna_title}</a>
-						</c:otherwise>
-					
-					</c:choose>
+						
+						  		 <%--원글이면서 비밀글이 아닐때 --%>
+							<c:if test="${dto.secret eq 'false'}">
+								<a href="/customer/qnadetail?qna_no=${dto.qna_no}">${dto.qna_title}</a>
+							</c:if>
 							
-							</td>	
-							<td> 						 
-							<fmt:formatDate value="${dto.qna_date}" pattern="yyyy/MM/dd"/></td>
-
+								<%-- 원글이면서 비밀글일때 --%>
+						
+							<c:if test="${dto.secret eq 'true'}">
+							 	 <img src="../resources/image/customer/lock.png"> 비밀글은 작성자와 관리자만 볼 수 있습니다.
+								
+								<c:if test= "${dto.user_id eq user_id || user_id eq 'ADMIN' || user_id eq 'admin'}">
+									<a href="/customer/qnadetail?qna_no=${dto.qna_no}">${dto.qna_title}</a>
+								</c:if>
+							
+							</c:if>
+						
+							
+							
+					</c:otherwise>
+				</c:choose>
+				
+				
+				
+							</td>
+							<td><fmt:formatDate value="${dto.qna_date}" pattern="yyyy/MM/dd"/></td>
 						</tr>
+						
+					
 					</c:forEach>
 				</c:when>
 			</c:choose>

@@ -4,13 +4,14 @@
     bottom: 8%;
     right: 18px;
     text-align: cen;
+    z-index: 5;
 }
 
 
 .floating-parent .right-button{
     width: 70px;
     height: 70px;
-    background: url(../../image/customer/chatbot_lcon.png);
+    background: url(../../image/customer/snowman.png);
     border-radius: 0%;
     background-repeat: no-repeat;
     background-size: 60px;
@@ -18,6 +19,7 @@
     float: right;
     margin: 0 auto;
     cursor: pointer;
+    z-index: 5;
 }
 .floating-parent .widgetlabel{
     position: relative;
@@ -29,12 +31,14 @@
     border-radius:16px;
     padding: 3px 8px 3px 8px;
     background-color: rgb(207, 247, 176);
+    z-index: 5;
 }
 
 .menu-parent{
     position:fixed;
     bottom:8%;
     right: 15px;
+    z-index: 5;
 }
 
 .menu{
@@ -70,7 +74,7 @@
 }
 
 .buttons{
-    position: fixed;
+    position: absolute;
     top: 700px;
     right: 60px;
     width: 100px;
