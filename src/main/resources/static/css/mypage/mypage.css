@@ -27,6 +27,9 @@ hr{
     float: right;
     display: inline-block;
 }
+nav img{
+	width: 200px;
+}
 img{
     width: 70px;
     border: none;

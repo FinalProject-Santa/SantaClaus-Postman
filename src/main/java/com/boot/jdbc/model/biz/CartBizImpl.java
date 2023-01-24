@@ -15,14 +15,15 @@ public class CartBizImpl implements CartBiz{
 	private CartMapper cartmapper;
 
 	@Override
-	public List<CartDto> cartList(String user_id) {
-		return cartmapper.cartList(user_id);
+	public List<CartDto> cartList(String user_id, int letterNo, String optionNo) {
+		return cartmapper.cartList(user_id, letterNo, optionNo);
 	}
 
 	@Override
 	public int delete(String user_id, int cart_no) {
 		return cartmapper.delete(user_id, cart_no);
 	}
+
 	
 	
 	

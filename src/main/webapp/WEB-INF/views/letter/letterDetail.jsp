@@ -139,13 +139,23 @@ $(function(){
 		}
 	});
 	
+	$("#shopCart").click(function(){
+		if(count==0){
+			if(confirm("옵션 상품을 선택하지 않으셨네요.\n엽서 상품만 장바구니에 담을까요?")){
+				return true;				
+			}else{
+				return false;
+			}
+		}
+	});
+	
 })
 </script>
 </head>
 <body>
 	<h2>엽서 상세 페이지</h2>
 	<div class="wrapper">
-	<form action='/order/orderForm' method='post'>
+	<form method='post'>
 		<section>
 			<div class="letter">
 				<div class="letterImg">
@@ -186,8 +196,8 @@ $(function(){
 					<span></span>
 				</div>
 				<div class="payBtn">
-					<input type="button" id="shopCart" value="장바구니">
-					<input type="submit" id="buy" value="구매하기">
+					<input type="submit" formaction="/cart/cartpage" id="shopCart" value="장바구니">
+					<input type="submit" formaction="/order/orderForm" id="buy" value="구매하기">
 				</div>
 			</div>
 		</aside>

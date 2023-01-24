@@ -51,7 +51,7 @@
                                 <tr>
                                     <td>${dto.point_purpose}</td>
                                     <td><fmt:formatDate pattern="yyyy-MM-dd" value="${dto.point_date}"/></td>
-                                    <td><span id="save">${dto.point_}</span></td>
+                                    <td><span id="save">${dto.point}</span></td>
                                     <td>${dto.order_no}</td>
                                     <td>${dto.point_content}</td>
                                 </tr>

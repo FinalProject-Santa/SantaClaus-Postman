@@ -12,9 +12,9 @@
         <nav>
             <h1>마이페이지</h1>
             <hr>
-	      		<span>${memberdto.name }님 반갑습니다</span> 
 	      	<a href="/mypage/infoUpdateform" id="btn">회원정보 수정/탈퇴</a>
-            <img src="[member.profileImg ]"></img>
+            <img src="/resources/image/profile/${memberdto.rfileName} "></img><br>
+      		<span><b>${memberdto.name }</b>님 반갑습니다</span> 
         </nav>
         <section>
             <div class="section1"><p><img src="/resources/image/mypage/bill.jpg"
