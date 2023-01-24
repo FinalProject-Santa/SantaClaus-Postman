@@ -5,105 +5,124 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
 <style>
 html{
-   margin: 0;
+    margin: 0;
 }
 body {
     height: auto;
     margin: 0;
     font-family: 'Nanum Myeongjo', serif;
 }
+.inner{
+    width: 1400px;
+    margin: 0 auto;
+}
 .header{
     position: fixed;
+    display: flex;
     width: 100%;
     height: 70px;
     background-color: white;
-    z-index: 1;
+    z-index: 9;
     border-bottom: solid 0.5px lightgray;
 }
+.header2{
+    padding: 30px;
+    width: 100%;
+}
 #logo{
-    position: relative;
     font-weight: bold;
     font-size: 40px;
-    left: 550px;
-    top: 12px;
     cursor: pointer;
 }
 #sidemenu{
-    position: relative;
     list-style: none;
-    float: right;
+    display: flex;
     cursor: pointer;
-    right: 30px;
-    top: 14px;
+    padding-top: 10px;
 }
 #sidemenu li{
-    float: left;
     margin-right: 20px;
     font-size: 16px;
 }
 #menu{
     position: relative;
-    float: left;
     font-size: 16px;
     cursor: pointer;
-    top: 30px;
-    left: 40px;
-    width: 80px;
+    line-height: 50px;
+    width: 150px;
     height: 50px;
+    padding-top: 8px;
+    padding-left: 10px;
 }
+
+/* 여기 수정하세요 */
 #menubox{
     position: absolute;
-    top: 40.5px;
-    /* left: -40px; */
-    left: -265px;
     width: 225px;
-    height: 749px;
+    height: 860px;
+    margin-top: -9.5px;
+    margin-left: -30px;
+    /* display: none; */
     background-color: white;
     transition: left .3s;
-    /* display: none; */
     border-right: solid 0.5px lightgray;
 }
 #menubar{
     position: fixed;
     list-style: none;
     cursor: pointer;
+    margin-top: 55px;
+    margin-left: 55px;
 }
 #menubar li{
-    position: relative;
     font-size: 16px;
-    margin-bottom: 30px;
-    top: 40px;
-    left: 10px;
+    margin-bottom: 40px;
 }
-#menu:hover > #menubox{
-    left: -40px;
+/* #menu:hover > #menubox{
+    display: block;
+} */
+/* 여기까지 */
+
+.header2, .footer2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 </style>
 </head>
 <body>
 	<!-- header -->
     <div class="header">
-        <span id="logo"><a href="/">Dear Santa</a></span>
+        <div class="header2">
+       
+        <div style="position: relative;">
+            <p id="menu">= Menu</p>
+            <div id="menubox">
+                    <ul id="menubar">
+                        <li><a href="../letter/letterList">Letter</a></li>
+                    	<li><a href="../tree/decotree">Tree</a></li>
+                    	<li><a href="../review/reviewList">Review</a></li>
+                    	<li><a href="../mypage/main">My Page</a></li>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <li><a href="#about" id="scroll_move">About</a></li>
+                    </ul>
+                </div>
+        </div>
+
+        <h1 id="logo"><a href="/">Dear Santa</a></h1>
+
         <ul id="sidemenu">
-            <li onclick="location.href='/main/loginForm'">Login</li>
-            <li><a href="../kids/main">Kids</a></li>
+            <li>Login</li>
+            <li>Kids</li>
         </ul>
-        <span id="menu">= Menu
-        <div id="menubox">
-                <ul id="menubar">
-                    <li><a href="../letter/letterList">&nbsp;Letter</a></li>
-                    <li><a href="../tree/decotree">&nbsp;Tree</a></li>
-                    <li><a href="../review/reviewList">&nbsp;Review</a></li>
-                    <li><a href="../mypage/main">&nbsp;My Page</a></li>
-                    <li><a href="../customer/floatingMenu">&nbsp;Help Center</a></li>
-                    <br>
-                    <br>
-                    <li><a href="#aboutmsg" id="scroll_move">&nbsp;About</a></li>
-                </ul>
-            </div>
-        </span>
+        </div>
     </div>
+    
 </body>
 </html>

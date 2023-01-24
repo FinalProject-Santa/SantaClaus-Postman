@@ -18,6 +18,7 @@ import com.boot.jdbc.model.dto.LetterDto;
 import com.boot.jdbc.model.dto.MemberDto;
 import com.boot.jdbc.model.dto.OptionDto;
 import com.boot.jdbc.model.dto.OrderDto;
+import com.boot.jdbc.model.dto.PointDto;
 
 @Controller
 @RequestMapping("/order")
@@ -30,6 +31,7 @@ public class OrderController {
 	
 	List<OptionDto> dtoList = new ArrayList<OptionDto>();
 	LetterDto letter_dto;
+	String user_id;
 	
 	@PostMapping("/orderForm")
 	public String orderForm(Model model, LetterDto letterDto, OptionDto optionDtoList, HttpServletRequest request) {
@@ -48,8 +50,9 @@ public class OrderController {
 		}
 		// 세션에 담긴 값 꺼내기
 		HttpSession session = request.getSession();
-		String user_id = ((MemberDto)session.getAttribute("member")).getUser_id();
-//		int myPoint = pointBiz.pointAll(user_id);
+    
+		user_id = ((MemberDto)session.getAttribute("member")).getUser_id();
+		int myPoint = pointBiz.pointAll(user_id);
 
 		// 회원 정보 가져오기
 		MemberDto memberDto = orderBiz.memberInfo(user_id);
@@ -65,6 +68,31 @@ public class OrderController {
 	
 	@PostMapping("/order")
 	public String order(Model model, OrderDto orderDto) {
+		for(int i=0; i<dtoList.size(); i++) {
+			orderDto.setOption_name(dtoList.get(i).getOption_name() + ",");
+		}
+		orderDto.setUser_id(user_id);
+		
+		// 결제 테이블에 데이터 추가
+		orderBiz.payment(orderDto);
+		
+		// 포인터 테이블에 데이터 추가
+		PointDto pointDto = new PointDto();
+		pointDto.setOrder_no(orderDto.getOrder_no());
+		pointDto.setUser_id(user_id);
+		pointDto.setPoint(orderDto.getSave_point());
+		pointDto.setPoint_content("상품 구매");
+		pointDto.setPoint_purpose("적립");
+		
+		// 적립 포인트 추가
+		pointBiz.insertPoint(pointDto);
+		
+		// 사용 포인트 추가
+		pointDto.setPoint(orderDto.getUse_point());
+		pointDto.setPoint_content("포인트 사용");
+		pointDto.setPoint_purpose("사용");
+		pointBiz.insertPoint(pointDto);
+		
 		model.addAttribute("optionList", dtoList);
 		model.addAttribute("orderDto", orderDto);
 		model.addAttribute("letterDto", letter_dto);

@@ -2,12 +2,9 @@
 #body-wrapper {
     min-height: 100px;
     position: relative;
-    width: 100%;
 }
 #img_box{
-    position: relative;
-    left: 0px;
-    margin-top: 150px;
+    margin-top: 200px;
 }
 #img{
     padding-left: 300px;
@@ -20,7 +17,7 @@
 }
 #aboutmsg{
     position: absolute;
-    top: 870px;
+    top: 1100px;
 }
 #message{
     width: 300px;
@@ -60,20 +57,18 @@ a{
     color: black;
 }
 #letterbox{
-    margin-top: 150px;
-    margin-left: 50px;
-    width: 1300px;
+    margin-top: 200px;
+    /* margin-left: 50px; */
+    margin-bottom: 150px;
     height: 500px;
-    top: 1000px;
-    left: 55px;
 }
 #letter{
     position: relative;
     list-style: none;
-    margin: auto;
+    display: flex;
+    justify-content: center;
 }
 #letter li{
-    float: left;
     margin-right: 15px;
 }
 #letter li img{
@@ -84,13 +79,12 @@ a{
     text-align: center;
     font-size: 13px;
     margin-top: 5px;
+    line-height: 180%;
 }
 #lettermore{
-    position: relative;
     width: 430px;
-    height: 700px;
-    left: 500px;
-    top: 50px;
+    height: 700px;   
+    margin:0 auto;
 }
 #moreImg{
     width: 430px;
@@ -100,6 +94,7 @@ a{
     text-align: center;
     font-size: 14px;
     margin-top: 10px;
+    line-height: 140%;
 }
 #more_btn{
     width: 180px;

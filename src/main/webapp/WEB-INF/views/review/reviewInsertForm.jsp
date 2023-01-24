@@ -55,20 +55,19 @@
 			<hr>
 		</div>
 
-		<form action="/review/reviewinsert" method="post"
+		<form name="form1" action="/review/reviewinsert" method="post"
 			enctype="multipart/form-data">
-			<input type="hidden" name="user_id" id="user" value="user01">
-			<input type="hidden" name="review_count" id="count" value="1">
+			<input type="hidden" name="review_count" id="count" value="0">
 			<div class="mb-3">
 				<label for="formGroupExampleInput" class="form-label">제목</label> <input
 					type="text" name="review_title" class="form-control"
-					id="formGroupExampleInput" placeholder="제목을 입력하세요">
+					id="title" placeholder="제목을 입력하세요">
 			</div>
 			<div class="mb-3">
 				<div class="review_rating">
 					<label for="reply_star">별점</label> <span class="star"> ★★★★★
 						<span>★★★★★</span> <input type="range" oninput="drawStar(this)"
-						value="1" step="0.5" min="0" max="5" name="review_best">
+						value="1" step="0.5" min="0" max="5" name="review_best" id="best">
 					</span>
 				</div>
 			</div>
@@ -76,7 +75,7 @@
 				<label>상세 내용</label>
 				<div class="form-floating">
 					<textarea name="review_content" class="form-control"
-						placeholder="Leave a comment here" id="floatingTextarea2"
+						placeholder="Leave a comment here" id="content"
 						style="height: 100px"></textarea>
 					<label for="floatingTextarea2">Comments</label>
 				</div>
@@ -90,7 +89,7 @@
 					<div class="select_img"><img alt="이미지를 업로드해 주세요." src="https://i0.wp.com/adventure.co.kr/wp-content/uploads/2020/09/no-image.jpg" height="100" width="100"></div>
 				</div>
 			</div>
-			<button type="submit" class="btn btn-primary btn-sm">작성</button>
+			<button type="button" class="btn btn-primary btn-sm" id="btnSave">작성</button>
 			<button type="button" class="btn btn-secondary btn-sm">취소</button>
 		</form>
 	</div>
@@ -98,6 +97,29 @@
 
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script>
+	$(document).ready(function(){
+		$("#btnSave").click(function(){
+			var title = $("#title").val();
+			var content = $("#content").val();
+			var best = $("#best").val();
+			if(title == ""){
+				alert("제목을 입력하세요");
+				document.form1.title.focus();
+				return;
+			}
+			if(content == ""){
+				alert("내용을 입력하세요");
+				document.form1.content.focus();
+				return;	
+			}
+/* 			if(best == "1"){
+				alert("별점을 입력하세요");
+				document.form1.best.focus();
+			} */
+			document.form1.submit();
+		});
+	});
+	
 	  $("#inputGroupFile02").change(function(){
 		   if(this.files && this.files[0]) {
 		    var reader = new FileReader;
