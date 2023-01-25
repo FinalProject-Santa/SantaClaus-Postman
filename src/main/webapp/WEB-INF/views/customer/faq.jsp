@@ -1,25 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+   	<%@include file="../include/header.jsp" %>
+	<%@include file="../include/floatingMenu.jsp" %>
     
     <link rel="stylesheet" href="/resources/css/customer/faq.css">
+  
 
     <body>
     
 
-   	<%@include file="../include/header.jsp" %>
-	<%@include file="../include/floatingMenu.jsp" %>
-    
-   <div class="wrapperAll">
+   <div class="inner">
         
-        <div class=custumer_menu>
-        <h1>고객센터</h1>
-    	<button onclick="location.href='notice';">공지사항</button>
-  	 	<button onclick="location.href='qnalist';">Q&A</button>
-   		 <button onclick="location.href='faq';">FAQ</button>
+        <div class=customer_logo>
+        <h1>Customer Service</h1>
+        </div>
+        
+        <div class=customer_menu>
+    	<button class="c_bt" onclick="location.href='notice';">NOTICE</button>
+  	 	<button class="c_bt" onclick="location.href='qnalist';">Q&A</button>
+   		<button class="c_bt" onclick="location.href='faq';">FAQ</button>
   	 	</div>
   	 
         <div class="faq">
+        	<h2><i class="fa-sharp fa-solid fa-check"></i> 자주 묻는 질문 🤸‍♀️</h2>
             <input type="checkbox"id="answer01">
             <label for="answer01">배송은 어떻게 되나요?<em></em></label>
             <div><p>모든 엽서와 상품은 우체국 택배로 배송되며 12월 22일에 1차배송, 23일에 2차 배송되어 <br>각 크리스마스 이브와 크리스마스 당일에 받아보실 수 있습니다.</p></div>
@@ -40,6 +44,14 @@
        
         </div>
         
+        
+        <div class="customer_imgbox">
+        <img src="/resources/image/customer/SnowSculptures.jpg">
+        </div>
+        <p style="text-align: center"><i>Thank you!</i></p>
+        
+        
         </div>
         
         <%@include file="../include/footer.jsp" %>
+        

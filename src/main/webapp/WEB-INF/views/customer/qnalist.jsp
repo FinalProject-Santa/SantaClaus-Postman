@@ -1,39 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-</head>
-<style>
-h1 {
-	display: inline;
-}
 
-section {
-	margin-left: 30%;
-	margin-right: 30%;
-}
+<%@include file="../include/header.jsp" %>
+<%@include file="../include/floatingMenu.jsp" %>
+ <link rel="stylesheet" href="/resources/css/customer/qnalist.css">
 
-img{ 
-	width: 15px;
-	hight: 15px;
-}
-</style>
+
 <body>
-	<h1>고객센터</h1>
-	<button onclick="location.href='notice';">공지사항</button>
-	<button onclick="location.href='qnalist';">Q&A</button>
-	<button onclick="location.href='faq';">FAQ</button>
 
+<div class=inner>
+
+ <div class=customer_logo>
+        <h1>Customer Service</h1>
+        </div>
+        
+        <div class=customer_menu>
+    	<button class="c_bt" onclick="location.href='notice';">NOTICE</button>
+  	 	<button class="c_bt" onclick="location.href='qnalist';">Q&A</button>
+   		<button class="c_bt" onclick="location.href='faq';">FAQ</button>
+  	 	</div>
+	
 	<section id="sec_myqna">
-	<h3>Q&A</h3>
+	<h3><i class="fa-sharp fa-solid fa-check"></i> Q&A</h3>
 		<table border=1>
 			<col width="50">
 			<col width="100">
@@ -130,8 +122,6 @@ img{
 		<input type="button" value="글쓰기" onclick="location.href='/customer/qnainsertform'"/>
 	</section>
 
+</div><!-- inner -->
 
-
-
-</body>
-</html>
+<%@include file="../include/footer.jsp" %>
