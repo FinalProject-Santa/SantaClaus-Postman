@@ -322,7 +322,7 @@ public class KidsController {
 	}
 	
 	
-	@GetMapping("/menusticker")
+	@GetMapping("/mainsticker")
 	public String selectSticker_menu(HttpServletRequest request,Model model) {
 		
 		int i;

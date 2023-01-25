@@ -1,25 +1,36 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Hi+Melody&display=swap');
+#body-wrapper {
+    min-height: 100px;
+    position: relative;
+    margin-bottom: 200px;
+}
+.inner{
+    width: 1400px;
+    margin: 0 auto;
+}
+
 .flex_container{
     display: flex;
     justify-content: center;
 }
-p{
-    position: relative;
+
+#boxtitle{
     text-align: center;
     font-size: 45px;
     font-weight: bold;
-    margin-top: 150px;
-    left: 530px;
     width: 400px;
+    margin: 0 auto;
 }
 #boximg{
-    list-style: none;
     position: relative;
-    left: 15px;
-    top: 20px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    margin-left: 40px;
 }
 #boximg li {
-    float: left;
     margin-right: 100px;
 }
 #boximg img{
@@ -38,22 +49,24 @@ p{
     width: 200px;
     height: 300px;
     margin-bottom: 15px;
+    margin-left: 15px;
 }
 #boximg #img4{
     width: 225px;
     height: 300px;
     margin-top: 15px;
+    margin-left: 15px;
+}
+#boximg b{
+    font-size: 33px;
+    line-height: 200%;
 }
 #boximg div{
     text-align: center;
-    font-size: 21px;
+    font-size: 24.5px;
 }
 #minidiv{
     margin-left: 6px;
-}
-#boximg b{
-    font-size: 29px;
-    line-height: 200%;
 }
 @keyframes img-ani {
 25% {
@@ -72,22 +85,19 @@ p{
 opacity: 0.9;
 animation: img-ani 0.9s linear 1;
 }
-#img3:hover {
-opacity: 0.9;
-animation: img-ani 0.9s linear 1;
-}
+
 #down{
-    width: 800px;
-    height: 450px;
-    position: relative;
-    top: 200px;
-    left: 300px;
+    width: 900px;
+    height: 500px;
+    margin:0 auto;
+    margin-top: 200px;
 }
 #downImg{
-    width: 800px;
-    height: 450px;
+    width: 900px;
+    height: 500px;
 }
-a{
-    text-decoration: none;
-    color: black;
+.audio{
+    width: 300px;
+    margin-left: 300px;
+    margin-top: 20px;
 }

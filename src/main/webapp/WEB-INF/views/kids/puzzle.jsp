@@ -4,7 +4,8 @@
 <link rel="stylesheet" href="/resources/css/kids/puzzle.css">
 
 <body>
-	<%@include file="../include/header.jsp" %>
+	<%@include file="../include/kidsheader.jsp" %>
+	
 	<div class="santa_puzzle">
         <span>산타</span><br>
         <span>퍼즐 맞추기</span>
@@ -15,8 +16,10 @@
     <input type="button" class="level2-button" value="같은 그림" 
     												onclick="location.href='/kids/samegame'">
     </div>
-    <p>
+    <p class="pp">
     <img>
     </p>
+    
+    <%@include file="../include/kidsfooter.jsp" %>
 </body>
 </html>
