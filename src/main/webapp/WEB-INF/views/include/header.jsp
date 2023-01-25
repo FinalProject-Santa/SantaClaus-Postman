@@ -24,7 +24,7 @@ body {
     position: fixed;
     display: flex;
     width: 100%;
-    height: 70px;
+    height: 75px;
     background-color: white;
     z-index: 9;
     border-bottom: solid 0.5px lightgray;
@@ -62,7 +62,7 @@ body {
     position: absolute;
     width: 225px;
     height: 860px;
-    margin-top: 7px;
+    margin-top: 9.5px;
     margin-left: -50px;
     display: none;
     background-color: white;
