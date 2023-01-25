@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.boot.jdbc.model.biz.MemberBiz;
+import com.boot.jdbc.model.biz.PointBiz;
 import com.boot.jdbc.model.biz.SmsService;
 import com.boot.jdbc.model.dto.MemberDto;
 import com.boot.jdbc.model.dto.ReviewDto;
@@ -35,6 +36,8 @@ public class MemberController {
 	@Autowired
 	private MemberBiz biz;
 	
+	@Autowired
+	private PointBiz pointBiz;
 	
 	// 메인페이지
 	@GetMapping("/main")
@@ -73,6 +76,8 @@ public class MemberController {
         dto.setRfileUrl(fileUrl);
         
         biz.signUp(dto);
+        
+        pointBiz.signUpPoint(dto.getUser_id());
 		return "main/login";
 	}
 	

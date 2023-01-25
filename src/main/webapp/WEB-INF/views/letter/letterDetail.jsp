@@ -149,6 +149,12 @@ $(function(){
 		}
 	});
 	
+	$('input[type="text"]').keydown(function() {
+   		if (event.keyCode === 13) {
+        	event.preventDefault();
+        };
+   });
+	
 })
 </script>
 </head>
@@ -190,6 +196,9 @@ $(function(){
 						<td><input type="text" name="ps" placeholder="아이에게 하고 싶은 말을 적어주세요"> <!-- required oninvalid="this.setCustomValidity('🎅아이에게 하고 싶은 말을 적어주세요🎅')"> --></td>
 					</tr>
 				</table>
+			</div>
+			<div>
+				* 배송비는 20,000 이상 무료입니다.
 			</div>
 			<div class="payment">
 				<div class="shopList">
