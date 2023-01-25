@@ -52,11 +52,15 @@ footer {
             </div>
         </div>
     </footer>
+    <!-- footer end -->
     
 </body>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 	<script>
     function maintoggle(){
         $('#menubox').toggle(400);
     }
     </script>
+    
 </html>
