@@ -42,7 +42,7 @@
 	    <div id="down">
 	        <img src="/resources/image/kids/main/down.png" id="downImg">
 	        <!-- autoplay -->
-	        <audio autoplay controls class="audio">
+	        <audio controls class="audio">
 	            <source src="/resources/audio/we-wish-you-a-merry-christmas-125995.mp3" type="audio/mp3">
 	        </audio>
 	    </div>
