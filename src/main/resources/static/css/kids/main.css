@@ -17,9 +17,9 @@
 
 #boxtitle{
     text-align: center;
-    font-size: 45px;
+    font-size: 55px;
     font-weight: bold;
-    width: 400px;
+    width: 450px;
     margin: 0 auto;
 }
 #boximg{
@@ -58,12 +58,12 @@
     margin-left: 15px;
 }
 #boximg b{
-    font-size: 33px;
+    font-size: 35px;
     line-height: 200%;
 }
 #boximg div{
     text-align: center;
-    font-size: 24.5px;
+    font-size: 24.8px;
 }
 #minidiv{
     margin-left: 6px;
