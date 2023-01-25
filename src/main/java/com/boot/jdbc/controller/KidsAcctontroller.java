@@ -85,7 +85,7 @@ public class KidsAcctontroller {
 		  
 		  KidFileDto file = new KidFileDto();
 		  
-		  String uploadPath ="C:/Users/USER/git/SantaClaus-Postman/src/main/resources/static/files/";
+		  String uploadPath ="C:/Users/82105/git/SantaClaus-Postman/src/main/resources/static/files/";
 		  String sourceFileName = files.getOriginalFilename(); 
 		  String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
 		  File destinationFile; 

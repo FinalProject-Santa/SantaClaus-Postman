@@ -98,7 +98,7 @@
             var idx = random(0,15-i);
             var img = cards.splice(idx,1); //idx부터 한개씩 뽑기
             
-            imgTableCode += '<td id="card'+i+'"><img src="/resources/image/kids/'+img+'"><span>?</span></td>';
+            imgTableCode += '<td id="card'+i+'"><img src="/resources/image/kids/game/'+img+'"><span>?</span></td>';
         }
         imgTableCode += '</tr>';
         $("#imgTable").html(imgTableCode);
