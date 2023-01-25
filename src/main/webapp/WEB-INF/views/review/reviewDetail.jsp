@@ -23,6 +23,19 @@
 h1 {
 	text-align: left;
 }
+span.star-prototype, span.star-prototype > * {
+    height: 16px; 
+    background: url(http://i.imgur.com/YsyS5y8.png) 0 -16px repeat-x;
+    width: 80px;
+    display: inline-block;
+    text-align: left;
+}
+ 
+span.star-prototype > * {
+    background-position: 0 0;
+    max-width:80px; 
+    
+}
 </style>
 </head>
 <body>
@@ -47,8 +60,7 @@ h1 {
 					<th width=20% class="text-center ">제목</th>
 					<td width=30% class="text-left">${reviewdetail.review_title }</td>
 					<th width=20% class="text-center ">별점</th>
-					<td width=30% class="text-left"><small
-						class="text-muted ${reviewdetail.review_best }"></small></td>
+					<td width=30% class="text-left"><span class="star-prototype">${reviewdetail.review_best}</span>(${reviewdetail.review_best}점)</td>
 				</tr>
 				<!-- <c:if test="${vo.filecount>0 }">
 					<tr>
@@ -64,7 +76,7 @@ h1 {
 				</c:if>  -->
 				<tr>
 					<td colspan="4" class="text-left" valign="top" height=200>
-						<img alt="" src="/resources/image/uploadFiles/${files.rfileName}"></td>
+						<img alt="" src="/resources/image/uploadFiles/${files.rfile_name}"></td>
 				</tr>
 				<tr>
 					<td colspan="4" class="text-left" valign="top" height=200>
@@ -82,12 +94,15 @@ h1 {
 			</table>
 		</div>
 	</div>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+
 	<script>
-		$(".1").html("&#9733; &#9734; &#9734; &#9734; &#9734;");
-		$(".2").html("&#9733; &#9733; &#9734; &#9734; &#9734;");
-		$(".3").html("&#9733; &#9733; &#9733; &#9734; &#9734;");
-		$(".4").html("&#9733; &#9733; &#9733; &#9733; &#9734;");
-		$(".5").html("&#9733; &#9733; &#9733; &#9733; &#9733;");
+	$.fn.generateStars = function() {
+	    return this.each(function(i,e){$(e).html($('<span/>').width($(e).text()*16));});
+	};
+
+	// 숫자 평점을 별로 변환하도록 호출하는 함수
+	$('.star-prototype').generateStars();
 	</script>
 
 </body>

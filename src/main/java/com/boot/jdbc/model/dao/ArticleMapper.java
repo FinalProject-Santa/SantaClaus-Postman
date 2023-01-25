@@ -10,10 +10,10 @@ import com.boot.jdbc.model.dto.ArticleDto;
 @Mapper	
 public interface ArticleMapper {
 	
-	@Select("SELECT * FROM board_article order by article_no desc")
+	@Select("SELECT * FROM BOARD_ARTICLE order by article_no desc")
 	List <ArticleDto> selectList();
 	
-	@Select("SELECT * FROM board_article where article_no=#{article_no}")
+	@Select("SELECT * FROM BOARD_ARTICLE where article_no=#{article_no}")
 	ArticleDto selectOne(int no);
 
 

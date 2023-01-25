@@ -10,13 +10,17 @@ public class MemberDto {
 	private String phone;
 	private String email;
 	
+	private String rfileName;
+	private String rfileOriName;
+	private String rfileUrl;
+	
 	public MemberDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public MemberDto(String user_id, String password, String name, String post_code, String default_addr,
-			String detail_addr, String phone, String email) {
+			String detail_addr, String phone, String email, String rfileName, String rfileOriName, String rfileUrl) {
 		super();
 		this.user_id = user_id;
 		this.password = password;
@@ -26,6 +30,9 @@ public class MemberDto {
 		this.detail_addr = detail_addr;
 		this.phone = phone;
 		this.email = email;
+		this.rfileName = rfileName;
+		this.rfileOriName = rfileOriName;
+		this.rfileUrl = rfileUrl;
 	}
 
 	public String getUser_id() {
@@ -91,6 +98,31 @@ public class MemberDto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getRfileName() {
+		return rfileName;
+	}
+
+	public void setRfileName(String rfileName) {
+		this.rfileName = rfileName;
+	}
+
+	public String getRfileOriName() {
+		return rfileOriName;
+	}
+
+	public void setRfileOriName(String rfileOriName) {
+		this.rfileOriName = rfileOriName;
+	}
+
+	public String getRfileUrl() {
+		return rfileUrl;
+	}
+
+	public void setRfileUrl(String rfileUrl) {
+		this.rfileUrl = rfileUrl;
+	}
+
 
 	
 	

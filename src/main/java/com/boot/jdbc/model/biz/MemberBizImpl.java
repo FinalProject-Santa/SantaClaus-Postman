@@ -54,4 +54,14 @@ public class MemberBizImpl implements MemberBiz{
 		return memberMapper.delete(user_id);
 	}
 
+	@Override
+	public String pwChk(String user_id) {
+		return memberMapper.pwChk(user_id);
+	}
+
+	@Override
+	public String phoneChk(String user_id) {
+		return memberMapper.phoneChk(user_id);
+	}
+
 }

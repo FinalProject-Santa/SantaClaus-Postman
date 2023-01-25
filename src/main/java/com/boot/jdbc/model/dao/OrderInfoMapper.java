@@ -12,10 +12,10 @@ import com.boot.jdbc.model.dto.OrderInfoDto;
 
 @Mapper
 public interface OrderInfoMapper {
-	@Select(" SELECT * FROM MYORDER ORDER BY ORDER_NO DESC ")
+	@Select(" SELECT * FROM `ORDER_INFO` ORDER BY ORDER_NO DESC ")
 	List<OrderInfoDto> orderList();
 
-//	@Select(" SELECT * FROM MYORDER WHERE ORDER_DATE BETWEEN #{ORDER_DATE ")
+//	@Select(" SELECT * FROM ORDER WHERE ORDER_DATE BETWEEN #{ORDER_DATE ")
 //	List<OrderDto> selectOrder();
 
 	
@@ -27,7 +27,7 @@ public interface OrderInfoMapper {
 	
 	
 	
-//	@Insert(" INSERT INTO MYORDER VALUES(#{order_no}, #{user_id}, NOW(), #{review_status}, #{delivery_status}, #{product_quantity}, #{product_cost}) ")
+//	@Insert(" INSERT INTO ORDER VALUES(#{order_no}, #{user_id}, NOW(), #{review_status}, #{delivery_status}, #{product_quantity}, #{product_cost}) ")
 //	int orderInsert(OrderDto orderdto);
 	
 	

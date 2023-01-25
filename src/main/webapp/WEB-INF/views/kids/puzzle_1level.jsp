@@ -21,6 +21,7 @@
         <div class="button-group">
         <button class="mix-button">mix</button>
         <button class="restart-button">restart</button>
+        <button class="next_button" onclick="location.href='/kids/twolevel'">2Level</button>
         <button class="main-button" onclick="location.href='/kids/main'">main</button>
         </div>
     <script src="/resources/js/kids/puzzle_1level.js"></script>

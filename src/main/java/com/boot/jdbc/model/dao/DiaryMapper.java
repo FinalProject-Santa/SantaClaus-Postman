@@ -1,10 +1,7 @@
 package com.boot.jdbc.model.dao;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Map;
 
-import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -18,11 +15,11 @@ public interface DiaryMapper {
 	@Insert("INSERT INTO DIARY VALUES(NULL,#{user_id},#{kids_no},#{diary_content},NOW(),#{phone})")
 	int insert(DiaryDto dto);
 	
-	@Insert("INSERT INTO DIARY VALUES(NULL,#{userID},#{kidsNO},#{filePath},NOW(),#{userEmail})")
-	int saveDiary(Map<Object, Object> param);
+	@Insert("INSERT INTO DIARY VALUES(NULL,#{userId},#{kidsNo},#{filePath},NOW(),#{userEmail})")
+	int saveDiary(String userId, int kidsNo, String filePath, String userEmail);
 	
 	@Insert("INSERT INTO DIARY VALUES(NULL,#{userID},#{kidsNO},#{filePath},#{localdate},#{userEmail})")
-	int fillDiary(Map<Object, Object> param);
+	int fillDiary(String userId, int kidsNo, String filePath, LocalDate localdate, String userEmail);
 	
 	@Select("SELECT DIARY_CONTENT FROM DIARY WHERE USER_ID=#{user_id}")
 	String selectPath(String user_id);
@@ -33,20 +30,9 @@ public interface DiaryMapper {
 	@Select("SELECT WRITE_DATE FROM DIARY WHERE USER_ID=#{userId} AND WRITE_DATE=#{localdate}")
 	String fillDate(String userId, LocalDate localdate);
 	
-	@Select("SELECT WRITE_DATE FROM DIARY WHERE USER_ID=#{userId}")
-	ArrayList<String> selectStickerDate(String userId);
-	
-	@Select("SELECT COUNT(*) FROM DIARY WHERE USER_ID=#{userId}")
-	int selectDiary(String userId);
-	
-	@Delete("DELETE FROM STICKER WHERE USER_ID=#{userId}")
-	int deleteSticker(String userId);
-	
-	@Insert("INSERT INTO STICKER VALUES(#{userId},#{stickerCount})")
-	int insertSticker(String userId, int stickerCount);
-	
-	@Update("UPDATE KIDS_SETTING SET KIDS_POINT=KIDS_POINT+5 WHERE KIDS_NO=${kidsNO}")
-	int insertPoint(int kidsNO);
+	//게임포인트
+	@Update("UPDATE KIDS_SETTING SET KIDS_POINT=KIDS_POINT+5 WHERE KIDS_NO=${kidsNo}")
+	int insertPoint(int kidsNo);
 }
 //UPDATE KIDS_SETTING SET KIDS_POINT=KIDS_POINT+5 WHERE KIDS_NO=1;
 //AND WRITE_DATE<='2022-12-31'

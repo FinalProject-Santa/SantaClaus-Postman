@@ -2,16 +2,16 @@ package com.boot.jdbc.model.dto;
 
 public class QnaFileDto {
 	private int qna_no;
-	private int file_id;
+	private int file_no;
 	private String file_oname;
 	private String file_name;
 	private String file_path;
 	
 	public QnaFileDto() {}
-	public QnaFileDto(int qna_no, int file_id, String file_oname, String file_name, String file_path) {
+	public QnaFileDto(int qna_no, int file_no, String file_oname, String file_name, String file_path) {
 		super();
 		this.qna_no = qna_no;
-		this.file_id = file_id;
+		this.file_no = file_no;
 		this.file_oname = file_oname;
 		this.file_name = file_name;
 		this.file_path = file_path;
@@ -26,12 +26,12 @@ public class QnaFileDto {
 		this.qna_no = qna_no;
 	}
 
-	public int getFile_id() {
-		return file_id;
+	public int getFile_no() {
+		return file_no;
 	}
 
-	public void setFile_id(int file_id) {
-		this.file_id = file_id;
+	public void setFile_no(int file_id) {
+		this.file_no = file_id;
 	}
 
 	public String getFile_oname() {

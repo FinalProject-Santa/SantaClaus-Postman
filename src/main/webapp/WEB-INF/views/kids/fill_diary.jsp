@@ -10,9 +10,9 @@
 </head>
 <body>
 	<form action="/kids/sticker" method="post" id="diaryForm">
-	<input type="hidden" name="user_id" id="user" value="user01">
+	<!-- <input type="hidden" name="user_id" id="user" value="user01">
 	<input type="hidden" name="kids_no" id="kids" value=1>
-	<input type="hidden" name="userEmail" id="email" value="jiyeon908@naver.com">	
+	<input type="hidden" name="userEmail" id="email" value="jiyeon908@naver.com"> -->	
 	<input type="hidden" name="fillDate" id="date" value="${Date }">
     <div class="diary">
     <div class="drawing">
@@ -86,12 +86,12 @@
     	content.font = '200px'; */
     	
     	// 해당 날짜 작성 여부
-        	var userId = $("#user").val().trim();
+        	/* var userId = $("#user").val().trim(); */
     		var fillDate = $("#date").val().trim();
         		$.ajax({
         			type:"POST",
                     data:{
-                        "userID":userId,
+                        /* "userID":userId, */
                         "fillDate":fillDate
                     },
                     dataType:"text",
@@ -117,9 +117,6 @@
 	            var t = target[0];
 	            html2canvas(t).then(function(canvas){
             	var myImg = canvasrr.toDataURL("image/png");
-            	var userId = $("#user").val().trim();
-            	var kidsNo = $("#kids").val().trim();
-            	var userEmail = $("#email").val().trim();
             	var fillDate = $("#date").val().trim();
                 myImg = myImg.replace("data:image/png;base64,", "");
 
@@ -127,9 +124,6 @@
                     type:"POST",
                     data:{
                         "imgSrc":myImg,
-                        "userID":userId,
-                        "kidsNO":kidsNo,
-                        "userEmail":userEmail,
                         "fillDate":fillDate
                     },
                     dataType:"text",
@@ -150,16 +144,14 @@
 	    // 메일 보내기
 	    function sendEmail(){
             	var myImg = canvasrr.toDataURL("image/png");
-            	var userId = $("#user").val().trim();
-            	var userEmail = $("#email").val().trim();
                 myImg = myImg.replace("data:image/png;base64,", "");
 
                	$.ajax({
 	                  type:"POST",
 	                  data:{
 	                      "imgSrc":myImg,
-	                      "userID":userId,
-	                      "userEmail":userEmail
+	                      /* "userID":userId,
+	                      "userEmail":userEmail */
 	                  },
 	                  dataType:"text",
 	                  url:"/kids/sendEmail",

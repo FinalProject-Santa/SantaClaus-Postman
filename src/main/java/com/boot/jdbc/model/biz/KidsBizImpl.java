@@ -9,6 +9,7 @@ import com.boot.jdbc.model.dao.KidsMapper;
 import com.boot.jdbc.model.dto.KidFileDto;
 import com.boot.jdbc.model.dto.KidsDto;
 import com.boot.jdbc.model.dto.MemberDto;
+import com.boot.jdbc.model.dto.StickerDto;
 
 
 @Service
@@ -34,26 +35,33 @@ public class KidsBizImpl implements KidsBiz {
 
 	@Override
 	public int modify(KidsDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return kidsmapper.modify(dto);
 	}
 
 	@Override
 	public int fileModify(KidFileDto file) {
-		// TODO Auto-generated method stub
-		return 0;
+		return kidsmapper.addFile(file);
 	}
 
 	@Override
 	public int delete(KidsDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return kidsmapper.delete(dto);
 	}
 
 	@Override
 	public int delete(KidFileDto file) {
-		// TODO Auto-generated method stub
-		return 0;
+		return kidsmapper.deletefile(file);
 	}
+
+	@Override
+	public List<StickerDto> sticker() {
+		return kidsmapper.sticker();
+	}
+
+	@Override
+	public int addmail(KidsDto dto) {
+		return kidsmapper.addmail(dto);
+	}
+
 
 }

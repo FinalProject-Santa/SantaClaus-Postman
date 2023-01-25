@@ -3,6 +3,7 @@ package com.boot.jdbc.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.http.HttpRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.boot.jdbc.model.biz.ArticleBiz;
 import com.boot.jdbc.model.biz.QnaBiz;
+import com.boot.jdbc.model.dto.MemberDto;
 import com.boot.jdbc.model.dto.QnaDto;
 import com.boot.jdbc.model.dto.QnaFileDto;
 
@@ -70,7 +72,12 @@ public class CustomerController {
 	//QNA
 	
 	@GetMapping("/qnalist")
-	public String qnaList(Model model) {
+	public String qnaList(Model model, HttpServletRequest request) {
+	
+		session = request.getSession();
+		String user_id = ((MemberDto) session.getAttribute("member")).getUser_id();
+		model.addAttribute("user_id",user_id);
+		
 		model.addAttribute("qnalist",qnabiz.selectList());
 		return "customer/qnalist";
 	}
@@ -78,16 +85,24 @@ public class CustomerController {
 	//에러나면 파라미터 확인
 	@GetMapping("/qnainsertform")
 	public String qna(Model model) {
-		model.addAttribute(new QnaDto());
+		
+		 model.addAttribute(new QnaDto());
+		
 		return "customer/qnainsert";
 		
 	}
 	
 	@PostMapping("/qnainsert")
-	public String Insert(QnaDto dto, @RequestPart MultipartFile files) throws Exception{
+	public String Insert(QnaDto dto, @RequestPart MultipartFile files,HttpServletRequest request) throws Exception{
+		
+		session = request.getSession();
+		String user_id = ((MemberDto) session.getAttribute("member")).getUser_id();
+		dto.setUser_id(user_id);
+		
+		
 		QnaFileDto file = new QnaFileDto();
 		
-		String uploadPath = "C:/Users/Home/git/SantaClaus-Postman/src/main/resources/static/files/";
+		String uploadPath = "C:/Users/USER/git/SantaClaus-Postman/src/main/resources/static/files/";
 		String sourceFileName = files.getOriginalFilename(); 
         String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
         File destinationFile; 
@@ -118,6 +133,10 @@ public class CustomerController {
 
 	@GetMapping("/qnadetail")
 	public String qnadetail(Model model,Integer qna_no) {
+		
+		String user_id = ((MemberDto) session.getAttribute("member")).getUser_id();
+		model.addAttribute("user_id",user_id);
+		
 		model.addAttribute("dto",qnabiz.selectOne(qna_no)); //쿼리문 실행한 결과를 "dto"에 담는다
 		model.addAttribute("files",qnabiz.selectFile(qna_no)); // 파일경로
 		return "customer/qnadetail";

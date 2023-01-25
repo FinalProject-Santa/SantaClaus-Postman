@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -321,12 +322,18 @@ input.nickname {
             <div class="module-inner">
                 <div class="side-bar">
                     <div class="user-info">
-                        <img class="img-profile img-circle img-responsive center-block" src="https://i0.wp.com/adventure.co.kr/wp-content/uploads/2020/09/no-image.jpg" alt="">
-                    
-                            <p>${KidsDto.kids_nickname}</p>
-                            <p>${KidsDto.kids_point}</p>
-                            <p>${칭찬스티커}</p>
-                                             
+                   
+                    		
+                    	<c:set var="i" value="${no-1}"/>
+                        
+                        <img class="img-profile img-circle img-responsive center-block" src="/resources/files/${list[i].kids_thumbnail}" alt="">
+                    		
+                    		
+                            <p>${list[i].kids_nickname}</p>
+                            <p>포인트 : ${list[i].kids_point} point</p>
+                            <p>칭찬스티커 : ${sticker[i].sticker_count}개</p>
+                            
+                               
                     </div>
             		<nav class="side-menu">
         				<ul class="nav">
@@ -337,20 +344,20 @@ input.nickname {
                 </div>
 
                 <div class="content-panel">
-                    <h2 class="title">키즈 계정 설정</h2>
+                    <h2 class="title">키즈 계정 변경</h2>
                     <fieldset class="fieldset">
-                        <h3 class="fieldset-title">프로필 설정</h3>
+                        <h3 class="fieldset-title">프로필 변경</h3>
                         <div class="form-group avatar">
                             
                             <div class="imgbox">
-                                <img src="https://i0.wp.com/adventure.co.kr/wp-content/uploads/2020/09/no-image.jpg" class="image-box" />
+                                <img src="/resources/files/${list[i].kids_thumbnail}" class="image-box" />
                             </div>
                             <div class="uld-bt-box">    
                                 <label for="file" class="upload-btn">
                                             <form action="#">
                                             <input id="file" type="file" accept="image/*" name="#">
                                             
-                                                <span>프로필 사진 설정</span>
+                                            <span>프로필 사진 설정</span>
                                         </label>
                                
                                  </div>
@@ -369,8 +376,8 @@ input.nickname {
                  
 
                  <div class="submitbt"><br>
-                 <input type="submit" value="등록">
-                 <input type="button" value="삭제" onclick="">
+                 <input type="submit" value="등록" onclick="location.href=">
+                 <input type="button" value="삭제" onclick="location.href='profileDelete/${list[i].kids_no}'">
                 </div>
                  </div>
 

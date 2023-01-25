@@ -20,11 +20,15 @@ hr{
 	background: lightgray;
 	text-align: center;
 	padding-top: 5px;
-    width: 160px;
+    width: 200px;
     height: 40px;
     border-radius: 10px;
+    border: 1px solid black;
     float: right;
     display: inline-block;
+}
+nav img{
+	width: 200px;
 }
 img{
     width: 70px;

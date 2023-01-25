@@ -11,6 +11,7 @@ import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,10 +52,29 @@ public class KidsAcctontroller {
 	}
 
 	@GetMapping("/modify")
-	public String kidsModify() {
+	public String kidsModify(Model model, HttpServletRequest request,KidsDto dto) {
+		
+		model.addAttribute("list",kidsbiz.selectAll());
+		model.addAttribute("sticker",kidsbiz.sticker());
+		int i = Integer.parseInt(request.getParameter("no"));
+		request.setAttribute("no", i);
+		 
+		//kidsbiz.modify(dto);
+		
 		return "/kidsaccount/kidsModify";
 	}
 
+	
+	@PostMapping("/ProfileModify")
+	public String KidsModifyProfile(KidsDto dto, @RequestPart MultipartFile files,HttpServletRequest request) {
+		kidsbiz.modify(dto);
+		//kidsbiz.fileModify(dto);
+		
+		return "redirect:/kidsaccount/main";
+	
+	}
+	
+	
 	@PostMapping("/AddProfile")
 	public String kidsInsertProfile(KidsDto dto, @RequestPart MultipartFile files, HttpServletRequest request)throws IllegalStateException, IOException {
 
@@ -65,7 +85,7 @@ public class KidsAcctontroller {
 		  
 		  KidFileDto file = new KidFileDto();
 		  
-		  String uploadPath ="C:/Users/Home/git/SantaClaus-Postman/src/main/resources/static/files/";
+		  String uploadPath ="C:/Users/USER/git/SantaClaus-Postman/src/main/resources/static/files/";
 		  String sourceFileName = files.getOriginalFilename(); 
 		  String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
 		  File destinationFile; 
@@ -88,23 +108,74 @@ public class KidsAcctontroller {
 		  
 		  
 		  file.setKids_no(dto.getKids_no()); 
+		  if(!files.isEmpty()) {
 		  file.setFile_name(destinationFileName);
 		  file.setFile_oname(sourceFileName); 
-		  file.setFile_path(uploadPath);
-		  
-		  if(files.isEmpty()) {
-			  file.setKids_no(dto.getKids_no()); 
-			  file.setFile_name("user-account.png");
-			  file.setFile_oname("디폴트사진"); 
-			  file.setFile_path(uploadPath);
-			  dto.setKids_thumbnail("user-account.png");
-		  }
-		 
+		  file.setFile_path(uploadPath);}
+		  	 
 		  kidsbiz.addFile(file);
 		  
-		  System.out.println(dto);
-
+		  session.setAttribute("kids", dto);
+		  
 		return "redirect:/kidsaccount/main";
 	}
+	
+	
+	@PostMapping("/AddSantamail")
+	public String kidsInsertSantamail(KidsDto dto, @RequestPart MultipartFile files, HttpServletRequest request) throws IllegalStateException, IOException {
+			
+		  session = request.getSession();
+		  String user_id = ((MemberDto) session.getAttribute("member")).getUser_id();
+		  dto.setUser_id(user_id);
+		 
+		  int kids_no = dto.getKids_no();
+		  dto.setKids_no(kids_no);
+		  System.out.println(dto); 
+		  
+		  KidFileDto file = new KidFileDto();
+		  
+		  String uploadPath ="C:/Users/USER/git/SantaClaus-Postman/src/main/resources/static/files/";
+		  String sourceFileName = files.getOriginalFilename(); 
+		  String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
+		  File destinationFile; 
+		  String destinationFileName;
+		  
+		  
+		  do { 
+		  destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension; 
+		  destinationFile = new File(uploadPath + destinationFileName); 
+		  } while (destinationFile.exists());
+		  
 
+		  destinationFile.getParentFile().mkdirs(); 
+		  files.transferTo(destinationFile);
+		  
+		  if(!files.isEmpty()){
+		  dto.setKids_letter_img(destinationFileName);}
+		  System.out.println(dto);
+		  
+		  kidsbiz.addmail(dto);
+		  
+		  
+		  file.setKids_no(dto.getKids_no()); 
+		  if(!files.isEmpty()) {
+		  file.setFile_name(destinationFileName);
+		  file.setFile_oname(sourceFileName); 
+		  file.setFile_path(uploadPath);}
+		  	 
+		  kidsbiz.addFile(file);
+		
+		
+		return "redirect:/kidsaccount/kidsModify";
+	}
+	
+	
+	@GetMapping("/profileDelete/{kids_no}")
+	private String profileDelete(KidsDto dto, KidFileDto file, Integer kids_no) throws Exception {
+		kidsbiz.delete(file);
+		kidsbiz.delete(dto);
+		
+	return "redirect:/kidsaccount/main";
+	}
+	
 }

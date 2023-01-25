@@ -6,7 +6,7 @@ public class ReviewDto {
 	private int review_no;
 	private String user_id;
 	private String review_title;
-	private int review_best;
+	private double review_best;
 	private String review_content;
 	private int review_count;
 	private Date review_date;
@@ -17,7 +17,7 @@ public class ReviewDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ReviewDto(int review_no, String user_id, String review_title, int review_best, String review_content,
+	public ReviewDto(int review_no, String user_id, String review_title, double review_best, String review_content,
 			int review_count, Date review_date) {
 		super();
 		this.review_no = review_no;
@@ -47,10 +47,10 @@ public class ReviewDto {
 		this.review_title = review_title;
 	}
 
-	public int getReview_best() {
+	public double getReview_best() {
 		return review_best;
 	}
-	public void setReview_best(int review_best) {
+	public void setReview_best(double review_best) {
 		this.review_best = review_best;
 	}
 	public String getReview_content() {

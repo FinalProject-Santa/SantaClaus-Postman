@@ -22,7 +22,7 @@
 <body>
     <div class="floating-parent" onclick="chatbot_click();">
     <div class="right-button"></div>
-    <span class="widgetlabel">고객센터</span>
+    <span class="widgetlabel">click!</span>
     </div>
 
     <div class="menu-parent">
@@ -33,9 +33,9 @@
         
 
         <div class="buttons">
-        <button onclick="location.href='notice';">공지사항</button>
-    	<button onclick="location.href='qnainsertform';">1:1문의</button>
-    	<button onclick="location.href='faq';">자주묻는질문</button>
+        <button onclick="location.href='/customer/notice';">공지사항</button>
+    	<button onclick="location.href='/customer/qnainsertform';">1:1문의</button>
+    	<button onclick="location.href='/customer/faq';">자주묻는질문</button>
         </div>
     </div> 
 </div>

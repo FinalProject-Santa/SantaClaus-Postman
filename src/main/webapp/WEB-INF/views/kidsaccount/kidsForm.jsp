@@ -338,7 +338,6 @@ input.nickname {
                     <h2 class="title">키즈 계정 설정</h2>
                      <fieldset class="fieldset">
                         <h3 class="fieldset-title">프로필 설정</h3>
-                     		<form action="/kidsaccount/AddProfile" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             
                             <div class="imgbox">
@@ -346,6 +345,7 @@ input.nickname {
                             </div>
                             <div class="uld-bt-box">    
                                 <label for="file" class="upload-btn">
+                     		<form action="/kidsaccount/AddProfile" method="post" enctype="multipart/form-data">
                                            <input id="file" type="file" accept="image/*" name="files">
                                                 <span>프로필 사진 설정</span>
                                         </label>
@@ -382,8 +382,8 @@ input.nickname {
                                 </div>
                                     <div class="uld-bt-box">
                                     <label for="file2" class="upload-btn">
-                                        <form action="/kidsaccount/AddProfile" method="post">
-                                        <input id="file2" type="file" name="santamail">
+                                        <form action="/kidsaccount/AddSantamail" method="post" enctype="multipart/form-data">
+                                        <input id="file2" type="file" name="files">
                                         <span>편지 업로드</span>
                                     
                                         </label>
@@ -415,7 +415,7 @@ input.nickname {
       reader.readAsDataURL(fileDOM.files[0]);
     });
     
-    const fileDOM2 = document.querySelector('#file2');
+    const fileDOM2 = document.querySelector('#files');
     
     fileDOM2.addEventListener('change', () => {
       const imageSrc = URL.createObjectURL(fileDOM2.files[0]);

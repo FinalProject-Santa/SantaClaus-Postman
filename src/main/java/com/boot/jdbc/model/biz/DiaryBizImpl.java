@@ -1,8 +1,6 @@
 package com.boot.jdbc.model.biz;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -27,15 +25,15 @@ public class DiaryBizImpl implements DiaryBiz{
 	}
 
 	@Override
-	public int saveDiary(Map<Object, Object> param) {
+	public int saveDiary(String userId, int kidsNo, String filePath, String userEmail) {
 		
-		return diaryMapper.saveDiary(param);
+		return diaryMapper.saveDiary(userId,kidsNo,filePath,userEmail);
 	}
 	
 	@Override
-	public int fillDiary(Map<Object, Object> param) {
+	public int fillDiary(String userId, int kidsNo, String filePath, LocalDate localdate, String userEmail) {
 		
-		return diaryMapper.fillDiary(param);
+		return diaryMapper.fillDiary(userId,kidsNo,filePath,localdate,userEmail);
 	}
 
 	@Override
@@ -70,34 +68,12 @@ public class DiaryBizImpl implements DiaryBiz{
 		return diaryMapper.fillDate(userId, localdate);
 	}
 
-	@Override
-	public ArrayList<String> selectStickerDate(String userId) {
-		
-		return diaryMapper.selectStickerDate(userId);
-	}
 
+	//게임포인트
 	@Override
-	public int selectDiary(String userId) {
+	public int insertPoint(int kidsNo) {
 		
-		return diaryMapper.selectDiary(userId);
-	}
-	
-	@Override
-	public int deleteSticker(String userId) {
-		
-		return diaryMapper.deleteSticker(userId);
-	}
-
-	@Override
-	public int insertSticker(String userId, int stickerCount) {
-		
-		return diaryMapper.insertSticker(userId, stickerCount);
-	}
-
-	@Override
-	public int insertPoint(int kidsNO) {
-		
-		return diaryMapper.insertPoint(kidsNO);
+		return diaryMapper.insertPoint(kidsNo);
 	}
 
 	
