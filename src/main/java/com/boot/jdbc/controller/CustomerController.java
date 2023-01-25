@@ -102,7 +102,7 @@ public class CustomerController {
 		
 		QnaFileDto file = new QnaFileDto();
 		
-		String uploadPath = "C:/Users/USER/git/SantaClaus-Postman/src/main/resources/static/files/";
+		String uploadPath = "C:/Users/HOME/git/SantaClaus-Postman/src/main/resources/static/files/";
 		String sourceFileName = files.getOriginalFilename(); 
         String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
         File destinationFile; 
