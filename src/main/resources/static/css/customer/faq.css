@@ -1,9 +1,29 @@
 
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');
+
+
+	html, body {
+  	height: 100%;
+  	margin: auto;
+	}
+	
+	.wrapperAll {
+	min-height : 100%;
+	height : 1400px;
+	}
+	
+	.customer_menu{
+	position: relative;
+	padding-top: 75px;
+	display:block;
+	}
+
     h1{display: inline;}
-    section{margin-left: 30%; margin-right: 30%;}
+  
 
 
     .faq {position:absolute;top:30%;left:50%;transform:translateX(-50%);width:750px;}
+    
     input[id*="answer"]{display: none ;}
     input[id*="answer"] + label {
         display: block;
