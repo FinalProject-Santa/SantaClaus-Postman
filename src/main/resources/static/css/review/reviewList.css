@@ -13,8 +13,24 @@ span.star-prototype>* {
 	max-width: 80px;
 }
 
-#pagination {
+.container-fluid{
+	padding-top: 5%;
+	margin : 0 auto;
+}
+
+/* .paginationdiv {
   width: 300px;
   margin-left: auto;
   margin-right: auto;
+  display: inline;
+  background-color: blue;
 } 
+
+.btndiv {
+	border: 0;
+	border-radius: 0; 윤곽 0
+	padding: 5px 10px;
+	margin: 20px 0px;
+	display: inline;
+	background-color: blue;
+} */

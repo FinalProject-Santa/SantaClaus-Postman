@@ -84,6 +84,13 @@
 
 <script src="http://code.jquery.com/jquery-latest.js"></script> 
 <script>
+
+$('input[type="text"]').keydown(function() {
+	  if (event.keyCode === 13) {
+	    event.preventDefault();
+	  };
+	});
+
 $("#inputGroupFile02").change(function(){
 	   if(this.files && this.files[0]) {
 	    var reader = new FileReader;

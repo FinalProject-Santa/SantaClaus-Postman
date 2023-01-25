@@ -3,34 +3,39 @@
 	    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+	crossorigin="anonymous">
+	<link rel="stylesheet" href="/resources/css/review/reviewList.css">
 <body>
+
+
 <%@include file="../include/header.jsp" %>
 <%@include file="../include/floatingMenu.jsp" %>
 
 	<div class="container-fluid">
 
-		<!-- Page Heading 
-        <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-        <p class="mb-4">
-            DataTables is a third party plugin that is used to generate the demo table below.
-            For more information about DataTables, please visit the 
-            <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.
-        </p>
-        -->
-
 		<!-- DataTales Example -->
-		<div class="card shadow mb-4">
-			<div class="card-header py-3">
-				<h4 class="">후기 목록</h4>
+		<div class="card shadow mb-1">
+			<div class="card py-1">
 
 				<div class="row">
 					<div class="col-sm-12">
+						  <div class="col-xs-12" style="margin:15px auto;">
+        <label style="font-size:20px;"><span class="glyphicon glyphicon-list-alt" style="margin-right:5px;"></span>후기 목록</label>
+    	<c:if test="${sessionScope.member != null}">
+        <button class="btn btn-primary btn-sm" style="float:right; font-size: 13px;" onclick="location.href='/review/reviewinsertform'">후기 작성</button>
+								</c:if>
+								</div>	
 						<table class="table table-bordered dataTable" id="dataTable"
 							role="grid"
 							aria-describedby="dataTable_info" >
 							<thead>
 								<tr role="row" style="text-align: center;">
-									<th>게시판 번호</th>
+									<th>게시글 번호</th>
 									<th>제목</th>
 									<th>작성자</th>
 									<th>별점</th>
@@ -58,15 +63,14 @@
 									</c:when>
 									<c:otherwise>
 										<tr>
-											<td colspan="7">조회된 결과가 없습니다.</td>
+											<td colspan="6" >조회된 결과가 없습니다.</td>
 										</tr>
 									</c:otherwise>
 								</c:choose>
 							</tbody>
-						</table>
-							
-								
-								<nav aria-label="Page navigation example">
+							<tbody>
+								<tr>
+									<td colspan="6">
 									<ul class="pagination justify-content-center">
 										<c:if test="${pageMaker.prev }">
 											<li class="page-item">
@@ -86,22 +90,20 @@
 												href='<c:url value="/review/reviewList?page=${pageMaker.endPage+1 }"/>' aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
 										</c:if>
 									</ul>
-								</nav>
-								<div style="float: left">
-								<c:if test="${sessionScope.member != null}"><input type="button" 
-							value="글작성" onclick="location.href='/review/reviewinsertform'">
-								</c:if>
-							</div>
+
+								</td>
+							</tr>
+						</tbody>	
+						</table>
 					</div>
 
 				</div>
 			</div>
 		</div>
 	</div>
-
 	<script type="text/javascript"
 		src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
-
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script>
 		$.fn.generateStars = function() {
 			return this.each(function(i, e) {
