@@ -99,6 +99,12 @@
 
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script>
+	$('input[type="text"]').keydown(function() {
+		  if (event.keyCode === 13) {
+		    event.preventDefault();
+		  };
+		});
+	
 	$(document).ready(function(){
 		$("#btnSave").click(function(){
 			var title = $("#title").val();
