@@ -7,6 +7,7 @@ import com.boot.jdbc.model.dto.Criteria;
 import com.boot.jdbc.model.dto.PointDto;
 
 public interface PointBiz {
+	public int signUpPoint(String user_id);
 	public int pointAll(String user_id);
 //	public List<PointDto> selectList();
 	public int pointAlll(String user_id);

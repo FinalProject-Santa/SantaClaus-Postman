@@ -205,13 +205,16 @@
 			if(usePoint > myPoint){
 				alert("사용 가능한 포인트를 초과 입력 하였습니다.\n가용 포인트 : " + myPoint + "pt");
 				finalAmount.html((totalPrice - myPoint).toLocaleString() + '원');
+				$("input[name=total_price]").val(totalPrice - myPoint);
 				$(this).val(myPoint);
 			}else if(usePoint < 1000){
 				alert("1000 포인트 이상 사용 가능합니다.");
 				finalAmount.html((totalPrice - myPoint).toLocaleString() + '원');
+				$("input[name=total_price]").val(totalPrice - myPoint);
 				$(this).val(myPoint);
 			}else{
 				finalAmount.html((totalPrice - usePoint).toLocaleString() + '원');
+				$("input[name=total_price]").val(totalPrice - usePoint);
 			} 
 		});
 		
@@ -234,36 +237,43 @@
 		};
 		
 		$("#payment").click(function(){
+			email();
+			phone();
+			
 			const data = {
-				orderNum : createOrderNum(),
-				name : $("#letterName").html().trim(),
-				price : parseInt($("input[name=total_price]").val())
-			}
-			console.log("주문번호 : " + data.orderNum);
-			
-			IMP.init("imp71363636");
-			
-			// KG이니시스
-			IMP.request_pay({
-			    pg : 'html5_inicis.INIpayTest', 
-			    pay_method : 'card',
-			    merchant_uid: data.orderNum, // 주문번호
-			    name : data.name,
-			    amount : data.price,
-			    buyer_tel : '010-1234-5678',   //필수 파라미터 입니다.
-			    m_redirect_url : '{모바일에서 결제 완료 후 리디렉션 될 URL}',
-			    /* escrow : true, //에스크로 결제인 경우 설정
-			    bypass : {
-			        acceptmethod : "noeasypay" // 간편결제 버튼을 통합결제창에서 제외(PC)
-			    }, */
-			}, function(rsp) { // callback 로직
-				if(rsp.success){
-					$('#form').submit();
-					
+					orderNum : createOrderNum(),
+					name : $("#letterName").html().trim(),
+					price : parseInt($("input[name=total_price]").val())
 				}
+				console.log("주문번호 : " + data.orderNum);
 				
-			});
+				IMP.init("imp71363636");
+				
+				// KG이니시스
+				IMP.request_pay({
+				    pg : 'html5_inicis.INIpayTest',
+				    merchant_uid: data.orderNum, // 주문번호
+				    name : data.name,
+				    amount : data.price,
+				    buyer_tel : '010-1234-5678',   //필수 파라미터 입니다.
+				    m_redirect_url : '{모바일에서 결제 완료 후 리디렉션 될 URL}',
+				    /* escrow : true, //에스크로 결제인 경우 설정
+				    bypass : {
+				        acceptmethod : "noeasypay" // 간편결제 버튼을 통합결제창에서 제외(PC)
+				    }, */
+				}, function(rsp) { // callback 로직
+					if(rsp.success){
+						$('#form').submit();
+					}
+					
+				});
 		});
+		
+	   $('input[type="text"]').keydown(function() {
+	   		if (event.keyCode === 13) {
+	        	event.preventDefault();
+	        };
+       });
 	});
 </script>
 </head>
@@ -299,8 +309,8 @@
                    <td>
                        <p id="letterName">
                            ${letterDto.letter_name }
-                           <input type="hidden" value="${letterDto.letter_name }" name="letter_name">
                        </p>
+                       <input type="hidden" value="${letterDto.letter_name }" name="letter_name">
                        <p class="blanks">
                            <span>아이 이름 : ${letterDto.child_name }</span><br>
                            <span>거주지 : ${letterDto.address }</span><br>
@@ -312,8 +322,10 @@
                    </td>
                    <td>1</td>
                    <td>
-                   	 
-				</td>
+                   		<fmt:parseNumber var="point" value="${letterDto.letter_price * 0.01 }" integerOnly="true" />
+                		<fmt:formatNumber type="number" value="${point}"/>pt
+		                <c:set var="letterPoint" value="${point}"/>
+				   </td>
                </tr>
                <c:set var="totalOptionPrice"/>
                <c:set var="totalOptionPoint"/>
@@ -390,7 +402,7 @@
                                <label for ="sameDestination">회원 정보와 동일</label>&nbsp;
                                <input type="radio" name="addr" id="newDestination">
                                <label for ="newDestination">새로운 배송지</label>&nbsp;&nbsp;
-                               <span>
+                               <!-- <span>
                                    최근배송지 :
                                    <span id="latestAddr">
                                     <input type="radio">
@@ -398,7 +410,7 @@
                                     <input type="radio">
                                    <label>친구집</label>
                                    </span>
-                               </span>
+                               </span> -->
                            </div>
                            
                        </td>
@@ -429,7 +441,7 @@
                            <input id="emailId" type="text" required="required">
 						<span>@</span>
 						<select id="emailDomain">
-								<option value="이메일 선택">이메일 선택</option>
+							<option value="이메일 선택">이메일 선택</option>
 							<option value="naver.com">naver.com</option>
 							<option value="daum.net">daum.net</option>
 							<option value="gmail.com">gmail.com</option>
@@ -487,12 +499,12 @@
 	                       	<td id="paymentInfo_totalPricePlusDeliv">
 								<c:choose>
 		                			<c:when test="${letterDto.letter_price + totalOptionPrice ge 20000}">
-										<input type="hidden" name="total_price" value="${letterDto.letter_price + totalOptionPrice }">
+										<input type="hidden" value="${letterDto.letter_price + totalOptionPrice }">
 										<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice }"/>원
 		                			</c:when>
 		                			<c:otherwise>
-										<input type="hidden" name="total_price" value="${letterDto.letter_price + totalOptionPrice + 2500}">
 										<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice + 2500}"/>원
+										<input type="hidden" value="${letterDto.letter_price + totalOptionPrice + 2500}">
 		                			</c:otherwise>
 	              				</c:choose>
 							</td>
@@ -528,9 +540,11 @@
 	               				<c:choose>
 	               					<c:when test="${myPoint ge 1000}">
 										<fmt:formatNumber type="number" value="${(letterDto.letter_price + totalOptionPrice) - myPoint }"/>원
+										<input type="hidden" name="total_price" value="${(letterDto.letter_price + totalOptionPrice) - myPoint }">
 									</c:when>
 									<c:otherwise>
 										<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice }"/>원
+										<input type="hidden" name="total_price" value="${letterDto.letter_price + totalOptionPrice}">
 									</c:otherwise>
 								</c:choose>
 	               			</c:when>
@@ -538,9 +552,11 @@
 								<c:choose>
 									<c:when test="${myPoint ge 1000}">
 										<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice + 2500  - myPoint}"/>원
+										<input type="hidden" name="total_price" value="${letterDto.letter_price + totalOptionPrice + 2500  - myPoint}">
 									</c:when>
 									<c:otherwise>
 										<fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice + 2500}"/>원
+										<input type="hidden" name="total_price" value="${letterDto.letter_price + totalOptionPrice + 2500 }">
 									</c:otherwise>
 								</c:choose>
 	               			</c:otherwise>
@@ -551,17 +567,25 @@
 	               	   <strong>총 적립예정금액</strong>
 	                   <span id="paymentInfo_totalPoint">
 	                   	<fmt:formatNumber type="number" value="${letterPoint + totalOptionPoint }"/>pt
-	                  		<input type="hidden" name="save_point" value="${letterPoint + totalOptionPoint }"/>
+	                  	<input type="hidden" name="save_point" value="${letterPoint + totalOptionPoint }"/>
 	                   </span>
-	                   <input type="hidden" name="use_point">
+	                   <c:choose>
+	                   		<c:when test="${myPoint ge 1000}">
+		                   		<input type="hidden" value="${myPoint }" name="use_point">
+		                   	</c:when>
+		                   	<c:otherwise>
+		                   		<input type="hidden" value="0" name="use_point">
+		                   	</c:otherwise>
+		               </c:choose>
 	               </p>
 	               <p class="agreement">
 	                   <input type="checkbox" id="agree" required="required">
 	                   <label for="agree">결제정보를 확인하였으며, 구매진행에 동의합니다.</label>
 	               </p>
+                   <input type="hidden" name="order_no">
+                   <input type="hidden" name="total_price" value="${letterDto.letter_price + totalOptionPrice + 2500 }">
 	               <p class="payBtn">
-	                   <input type="submit" value="결제하기" id="payment">
-	                   <input type="hidden" value="" name="order_no">
+	                   <input type="button" value="결제하기" id="payment">
 	               </p>
 	           </div>
 	       </div>

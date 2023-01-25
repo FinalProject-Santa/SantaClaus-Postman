@@ -85,7 +85,7 @@
 	                </td>
 	            </tr>
             </c:forEach>
-            <tr>
+            <%-- <tr>
                 <td colspan="5" style="text-align: right;">
                 	상품구매금액 : <strong><fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice }"/>원</strong> +
                	 	<c:choose>
@@ -97,7 +97,7 @@
              			</c:otherwise>
        			 	</c:choose>
    				</td>
-            </tr>
+            </tr> --%>
         </tbody>
     </table>
     <strong>배송지 정보</strong>
