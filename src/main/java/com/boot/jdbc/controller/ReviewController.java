@@ -107,13 +107,13 @@ public class ReviewController {
         destinationFile.getParentFile().mkdirs(); 
         files.transferTo(destinationFile); 
         
+        reviewdto.setRimg(destinationFileName);
 		reviewbiz.reviewInsert(reviewdto);
 		
 		 file.setReview_no(reviewdto.getReview_no());
          file.setRfile_name(destinationFileName);
          file.setRfile_oriname(sourceFileName);
          file.setRfile_url(uploadFileDir);
-         
          reviewbiz.fileInsert(file); //file insert
          return "redirect:/review/reviewList";
     }
