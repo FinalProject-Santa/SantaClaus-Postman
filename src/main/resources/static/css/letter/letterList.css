@@ -1,0 +1,21 @@
+@charset "UTF-8";
+body{
+}
+.inner {
+	width: 1400px;
+    margin: 0 100px;
+}
+.letterWrapper{
+}
+.letterList{
+	display: grid;
+	padding-top: 150px;
+	grid-template-columns: repeat(4, 1fr);
+	column-gap: 30px;
+	row-gap: 80px;
+}
+
+img{
+	width:400px;
+	height: 300px;
+}

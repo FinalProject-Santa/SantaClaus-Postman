@@ -1,7 +1,8 @@
 package com.boot.jdbc.model.dto;
 
 public class PageMaker {
-	 private Criteria cri;
+	 	private Criteria cri;
+	 	private Criteria_Letter cri_letter;
 	    private int totalCount;
 	    private int startPage;
 	    private int endPage;
@@ -12,8 +13,14 @@ public class PageMaker {
 	    public Criteria getCri() {
 	        return cri;
 	    }
+	    public Criteria_Letter getCriLetter() {
+	        return cri_letter;
+	    }
 	    public void setCri(Criteria cri) {
 	        this.cri = cri;
+	    }
+	    public void setCriLetter(Criteria_Letter cri_letter) {
+	        this.cri_letter = cri_letter;
 	    }
 	    public int getTotalCount() {
 	        return totalCount;
@@ -21,6 +28,10 @@ public class PageMaker {
 	    public void setTotalCount(int totalCount) {
 	        this.totalCount = totalCount;
 	        calcData();
+	    }
+	    public void setTotalLetterCount(int totalCount) {
+	        this.totalCount = totalCount;
+	        calcLetterData();
 	    }
 	    
 	    private void calcData() {
@@ -37,6 +48,23 @@ public class PageMaker {
 	 
 	        prev = startPage == 1 ? false : true;
 	        next = endPage * cri.getPerPageNum() < totalCount ? true : false;
+	        
+	    }
+	    
+	    private void calcLetterData() {
+	        
+	        endPage = (int) (Math.ceil(cri_letter.getPage() / (double) displayPageNum) * displayPageNum);
+	 
+	        startPage = (endPage - displayPageNum) + 1;
+	        if(startPage <= 0) startPage = 1;
+	        
+	        int tempEndPage = (int) (Math.ceil(totalCount / (double) cri_letter.getPerPageNum()));
+	        if (endPage > tempEndPage) {
+	            endPage = tempEndPage;
+	        }
+	 
+	        prev = startPage == 1 ? false : true;
+	        next = endPage * cri_letter.getPerPageNum() < totalCount ? true : false;
 	        
 	    }
 	    
