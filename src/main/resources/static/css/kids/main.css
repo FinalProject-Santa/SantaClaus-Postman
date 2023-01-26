@@ -39,11 +39,13 @@
 #boximg #img1{
     width: 220px;
     height: 315px;
+    margin-left: 10px;
 }
 #boximg #img2{
     width: 200px;
     height: 300px;
     margin-top: 15px;
+    margin-left: 15px;
 }
 #boximg #img3{
     width: 200px;
@@ -58,12 +60,13 @@
     margin-left: 15px;
 }
 #boximg b{
-    font-size: 35px;
+    font-size: 38px;
     line-height: 200%;
 }
 #boximg div{
     text-align: center;
-    font-size: 24.8px;
+    font-size: 26.2px;
+    width: 250px;
 }
 #minidiv{
     margin-left: 6px;
