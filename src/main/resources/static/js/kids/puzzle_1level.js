@@ -38,7 +38,7 @@ function checkStatus(){
     if(unMatchedList.length === 0){
         gameText.style.display = "block";
         isPlaying = false;
-        mixButton.style.display = "none";
+        mixButton.style.visibility = "hidden";
     }
 }
 
@@ -62,6 +62,7 @@ function creatImageTiles(){
     const tempArray = [];
     Array(tileCount).fill().forEach((_, i)=>{
         const li = document.createElement("li");
+        li.setAttribute('class', 'litag');
         li.setAttribute("data-index", i);
         li.setAttribute('draggable', 'true');
         li.classList.add(`list${i}`);
@@ -119,7 +120,7 @@ mixButton.addEventListener('click', () => {
 
 restartButton.addEventListener('click', () => {
     gameText.style.display = "none";
-    mixButton.style.display = "block";
+    mixButton.style.visibility = "visible";
 
     var timeleft = 5;
     var downloadTimer = setInterval(function(){
