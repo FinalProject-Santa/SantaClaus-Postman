@@ -19,9 +19,10 @@ public interface ReviewMapper {
 	
 	@Select("SELECT * FROM REVIEW ORDER BY REVIEW_NO DESC LIMIT #{pageStart}, #{perPageNum}")
 	List<Map<String, Object>> reviewList(Criteria cri);
-
+	
 	@Select("SELECT COUNT(*) FROM REVIEW")
 	int countBoardList();
+	
 	
 	@Select("SELECT * FROM REVIEW WHERE REVIEW_NO=#{review_no}")
 	ReviewDto reviewDetail(int review_no);
@@ -29,7 +30,7 @@ public interface ReviewMapper {
 	@Select("SELECT * FROM RFILES WHERE REVIEW_NO=#{review_no}")
 	rFileDto rfileDetail(int review_no);
 	
-	@Insert("INSERT INTO REVIEW VALUES(NULL, #{user_id}, #{review_title}, #{review_best}, #{review_content}, #{review_count}, NOW())")
+	@Insert("INSERT INTO REVIEW VALUES(NULL, #{user_id}, #{review_title}, #{review_best}, #{review_content}, #{review_count}, NOW(), #{rimg})")
 	@Options(useGeneratedKeys = true, keyProperty = "review_no")
 	int reviewInsert(ReviewDto reviewdto);
 	
