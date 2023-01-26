@@ -100,7 +100,7 @@ body {
             <div id="menu"onclick="maintoggle();">= 메뉴
             <div id="menubox">
                     <ul id="menubar">
-                        <li onclick="location.href='/kids/puzzle'" class="atag">미니게임</li>
+                        <li onclick="location.href='/kids/gamemain'" class="atag">미니게임</li>
                     	<li onclick="location.href='/kids/diary'" class="atag">그림일기</li>
                     	<li onclick="location.href='/kids/mainsticker'" class="atag">칭찬 스티커</li>
                     	<li id="nbsp"><a href="" class="atag">산타 우편함</a></li>

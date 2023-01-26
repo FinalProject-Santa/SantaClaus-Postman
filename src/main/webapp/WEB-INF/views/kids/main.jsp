@@ -28,7 +28,7 @@
 	
 	    <div class="flex_container">
 	    <ul id="boximg">
-	        <li><img src="/resources/image/kids/main/img1.png" id="img1" onclick="location.href='/kids/puzzle'">
+	        <li><img src="/resources/image/kids/main/img1.png" id="img1" onclick="location.href='/kids/gamemain'">
 	            <div id="minidiv"><b>미니게임</b><br>재밌는 퍼즐 맞추기와<br>같은 그림 찾기를 해봐요</div></li>
 	        <li><img src="/resources/image/kids/main/img2.png" id="img2" onclick="location.href='/kids/diary'">
 	            <div><b>그림일기</b><br>오늘 있었던 일을<br>그림으로 그려봐요</div></li>

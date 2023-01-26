@@ -56,10 +56,10 @@ public class KidsController {
 		return "kids/main";
 	}
 	
-	@GetMapping("/puzzle")
+	@GetMapping("/gamemain")
 	public String puzzle() {
 		
-		return "kids/puzzle";
+		return "kids/gamemain";
 	}
 	
 	@GetMapping("/onelevel")

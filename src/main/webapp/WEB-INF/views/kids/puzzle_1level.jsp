@@ -25,7 +25,7 @@
             <div class="button-group">
                 <button class="mix-button">섞기</button>
                 <button class="restart-button">재시작</button>
-                <button class="main-button" onclick="location.href='/kids/puzzle'">게임 홈</button>
+                <button class="main-button" onclick="location.href='/kids/gamemain'">게임 홈</button>
             </div>
         </div> <!-- wrap-all -->
 

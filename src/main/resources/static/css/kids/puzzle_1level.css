@@ -1,5 +1,10 @@
 @charset "EUC-KR";
 @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Hi+Melody&display=swap');
+.inner{
+    width: 1400px;
+    margin: 0 auto;
+    /* height: 190px; */
+}
 .wrap-all{
     padding-top: 40px;
     display: flex;
@@ -8,7 +13,7 @@
     flex-direction: column; /*¼¼·Î*/
     width: 1000px;
     /* height: 700px; */
-    margin-left: 455px;
+    margin-left: 190px;
 }
 .puzzle_text{
     text-align: center;
@@ -21,14 +26,9 @@
     font-weight: 520;
 }
 #text_2{
-    font-size: 35px;
+    font-size: 38px;
     margin-top: 15px;
     margin-bottom: 5px;
-}
-.play-time{
-    font-size: 3rem;
-    margin-top: 2rem;
-    color: var(--facebook);
 }
 .image-container{
     list-style: none;
@@ -43,7 +43,7 @@
     width: 190px;
     height: 190px;
     color: #fff;
-    background-image: url('/resources/image/kids/game/img5.png');
+    background-image: url('/resources/image/kids/game/pp.jpg');
     background-size: 570px 570px;
 }
 .button-group{
@@ -60,13 +60,14 @@
     padding: 12px 20px;
     margin-top: 1rem;
     display: block;
+    cursor: pointer;
 }
 .game-text{
     position: absolute;
     font-size: 80px;
     font-weight: 600;
     color: black;
-    margin-top: 85px;
+    margin-top: 150px;
     margin-left: 10px;
     display: none;
 }
