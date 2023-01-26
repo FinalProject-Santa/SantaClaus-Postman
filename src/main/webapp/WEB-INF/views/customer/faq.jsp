@@ -43,15 +43,13 @@
             신중한 구매 부탁드립니다! </p></div>
        
         </div>
-        
-        
+
         <div class="customer_imgbox">
         <img src="/resources/image/customer/SnowSculptures.jpg">
         </div>
         <p style="text-align: center"><i>Thank you!</i></p>
-        
-        
         </div>
+   
         
         <%@include file="../include/footer.jsp" %>
         

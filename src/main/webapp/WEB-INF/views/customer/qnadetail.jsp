@@ -1,80 +1,64 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="refresh">
-<title>Insert title here</title>
-</head>
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<script type="text/javascript">
+<%@include file="../include/header.jsp"%>
+<%@include file="../include/floatingMenu.jsp"%>
+<link rel="stylesheet" href="/resources/css/customer/qnadetail.css">
 
-/* function fn_qnaReply(url,origin_no){
-	
-	var form = document.createElement("form");
-	form.setAttribute("action",url); //전달된 요청을 form 태그 action 속성값에 저장
-	form.setAttribute("method","post");
-	var origin_no_input = document.createElement("input");
-	
-	origin_no_input.setAttribute("type","hidden");
-	origin_no_input.setAttribute("name","origin_no");
-	origin_no_input.setAttribute("value",origin_no);
-	
-	form.appendChild(origin_no_input);
-	document.body.appendChild(form);
-	form.submit();	 
-} */
 
-</script>
-
-<style>
-  h1{display: inline;}
-  div {
-	margin-left: 30%;
-	margin-right: 30%;
-		}
-  </style>
-  
 <body>
-<div class="container">
-<table border="1">
-<tr>
-	<th>작성자</th>
-		<td>${dto.user_id}</td>
-</tr>
-<tr>
-	<th>문의유형</th>
-		<td>${dto.qna_type}
-</tr>
-<tr>
-	<th>제목</th>
-		<td>${dto.qna_title}</td>
-</tr>
-<tr>
-	<th>내용</th>
-		<td><textarea rows="10" cols="40" readonly="readonly">${dto.qna_content }</textarea></td>
-</tr>
 
-<c:if test="${not empty files.file_oname && files.file_oname != 'null'}">
-<tr>
-	<th></th>	
-		<td><img src="/resources/files/${files.file_name}"></td>
-</tr>
-</c:if>
-<tr>
-
-	<td colspan="2">
-	<input type="button" value="목록" onclick="location.href='/customer/qnalist'">
-	<c:if test="${user_id == 'admin' || user_id == 'ADMIN'}">
-	<input type="button" value="답글쓰기" onclick="location.href='/customer/qnaReply?qna_no=${dto.qna_no}&qna_type=${dto.qna_type}&secret=${dto.secret}'">
-	</c:if>
-	</td>
+	<div class="inner">
 	
-</table>
+		<div class="customer_logo">
+			<h1>Customer Service</h1>
+		</div>
+
+		<div class=customer_menu>
+			<button class="c_bt" onclick="location.href='notice';">NOTICE</button>
+			<button class="c_bt" onclick="location.href='qnalist';">Q&A</button>
+			<button class="c_bt" onclick="location.href='faq';">FAQ</button>
+		</div>
+	
+	<div class="tableparent">
+		<table border="1">
+			<tr>
+				<td id="type">${dto.qna_type}</td>
+			</tr>
+			
+			<tr>
+				<td id="title">${dto.qna_title}</td>
+			</tr>
+
+			<tr>
+				<td id="userid">${dto.user_id}</td>
+				
+			</tr>
+			
+			<tr>
+				<td id="content">
+				 <c:if test="${not empty files.file_oname && files.file_oname != 'null'}">
+				<div style="margin-bottom: 20px;"><img src="/resources/files/${files.file_name}" style="max-width:600px; max-height: 500px;">
+			    </div> ${dto.qna_content }
+			    </c:if>
+			</td>
+			
+			</tr>
+
+			<tr>
+
+				<td id="returnbt"><input type="button" value="<< Return To list"
+					onclick="location.href='/customer/qnalist'"> <c:if
+						test="${user_id == 'admin' || user_id == 'ADMIN'}">
+						<input type="button" value="답글쓰기"
+							onclick="location.href='/customer/qnaReply?qna_no=${dto.qna_no}&qna_type=${dto.qna_type}&secret=${dto.secret}'">
+					</c:if></td>
+		</table>
+	</div>
+	
+
 </div>
-</body>
-</html>
+
+	<%@include file="../include/footer.jsp"%>
