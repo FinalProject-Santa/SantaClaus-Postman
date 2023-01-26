@@ -21,7 +21,7 @@
 	                <span style="color:rgb(222, 2, 2);">•</span>단계별로 나눠져있어요<span style="color:rgb(222, 2, 2);">•</span>
 	            </p>
 	            <input type="button" class="level1-btn" value="1단계 시작" onclick="location.href='/kids/onelevel'">
-	            <input type="button" class="level2-btn" value="2단계 시작">
+	            <input type="button" class="level2-btn" value="2단계 시작" onclick="location.href='/kids/twolevel'">
 	        </div>
 	
 	        <div class="same_game">

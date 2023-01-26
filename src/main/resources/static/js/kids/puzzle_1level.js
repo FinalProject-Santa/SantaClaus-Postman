@@ -7,6 +7,7 @@ const restartButton = document.querySelector(".restart-button");
 const mainButton = document.querySelector(".main-button");
 const gameText = document.querySelector(".game-text");
 const playTime = document.querySelector(".play-time");
+const text = document.querySelector("#text_2");
 
 const tileCount = 9; //타일의 개수
 
@@ -39,6 +40,7 @@ function checkStatus(){
         gameText.style.display = "block";
         isPlaying = false;
         mixButton.style.visibility = "hidden";
+        text.innerHTML = "2단계도 도전해보세요!";
     }
 }
 
@@ -121,6 +123,7 @@ mixButton.addEventListener('click', () => {
 restartButton.addEventListener('click', () => {
     gameText.style.display = "none";
     mixButton.style.visibility = "visible";
+    text.innerHTML = "5초 뒤에 퍼즐이 섞여요!";
 
     var timeleft = 5;
     var downloadTimer = setInterval(function(){

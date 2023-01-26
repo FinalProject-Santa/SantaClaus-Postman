@@ -1,28 +1,40 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <link rel="stylesheet" href="/resources/css/kids/puzzle_2level.css">
-</head>
+
 <body>
-    <div class="wrap-all">
-        <div class="puzzle_text">
-            <span id="text_1">»êÅ¸ ÆÛÁñ ¸ÂÃß±â °ÔÀÓ</span><br>
-            <span id="text_2">´ÙÀ½ ÆÛÁñÀ» ¿Ï¼º½ÃÄÑ ÁÖ¼¼¿ä</span>
-        </div>
-        <ul class="image-container">
-        </ul>
-        <progress value="0" max="5" id="progressBar"></progress>
-        <p class="game-text">¼º°ø!</p>
+    <%@include file="../include/kidsheader.jsp" %>
+    
+    <!-- main -->
+    <div class="inner">
+    
+        <div class="wrap-all">
+            <div class="puzzle_text">
+                <p id="text_1">
+                    <span style="color: rgb(232, 3, 3);">í¼</span><span style="color: rgb(255, 140, 0);">ì¦</span><span style="color: rgb(255, 196, 0);">ì„</span>
+                    <span style="color: green;"> ë§ž</span><span style="color: rgb(43, 43, 240);">ì¶°</span><span style="color: rgb(2, 2, 161);">ë³´</span><span style="color: rgb(131, 21, 234);">ì„¸</span><span style="color: black;">ìš”</span>
+                </p>
+                <p id="text_2">5ì´ˆ ë’¤ì— í¼ì¦ì´ ì„žì—¬ìš”!</p>
+            </div>
+            <ul class="image-container">
+            </ul>
+            <div id="progressDiv">
+            <progress value="0" max="5" id="progressBar"></progress>
+            </div>
+            <span class="game-text">ì„±ê³µ!</span>
+            <div class="button-group">
+                <button class="mix-button">ì„žê¸°</button>
+                <button class="restart-button">ìž¬ì‹œìž‘</button>
+                <button class="main-button" onclick="location.href='/kids/gamemain'">ê²Œìž„ í™ˆ</button>
+            </div>
+        </div> <!-- wrap-all -->
+
     </div>
-        <div class="button-group">
-        <button class="mix-button">mix</button>
-        <button class="restart-button">restart</button>
-        <button class="main-button" onclick="location.href='/kids/main'">main</button>
-        </div>
+    
+    
+    <%@include file="../include/kidsfooter.jsp" %>
+    
     <script src="/resources/js/kids/puzzle_2level.js"></script>
 </body>
 </html>
