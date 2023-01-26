@@ -12,9 +12,9 @@
 
 <body>
 
-<div class=inner>
+<div class="inner">
 
- <div class=customer_logo>
+ <div class="customer_logo">
         <h1>Customer Service</h1>
         </div>
         
@@ -58,58 +58,81 @@
 							<td>${dto.qna_type}</td>
 							<td>
 					
-				<c:choose>
+						<c:choose><%------ title 영역 -------%>
 					 
-					 <%-- 답글이면 들여쓰기와 답변 표시 --%>
+					 <%-- 선택1. 답글일때 --%>
 						<c:when test="${dto.dep > 0}"> 
 							<span style="padding-left:30px"></span>
 							<span style="font-size:10pt">답변:</span>
 						
 						
-						<%-- 답글이면서 공개글 --%>
+						<%-- 선택 1-1 : 공개글에 대한 답변 --%>
 						
 							<c:if test="${dto.secret eq 'false'}">
 								<a href="/customer/qnadetail?qna_no=${dto.qna_no}">${dto.qna_title}</a>
 							 </c:if>
 								
-						<%-- 답글이면서 + 비공개글 --%>	
+						<%-- 선택 1-2 : 비밀글에 대한 답변 --%>	
 							<c:if test="${dto.secret eq 'true'}">	
-								<c:if test="${dto.user_id ne user_id || dto.user_id ne 'ADMIN' || dto.user_id ne 'admin'}">
-							 	  <img src="../resources/image/customer/lock.png"> 비밀글입니다.
-								</c:if>
-							</c:if>	
-						
-								
-						</c:when> 
+								<c:choose>
+								<%-- 작성자이거나 관리자일때는 타이틀 표시한다  --%>
+								<c:when test="${dto.user_id eq user_id || user_id eq 'ADMIN' || user_id eq 'admin'}">
+							 	  <a href="/customer/qnadetail?qna_no=${dto.qna_no}">${dto.qna_title}</a>
+								</c:when>
 
-					<%--원글이면--%>
+								<c:otherwise>							 	  
+							 	  <img id="lock" src="../resources/image/customer/lock.png"> 비밀글입니다.
+								</c:otherwise>
+
+								</c:choose>
+							</c:if>	
+							
+					</c:when><%--선택1 답변일때 종료 --%>
+
+					<%-- 선택2. 원글일때 --%>
 						
 						<c:otherwise>
 						
-						  		 <%--원글이면서 비밀글이 아닐때 --%>
+						  		 <%-- 선택2-1 : 공개로 작성한 게시글 --%>
 							<c:if test="${dto.secret eq 'false'}">
 								<a href="/customer/qnadetail?qna_no=${dto.qna_no}">${dto.qna_title}</a>
 							</c:if>
 							
-								<%-- 원글이면서 비밀글일때 --%>
+								<%-- 선택2-2 : 비밀로 작성한 게시글 --%>
 						
-							<c:if test="${dto.secret eq 'true'}">
-							 	 <img src="../resources/image/customer/lock.png"> 비밀글은 작성자와 관리자만 볼 수 있습니다.
+							<c:if test="${dto.secret eq 'true'}"> 
+							
+							<c:choose>
+							
+								<%--case1 : 작성자가 아닐때 --%>
+								<c:when test="${dto.user_id ne user_id}"> 
+								<img id="lock" src="../resources/image/customer/lock.png"> 비밀글은 작성자와 관리자만 볼 수 있습니다.
+								</c:when>
+								<%--case2 : 관리자가 아닐때1 --%>
+								<c:when test="${user_id ne 'ADMIN'}">
+								<img id="lock" src="../resources/image/customer/lock.png"> 비밀글은 작성자와 관리자만 볼 수 있습니다.
+								</c:when>
+								<%--case1 : 관리자가 아닐때2 --%>
+								<c:when test="${user_id ne 'admin'}">
+								<img id="lock" src="../resources/image/customer/lock.png"> 비밀글은 작성자와 관리자만 볼 수 있습니다.
+								</c:when>
+							
+							
+							 	<c:otherwise>
+							 		<a href="/customer/qnadetail?qna_no=${dto.qna_no}">${dto.qna_title}</a>
+								</c:otherwise>
 								
-								<c:if test= "${dto.user_id eq user_id || user_id eq 'ADMIN' || user_id eq 'admin'}">
-									<a href="/customer/qnadetail?qna_no=${dto.qna_no}">${dto.qna_title}</a>
-								</c:if>
-							
-							</c:if>
 						
+							</c:choose>
+							</c:if>
 							
 							
-					</c:otherwise>
+					</c:otherwise><%--선택2 원글일 때 선택지 종료 --%>
+					
 				</c:choose>
 				
-				
-				
-							</td>
+							</td><%-----------------------------타이틀 영역---------------------------- --%>
+							
 							<td><fmt:formatDate value="${dto.qna_date}" pattern="yyyy/MM/dd"/></td>
 						</tr>
 						
