@@ -213,7 +213,7 @@ public class MemberController {
 			return "redirect:/mypage/myinfoUpdate/"+request.getParameter("user_id");
 		}
 	}
-	
+	 
 	@GetMapping("/delete")
 	public String delete(HttpServletRequest request) {
 		HttpSession session = request.getSession();
