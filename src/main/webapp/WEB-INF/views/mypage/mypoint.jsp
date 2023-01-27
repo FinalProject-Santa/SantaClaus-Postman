@@ -7,13 +7,18 @@
 <head>
     <meta charset="UTF-8">
     <title>내 포인트</title>
-        <link rel="stylesheet"
+    <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
     <link rel="stylesheet" href="/resources/css/mypage/mypoint.css">
 </head>
 <body>
+	<!-- header -->
+	<%@include file="../include/header.jsp" %>
+	<%@include file="../include/floatingMenu.jsp" %>
+
+
     <div id="wrapper">
     
         <nav>
@@ -84,6 +89,11 @@
             </div>
         </section>
     </div>
+
+	<!-- footer -->
+	<%@include file="../include/footer.jsp" %>
+	
+	
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script type="text/javascript">
     

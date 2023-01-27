@@ -18,7 +18,7 @@ public interface PointMapper {
 //	@Select(" SELECT * FROM POINT ORDER BY ORDER_NO DESC ")
 //	List<PointDto> selectList();
 
-	@Select(" SELECT SUM(POINT_) FROM POINT WHERE USER_ID = #{user_id} ")
+	@Select(" SELECT SUM(POINT) FROM POINT WHERE USER_ID = #{user_id} ")
 	int pointAlll(String user_id);
 
 	@Select("SELECT COUNT(*) FROM POINT")

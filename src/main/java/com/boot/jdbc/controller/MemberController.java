@@ -61,10 +61,6 @@ public class MemberController {
             destinationFile = new File(fileUrl + destinationFileName); 
         } while (destinationFile.exists()); 
         
-        System.out.println(destinationFile);
-        System.out.println(destinationFileName);
-        System.out.println(fileUrl);
-        
         destinationFile.getParentFile().mkdirs(); 
         files.transferTo(destinationFile); 
 		
@@ -182,8 +178,6 @@ public class MemberController {
             destinationFile.getParentFile().mkdirs(); 
             files.transferTo(destinationFile);
             
-            System.out.println(request.getParameter("user_id"));
-            
             dto.setRfileName(destinationFileName);
             dto.setRfileOriName(sourcefileName);
 		}else {  // 새로운 파일이 등록되지 않았다면
@@ -215,13 +209,15 @@ public class MemberController {
 		}
 	}
 	@GetMapping("/delete")
-	public String delete(String user_id) {
+	public String delete(String user_id, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberDto memberdto = ((MemberDto)session.getAttribute("member"));
+		
 		if(biz.delete(user_id)>0){
 			System.out.println("삭제되었습니다");
-			return "main/mainPage";
+			return "main/main";
 		}else {
 			System.out.println("삭제 실패");
-			System.out.println(biz.delete(user_id));
 			return "mypage/myinfoUpdate";
 		}
 	}
