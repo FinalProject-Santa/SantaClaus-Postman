@@ -19,8 +19,10 @@
     <!-- main Img -->
     <div id="body-wrapper">
         <div>
-            <div class="main-fullwidth" style="background: url(&quot;/resources/image/main/winter.jpg&quot;)
-            center center / cover no-repeat; color: rgb(0, 0, 0); height: 930px;">
+        	<div class="main-fullwidth" style="background: url(&quot;/resources/image/customer/back1.jpg&quot;)center center / 
+        	cover no-repeat; color: rgb(0, 0, 0); height: 950px;">
+            <!-- <div class="main-fullwidth" style="background: url(&quot;/resources/image/main/winter.jpg&quot;) 
+            center center / cover no-repeat; color: rgb(0, 0, 0); height: 930px;"> -->
             </div>
         </div>
     </div><!--bodywrapper-->
