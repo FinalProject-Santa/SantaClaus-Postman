@@ -23,7 +23,6 @@ public interface PointMapper {
 //	@Select(" SELECT * FROM POINT ORDER BY ORDER_NO DESC ")
 //	List<PointDto> selectList();
 
-
 	@Select("SELECT COUNT(*) FROM POINT")
 	int countBoardList();
 
