@@ -39,12 +39,12 @@
 							<thead>
 								<tr role="row" style="text-align: center;">
 									<th style="border-right: hidden; border-left: hidden;">NO</th>
-									<th style="border-right: hidden;">THUMBNAIL</th>
-									<th style="border-right: hidden;">SUBJECT</th>
-									<th style="border-right: hidden;">WRITER</th>
-									<th style="border-right: hidden;">STAR RATING</th>
-									<th style="border-right: hidden;">HITS</th>
-									<th style="border-right: hidden;">DATE</th>
+									<th style="border-right: hidden;">썸네일</th>
+									<th style="border-right: hidden;">제목</th>
+									<th style="border-right: hidden;">작성자</th>
+									<th style="border-right: hidden;">별점</th>
+									<th style="border-right: hidden;">조회수</th>
+									<th style="border-right: hidden;">날짜</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -67,7 +67,7 @@
 									</c:when>
 									<c:otherwise>
 										<tr>
-											<td colspan="7" style="text-align: center; border-right: hidden; border-left: hidden;">조회된 결과가 없습니다.</td>
+											<td colspan="7" style="text-align: center; border-right: hidden; border-left: hidden;">작성된 글이 없습니다.</td>
 										</tr>
 									</c:otherwise>
 								</c:choose>
@@ -77,14 +77,14 @@
 									<td colspan="7" style="vertical-align: middle; text-align: center; border-right: hidden; border-left: hidden; border-bottom: hidden">
 									<ul class="pagination justify-content-center">
 										<c:if test="${pageMaker.prev }">
-											<li class="page-item">
+											<li class="page-item disabled">
 											<a class="page-link" href='<c:url value="/review/reviewList?page=${pageMaker.startPage-1 }"/>'><span aria-hidden="true">&laquo;</span>
 											</a>
 											</li>
 										</c:if>
 										<c:forEach begin="${pageMaker.startPage }"
 											end="${pageMaker.endPage }" var="pageNum">
-											<li class="page-item"><a class="page-link"
+											<li class="page-item" aria-current="page"><a class="page-link"
 												href='<c:url value="/review/reviewList?page=${pageNum }"/>'>${pageNum }
 												</a>
 											</li>
