@@ -17,9 +17,17 @@ public class PointBizImpl implements PointBiz{
 	private PointMapper pointMapper;
 
 	@Override
-	public int pointAlll(String user_id) {
-		return pointMapper.pointAlll(user_id);
+	public int signUpPoint(String user_id) {
+		return pointMapper.signUpPoint(user_id);
 	}
+	
+	@Override
+	public int pointAlll(String user_id) {
+		return pointMapper.pointAll(user_id);
+	}
+	
+	
+	
 
 //	@Override
 //	public List<PointDto> selectList() {
@@ -47,6 +55,7 @@ public class PointBizImpl implements PointBiz{
 	public int insertPoint(PointDto pointDto) {
 		return pointMapper.insertPoint(pointDto);
 	}
+	
 
 	
 	//결제 창에서 결제하기 눌렀을 때 삽입 실행

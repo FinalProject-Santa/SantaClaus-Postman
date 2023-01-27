@@ -3,12 +3,12 @@ package com.boot.jdbc.model.dto;
 import java.util.Date;
 
 public class OrderDto {
-	private int order_no;
+	private String order_no;
 	private String user_id;
 	private String letter_name;
 	private String option_name;
 	private Date order_date;
-	private int total_price;
+	private Integer total_price;
 	private String receiver;
 	private String email;
 	private String post_code;
@@ -16,16 +16,16 @@ public class OrderDto {
 	private String detail_addr;
 	private String phone;
 	private String delivery_message;
-	private int use_point;
-	private int save_point;
+	private Integer use_point;
+	private Integer save_point;
 
 	public OrderDto() {
 		super();
 	}
 
-	public OrderDto(int order_no, String user_id, String letter_name, String option_name, Date order_date,
+	public OrderDto(String order_no, String user_id, String letter_name, String option_name, Date order_date,
 			int total_price, String receiver, String email, String post_code, String default_addr, String detail_addr,
-			String phone, String delivery_message, int use_point, int save_point) {
+			String phone, String delivery_message, Integer use_point, Integer save_point) {
 		super();
 		this.order_no = order_no;
 		this.user_id = user_id;
@@ -44,11 +44,11 @@ public class OrderDto {
 		this.save_point = save_point;
 	}
 
-	public int getOrder_no() {
+	public String getOrder_no() {
 		return order_no;
 	}
 
-	public void setOrder_no(int order_no) {
+	public void setOrder_no(String order_no) {
 		this.order_no = order_no;
 	}
 
@@ -148,21 +148,20 @@ public class OrderDto {
 		this.delivery_message = delivery_message;
 	}
 
-	public int getUse_point() {
+	public Integer getUse_point() {
 		return use_point;
 	}
 
-	public void setUse_point(int use_point) {
+	public void setUse_point(Integer use_point) {
 		this.use_point = use_point;
 	}
 
-	public int getSave_point() {
+	public Integer getSave_point() {
 		return save_point;
 	}
 
-	public void setSave_point(int save_point) {
+	public void setSave_point(Integer save_point) {
 		this.save_point = save_point;
 	}
-	
-	
+
 }

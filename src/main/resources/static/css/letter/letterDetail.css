@@ -1,0 +1,84 @@
+@charset "UTF-8";
+.inner {
+	width: 1800px;
+    margin: 0 80px;
+}
+a{
+	text-decoration: none;
+}
+.headCategory{
+	padding-top:100px;
+}
+.letterInfoWrap {
+	padding-top:50px;
+	display:flex;
+}
+.letterImgBox {
+	background-color: green;	
+	margin-left: 300px;
+}
+.letterDetailWrap {
+	position:fixed;
+	right: 130px;
+	width: 400px;
+	height: 735px;
+	text-align: center;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+table, table input, table textarea{
+	width:97%;
+}
+.shopList{
+	width:380px;
+	height:270px;
+	border: 1px solid;
+}
+
+.shopList{
+	text-align: center;
+	margin:20px auto;
+	overflow: scroll;
+    overflow-x: hidden;
+}
+.hr1{
+    background: #d3d3d3;
+    height:1px;
+    border:0;
+}
+.hr2{
+    background: #d3d3d3;
+    width:1250px;
+    height:1px;
+    border:0;
+    text-align: left;
+    margin-left:20px;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+.optionArea{
+	width:1300px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	column-gap: 20px;
+	row-gap: 50px;
+}
+.optionArea img{
+	width:200px;
+	height: 300px;
+}
+.optionItem{
+	text-align: center;
+	width:300px;
+}
+.payBtn>input{
+	width:150px;
+	height:40px;
+	margin:0 20px;
+}
+/* input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+	 */

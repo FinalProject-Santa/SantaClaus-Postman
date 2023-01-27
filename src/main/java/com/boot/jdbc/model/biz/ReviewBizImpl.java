@@ -82,6 +82,17 @@ public class ReviewBizImpl implements ReviewBiz{
 		return reviewMapper.rfileDetail(review_no);
 	}
 
+	@Override
+	public int boardPrevNo(int no) {
+		// TODO Auto-generated method stub
+		return reviewMapper.boardPrevNo(no);
+	}
+
+	
+	  @Override public int boardNextNo(int no) { // TODO Auto-generated method stub
+	  return reviewMapper.boardNextNo(no); }
+	 
+
 
 
 

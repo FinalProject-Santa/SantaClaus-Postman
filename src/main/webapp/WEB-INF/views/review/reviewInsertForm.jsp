@@ -11,18 +11,11 @@
 	rel="stylesheet"
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
-	rel="stylesheet">
 
 </head>
 <title>reviewInsert</title>
 <style>
-* {
-	font-family: 'Nanum Pen Script', cursive;
-}
+
 
 .star {
 	position: relative;
@@ -99,8 +92,20 @@
 
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script>
+	
+	 const drawStar = (target) => {
+		    document.querySelector(`.star span`).style.width = `\${target.value * 20}%`;
+		  }
+
+	$('input[type="text"]').keydown(function() {
+		  if (event.keyCode === 13) {
+		    event.preventDefault();
+		  };
+		});
+	
 	$(document).ready(function(){
 		$("#btnSave").click(function(){
+			var fileCheck = $("#inputGroupFile02").val();
 			var title = $("#title").val();
 			var content = $("#content").val();
 			var best = $("#best").val();
@@ -114,14 +119,15 @@
 				document.form1.content.focus();
 				return;	
 			}
-/* 			if(best == "1"){
-				alert("별점을 입력하세요");
-				document.form1.best.focus();
-			} */
+			if(!fileCheck){
+				alert("이미지를 첨부해 주세요")
+				document.form1.fileCheck.focus();
+				return;
+			}
 			document.form1.submit();
 		});
 	});
-	
+
 	  $("#inputGroupFile02").change(function(){
 		   if(this.files && this.files[0]) {
 		    var reader = new FileReader;
@@ -132,9 +138,9 @@
 		   }
 		  });
 	  
-	 const drawStar = (target) => {
-		    document.querySelector(`.star span`).style.width = `\${target.value * 20}%`;
-		  }
+	 
+	 
+	
 	</script>
 </body>
 </html>

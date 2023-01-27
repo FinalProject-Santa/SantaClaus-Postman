@@ -76,8 +76,8 @@ public class CustomerController {
 	
 		session = request.getSession();
 		String user_id = ((MemberDto) session.getAttribute("member")).getUser_id();
-		model.addAttribute("user_id",user_id);
 		
+		model.addAttribute("user_id",user_id);
 		model.addAttribute("qnalist",qnabiz.selectList());
 		return "customer/qnalist";
 	}
@@ -102,7 +102,7 @@ public class CustomerController {
 		
 		QnaFileDto file = new QnaFileDto();
 		
-		String uploadPath = "C:/Users/USER/git/SantaClaus-Postman/src/main/resources/static/files/";
+		String uploadPath = "C:/Users/Home/git/SantaClaus-Postman/src/main/resources/static/files/";
 		String sourceFileName = files.getOriginalFilename(); 
         String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
         File destinationFile; 

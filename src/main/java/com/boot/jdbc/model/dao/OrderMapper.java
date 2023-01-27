@@ -12,6 +12,6 @@ public interface OrderMapper {
 	@Select("SELECT * FROM MEMBER WHERE USER_ID = #{user_id}")
 	MemberDto memberInfo(String user_id);
 	
-	@Insert("INSERT INTO ORDER VALUES(ORDER_NO, USER_ID, LETTER_NAME, OPTION_NAME, NOW(), TOTAL_PRICE, RECEIVER, EMAIL, POST_CODE, DEFAULT_ADDR, DETAIL_ADDR, PHONE, DELIVERY_MESSAGE, POINT)")
+	@Insert("INSERT INTO `ORDER` VALUES(#{order_no}, #{user_id}, #{letter_name}, #{option_name}, NOW(), #{total_price}, #{receiver}, #{email}, #{post_code}, #{default_addr}, #{detail_addr}, #{phone}, #{delivery_message}, #{use_point}, #{save_point})")
 	int payment(OrderDto orderDto);
 }

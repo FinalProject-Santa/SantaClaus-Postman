@@ -10,6 +10,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5f55d70e54.js" crossorigin="anonymous"></script>
 <style>
 html{
     margin: 0;
@@ -24,7 +25,7 @@ body {
     position: fixed;
     display: flex;
     width: 100%;
-    height: 70px;
+    height: 75px;
     background-color: white;
     z-index: 9;
     border-bottom: solid 0.5px lightgray;
@@ -62,7 +63,7 @@ body {
     position: absolute;
     width: 225px;
     height: 860px;
-    margin-top: 7px;
+    margin-top: 9.5px;
     margin-left: -50px;
     display: none;
     background-color: white;
@@ -93,6 +94,7 @@ body {
 }
 </style>
 </head>
+
 <body>
 	<!-- header -->
     <div class="header">

@@ -56,10 +56,10 @@ public class KidsController {
 		return "kids/main";
 	}
 	
-	@GetMapping("/puzzle")
+	@GetMapping("/gamemain")
 	public String puzzle() {
 		
-		return "kids/puzzle";
+		return "kids/gamemain";
 	}
 	
 	@GetMapping("/onelevel")
@@ -322,7 +322,7 @@ public class KidsController {
 	}
 	
 	
-	@GetMapping("/menusticker")
+	@GetMapping("/mainsticker")
 	public String selectSticker_menu(HttpServletRequest request,Model model) {
 		
 		int i;

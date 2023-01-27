@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -17,11 +18,20 @@ import com.boot.jdbc.model.dto.rFileDto;
 @Mapper
 public interface ReviewMapper {
 	
+	//이전글
+	@Select("SELECT IFNULL(MAX(REVIEW_NO),0) FROM REVIEW WHERE REVIEW_NO < #{no}")
+	public int boardPrevNo(@Param("no")int no);
+	//다음글
+	@Select("SELECT IFNULL(MIN(REVIEW_NO),0) FROM REVIEW WHERE REVIEW_NO > #{no}")
+	public int boardNextNo(@Param("no")int no);
+	
+	//페이징
 	@Select("SELECT * FROM REVIEW ORDER BY REVIEW_NO DESC LIMIT #{pageStart}, #{perPageNum}")
 	List<Map<String, Object>> reviewList(Criteria cri);
-
+	//토탈 글 개수 
 	@Select("SELECT COUNT(*) FROM REVIEW")
 	int countBoardList();
+	
 	
 	@Select("SELECT * FROM REVIEW WHERE REVIEW_NO=#{review_no}")
 	ReviewDto reviewDetail(int review_no);
@@ -29,7 +39,7 @@ public interface ReviewMapper {
 	@Select("SELECT * FROM RFILES WHERE REVIEW_NO=#{review_no}")
 	rFileDto rfileDetail(int review_no);
 	
-	@Insert("INSERT INTO REVIEW VALUES(NULL, #{user_id}, #{review_title}, #{review_best}, #{review_content}, #{review_count}, NOW())")
+	@Insert("INSERT INTO REVIEW VALUES(NULL, #{user_id}, #{review_title}, #{review_best}, #{review_content}, #{review_count}, NOW(), #{rimg})")
 	@Options(useGeneratedKeys = true, keyProperty = "review_no")
 	int reviewInsert(ReviewDto reviewdto);
 	

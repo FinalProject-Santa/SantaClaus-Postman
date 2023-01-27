@@ -1,29 +1,90 @@
 @charset "EUC-KR";
+.inner{
+    width: 1400px;
+    margin: 0 auto;
+}
+.mainbody{
+    padding-top: 45px;
+}
+#boxtitle{
+    font-size: 60px;
+    font: weight 5px;
+    text-align: center;
+    width: 500px;
+    margin-left: 450px;
+    margin-bottom: 0px;
+}
+.gamebody{
+    display: flex;
+    margin-left: 70px;
+}
 .santa_puzzle{
     text-align: center;
-    font-size: 70px;
-    position: relative;
-    top: 180px;
+    font-size: 60px;
+    width: 500px;
 }
-.start_button{
-    text-align: center;
-    position: relative;
-    top: 300px;
-}
-.level1-button{
-    width: 150px;
-    height: 50px;
-}
-.level2-button{
-    width: 150px;
-    height: 50px;
-    margin-left: 20px;
-}
-p{
-    width: 400px;
+.puzzleimg{
+    width: 450px;
     height: 450px;
-    border: solid black 1px;
-    position: relative;
-    bottom: 100px;
-    left: 970px;
+    margin-bottom: 20px;
+}
+#puzzletitle{
+    margin-top: 0px;
+    text-align: center;
+}
+.level1-btn{
+    width: 150px;
+    height: 50px;
+    background-color: rgb(255, 225, 0);
+    border-color: rgb(230, 203, 1);
+    border-radius: 10px;
+}
+.level2-btn{
+    width: 150px;
+    height: 50px;
+    margin-left: 5px;
+    background-color: rgb(255, 225, 0);
+    border-color: rgb(230, 203, 1);
+    border-radius: 10px;
+}
+
+.same_game{
+    text-align: center;
+    font-size: 60px;
+    width: 500px;
+    /* height: 500px; */
+    margin-left: 250px;
+    margin-top: 80px;
+}
+.sameimg{
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
+}
+#sametitle{
+    margin-top: 70px;
+}
+.same_btn{
+    width: 150px;
+    height: 50px;
+    background-color: rgb(255, 225, 0);
+    border-color: rgb(230, 203, 1);
+    border-radius: 10px;
+    margin-top: 24.5px;
+}
+.title{
+    margin-bottom: 0px;
+}
+.msg{
+    font-size: 30px;
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+input[type=button]{
+    font-family: 'Gaegu', cursive;
+    font-size: 23px;
+}
+.btag{
+    font-size: 70px;
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,93 +18,103 @@ body {
 }
 .header{
     position: fixed;
+    display: flex;
     width: 100%;
-    height: 70px;
+    height: 75px;
     background-color: white;
-    z-index: 1;
+    z-index: 9;
     border-bottom: solid 0.5px lightgray;
 }
+.header2{
+    padding: 30px;
+    width: 100%;
+}
 #logo{
-    position: relative;
     font-weight: bold;
-    font-size: 45px;
-    left: 535px;
-    top: 9px;
+    font-size: 48px;
     cursor: pointer;
+    padding-left: 80px;
 }
 #sidemenu{
-    position: relative;
     list-style: none;
-    float: right;
+    display: flex;
     cursor: pointer;
-    right: 15px;
-    top: 14px;
+    padding-top: 10px;
 }
 #sidemenu li{
-    float: left;
     margin-right: 20px;
-    font-size: 22px;
+    font-size: 25px;
 }
 #menu{
     position: relative;
-    float: left;
-    font-size: 23px;
+    font-size: 25px;
     cursor: pointer;
-    top: 26px;
-    left: 40px;
-    width: 80px;
+    line-height: 50px;
+    width: 150px;
     height: 50px;
+    padding-top: 8px;
+    padding-left: 20px;
 }
 #menubox{
     position: absolute;
-    top: 44.7px;
-    /* left: -40px; */
-    left: -265px;
     width: 225px;
-    height: 749px;
+    height: 860px;
+    margin-top: 9.5px;
+    margin-left: -50px;
+    display: none;
     background-color: white;
-    transition: left .3s;
-    /* display: none; */
     border-right: solid 0.5px lightgray;
 }
 #menubar{
     position: fixed;
     list-style: none;
     cursor: pointer;
+    margin-top: 55px;
+    margin-left: 18px;
 }
 #menubar li{
-    position: relative;
-    font-size: 20px;
-    margin-bottom: 30px;
-    top: 40px;
-    left: 10px;
+    font-size: 22.5px;
+    margin-bottom: 40px;
 }
-#menu:hover > #menubox{
-    left: -40px;
+#nbsp{
+	padding-bottom: 35px;
+}
+.atag{
+	text-decoration: none;
+    color: black;
+}
+.header2, .footer2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 </style>
 </head>
 <body>
-	<!-- header -->
+	
+    <!-- header -->
     <div class="header">
-        <span id="logo"><a href="./main">Dear Santa</a></span>
+        <div class="header2">
+       
+        <div style="position: relative;">
+            <div id="menu"onclick="maintoggle();">= 메뉴
+            <div id="menubox">
+                    <ul id="menubar">
+                        <li onclick="location.href='/kids/gamemain'" class="atag">미니게임</li>
+                    	<li onclick="location.href='/kids/diary'" class="atag">그림일기</li>
+                    	<li onclick="location.href='/kids/mainsticker'" class="atag">칭찬 스티커</li>
+                    	<li id="nbsp"><a href="" class="atag">산타 우편함</a></li>
+                        <li><a href="" class="atag">프로필 선택</a></li>
+                    </ul>
+                </div>
+                </div>
+        </div>
+
+        <h1 id="logo"><a href="./main" class="atag">Dear Santa</a></h1>
+
         <ul id="sidemenu">
-            <li>oo야 만나서 반가워!</li>
-            <!-- <li>Cart</li> -->
+             <li>${kids.kids_nickname }야 만나서 반가워!</li>
         </ul>
-        <span id="menu">= 메뉴
-        <div id="menubox">
-                <ul id="menubar">
-                    <li onclick="location.href='/kids/puzzle'">&nbsp;미니게임</li>
-                    <li onclick="location.href='/kids/diary'">&nbsp;그림일기</li>
-                    <li onclick="location.href='/kids/menusticker'">&nbsp;칭찬 스티커</li>
-                    <li><a href="">&nbsp;산타 우편함</a></li>
-                    <br>
-                    <br>
-                    <li><a>&nbsp;프로필 선택</a></li>
-                </ul>
-            </div>
-        </span>
+        </div>
     </div>
-</body>
-</html>
+<!-- header end -->

@@ -67,10 +67,14 @@ public class ReviewController {
 		
 		//조회수 증가
 		reviewbiz.reviewCountUpdate(review_no);
-
 		
+		int next = reviewbiz.boardNextNo(review_no);
+		int prev = reviewbiz.boardPrevNo(review_no);
+		System.out.println(prev);
 		model.addAttribute("reviewdetail", reviewbiz.reviewDetail(review_no));
 		model.addAttribute("files", reviewbiz.rfileDetail(review_no));
+		model.addAttribute("prev",prev);
+		model.addAttribute("next",next);
 		
 		return "review/reviewDetail";
 	}
@@ -107,13 +111,13 @@ public class ReviewController {
         destinationFile.getParentFile().mkdirs(); 
         files.transferTo(destinationFile); 
         
+        reviewdto.setRimg(destinationFileName);
 		reviewbiz.reviewInsert(reviewdto);
 		
 		 file.setReview_no(reviewdto.getReview_no());
          file.setRfile_name(destinationFileName);
          file.setRfile_oriname(sourceFileName);
          file.setRfile_url(uploadFileDir);
-         
          reviewbiz.fileInsert(file); //file insert
          return "redirect:/review/reviewList";
     }

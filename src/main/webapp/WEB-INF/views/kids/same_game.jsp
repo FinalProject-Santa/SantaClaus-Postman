@@ -1,94 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-<style>
-.game{
-    width: 495px;
-    margin: auto;
-    /* display: inline-block; */
-    /* border: solid black 1px; */
-}
-#start_btn{
-    border: none;
-    width: 100px;
-    padding: 5px;
-    font-weight: bold;
-    cursor: pointer;
-}
-/* Ç¥¿Í ¼¿ÀÇ Å×µÎ¸® °£°İ ¼³Á¤ */
-#imgTable{
-    border-collapse: collapse; 
-}
-#imgTable td{
-    border: 1px solid black;
-    width: 120px;
-    height: 120px;
-    text-align: center;
-    cursor: pointer;
-}
-#imgTable td img{
-    width: 110px;
-    height: 110px;
-}
-#imgTable td span{
-    font-size: 25pt;
-    font-weight: bold;
-    display: none;
-}
-#countDown{
-    background-color: lightgray;
-    width: 491px;
-    height: 40px;
-    border: 1px solid gray;
-}
-#countDown span{
-    position: relative;
-    margin-left: 226px;
-    top: 5px;
-    font-size: 15pt;
-}
-#info{
-    width: 493px;
-    height: 263px;
-    background-color: lightgray;
-    padding-top: 230px;
-}
-</style>
+
+<link rel="stylesheet" href="/resources/css/kids/same.css">
+
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
-    //°ÔÀÓ »óÅÂ
+    //ê²Œì„ ìƒíƒœ
     var gameState = '';
 
-    //¿­¸° Ä«µå src
+    //ì—´ë¦° ì¹´ë“œ src
     var openCardId = '';
     var openCardId2 = '';
 
-    //³­¼ö »ı¼º
+    //ë‚œìˆ˜ ìƒì„±
     function random(min, max) {
         var randomNum = Math.floor(Math.random()*(max-min+1)) + min;
         return randomNum;
     }
 
-    var cards; //Ä«µå ¸ñ·Ï
-    var score = 0; //Á¡¼ö
-    var successCard = 0; //¸ÂÃá Ä«µå °³¼ö
+    var cards; //ì¹´ë“œ ëª©ë¡
+    var score = 0; //ì ìˆ˜
+    var successCard = 0; //ë§ì¶˜ ì¹´ë“œ ê°œìˆ˜
     
-    //Ä«µå ¹èÄ¡
+    //ì¹´ë“œ ë°°ì¹˜
     function setTable(){
         cards = [
-        'game_img1.png','game_img1.png', //·çµ¹ÇÁ
-        'game_img2.png','game_img2.png', //´«»ç¶÷
-        'game_img3.png','game_img3.png', //Æ®¸®
-        'game_img4.png','game_img4.png', // ÁøÀú¸Ç
-        'game_img5.png','game_img5.png', // ¼±¹°
-        'game_img6.png','game_img6.png', //Á¾
-        'game_img7.png','game_img7.png', //¾ç¸»
-        'game_img8.png','game_img8.png', //»êÅ¸
+        'game_img1.png','game_img1.png', //ë£¨ëŒí”„
+        'game_img2.png','game_img2.png', //ëˆˆì‚¬ëŒ
+        'game_img3.png','game_img3.png', //íŠ¸ë¦¬
+        'game_img4.png','game_img4.png', // ì§„ì €ë§¨
+        'game_img5.png','game_img5.png', // ì„ ë¬¼
+        'game_img6.png','game_img6.png', //ì¢…
+        'game_img7.png','game_img7.png', //ì–‘ë§
+        'game_img8.png','game_img8.png', //ì‚°íƒ€
         ];
         var imgTableCode = '<tr>';
         for(var i=0; i<16; i++){
@@ -96,52 +41,52 @@
                 imgTableCode += '</tr><tr>';
             }
             var idx = random(0,15-i);
-            var img = cards.splice(idx,1); //idxºÎÅÍ ÇÑ°³¾¿ »Ì±â
+            var img = cards.splice(idx,1); //idxë¶€í„° í•œê°œì”© ë½‘ê¸°
             
-            imgTableCode += '<td id="card'+i+'"><img src="/resources/image/kids/'+img+'"><span>?</span></td>';
+            imgTableCode += '<td id="card'+i+'"><img src="/resources/image/kids/game/'+img+'"><span>?</span></td>';
         }
         imgTableCode += '</tr>';
         $("#imgTable").html(imgTableCode);
     }
 
-    //Ä«µå ÀüÃ¼ °¡¸®±â
+    //ì¹´ë“œ ì „ì²´ ê°€ë¦¬ê¸°
     function hiddenCards(){
         $('#imgTable td img').hide();
         $('#imgTable td span').show();
     }
 
-    //Ä«µå ½ÃÀÛ
+    //ì¹´ë“œ ì‹œì‘
     function startGame(){
         var sec = 6;
 
-        $('#info').hide(); //¾È³» ¹®±¸
-        scoreInit(); //Á¡¼ö ÃÊ±âÈ­
-        setTable(); //Ä«µå ¹èÄ¡
+        $('#info').hide(); //ì•ˆë‚´ ë¬¸êµ¬
+        scoreInit(); //ì ìˆ˜ ì´ˆê¸°í™”
+        setTable(); //ì¹´ë“œ ë°°ì¹˜
 
-        //Ä«¿îÆ® ´Ù¿î
+        //ì¹´ìš´íŠ¸ ë‹¤ìš´
         function setText(){
-            $('#countDown').text(--sec);
+            $('#countDiv').text(--sec);
         }
 
-        //Ä«¿îÆ® ´Ù¿î
+        //ì¹´ìš´íŠ¸ ë‹¤ìš´
         var intervalTime = setInterval(setText, 1000);
         setTimeout(function(){
             clearInterval(intervalTime);
-            $('#countDown').text('½ÃÀÛ');
+            $('#countDiv').text('ì‹œì‘');
             hiddenCards();
             gameState = '';
         }, 6000);
     }
 
-    //Ä«µå ¼±ÅÃ
+    //ì¹´ë“œ ì„ íƒ
     $(document).on('click', '#imgTable td', function(){
-        //Ä«¿îÆ® ´Ù¿î Áß ´©¸¥ °æ¿ì return
+        //ì¹´ìš´íŠ¸ ë‹¤ìš´ ì¤‘ ëˆ„ë¥¸ ê²½ìš° return
         if(gameState != '') return;
-        //2°³ ¿­·ÁÀÖÀ»¶§ ¶Ç ´©¸¥ °æ¿ì return
+        //2ê°œ ì—´ë ¤ìˆì„ë•Œ ë˜ ëˆ„ë¥¸ ê²½ìš° return
         if(openCardId2 != '') return;
-        //¿­·ÁÀÖ´Â Ä«µå¸¦ ¶Ç ´©¸¥ °æ¿ì return
+        //ì—´ë ¤ìˆëŠ” ì¹´ë“œë¥¼ ë˜ ëˆ„ë¥¸ ê²½ìš° return
         if($(this).hasClass('opened')) return;
-        //¿­·ÁÀÖÀ½À» ±¸ºĞÇÏ±â À§ÇÑ class Ãß°¡
+        //ì—´ë ¤ìˆìŒì„ êµ¬ë¶„í•˜ê¸° ìœ„í•œ class ì¶”ê°€
         $(this).addClass('opened');
 
         if(openCardId == ''){
@@ -149,7 +94,7 @@
             $(this).find('span').hide();
             openCardId = this.id;
         }else{
-            //°°Àº Ä«µå¸¦ ´©¸¥ °æ¿ì
+            //ê°™ì€ ì¹´ë“œë¥¼ ëˆ„ë¥¸ ê²½ìš°
             if(openCardId == openCardId2) return;
 
             $(this).find('img').show();
@@ -159,7 +104,7 @@
             var openCardSrc2 = $(this).find('img').attr('src');
             openCardId2 = this.id;
 
-            //ÀÏÄ¡
+            //ì¼ì¹˜
             if(openCardSrc == openCardSrc2) {
                 openCardId = '';
                 openCardId2 = '';
@@ -179,9 +124,9 @@
                 		}
                 	});
                 	
-                	alert('¼º°ø!!\n' +score+ 'Á¡ ÀÔ´Ï´Ù!');   
+                	alert('ì„±ê³µ! ' +score+ 'ì ì…ë‹ˆë‹¤!\n5í¬ì¸íŠ¸ê°€ ì ë¦½ë˜ì—ˆì–´ìš”!');   
                 }
-            //ºÒÀÏÄ¡
+            //ë¶ˆì¼ì¹˜
             }else{
                 setTimeout(back, 1000);
                 scoreMinus();
@@ -189,7 +134,7 @@
         }
     });
 
-    //µÎ°³ÀÇ Ä«µå ´Ù½Ã µÚÁı±â
+    //ë‘ê°œì˜ ì¹´ë“œ ë‹¤ì‹œ ë’¤ì§‘ê¸°
     function back(){
         $('#'+openCardId).find('img').hide();
         $('#'+openCardId).find('span').show();
@@ -201,20 +146,20 @@
         openCardId2 = '';
     }
 
-    //Á¡¼ö ÃÊ±âÈ­
+    //ì ìˆ˜ ì´ˆê¸°í™”
     function scoreInit(){
         score = 0;
         successCard = 0;
         $('#score').text(score);
     }
     
-    //Á¡¼ö Áõ°¡
+    //ì ìˆ˜ ì¦ê°€
     function scorePlus(){
         score += 10;
         $('#score').text(score);
     }
 
-    //Á¡¼ö °¨¼Ò
+    //ì ìˆ˜ ê°ì†Œ
     function scoreMinus(){
         score -= 5;
         $('#score').text(score);
@@ -230,32 +175,49 @@
 
 
 </script>
-</head>
+
 <body>
-	<div class="game">
-        <div>
-            <p>°°Àº ±×¸²À» Ã£¾Æ¶ó</p>
-            <table id="gameTable">
-                <tr>
-                    <td class="Left">
-                        <button id="start_btn">½ÃÀÛ</button>
-                    </td>
-                    <td class="right">
-                        <span>score : <span id="score">0</span></span>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div>
-            <div id="countDown">
-                <span>ÁØºñ</span>
+
+	<%@include file="../include/kidsheader.jsp" %>
+	
+	<!-- main -->
+	<div class="inner">
+
+        <div class="game">
+            <div>
+                <p class="gametitle">
+                    <span style="color: rgb(232, 3, 3); font-size: 65px;" >ê°™ì€</span><span style="color: rgb(255, 196, 0); font-size: 65px;"> ê·¸ë¦¼</span><span style="color: rgb(255, 196, 0);">ì„</span> <span style="color: rgb(35, 122, 35)"> ì°¾ì•„ë³´ì„¸ìš”</span>
+                </p>
+                <div class="btn_group">
+                    <button id="start_btn">ì‹œì‘</button>
+                    <img src="/resources/image/kids/game/11.png" class="img">
+                    <button id="home_btn" onclick="location.href='/kids/gamemain'">ê²Œì„ í™ˆ</button>
+                    </div>
+                <table id="gameTable">
+                    <tr>
+                        <!-- <td class="Left">
+                        </td> -->
+                        <td class="right">
+                            <span>ì ìˆ˜ : <span id="score">0</span></span>
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <table id='imgTable'>
-            </table>
-            <div id="info">
-                ½ÃÀÛ ¹öÆ°À» ´­·¯ÁÖ¼¼¿ä<br>
+            <div class="samegame">
+                <div id="countDown">
+                    <div id="countDiv">ì¤€ë¹„</div>
+                </div>
+                <table id='imgTable'>
+                </table>
+                <div id="info">
+                    <div id="infoDiv"><span style="font-size: 44px;">ì‹œì‘ ë²„íŠ¼</span>ì„ ëˆŒëŸ¬ì£¼ì„¸ìš” -></div><br>
+                </div>
             </div>
         </div>
-	</div>
+
+    </div>
+	
+	<%@include file="../include/kidsfooter.jsp" %>
+	
 </body>
 </html>
