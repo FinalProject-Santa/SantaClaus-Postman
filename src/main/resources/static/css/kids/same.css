@@ -1,34 +1,42 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Hi+Melody&display=swap');
-..inner{
+body{
+    background-image: url('/resources/image/kids/game/gameback3.png');
+    background-size: cover;
+    background-attachment:fixed;
+}
+.inner{
     width: 1400px;
     margin: 0 auto;
 }
 .game{
-    width: 495px;
+    width: 490px;
     padding-top: 85px;
-    margin-left: 685px;
+    margin-left: 450px;
 }
 .gametitle{
-    font-size: 48px;
     margin-top: 20px;
     width: 600px;
     margin-bottom: 20px;
+    margin-left: -30px;
     font-weight: 600;
+    text-shadow: 3px 2px 2px black;
 }
 .samegame{
     margin-top: 10px;
+    outline: 4px ridge rgb(255, 225, 0);
 }
 .right{
     font-size: 35px;
     padding-left: 180px;
+    font-weight: bold;
 }
 /* 표와 셀의 테두리 간격 설정 */
 #imgTable{
     border-collapse: collapse;
 }
 #imgTable td{
-    border: 1px solid gray;
+    outline: 2px ridge rgb(255, 225, 0);
     width: 120.5px;
     height: 120px;
     text-align: center;
@@ -46,11 +54,10 @@
 
 #countDown{
     background-color: rgb(255, 225, 0);
-    width: 493px;
+    width: 492px;
     height: 40px;
-    border: 1px solid gray;
     font-size: 30px;
-    border-bottom: none;
+    border-bottom: 2px ridge rgb(255, 225, 0);
 }
 #countDiv{
     margin-left: 200px;
@@ -64,7 +71,6 @@
     height: 263px;
     /* background-color: lightgray; */
     padding-top: 230px;
-    border: 1px solid gray;
 }
 #infoDiv{
     font-size: 30px;
@@ -86,9 +92,6 @@
     border-color: rgb(230, 203, 1);
     margin-top: 1rem;
     display: block;
-}
-#home_btn{
-    margin-top: -405px;
 }
 .img{
     width: 340px;

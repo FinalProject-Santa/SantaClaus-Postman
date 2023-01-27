@@ -186,11 +186,10 @@
         <div class="game">
             <div>
                 <p class="gametitle">
-                    <span style="color: rgb(232, 3, 3); font-size: 65px;" >같은</span><span style="color: rgb(255, 196, 0); font-size: 65px;"> 그림</span><span style="color: rgb(255, 196, 0);">을</span> <span style="color: rgb(35, 122, 35)"> 찾아보세요</span>
+                    <span style="color: rgb(255, 225, 0); font-size: 75px;" >같은</span><span style="color: rgb(252, 0, 126); font-size: 75px;"> 그림</span><span style="color: rgb(252, 0, 126); font-size: 55px;">을</span> <span style="color: rgb(49, 172, 254); font-size: 55px; padding-left: 10px;"> 찾아보세요</span>
                 </p>
                 <div class="btn_group">
                     <button id="start_btn">시작</button>
-                    <img src="/resources/image/kids/game/11.png" class="img">
                     <button id="home_btn" onclick="location.href='/kids/gamemain'">게임 홈</button>
                     </div>
                 <table id="gameTable">
