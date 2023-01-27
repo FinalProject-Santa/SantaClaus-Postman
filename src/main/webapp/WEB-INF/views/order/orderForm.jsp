@@ -240,7 +240,10 @@
 			email();
 			phone();
 			
+			
 			const data = {
+				 	user_email : $("#user_email").val(),
+					user_name : $("#user_name").val(),
 					orderNum : createOrderNum(),
 					name : $("#letterName").html().trim(),
 					price : parseInt($("input[name=total_price]").val())
@@ -252,9 +255,11 @@
 				// KG이니시스
 				IMP.request_pay({
 				    pg : 'html5_inicis.INIpayTest',
+				    buyer_name : data.user_name,
+				    buyer_email : data.user_email,
 				    merchant_uid: data.orderNum, // 주문번호
 				    name : data.name,
-				    amount : data.price,
+				    amount : 100,
 				    buyer_tel : '010-1234-5678',   //필수 파라미터 입니다.
 				    m_redirect_url : '{모바일에서 결제 완료 후 리디렉션 될 URL}',
 				    /* escrow : true, //에스크로 결제인 경우 설정
@@ -263,7 +268,11 @@
 				    }, */
 				}, function(rsp) { // callback 로직
 					if(rsp.success){
+						console.log(rsp);
+						$("input[name=pay_method]").val(rsp.pay_method);
+						
 						$('#form').submit();
+
 					}
 					
 				});
@@ -582,7 +591,10 @@
 	                   <input type="checkbox" id="agree" required="required">
 	                   <label for="agree">결제정보를 확인하였으며, 구매진행에 동의합니다.</label>
 	               </p>
+                   <input type="hidden" id="user_name" value="${memberDto.name }">
+                   <input type="hidden" id="user_email" value="${memberDto.email }">
                    <input type="hidden" name="order_no">
+                   <input type="hidden" name="pay_method">                   
                    <input type="hidden" name="total_price" value="${letterDto.letter_price + totalOptionPrice + 2500 }">
 	               <p class="payBtn">
 	                   <input type="button" value="결제하기" id="payment">

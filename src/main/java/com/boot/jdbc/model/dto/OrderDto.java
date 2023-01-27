@@ -18,14 +18,16 @@ public class OrderDto {
 	private String delivery_message;
 	private Integer use_point;
 	private Integer save_point;
+	private String pay_method;
 
 	public OrderDto() {
 		super();
 	}
 
 	public OrderDto(String order_no, String user_id, String letter_name, String option_name, Date order_date,
-			int total_price, String receiver, String email, String post_code, String default_addr, String detail_addr,
-			String phone, String delivery_message, Integer use_point, Integer save_point) {
+			Integer total_price, String receiver, String email, String post_code, String default_addr,
+			String detail_addr, String phone, String delivery_message, Integer use_point, Integer save_point,
+			String pay_method) {
 		super();
 		this.order_no = order_no;
 		this.user_id = user_id;
@@ -42,6 +44,7 @@ public class OrderDto {
 		this.delivery_message = delivery_message;
 		this.use_point = use_point;
 		this.save_point = save_point;
+		this.pay_method = pay_method;
 	}
 
 	public String getOrder_no() {
@@ -84,11 +87,11 @@ public class OrderDto {
 		this.order_date = order_date;
 	}
 
-	public int getTotal_price() {
+	public Integer getTotal_price() {
 		return total_price;
 	}
 
-	public void setTotal_price(int total_price) {
+	public void setTotal_price(Integer total_price) {
 		this.total_price = total_price;
 	}
 
@@ -164,4 +167,13 @@ public class OrderDto {
 		this.save_point = save_point;
 	}
 
+	public String getPay_method() {
+		return pay_method;
+	}
+
+	public void setPay_method(String pay_method) {
+		this.pay_method = pay_method;
+	}
+
+	
 }

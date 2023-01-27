@@ -30,18 +30,22 @@
         </colgroup>
         <tbody>
             <tr>
+                <th>결제 수단</th>
+                <td>
+	                <c:if test="${orderDto.pay_method eq 'point'}" >
+	                    <strong>카카오 페이</strong><br>
+	                </c:if>
+	                <c:if test="${orderDto.pay_method eq 'card'}" >
+	                    <strong>네이버 페이</strong><br>
+	                </c:if>
+                </td>
+            </tr>
+            <tr>
                 <th>최종결제금액</th>
                 <td>
                 	<strong>
                 		<fmt:formatNumber type="number" value="${orderDto.total_price }"/>원
                 	</strong>
-                </td>
-            </tr>
-            <tr>
-                <th>결제 수단</th>
-                <td>
-                    <strong>무통장 입금</strong><br>
-                    <span>입금자 : 박지영, 계좌번호 : 우리 1002-777-777777 ((주)산타국우체부)</span>
                 </td>
             </tr>
         </tbody>
