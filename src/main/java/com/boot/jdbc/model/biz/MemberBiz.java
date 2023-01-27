@@ -1,6 +1,7 @@
 package com.boot.jdbc.model.biz;
 
-import java.util.List;
+import javax.servlet.http.HttpSession;
+
 import com.boot.jdbc.model.dto.MemberDto;
 
 public interface MemberBiz {
@@ -13,5 +14,7 @@ public interface MemberBiz {
 	public int myinfoUpdate(MemberDto dto);
 	public int delete(String user_id);
 	public String pwChk(String user_id);
-	public String phoneChk(String user_id); 
+	public String phoneChk(String user_id);
+	
+	public void logout(HttpSession session);
 }

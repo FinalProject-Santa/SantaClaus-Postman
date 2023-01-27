@@ -172,6 +172,11 @@ $(function() {
 			$("#email").val(emailId + '@' + emailDomain);
 		}
 	};
+	
+	$("#register").click(function(){
+		alert('회원가입이 완료되었습니다!\n가입 축하금 2,000포인트가 적립되었습니다.');
+		$("#form").submit();
+	});
     
 });
 </script>
@@ -180,7 +185,7 @@ $(function() {
 	<div id="wrap" class="wrapper">
 		<h1>회 원 가 입</h1>
 		<div class="writeform">
-			<form action="/main/signUp" method="post" enctype="multipart/form-data">
+			<form action="/main/signUp" method="post" enctype="multipart/form-data" id="form">
 				<div>
 					<div class="mb-3">
 						<label for="inputGroupFile02">사진 등록</label>
@@ -319,7 +324,7 @@ $(function() {
 						</p>
 					</div>
 				</div><br>
-				<input id="register" class="button" type="submit" value="회원가입">
+				<input id="register" class="button" type="button" value="회원가입">
 				<input id="cancel" class="button" type="button" value="취소" onclick="location.href='/main/login'"> 
 			</form>
 		</div>
