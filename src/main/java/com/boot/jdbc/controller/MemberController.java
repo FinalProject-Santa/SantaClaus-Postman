@@ -42,7 +42,7 @@ public class MemberController {
 	// 메인페이지
 	@GetMapping("/main")
 	public String mainPage() {
-		return "main/mainPage";
+		return "main/main";
 	}
 	
 	@GetMapping("/signUpForm")
@@ -264,6 +264,13 @@ public class MemberController {
 	
 	*/
 	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		
+		biz.logout(session);
+		
+		return "/main/main";
+	}
 	
 	
 	

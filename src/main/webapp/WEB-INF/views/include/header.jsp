@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,6 +39,8 @@ body {
     font-weight: bold;
     font-size: 40px;
     cursor: pointer;
+    /* position: absolute;
+    left: 900px; */
 }
 #sidemenu{
     list-style: none;
@@ -117,8 +120,19 @@ body {
         <h1 id="logo"><a href="/" class="atag">Dear Santa</a></h1>
 
         <ul id="sidemenu">
-             <li onclick="location.href='/main/loginForm'">Login</li>
-            <li><a href="../kids/main" class="atag">Kids</a></li>
+        <c:choose>
+	      	<c:when test="${sessionScope.member != null }">
+		      	<li><span>${member.name }님</span> 반갑습니다🎅</li>
+		      	<li onclick="location.href='/main/logout'">Log Out</li>
+		      	<script>
+                  document.getElementById('logo').style.marginLeft = "150px";
+               </script>
+	      	</c:when>
+	      	<c:otherwise>
+	      		<li onclick="location.href='/main/loginForm'">Log In</li>
+            	<li><a href="../mypage/mycart" class="atag">Cart</a></li>
+	      	</c:otherwise>
+	    </c:choose>
         </ul>
         </div>
     </div>
