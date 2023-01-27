@@ -1,19 +1,20 @@
 *{
     box-sizing: border-box;
+    text-decoration: none;
 }
-html {
-    width: 100%;
-    display: flex;
-    padding-top: 50px;
-    padding-bottom: 100px;
-    justify-content: center;
+#wrapper{
+	width: 1400px;
+	margin: 0 auto;
+	padding-top: 200px;
+	padding-bottom: 200px;
 }
 h1{
     margin-bottom: -5px;
+    font-size: 27pt;
 }
 hr{
     margin-top: -24px;
-    width: 1150px;
+    width: 1400px;
     color: #444444;;
 }
 .color1{
@@ -41,6 +42,7 @@ hr{
 table{
     border-top: 1px solid black;
     margin-top: 30px;
+    width: 1400px;
 }
 th, td {
     border-bottom: 1px solid #646464;

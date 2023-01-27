@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="/resources/css/mypage/mycart.css">
 </head>
 <body>
+	<!-- header -->
+	<%@include file="../include/header.jsp" %>
+	<%@include file="../include/floatingMenu.jsp" %>
+	
     <div id="wrapper">
         <nav>
             <h1>장바구니</h1>
@@ -108,5 +112,9 @@
             </form> 
         </section>
     </div>
+    
+	<!-- footer -->
+	<%@include file="../include/footer.jsp" %>
+	
 </body>
 </html>

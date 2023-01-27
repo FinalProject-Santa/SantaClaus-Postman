@@ -19,7 +19,7 @@
         <span><img src="./image/pw.JPG"></span>
         <p>
             고객님의 주문이 완료 되었습니다.<br>
-            주문번호 :
+            주문번호 : ${orderDto.order_no }
         </p>
     </div>
     <strong>결제 정보</strong>

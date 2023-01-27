@@ -3,17 +3,9 @@
 	    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<script src="https://kit.fontawesome.com/9af41011f1.js" crossorigin="anonymous"></script>
-	<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-	crossorigin="anonymous">
-	<link rel="stylesheet" href="/resources/css/review/reviewList.css">
-<body>
 
 
-<%@include file="../include/header.jsp" %>
+<%@include file="../include/header2.jsp" %>
 <%@include file="../include/floatingMenu.jsp" %>
 
 	<div class="container">
@@ -106,9 +98,8 @@
 		
 	
 	
-	<script type="text/javascript"
+		<script type="text/javascript"
 		src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script>
 		$.fn.generateStars = function() {
 			return this.each(function(i, e) {

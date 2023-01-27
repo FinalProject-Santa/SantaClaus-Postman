@@ -14,6 +14,10 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/datepicker-ko.js"></script>
 </head>
 <body>
+	<!-- header -->
+	<%@include file="../include/header.jsp" %>
+	<%@include file="../include/floatingMenu.jsp" %>
+	
     <div id="wrapper">
         <nav>
         <h1>주문조회</h1> 
@@ -233,6 +237,9 @@
         }
     </script>
     
+	<!-- footer -->
+	<%@include file="../include/footer.jsp" %>
+	
     
 </body>
 </html>

@@ -51,6 +51,7 @@ public class MemberBizImpl implements MemberBiz{
 
 	@Override
 	public int delete(String user_id) {
+		System.out.println(user_id);
 		return memberMapper.delete(user_id);
 	}
 

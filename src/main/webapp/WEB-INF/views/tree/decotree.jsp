@@ -58,7 +58,7 @@ margin-right: auto;
 <%@include file="../include/header.jsp" %>
 <%@include file="../include/floatingMenu.jsp"%>
 
-<div class="divdiv" style="width:900px;" >
+<div class="divdiv" style="width:900px; padding-top: 5%;" >
 	<div id="or-container">
 	   <img src='/resources/image/treeimg/오너1.png' alt="" class="ornament" draggable="true" data-key="o1"><input type="hidden" class="img" name="or_name" value="o1">
 	   <img src='/resources/image/treeimg/오너2.png' alt="" class="ornament" draggable="true" data-key="o2"><input type="hidden" class="img" name="or_name" value="o2">
@@ -77,7 +77,7 @@ margin-right: auto;
 	   <img src='/resources/image/treeimg/오너17.png' alt="" class="ornament" draggable="true" data-key="o17"><input type="hidden" class="img" name="or_name" value="o17">
 	</div>
 	 
-<form action="/tree/treeOrder" method='post' id="myfrom">
+<form action="/tree/treeOrderForm" method='post' id="myfrom">
 	<div id="container">
 		<div id="tree-container">
 		  <div id="tree-or-container">
