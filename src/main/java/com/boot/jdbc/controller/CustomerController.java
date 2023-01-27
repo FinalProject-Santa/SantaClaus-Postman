@@ -76,8 +76,8 @@ public class CustomerController {
 	
 		session = request.getSession();
 		String user_id = ((MemberDto) session.getAttribute("member")).getUser_id();
-		model.addAttribute("user_id",user_id);
 		
+		model.addAttribute("user_id",user_id);
 		model.addAttribute("qnalist",qnabiz.selectList());
 		return "customer/qnalist";
 	}
