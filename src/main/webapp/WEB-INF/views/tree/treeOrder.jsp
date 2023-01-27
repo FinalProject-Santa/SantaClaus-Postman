@@ -15,9 +15,9 @@
 		<h2>주문 정보 확인</h2>
 	</div>
 	<div style="display: flex;">
-		<span><img src="./image/pw.JPG"></span>
+		<span><img alt="" src="${myimg}"></span>
 		<p>
-			고객님의 주문이 완료 되었습니다.<br> 주문번호 :
+			고객님의 주문이 완료 되었습니다.<br> 주문번호 : ${orderDto.order_no }
 		</p>
 	</div>
 	<strong>결제 정보</strong>
@@ -54,48 +54,30 @@
 				<th>구분</th>
 				<th>이미지</th>
 				<th>상품정보</th>
-				<th>구매 여부</th>
+				<th>수량</th>
 				<th>판매가</th>
 			</tr>
 			<tr>
 				<td>트리</td>
-				<td><img alt="" src="${myimg }"></td>
-				<td>${letterDto.letter_name }</td>
-				<td><input type='checkbox' id='my_checkbox'
-					onclick='is_checked()'></td>
+				<td><img src="/resources/image/treeimg/트리1.png"></td>
+				<td>크리스마스 트리</td>
+				<td>1</td>
 				<td><fmt:formatNumber type="number"
-						value="${letterDto.letter_price }" />원</td>
+						value="150000" />원</td>
 			</tr>
 			<c:set var="totalOptionPrice" />
-			<c:forEach var="dto" items="${dtoList}">
+			<c:forEach var="dto" items="${dtolist}">
 				<c:set var="totalOptionPrice"
 					value="${totalOptionPrice + dto.or_price}" />
 				<tr>
 					<td>옵션</td>
-					<td><img src="${dto.or_img }"></td>
+					<td><img src="/resources/image/treeimg/${dto.or_name }.png"></td>
 					<td>${dto.or_name }</td>
+					<td>1</td>
 					<td><fmt:formatNumber type="number" value="${dto.or_price }" />원
 					</td>
 				</tr>
 			</c:forEach>
-			<tr>
-				<td colspan="5" style="text-align: right;">상품구매금액 : <strong><fmt:formatNumber
-							type="number"
-							value="${letterDto.letter_price + totalOptionPrice }" />원</strong> + <c:choose>
-						<c:when
-							test="${letterDto.letter_price + totalOptionPrice ge 20000}">
-           					배송비 : <strong>무료</strong> = 합계 : <strong><fmt:formatNumber
-									type="number"
-									value="${letterDto.letter_price + totalOptionPrice}" />원</strong>
-						</c:when>
-						<c:otherwise>
-             				배송비 : <strong>2,500원</strong> = 합계 : <strong><fmt:formatNumber
-									type="number"
-									value="${letterDto.letter_price + totalOptionPrice + 2500 }" />원</strong>
-						</c:otherwise>
-					</c:choose>
-				</td>
-			</tr>
 		</tbody>
 	</table>
 	<strong>배송지 정보</strong>
@@ -128,12 +110,6 @@
 	<div class="homeBtn">
 		<input type="button" value="홈으로">
 	</div>
-
-	<c:forEach items="${dtolist}" var="dto">
-		<p>${dto.or_id }</p>
-		<p>${dto.or_price }</p>
-		<img alt="" src="/resources/image/treeimg/${dto.or_name }.png">
-	</c:forEach>
 
 </body>
 </html>
