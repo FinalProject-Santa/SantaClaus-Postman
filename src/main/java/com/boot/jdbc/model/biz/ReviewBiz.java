@@ -3,11 +3,15 @@ package com.boot.jdbc.model.biz;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.boot.jdbc.model.dto.Criteria;
 import com.boot.jdbc.model.dto.ReviewDto;
 import com.boot.jdbc.model.dto.rFileDto;
 
 public interface ReviewBiz {
+	public int boardPrevNo(@Param("no")int no);
+	public int boardNextNo(@Param("no")int no);
 	public List<Map<String, Object>> reviewList(Criteria cri);
 	int countBoardListTotal();
 	public ReviewDto reviewDetail(int review_no);

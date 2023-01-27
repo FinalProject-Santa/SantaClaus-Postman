@@ -20,8 +20,9 @@
 <body>
 	<div class="container">
 		<div class="row">
+		
 			<h3><i class="fa-sharp fa-solid fa-check"></i>후기</h3>
-			<table class="table table-success table-striped">
+			<table class="table table-success">
 				<tr>
 					<th width=20% class="text-center primary">게시글 번호</th>
 					<td width=30% class="text-left">${reviewdetail.review_no }</td>
@@ -53,24 +54,35 @@
 						</td>
 					</tr>
 				</c:if>  -->
-				<tr>
+				<tr class="view">
 					<td colspan="4" class="text-left" valign="top" height=200>
-						<img alt="" src="/resources/image/uploadFiles/${files.rfile_name}"></td>
+					<div class="detail">
+						<img alt="" src="/resources/image/uploadFiles/${files.rfile_name}">
+						<br>
+						<br>
+					<div>
+						<p>${reviewdetail.review_content }</p>
+					</div>
+										
+					</div>
+					
+						
+					</td>
 				</tr>
-				<tr>
-					<td colspan="4" class="text-left" valign="top" height=200>
-						${reviewdetail.review_content }</td>
-				</tr>
-				<tr>
-					<td colspan="4" class="text-right">
+			</table>
+					<c:if test="${prev ne 0 }">
+						<a href="${pageContext.request.contextPath }/review/reviewDetail/${prev }">이전글</a>
+					</c:if>	
+					
+					<c:if test="${next ne 0 }">
+						<a href="${pageContext.request.contextPath }/review/reviewDetail/${next }">다음글</a>
+					</c:if>						
+					
 						<button class="btn btn-primary"
 							onclick="location.href='/review/reviewUpdate/${reviewdetail.review_no }'">수정</button>
 						<button class="btn btn-primary"
 							onclick="location.href='/review/reviewDelete/${reviewdetail.review_no }'">삭제</button>
-						<a href="" class="btn btn-sm btn-warning">목록</a>
-					</td>
-				</tr>
-			</table>
+						<a href="/review/reviewList" class="btn btn-sm btn-warning">목록</a>
 		</div>
 	</div>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>

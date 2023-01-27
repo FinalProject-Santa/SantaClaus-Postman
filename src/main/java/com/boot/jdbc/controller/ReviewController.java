@@ -67,10 +67,14 @@ public class ReviewController {
 		
 		//조회수 증가
 		reviewbiz.reviewCountUpdate(review_no);
-
 		
+		int next = reviewbiz.boardNextNo(review_no);
+		int prev = reviewbiz.boardPrevNo(review_no);
+		System.out.println(prev);
 		model.addAttribute("reviewdetail", reviewbiz.reviewDetail(review_no));
 		model.addAttribute("files", reviewbiz.rfileDetail(review_no));
+		model.addAttribute("prev",prev);
+		model.addAttribute("next",next);
 		
 		return "review/reviewDetail";
 	}

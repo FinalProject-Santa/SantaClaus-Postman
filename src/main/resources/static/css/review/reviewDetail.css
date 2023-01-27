@@ -5,6 +5,17 @@
 	width: 700px;
 }
 
+table{
+	border-top: 1px solid #444444;
+	border-bottom: 1px solid #444444;
+	border-collapse: collapse;
+}
+th, td{
+	border-top: 1px solid #444444;
+	border-bottom: 1px solid #444444;
+}
+
+
 h1 {
 	text-align: left;
 }
