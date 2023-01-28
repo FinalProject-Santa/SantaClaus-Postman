@@ -1,10 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" href="/resources/css/kids/sticker.css">
 
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+    <script>
+    
+    	$(function(){
+    		$('.sticker_Jan').hide();
+    	});
+    	
+    </script>
 
 <body>
 
@@ -16,10 +23,10 @@
 	
 	    <div class="stickerbody">
 	
-	        <p id="kids"><span style="color: rgb(255, 225, 0);">Å°ÁîÀÇ</span> <span style="color: rgb(252, 0, 126); font-size: 75px;">ÄªÂù</span><span style="color: rgb(49, 172, 254);">½ºÆ¼Ä¿ÆÇ</span></p>
+	        <p id="kids"><span style="color: rgb(255, 225, 0);">${kids.kids_nickname }ì˜</span> <span style="color: rgb(252, 0, 126); font-size: 75px;">ì¹­ì°¬</span><span style="color: rgb(49, 172, 254);">ìŠ¤í‹°ì»¤íŒ</span></p>
 	    <div class="main">
-	        <p class="title" style="color: rgb(252, 0, 126);">12¿ù</p>
-	        <p class="text" style="color: rgb(49, 172, 254);">ÄªÂù½ºÆ¼Ä¿ °³¼ö: 15°³</p>
+	        <div id="month"><p class="title" style="color: rgb(252, 0, 126);">12ì›”</p></div>
+	        <p class="text" style="color: rgb(49, 172, 254);">ì¹­ì°¬ìŠ¤í‹°ì»¤ ê°œìˆ˜: ${JanSize }ê°œ</p>
 
 
 	    <c:out value="${DecSize }"></c:out>
@@ -43,7 +50,7 @@
 	      
 	    </div> <!-- sticker_Dec -->
 	    
-	    <c:out value="${JanSize }"></c:out>
+	    
 	    <div class="sticker_Jan">
 	    	<c:set var="j" value="0"/>
 	       	<c:forEach var="i" items="${totalDay }">
@@ -66,8 +73,8 @@
 	    </div> <!-- sticker_Jan -->
 	    
         <div class="btn_group">
-            <button id="Dec_btn">12¿ù</button>
-            <button id="Jan_btn">1¿ù</button>
+            <button id="Dec_btn">12ì›”</button>
+            <button id="Jan_btn">1ì›”</button>
         </div>
         
         </div> <!-- stickerbody -->
@@ -82,16 +89,14 @@
 	<script>
 	$("#Dec_btn").on("click",function(){
 		$(".sticker_Jan").hide();
-		$("#Jan").hide();
 		$(".sticker_Dec").show();
-		$("#Dec").show();
+		$(".title").text("12ì›”");
 	});
 	
 	$("#Jan_btn").on("click",function(){
-		$(".sticker_Jan").show();
-		$("#Jan").show();
 		$(".sticker_Dec").hide();
-		$("#Dec").hide();
+		$(".sticker_Jan").show();
+		$(".title").text("01ì›”");
 	});
 	
 	$(".Dec_num").on("click",function(){

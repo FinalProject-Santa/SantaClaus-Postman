@@ -8,6 +8,7 @@ body{
 .inner{
     width: 1400px;
     margin: 0 auto;
+    margin-bottom: 350px;
 }
 .stickerbody{
     padding-top: 70px;
@@ -16,7 +17,6 @@ body{
     font-size: 65px;
     text-align: center;
     margin-top: 75px;
-    margin-left: 5px;
     margin-bottom: 25px;
     font-weight: 600;
     text-shadow: 3px 2px 2px black;
@@ -44,10 +44,21 @@ body{
     height: 480px;
     display: grid; /*항상 일정한 비율로 개수가 정렬이 되도록 */
     grid-template-columns: repeat(6, 1fr);
-    margin-left: 145px;
+    margin-left: 155px;
     margin-top: 0;
 }
-.num, .Jan_num{
+.num{
+	width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid black;
+    text-align: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 23px;
+}
+.Dec_num, .Jan_num{
     width: 80px;
     height: 80px;
     border-radius: 50%;
