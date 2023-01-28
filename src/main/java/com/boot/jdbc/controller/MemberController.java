@@ -213,10 +213,11 @@ public class MemberController {
 			return "redirect:/mypage/myinfoUpdate/"+request.getParameter("user_id");
 		}
 	}
+	 
 	@GetMapping("/delete")
-	public String delete(String user_id, HttpServletRequest request) {
+	public String delete(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		MemberDto memberdto = ((MemberDto)session.getAttribute("member"));
+		String user_id = ((MemberDto)session.getAttribute("member")).getUser_id();
 		
 		if(biz.delete(user_id)>0){
 			System.out.println("삭제되었습니다");
