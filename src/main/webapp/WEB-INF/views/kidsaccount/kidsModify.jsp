@@ -41,9 +41,6 @@
            </c:otherwise>
             </c:choose>
                            
-                <p>${list[i]}</p>              
-                <p>${list[i].kids_no}</p>              
-                          
         <input type="button" value="계정삭제" onclick="location.href='profileDelete/${list[i].kids_no}'">
 			 </div>
  
@@ -93,7 +90,15 @@
                  <h3 class="fieldset-title">산타에게 편지를</h3>
                    <div class="form-group">
                       <div class="imgbox">
+               
+               			<c:if test="${!empty list[i].kids_letter_img}">
+                          <img src="/resources/files/${list[i].kids_letter_img}" class="image-box" />
+                         </c:if>
+                                
+                        <c:if test="${empty list[i].kids_thumbnail}">
                         <img src="https://i0.wp.com/adventure.co.kr/wp-content/uploads/2020/09/no-image.jpg" class="image-box" />
+                         </c:if>
+               
                        </div>
 
 					<form method="post" enctype="multipart/form-data">

@@ -2,6 +2,7 @@ package com.boot.jdbc.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -29,6 +30,7 @@ public class KidsAcctontroller {
 
 	HttpSession session;
 	int kids_no;
+	int i;
 
 	@Autowired
 	private KidsBiz kidsbiz;
@@ -57,7 +59,7 @@ public class KidsAcctontroller {
 		
 		model.addAttribute("list",kidsbiz.selectAll());
 		model.addAttribute("sticker",kidsbiz.sticker());
-		int i = Integer.parseInt(request.getParameter("no"));
+		i = Integer.parseInt(request.getParameter("no"));
 		request.setAttribute("no", i);
 		 
 		return "/kidsaccount/kidsModify";
@@ -114,10 +116,11 @@ public class KidsAcctontroller {
 	@PostMapping("/AddSantamail")
 	public String kidsInsertSantamail(KidsDto dto, @RequestPart MultipartFile files, HttpServletRequest request) throws IllegalStateException, IOException {
 		
-		int kids_no = ((KidsDto) session.getAttribute("kids")).getKids_no();
-		System.out.println("키즈넘"+kids_no);
-		
-		
+		session = request.getSession();
+		List<KidsDto> list = kidsbiz.selectAll(); 
+		kids_no = list.get(i-1).getKids_no();
+	
+				
 		//파일을 받아서 저장
 		  KidFileDto file = new KidFileDto();
 		  
@@ -143,41 +146,20 @@ public class KidsAcctontroller {
 		  file.setFile_oname(sourceFileName); 
 		  file.setFile_path(uploadPath);}
 		  
-		  System.out.println("경로"+uploadPath);
-		  System.out.println("파일넴"+destinationFileName);
-		  System.out.println("소스파일넴"+sourceFileName);
-		  
-		  //dto.setKids_no(kids_no);
 		  kidsbiz.addFile2(file);
 		  
-		  System.out.println(file); 
-		  
-		  
-//		  session = request.getSession(); 
-//		  int kids_no = ((KidsDto)session.getAttribute("kids_no")).getKids_no();
-//		  dto.setKids_no(kids_no); 
-//		  int kids_point = ((KidsDto)session.getAttribute("kids_point")).getKids_point();
-//		  dto.setKids_point(kids_point); 
-//		  String kids_nickname=((KidsDto)session.getAttribute("kids_nickname")).getKids_nickname();
-//		  dto.setKids_nickname(kids_nickname);
-//		  String kids_thumbnail = ((KidsDto)session.getAttribute("kids_thumbnail")).getKids_thumbnail();
-//		  dto.setKids_thumbnail(kids_thumbnail);
-//		  
-//		  
-//		  
-//		  if(!files.isEmpty()){
-//		  dto.setKids_letter_img(destinationFileName);}
-//		  System.out.println(dto);
-//		  
-//		  kidsbiz.addmail(dto);
-		  
+		  if(!files.isEmpty()){
+		  dto.setKids_letter_img(destinationFileName);
+		  dto.setKids_no(kids_no);
+		  kidsbiz.addmail(dto);
+		  }		  
 
-		  	 
 		  
 		 return "redirect:/kidsaccount/main";
 	}
 	
-	
+
+
 	@GetMapping("/profileDelete/{kids_no}")
 	private String profileDelete(KidsDto dto, KidFileDto file, StickerDto sticker) throws Exception {
 		
@@ -191,7 +173,11 @@ public class KidsAcctontroller {
 	@PostMapping("/updateProfile")
 	private String updateProfile(KidsDto dto,@RequestPart MultipartFile files,HttpServletRequest request) {
 		//1. 닉네임만 바꾼다
+		
+		
 		//2. 사진만 바꾼다
+		
+		
 		//3. 둘다 바꾼다
 
 		
