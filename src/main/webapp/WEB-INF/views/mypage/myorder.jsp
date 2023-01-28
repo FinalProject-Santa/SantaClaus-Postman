@@ -20,9 +20,8 @@
 	
     <div id="wrapper">
         <nav>
-        <h1>주문조회</h1> 
             <p class="box1">주문내역조회</p>
-            <hr class="h1">
+            <hr class="hr">
             <div action="/mypage/selectOrder" method="post" id="selectOrder" class="box2">
             <!-- div > form으로 변경하기 -->
             	<input type="hidden" name="order_date" value="${orderdto.order_date }">
