@@ -1,0 +1,24 @@
+@charset "UTF-8";
+body{
+}
+.inner {
+	width: 1730px;
+    margin: 0 80px;
+}
+.profiles{
+	padding-top: 80px;
+	justify-content: center;
+	text-align: center;
+}
+img{
+	width:300px;
+	height: 300px;
+}
+.childrenProfile{
+	background-repeat: no-repeat;
+	display: flex;
+	justify-content:center;
+}
+li{
+	list-style-type: none;
+}
