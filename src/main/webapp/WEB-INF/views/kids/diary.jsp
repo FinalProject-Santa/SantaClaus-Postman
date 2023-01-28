@@ -1,21 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <link rel="stylesheet" href="/resources/css/kids/diary.css">
-</head>
+
+<%
+  String Date = new java.text.SimpleDateFormat("yyyy년 MM월 dd일").format(new java.util.Date());
+%>
 <body>
+
+	<%@include file="../include/kidsheader.jsp" %>
+	
+	
+	<!-- main -->
 	<form action="/kids/sticker" method="post" id="diaryForm">
-	<!-- <input type="hidden" name="user_id" id="user" value="user01">
-	<input type="hidden" name="kids_no" id="kids" value=1>
-	<input type="hidden" name="userEmail" id="email" value="jiyeon908@naver.com"> -->
+<div class="inner">
     <div class="diary">
     <div class="drawing">
-        <span id="text">오늘 무엇을 했나요?</span>
+    	<c:set value="<%=Date%>" var="today" />
+	        <span id="text">오늘 무엇을 했나요?</span>
+	        <span id="text2">${today } ${kids.kids_nickname }의 그림일기</span>
     </div>
     <section id="diary_box">
     <canvas id="jsCanvas" class="canvas" width='1000px' height='500px'></canvas>
@@ -25,9 +30,9 @@
             <input type="range" id="jsRange" min="0.1" max="5.0" value="2.5" step="0.1">
         </div>
         <div class="controls_btns">
-            <button id="jsMode" type="button">Fill</button>
-            <button id="jsErase" type="button">Erase</button>
-            <button id="jsBack" type="button">Back</button>
+            <button id="jsMode" type="button">채우기</button>
+            <button id="jsErase" type="button">지우개</button>
+            <button id="jsBack" type="button">실행취소</button>
         </div>
         <div class="controls_colors" id="JSColors">
             <div class="controls_color jsColor" style="background-color: black;"></div>
@@ -43,20 +48,29 @@
     </div>
     <div class="btn_group">
         <!-- <button id="send_btn" type="submit">자랑하기</button> -->
-        <button id="save_btn" type="button">사진 저장하기</button>
+        <button id="save_btn" type="button">사진 저장</button>
         <button id="success_btn" type="button" onclick="return false">작성완료</button>
     </div>
     </div>
     <div class="modal hidden">
         <div class="bg"></div>
         <div class="modalBox">
-          <p id="modal_text">착한 어린이다 임마</p>
+          <p id="modal_text">일기 작성 완료!</p>
+          <p id="modal_text2">칭찬스티커를 확인해보세요!</p>
+          <p id="modal_text3">• 자랑하기를 누르면<br>이메일로 일기가 전송됩니다 •</p>
         <div class="modal_Btn">
           <button class="stickerBtn" id="sticker_btn" type="submit">칭찬스티커</button>
           <button class="mainBtn" id="send_btn" type="button">자랑하기</button>
         </div>
         </div>
       </div>
+      
+</div>
+
+    
+      <%@include file="../include/kidsfooter.jsp" %>
+      
+      
     <script src="/resources/js/kids/diary.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>

@@ -13,8 +13,8 @@ const success = document.getElementById("success_btn");
 
 
 const INITAL_COLOR = "#000000";
-const CANVAS_SIZE_WIDTH = 1000;
-const CANVAS_SIZE_HEIGHT = 500;
+const CANVAS_SIZE_WIDTH = 1300;
+const CANVAS_SIZE_HEIGHT = 600;
 
 ctx.strokeStyle = "#2c2c2c";
 
@@ -71,10 +71,10 @@ function handleRangeChange(event){
 function handleModeClick(){
     if(filling === true){
         filling = false;
-        mode.innerText = "Fill";
+        mode.innerText = "채우기";
     }else{
         filling = true;
-        mode.innerText = "Paint";
+        mode.innerText = "그리기";
     }
 }
 
