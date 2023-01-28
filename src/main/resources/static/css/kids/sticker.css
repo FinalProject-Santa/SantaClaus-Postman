@@ -1,53 +1,82 @@
-@charset "EUC-KR";
-.santa_img{
-    float: left;
-    position: absolute;
-    top: 200px;
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Hi+Melody&display=swap');
+body{
+    background-image: url('/resources/image/kids/diary/Í∑∏Î¶º19.png');
+    background-size: cover;
+    background-attachment:fixed;
 }
-img{
-    width: 500px;
-    height: 500px;
+.inner{
+    width: 1400px;
+    margin: 0 auto;
 }
-#Dec_btn{
-    position: relative;
-    top: 350px;
-    left: 60px;
-    width: 50px;
+.stickerbody{
+    padding-top: 70px;
 }
-#Jan_btn{
-    position: relative;
-    top: 350px;
-    left: 330px;
-    width: 50px;
+#kids{
+    font-size: 65px;
+    text-align: center;
+    margin-top: 75px;
+    margin-left: 5px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    text-shadow: 3px 2px 2px black;
 }
-#Dec{
-    font-size: 28px;
-    width: 100px;
-    position: relative;
-    top: 55px;
-    left: 710px;
+.title{
+    font-size: 55px;
+    margin-bottom: 0;
+    margin-top: 160px;
+    margin-left: 85px;
+    text-shadow: 3px 2px 2px black;
+    font-weight: 600;
 }
-#Jan{
-    font-size: 28px;
-    width: 100px;
-    position: relative;
-    top: 55px;
-    left: 715px;
+.text{
+    font-size: 35px;
+    margin-top: 240px;
+    margin-left: -200px;
+    text-shadow: 2px 1px 1px black;
+    font-weight: 600;
 }
-.sticker_Jan, .sticker_Dec{
+.main{
+    display: flex;
+}
+.sticker_Dec, .sticker_Jan{
     width: 500px;
     height: 480px;
-    display: grid; /*«◊ªÛ ¿œ¡§«— ∫Ò¿≤∑Œ ∞≥ºˆ∞° ¡§∑ƒ¿Ã µ«µµ∑œ */
-    grid-template-columns: repeat(7, 1fr);
-    position: absolute;
-    top: 160px;
-    left: 500px;
+    display: grid; /*Ìï≠ÏÉÅ ÏùºÏ†ïÌïú ÎπÑÏú®Î°ú Í∞úÏàòÍ∞Ä Ï†ïÎ†¨Ïù¥ ÎêòÎèÑÎ°ù */
+    grid-template-columns: repeat(6, 1fr);
+    margin-left: 145px;
+    margin-top: 0;
 }
-.num, .Dec_num, .Jan_num{
-    width: 60px;
-    height: 60px;
+.num, .Jan_num{
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     background-color: white;
     border: 1px solid black;
     text-align: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 23px;
+}
+.btn_group{
+    width: 400px;
+    margin-left: 20px;
+    margin-top: -170px;
+}
+.btn_group button{
+    all: unset;
+    cursor: pointer;
+    background-color: rgb(255, 225, 0);
+    border-color: rgb(230, 203, 1);
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.068);
+    width: 110px;
+    height: 30px;
+    padding: 5px 0px;
+    text-align: center;
+    border-radius: 10px;
+    color: black;
+    font-size: 23px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-right: 5px;
 }

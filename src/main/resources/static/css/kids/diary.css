@@ -1,19 +1,24 @@
-@charset "EUC-KR";
-@import "/resources/css/kids/reset.css";
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Hi+Melody&display=swap');
 body{
-    background-color: #eeeeee;
+    background-image: url('/resources/image/kids/diary/diaryback.jpg');
+    background-size: cover;
+    background-attachment:fixed;
+}
+.inner{
+    width: 1400px;
+    margin: 0 auto;
 }
 .diary{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    display: flex; /*µΩ∫«√∑π¿Ã »≠∏È¿ª ¿Øµø¿˚(π›¿¿«¸)¿∏∑Œ «ÿ¡‹*/
-    flex-direction: column; /*ª˝º∫µ… æ∆¿Ã≈€ ¡§∑ƒ πÊ«‚*/
-    align-items: center; /*∞°øÓµ• ¡§∑ƒ«œ∞⁄¥Ÿ*/
-    padding-top: 50px; /*ø§∏Æ∏’∆Æ¿« ªÛ¥‹ ø©πÈ¿ª ¡ˆ¡§*/
+    font-family: 'Gaegu', cursive;
+    display: flex; /*ÎîîÏä§ÌîåÎ†àÏù¥ ÌôîÎ©¥ÏùÑ Ïú†ÎèôÏ†Å(Î∞òÏùëÌòï)ÏúºÎ°ú Ìï¥Ï§å*/
+    flex-direction: column; /*ÏÉùÏÑ±Îê† ÏïÑÏù¥ÌÖú Ï†ïÎ†¨ Î∞©Ìñ•*/
+    align-items: center; /*Í∞ÄÏö¥Îç∞ Ï†ïÎ†¨ÌïòÍ≤†Îã§*/
+    padding-top: 115px; /*ÏóòÎ¶¨Î®ºÌä∏Ïùò ÏÉÅÎã® Ïó¨Î∞±ÏùÑ ÏßÄÏ†ï*/
 }
 .canvas{
-    width: 1000px;
-    height: 500px;
+    width: 1300px;
+    height: 600px;
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.068);
@@ -24,6 +29,38 @@ body{
     flex-direction: column;
     align-items: center;
 }
+input[type="range"] {
+    overflow: hidden;
+    height: 20px;
+    width: 130px;
+    -webkit-appearance: none;
+    background: transparent;
+    /* margin-top: 10px; */
+    margin-bottom: 20px;
+    margin-left: 9px;
+}
+
+input[type="range"]:focus {
+	outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid #ffee7c;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: rgb(255, 213, 0);
+    box-shadow: 1px 1px 7px #ffee7c;
+    cursor: pointer;
+    box-shadow: -100vw 0 0 100vw #ffee7c;
+}
 .controls .controls_btns{
     margin-bottom: 20px;
 }
@@ -32,15 +69,16 @@ body{
     cursor: pointer;
     background-color: white;
     padding: 5px 0px;
-    width: 80px;
+    width: 110px;
+    height: 30px;
     text-align: center;
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.068);
     border: 2px solid rgba(0, 0, 0, 0.2);
     color: rgba(0, 0, 0, 0.8);
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 22px;
 }
 .controls_btns button:active{
     transform: scale(0.98);
@@ -49,24 +87,36 @@ body{
     display: flex;
 }
 .controls_colors .controls_color{
-    width: 50px;
-    height: 50px;
+    width: 53px;
+    height: 53px;
     box-shadow:  0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.068);
-    border-radius: 25px;
+    border-radius: 26.5px;
     cursor: pointer;
+    margin-right: 2px;
 }
 .drawing{
     margin-bottom: 20px;
+    text-align: center;
+    width: 900px;
+    margin-left: 450px;
 }
 #text{
-    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 46px;
+}
+#text2{
+    font-size: 25px;
+    margin-bottom: 0;
+    padding-left: 90px;
 }
 .btn_group button{
     all: unset;
     cursor: pointer;
     background-color: white;
     padding: 5px 0px;
-    width: 80px;
+    width: 110px;
+    height: 30px;
     text-align: center;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.068);
@@ -74,7 +124,7 @@ body{
     color: rgba(0, 0, 0, 0.8);
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 22px;
 }
 .btn_group button:active{
     transform: scale(0.98);
@@ -101,30 +151,60 @@ body{
 
 .modalBox {
     position: absolute;
-    background-color: #fff;
-    width: 350px;
-    height: 250px;
+    background-image: url('/resources/image/kids/diary/Í∑∏Î¶º1.jpg');
+    background-size: cover;
+    width: 450px;
+    height: 350px;
     padding: 15px;
     border-radius: 10px;
 }
 
 #modal_text{
     text-align: center;
-    font-size: 20px;
-    margin-top: 80px;
+    font-size: 35px;
+    margin-top: 60px;
+    margin-bottom: 0;
+    color: white;
+    font-weight: bold;
+}
+#modal_text2{
+    text-align: center;
+    font-size: 32px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    color: white;
+}
+#modal_text3{
+    text-align: center;
+    font-size: 24px;
+    margin-top: 15px;
+    color: white;
 }
 
 .modal_Btn{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 20px;
+    margin-top: 20px;
 }
 
-.modalBox button {
-    width: 100px;
-    margin-top: 40px;
-    margin-left: 5px;
-    margin-right: 5px;
+.modal_Btn button {
+    all: unset;
+    cursor: pointer;
+    background-color: white;
+    padding: 5px 0px;
+    width: 110px;
+    height: 30px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.068);
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0.8);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 22px;
+    margin-right: 20px;
 }
 
 .hidden {
