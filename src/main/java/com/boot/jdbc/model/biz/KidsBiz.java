@@ -12,11 +12,12 @@ public interface KidsBiz {
 	int add(KidsDto dto);
 	int addmail(KidsDto dto);
 	int addFile(KidFileDto file);
-	int modify(KidsDto dto);
+	int addFile2(KidFileDto file);
+	int update(KidsDto dto);
 	int fileModify(KidFileDto file);
 	int delete(KidsDto dto);
 	int delete(KidFileDto file);
+	int deleteSticker(StickerDto sticker);
 	List<StickerDto> sticker();
-	
 	
 }

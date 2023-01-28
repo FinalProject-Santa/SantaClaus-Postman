@@ -9,7 +9,6 @@
 <body>
 <div class="inner">
     <div class="view-account">
-        <section class="module">
             <div class="module-inner">
                 <div class="side-bar">
                     <div class="user-info">
@@ -17,7 +16,6 @@
                     
                             <!-- <p>${KidsDto.kids_nickname}</p> -->
                             <!-- <p> ${KidsDto.kids_point}</p> -->
-                                             
                     </div>
             		<nav class="side-menu">
         				<ul class="nav">
@@ -29,6 +27,7 @@
 
                 <div class="content-panel">
                     <h2 class="title">키즈 계정 설정</h2>
+                     	<form method="post" enctype="multipart/form-data">
                      <fieldset class="fieldset">
                         <h3 class="fieldset-title">프로필 설정</h3>
                         <div class="form-group">
@@ -38,7 +37,6 @@
                             </div>
                             <div class="uld-bt-box">    
                                 <label for="file" class="upload-btn">
-                     		<form action="/kidsaccount/AddProfile" method="post" enctype="multipart/form-data">
                                            <input id="file" type="file" accept="image/*" name="files">
                                                 <span>프로필 사진 설정</span>
                                         </label>
@@ -51,17 +49,12 @@
                                         <small>2글자 이상 8글자 이하</small>
                                        </div>
                                    </div>
-                           
                                 </div>
-                                
-                                
                             </fieldset>
                  
 
-                 <div class="submitbt"><br>
-                 <input type="submit" value="등록">
-                 </form>
-                 
+                 <div class="submitbt" ><br>
+                 <input type="submit" value="등록" formaction="/kidsaccount/AddProfile">
                 </div>
                  </div>
 
@@ -75,7 +68,6 @@
                                 </div>
                                     <div class="uld-bt-box">
                                     <label for="file2" class="upload-btn">
-                                        <form action="/kidsaccount/AddSantamail" method="post" enctype="multipart/form-data">
                                         <input id="file2" type="file" name="files">
                                         <span>편지 업로드</span>
                                     
@@ -85,16 +77,13 @@
                         </fieldset>
 
                         <div class="submitbt"><br>
-                            <input type="submit" value="등록">
-                              </form>
-                       </div>
+                          <input type="submit" value="등록" onclick=santamailCheck();>
+                      </form>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
 </div>
-
-
 
 <script>
     const fileDOM = document.querySelector('#file');
@@ -114,6 +103,12 @@
       const imageSrc = URL.createObjectURL(fileDOM2.files[0]);
       previews[1].src = imageSrc;
     });
+    
+    
+    function santamailCheck(){
+    	alert("먼저 계정을 만들어주세요!");
+    }
+    
     </script>
 
 <%@include file="../include/footer.jsp" %>

@@ -55,6 +55,7 @@
                     	</div>
                         <div class="content">
                             <span><a href="modify?no=1" class="nick" >${list[0].kids_nickname}</a></span>
+                       	
                        </div>
                       </c:when>
                 		 </c:choose>     	
