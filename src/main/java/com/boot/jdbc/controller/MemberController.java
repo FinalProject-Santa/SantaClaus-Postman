@@ -94,7 +94,7 @@ public class MemberController {
 //	@PostMapping("/login")
 //	public String login(String user_id, String password, Model model) {
 //		MemberDto memberDto = biz.login(user_id, password);
-//		기본 프로필없을경우 디폴트 사진 보여주기
+//		// 기본 프로필없을경우 디폴트 사진 보여주기
 //		if(memberDto!=null) {
 //			// 아이 프로필이 있을 경우
 //			if((biz.selectChildrenProfile(user_id)).size() > 0){
