@@ -88,7 +88,7 @@
             <div class="closebutton">
             <input type="button" value="x" id="closebutton" onclick="history.back()">
            </div>
-        <form id="login-form" action="/main/login" method="post" onsubmit="return loginsubmit();">
+        <form id="login-form" action="/main/profile" method="post" onsubmit="return loginsubmit();">
             <input type="text" name="user_id" id="memberid" class="memberinfo" placeholder="아이디*">
                 <span id="errorid">아이디를 입력해 주세요.</span>
             <input type="password" name="password" id="memberpw" class="memberinfo" placeholder="패스워드*">

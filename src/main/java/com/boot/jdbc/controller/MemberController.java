@@ -35,6 +35,10 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 @Controller
 @RequestMapping("/main")
 public class MemberController {
+	// 회원정보 dto
+	MemberDto memberDto;
+	// 아이들 정보 dto
+	List<KidsDto> kidsDto;
 	
 	@Autowired
 	private MemberBiz biz;
@@ -91,34 +95,37 @@ public class MemberController {
 		return "main/login";
 	}
 	
-//	@PostMapping("/login")
-//	public String login(String user_id, String password, Model model) {
-//		MemberDto memberDto = biz.login(user_id, password);
-//		// 기본 프로필없을경우 디폴트 사진 보여주기
-//		if(memberDto!=null) {
-//			// 아이 프로필이 있을 경우
-//			if((biz.selectChildrenProfile(user_id)).size() > 0){
-//				List<KidsDto> kidsDto = biz.selectChildrenProfile(user_id);
-//				model.addAttribute("kidsDto", kidsDto);
-//			}
-//			model.addAttribute("memberDto", memberDto);
-//			System.out.println("여기까지");
-//			return "main/profile";
-//		}else {
-//			System.out.println("로그인 실패");
-//			return "redirect:/main/loginForm";
-//		}
-//	}
-	
-	@PostMapping("/login")
-	public String login(String user_id, String password, HttpSession session) {
-		MemberDto member = biz.login(user_id, password);
-		if(member!=null) {
-			session.setAttribute("member", member);
-			return "main/main"; 
+	@PostMapping("/profile")
+	public String profile(String user_id, String password, Model model) {
+		memberDto = biz.login(user_id, password);
+		// 기본 프로필없을경우 디폴트 사진 보여주기
+		if(memberDto!=null) {
+			// 아이 프로필이 있을 경우
+			if((biz.selectChildrenProfile(user_id)).size() > 0){
+				kidsDto = biz.selectChildrenProfile(user_id);
+				model.addAttribute("kidsDto", kidsDto);
+			}
+			model.addAttribute("memberDto", memberDto);
+			return "main/profile";
 		}else {
 			System.out.println("로그인 실패");
 			return "redirect:/main/loginForm";
+		}
+	}
+	
+	@GetMapping("/login")
+	public String login(String name, HttpSession session) {
+		if(memberDto.getName().equals(name)) {
+			session.setAttribute("member", memberDto);
+			return "main/main"; 
+		}else {
+			for(int i=0; i<kidsDto.size(); i++) {
+				if(kidsDto.get(i).getKids_nickname().equals(name)) {
+					session.setAttribute("kidsDto", kidsDto.get(i));
+					break;
+				}
+			}
+			return "kids/main";
 		}
 	}
 	
