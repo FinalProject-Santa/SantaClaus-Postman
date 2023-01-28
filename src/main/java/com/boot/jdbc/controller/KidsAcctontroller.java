@@ -75,7 +75,7 @@ public class KidsAcctontroller {
 		  
 		  KidFileDto file = new KidFileDto();
 		  
-		  String uploadPath ="C:/Users/Home/git/SantaClaus-Postman/src/main/resources/static/files/";
+		  String uploadPath ="C:\\Users\\parkjiyoung\\git\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\kids-account\\";
 		  String sourceFileName = files.getOriginalFilename(); 
 		  String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
 		  File destinationFile; 
@@ -121,7 +121,7 @@ public class KidsAcctontroller {
 		//파일을 받아서 저장
 		  KidFileDto file = new KidFileDto();
 		  
-		  String uploadPath ="C:/Users/Home/git/SantaClaus-Postman/src/main/resources/static/files/";
+		  String uploadPath ="C:\\Users\\parkjiyoung\\git\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\kids-account\\";
 		  String sourceFileName = files.getOriginalFilename(); 
 		  String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
 		  File destinationFile; 
