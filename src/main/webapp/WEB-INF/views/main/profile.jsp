@@ -1,58 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<link rel="stylesheet" href="/resources/css/letter/letterList.css">
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="/resources/css/main/signUp.css" rel="stylesheet">
-<style>
-* {
-	margin: 0px;
-	padding: 0px;
-}
-
-body {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	padding-top: 20px;
-	padding-bottom: 100px;
-}
-</style>
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script>
-	$(function() {
-
-	});
-</script>
-</head>
 <body>
-	<div id="wrap" class="profileList">
-		<h1>ÇÁ·ÎÇÊ °èÁ¤À» ¼±ÅÃ ÇØÁÖ¼¼¿ä!</h1>
-		<h3>ºÎ¸ğ °èÁ¤</h3>
+	<!-- header, ê³ ê°ì„¼í„° -->
+	<%@include file="../include/header.jsp" %>
+	<%@include file="../include/floatingMenu.jsp" %>
+	
+	<div class="inner">
+		<h1>í”„ë¡œí•„ ê³„ì •ì„ ì„ íƒ í•´ì£¼ì„¸ìš”!</h1>
+		<h3>ë¶€ëª¨ ê³„ì •</h3>
 		<div class="parentProfile">
 			<a href="#">
-				<img src="./image/parent1.JPG"><br>
+				<img src="/resources/image/member-account/${memberDto.rfileName}"><br>
 			</a>
-			<span>pota7777</span>
+			<span>${memberDto.name }</span>
 		</div>
-		<h3>¾î¸°ÀÌ °èÁ¤</h3>
+		<h3>ì–´ë¦°ì´ ê³„ì •</h3>
 		<div class="childrenProfile" style="display: flex; background-repeat: no-repeat;">
-			<div class="child">
-				<a href="#">
-					<img src="./image/baby1.JPG"><br>
-				</a>
-				<span>Àë¹ÎÀÌ1</span>
-			</div>
-			<div class="child">
-				<a href="#">
-					<img src="./image/baby2.JPG"><br>
-				</a>
-				<span>Àë¹ÎÀÌ2</span>
-			</div>
+			<c:forEach var="dto" items="${kidsDto }">
+				<div class="child">
+					<a href="#">
+						<img src="dto.kids_thumbnail"><br>
+					</a>
+					<span>dto.kids_nickname</span>
+				</div>
+			</c:forEach>
 		</div>
 	</div>
 </body>

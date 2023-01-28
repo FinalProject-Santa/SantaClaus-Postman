@@ -1,6 +1,8 @@
 package com.boot.jdbc.controller;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -22,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.boot.jdbc.model.biz.MemberBiz;
 import com.boot.jdbc.model.biz.PointBiz;
 import com.boot.jdbc.model.biz.SmsService;
+import com.boot.jdbc.model.dto.KidsDto;
 import com.boot.jdbc.model.dto.MemberDto;
 import com.boot.jdbc.model.dto.ReviewDto;
 import com.boot.jdbc.model.dto.rFileDto;
@@ -57,7 +60,7 @@ public class MemberController {
         String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
         File destinationFile; 
         String destinationFileName;
-        String fileUrl = "C:\\workspace\\finalproject\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\profile\\";
+        String fileUrl = "C:\\Users\\parkjiyoung\\git\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\member-account\\";
         
         do { 
             destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension; 
@@ -87,6 +90,25 @@ public class MemberController {
 	public String loginForm() {
 		return "main/login";
 	}
+	
+//	@PostMapping("/login")
+//	public String login(String user_id, String password, Model model) {
+//		MemberDto memberDto = biz.login(user_id, password);
+//		기본 프로필없을경우 디폴트 사진 보여주기
+//		if(memberDto!=null) {
+//			// 아이 프로필이 있을 경우
+//			if((biz.selectChildrenProfile(user_id)).size() > 0){
+//				List<KidsDto> kidsDto = biz.selectChildrenProfile(user_id);
+//				model.addAttribute("kidsDto", kidsDto);
+//			}
+//			model.addAttribute("memberDto", memberDto);
+//			System.out.println("여기까지");
+//			return "main/profile";
+//		}else {
+//			System.out.println("로그인 실패");
+//			return "redirect:/main/loginForm";
+//		}
+//	}
 	
 	@PostMapping("/login")
 	public String login(String user_id, String password, HttpSession session) {

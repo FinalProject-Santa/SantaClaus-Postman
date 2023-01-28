@@ -1,11 +1,14 @@
 package com.boot.jdbc.model.biz;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.boot.jdbc.model.dao.MemberMapper;
+import com.boot.jdbc.model.dto.KidsDto;
 import com.boot.jdbc.model.dto.MemberDto;
 
 @Service
@@ -18,7 +21,12 @@ public class MemberBizImpl implements MemberBiz{
 	public int signUp(MemberDto dto) {
 		return memberMapper.signUp(dto);
 	}
-
+	
+	@Override
+	public List<KidsDto> selectChildrenProfile(String user_id) {
+		return memberMapper.selectChildrenProfile(user_id);
+	}
+	
 	@Override
 	public MemberDto login(String user_id, String password) {
 		return memberMapper.login(user_id, password);
