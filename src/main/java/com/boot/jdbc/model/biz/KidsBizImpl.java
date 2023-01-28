@@ -34,8 +34,8 @@ public class KidsBizImpl implements KidsBiz {
 	}
 
 	@Override
-	public int modify(KidsDto dto) {
-		return kidsmapper.modify(dto);
+	public int update(KidsDto dto) {
+		return kidsmapper.update(dto);
 	}
 
 	@Override
@@ -63,5 +63,15 @@ public class KidsBizImpl implements KidsBiz {
 		return kidsmapper.addmail(dto);
 	}
 
+	@Override
+	public int deleteSticker(StickerDto sticker) {
+		return kidsmapper.deletesticker(sticker);
+	}
 
+	@Override
+	public int addFile2(KidFileDto file) {
+		return kidsmapper.addFile2(file);
+	}
+
+	
 }

@@ -2,10 +2,7 @@ body{
 background:#f9f9fb;    
 }
 
-html, body {
-height: 100%;
-}
-	
+
 .inner {
 padding-top : 90px;
 min-height : 100%;
@@ -17,9 +14,11 @@ fieldset{
 border-color: #e8e8e8;
 }
 .view-account{
+	margin-top:-20px;
 background:#FFFFFF; 
-margin-top:-20px;
 }
+
+
 .view-account .pro-label {
 font-size: 13px;
 padding: 4px 5px;
@@ -36,6 +35,7 @@ padding-bottom: 30px
 .view-account .side-bar .user-info {
 text-align: center;
 margin-bottom: 15px;
+margin-top: 100px;
 padding: 30px;
 color: #616670;
 border-bottom: 1px solid #f3f3f3
@@ -126,6 +126,8 @@ font-size: 16px
 
 @media (min-width:992px) {
 .view-account .content-panel {
+
+    border-left: 1px solid #f3f3f7;
     margin-left: 200px
 }
 .view-account .mail-subject .subject {
@@ -168,13 +170,10 @@ font-size: 16px
     padding: 10px 15px;
     padding-left: 30px
 }
-.view-account .side-bar .side-menu .nav>li>a:hover {
-    background: #f9f9fb
-}
-.view-account .side-bar .side-menu .nav>li.active a {
-    background: #f9f9fb;
-    border-right: 4px solid #40babd;
-    border-bottom: none
+
+.user-info2{
+padding: 30px;
+text-align: center;
 }
 
 .view-account .side-bar .side-menu .nav>li .icon {
@@ -223,4 +222,9 @@ input.nickname {
 .submitbt{
     margin-left: 0;
     text-align: center;
+}
+
+small{
+	display: block;
+	padding-top :20px;
 }
