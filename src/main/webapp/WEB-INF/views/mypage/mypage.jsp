@@ -39,7 +39,7 @@
             </div>
             <div id="section3" class="section">
             	<p>
-         			<img src="/resources/image/mypage/kids.png" onclick="location.href='/mypage/kids'">
+         			<img src="/resources/image/mypage/kids.png" onclick="location.href='/kidsaccount/main'">
            			<!-- <a href="/kidsaccount/main" class="list"> 키즈 모드</a> -->
              	</p>
              </div>
