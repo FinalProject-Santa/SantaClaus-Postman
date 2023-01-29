@@ -112,12 +112,11 @@ public class KidsController {
 		HttpSession session = request.getSession();
 		String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
 		
-		//String userId = request.getParameter("userID");
 		String fillDate = request.getParameter("fillDate");
 		LocalDate localdate = LocalDate.parse(fillDate, DateTimeFormatter.ofPattern("yyyyMMdd"));
 		System.out.println("test :"+localdate);
 		
-		String date = biz.fillDate(userId,localdate); 
+		String date = biz.fillDate(userId,localdate);
 		System.out.println("select: "+biz.fillDate(userId,localdate));
 		
 		return date;
@@ -179,7 +178,7 @@ public class KidsController {
 	
 	@ResponseBody
 	@RequestMapping(value = {"DiaryFill"}, method = RequestMethod.POST)
-	public ModelMap DiaryFill(@RequestParam Map<Object, Object> param, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
+	public ModelMap DiaryFill(final HttpServletRequest request, final HttpServletResponse response) throws Exception {
 		ModelMap Map = new ModelMap();
 		String binaryData = request.getParameter("imgSrc");
 		
@@ -191,7 +190,7 @@ public class KidsController {
 		
 		String fillDate = request.getParameter("fillDate");
 		LocalDate localdate = LocalDate.parse(fillDate, DateTimeFormatter.ofPattern("yyyyMMdd"));
-		System.out.println(fillDate);
+		System.out.println("local: "+localdate);
 		
 		FileOutputStream stream = null;
 		
