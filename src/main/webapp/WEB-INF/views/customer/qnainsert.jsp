@@ -1,34 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<script type="text/javascript">
-function doOpenCheck(chk){
-    var obj = document.getElementsByName("secret");
-    for(var i=0; i<obj.length; i++){
-        if(obj[i] != chk){
-            obj[i].checked = false;
-        }
-    }
-}
-</script>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 
-<style>
-h1{display: inline;}
-section{margin-left: 30%; margin-right: 30%;}
-</style>
+
+  
+<%@include file="../include/header.jsp"%>
+<%@include file="../include/floatingMenu.jsp"%>
+
+<link rel="stylesheet" href="/resources/css/customer/qnainsert.css">
+
+
 <body>
-    <h1>고객센터</h1>
-    <button onclick="location.href='notice';">공지사항</button>
-    <button onclick="location.href='qnalist';">Q&A</button>
-    <button onclick="location.href='faq';">FAQ</button>
+
+	<div class="inner">
+	
+ 		<div class="customer_logo">
+			<h1>Customer Service</h1>
+		</div>
+
+		<div class=customer_menu>
+			<button class="c_bt" onclick="location.href='notice';">NOTICE</button>
+			<button class="c_bt" onclick="location.href='qnalist';">Q&A</button>
+			<button class="c_bt" onclick="location.href='faq';">FAQ</button>
+		</div>
     
     <section id="sec_qna">
         <h3>1:1문의</h3>
@@ -37,8 +31,8 @@ section{margin-left: 30%; margin-right: 30%;}
         <label for="qna_title">제목</label>
         	<input type="text" name="qna_title" id="qna_title"><br>
         
-        	<span>문의유형</span>
-       		 <select name="qna_type">
+        	<span style="padding:20px">문의유형</span>
+       		 <select name="qna_type" >
            	  <option>배송문의</option>
            	  <option>상품문의</option>
            	  <option>기타문의</option>
@@ -55,8 +49,20 @@ section{margin-left: 30%; margin-right: 30%;}
 			</div>
         
     </form>
-    </section>  
+    </section>   
+  </div>
+
+<script type="text/javascript">
+function doOpenCheck(chk){
+    var obj = document.getElementsByName("secret");
+    for(var i=0; i<obj.length; i++){
+        if(obj[i] != chk){
+            obj[i].checked = false;
+        }
+    }
+}
+</script>
 
    
-</body>
-</html>
+
+<%@include file="../include/footer.jsp" %>

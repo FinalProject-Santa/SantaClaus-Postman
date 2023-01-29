@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +35,10 @@ public class KidsAcctontroller {
 
 	@Autowired
 	private KidsBiz kidsbiz;
+	
+	@Value("${file.upload.directory}")
+	String uploadFileDir;
+	
 
 	@GetMapping("/main")
 	public String kidsSet(HttpServletRequest request, Model model) {
@@ -77,7 +82,7 @@ public class KidsAcctontroller {
 		  
 		  KidFileDto file = new KidFileDto();
 		  
-		  String uploadPath ="C:\\Users\\82105\\git\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\kids-account\\";
+		  //String uploadPath ="C:/Users/Home/git/SantaClaus-Postman/src/main/resources/static/files/";
 		  String sourceFileName = files.getOriginalFilename(); 
 		  String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
 		  File destinationFile; 
@@ -86,7 +91,7 @@ public class KidsAcctontroller {
 		  
 		  do { 
 		  destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension; 
-		  destinationFile = new File(uploadPath + destinationFileName); 
+		  destinationFile = new File(uploadFileDir + destinationFileName); 
 		  } while (destinationFile.exists());
 		  
   
@@ -103,7 +108,7 @@ public class KidsAcctontroller {
 		  if(!files.isEmpty()) {
 		  file.setFile_name(destinationFileName);
 		  file.setFile_oname(sourceFileName); 
-		  file.setFile_path(uploadPath);}
+		  file.setFile_path(uploadFileDir);}
 		  	 
 		  kidsbiz.addFile(file);
 		  
@@ -115,7 +120,6 @@ public class KidsAcctontroller {
 	@PostMapping("/AddSantamail")
 	public String kidsInsertSantamail(KidsDto dto, @RequestPart MultipartFile files, HttpServletRequest request) throws IllegalStateException, IOException {
 		
-		session = request.getSession();
 		List<KidsDto> list = kidsbiz.selectAll(); 
 		kids_no = list.get(i-1).getKids_no();
 	
@@ -123,7 +127,7 @@ public class KidsAcctontroller {
 		//파일을 받아서 저장
 		  KidFileDto file = new KidFileDto();
 		  
-		  String uploadPath ="C:\\Users\\parkjiyoung\\git\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\kids-account\\";
+		  //String uploadPath ="C:/Users/Home/git/SantaClaus-Postman/src/main/resources/static/files/";
 		  String sourceFileName = files.getOriginalFilename(); 
 		  String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
 		  File destinationFile; 
@@ -132,7 +136,7 @@ public class KidsAcctontroller {
 		  
 		  do { 
 		  destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension; 
-		  destinationFile = new File(uploadPath + destinationFileName); 
+		  destinationFile = new File(uploadFileDir + destinationFileName); 
 		  } while (destinationFile.exists());
 		  
 
@@ -143,7 +147,7 @@ public class KidsAcctontroller {
 		  if(!files.isEmpty()) {
 		  file.setFile_name(destinationFileName);
 		  file.setFile_oname(sourceFileName); 
-		  file.setFile_path(uploadPath);}
+		  file.setFile_path(uploadFileDir);}
 		  
 		  kidsbiz.addFile2(file);
 		  
@@ -170,14 +174,37 @@ public class KidsAcctontroller {
 	
 	//수정하기
 	@PostMapping("/updateProfile")
-	private String updateProfile(KidsDto dto,@RequestPart MultipartFile files,HttpServletRequest request) {
-		//1. 닉네임만 바꾼다
+	private String updateProfile(KidsDto dto,@RequestPart MultipartFile files, HttpServletRequest request) throws IllegalStateException, IOException {
+		session = request.getSession();
+		List<KidsDto> list = kidsbiz.selectAll(); 
+		kids_no = list.get(i-1).getKids_no();
 		
 		
-		//2. 사진만 바꾼다
-		
-		
-		//3. 둘다 바꾼다
+		  KidFileDto file = new KidFileDto();
+		  
+		  //String uploadPath ="C:/Users/Home/git/SantaClaus-Postman/src/main/resources/static/files/";
+		  String sourceFileName = files.getOriginalFilename(); 
+		  String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
+		  File destinationFile; 
+		  String destinationFileName;
+		  
+		  
+		  do { 
+		  destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension; 
+		  destinationFile = new File(uploadFileDir + destinationFileName); 
+		  } while (destinationFile.exists());
+		  
+
+		  destinationFile.getParentFile().mkdirs(); 
+		  files.transferTo(destinationFile);
+		 
+		  file.setKids_no(kids_no); 
+		  if(!files.isEmpty()) {
+		  file.setFile_name(destinationFileName);
+		  file.setFile_oname(sourceFileName); 
+		  file.setFile_path(uploadFileDir);}
+		  
+		  kidsbiz.addFile2(file);
 
 		
 		//최종적으로 쿼리문 실행
