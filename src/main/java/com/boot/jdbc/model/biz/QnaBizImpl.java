@@ -45,6 +45,17 @@ public class QnaBizImpl implements QnaBiz {
 		return qnaMapper.insertReply(dto);
 	}
 
+	@Override
+	public int deleteQna(int qna_no) {
+		return qnaMapper.deleteQna(qna_no);
+	}
+
+	@Override
+	public int deleteQnafile(int qna_no) {
+		return qnaMapper.deleteQnafile(qna_no);
+	}
+
+	
 	
 	
 	

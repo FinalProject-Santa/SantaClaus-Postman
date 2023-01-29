@@ -121,21 +121,23 @@ td{
 }
 
 #returnbt{
-	padding:8px;
 	border-bottom: solid black 1px;
 	border-top : solid black 1px;
 	
 }
 
-#returnbt :hover{
+input[type="button"]:hover{
 	color:maroon;
 	font-weight: bolder;
 }
+
  input[type="button"]{
+ padding : 6px;
  font-family: Noto;
  font-size: 15px;
  border: none;
  background:none; 
  cursor: pointer;
  }
+ 
      

@@ -12,4 +12,6 @@ public interface QnaBiz {
 	QnaDto selectOne(Integer qna_no); //글상세보기
 	QnaFileDto selectFile(Integer qna_no);
 	int insertReply(QnaDto dto); //답변달기
+	int deleteQna(int qna_no);
+	int deleteQnafile(int qna_no);
 }

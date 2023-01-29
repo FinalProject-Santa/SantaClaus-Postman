@@ -2,6 +2,7 @@ package com.boot.jdbc.model.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -58,4 +59,9 @@ public interface QnaMapper {
 	@Insert("INSERT INTO QNA VALUES (#{qna_no},'ADMIN', #{qna_type}, #{qna_title}, NOW(), #{qna_content},#{secret},#{origin_no},1,1)")
 	int insertReply(QnaDto dto);
 
+	@Delete("DELETE FROM QNA WHERE QNA_NO=#{qna_no}")
+	int deleteQna(int qna_no);
+	
+	@Delete("DELETE FROM QNA_FILE WHERE QNA_NO=#{qna_no}")
+	int deleteQnafile(int qna_no);
 }

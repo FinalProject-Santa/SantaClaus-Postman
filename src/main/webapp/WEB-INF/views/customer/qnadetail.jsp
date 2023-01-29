@@ -40,22 +40,34 @@
 			<tr>
 				<td id="content">
 				 <c:if test="${not empty files.file_oname && files.file_oname != 'null'}">
-				<div style="margin-bottom: 20px;"><img src="/resources/files/${files.file_name}" style="max-width:600px; max-height: 500px;">
-			    </div> ${dto.qna_content }
+				   <div style="margin-bottom: 20px;"><img src="/resources/files/${files.file_name}" style="max-width:600px; max-height: 500px;">
+			       </div> 
 			    </c:if>
-			</td>
+			  		  ${dto.qna_content}
+				</td>
 			
 			</tr>
 
 			<tr>
 
-				<td id="returnbt"><input type="button" value="<< Return To list"
-					onclick="location.href='/customer/qnalist'"> <c:if
-						test="${user_id == 'admin' || user_id == 'ADMIN'}">
+				<td id="returnbt"><input type="button" value="<< Return To list" onclick="location.href='/customer/qnalist'"> 
+					</td>
+					<c:if test="${user_id == 'admin' || user_id == 'ADMIN'}">
 						<input type="button" value="답글쓰기"
 							onclick="location.href='/customer/qnaReply?qna_no=${dto.qna_no}&qna_type=${dto.qna_type}&secret=${dto.secret}'">
-					</c:if></td>
+						</c:if>
+			</tr>
+			
+			<tr>
+		     	<td>						
+				<c:if test="${user_id == dto.user_id }">
+				<input type="button" value="글 삭제하기" onclick="location.href='/customer/qnaDelete/${dto.qna_no}'">
+				</c:if>
+				</td>
+			</tr>
+			
 		</table>
+		
 	</div>
 	
 

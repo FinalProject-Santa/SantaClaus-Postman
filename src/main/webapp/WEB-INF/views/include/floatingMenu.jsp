@@ -26,6 +26,7 @@
     </div>
 
     <div class="menu-parent">
+    <div class="menutop">
     <div class="menu">
         <p>안녕하세요!<br><b>챗봇 루돌피</b>입니다 😀
         <br>원하시는 메뉴를<br>클릭하세요!
@@ -33,12 +34,12 @@
         
 
         <div class="buttons">
-        
         <button onclick="location.href='/customer/notice';">공지사항</button>
     	<button onclick="location.href='/customer/qnainsertform';">1:1문의</button>
     	<button onclick="location.href='/customer/faq';">자주묻는질문</button>
         </div>
     </div> 
+  </div>
 </div>
     
 </body>
