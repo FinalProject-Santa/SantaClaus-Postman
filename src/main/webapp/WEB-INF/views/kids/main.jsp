@@ -34,7 +34,7 @@
 	            <div><b>그림일기</b><br>오늘 있었던 일을<br>그림으로 그려봐요</div></li>
 	        <li><img src="/resources/image/kids/main/img3.png" id="img3" onclick="location.href='/kids/mainsticker'">
 	            <div><b>칭찬 스티커</b><br>내가 모은 칭찬 스티커를<br>확인해봐요</div></li>
-	        <li><img src="/resources/image/kids/main/img4.png" id="img4">
+	        <li><img src="/resources/image/kids/main/img4.png" id="img4" onclick="location.href='/kids/mailmain'">
 	            <div><b>산타 우편함</b><br>내 편지가 산타마을에<br>전해 졌을까요?</div></li>
 	    </ul>
 	    </div> <!-- flex_container --> 

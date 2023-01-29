@@ -87,10 +87,11 @@ public class KidsController {
 	}
 	
 	
-	@GetMapping("/snow")
-	public String snow() {
+	
+	@GetMapping("/mailmain")
+	public String mailmain() {
 		
-		return "kids/snow";
+		return "kids/mail_main";
 	}
 	
 	

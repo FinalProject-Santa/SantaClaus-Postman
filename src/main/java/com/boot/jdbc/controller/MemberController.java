@@ -40,6 +40,9 @@ public class MemberController {
 	// 아이들 정보 dto
 	List<KidsDto> kidsDto;
 	
+	@Value("${file.upload.directory}")
+	String fileUrl;
+	
 	@Autowired
 	private MemberBiz biz;
 	
@@ -64,7 +67,6 @@ public class MemberController {
         String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
         File destinationFile; 
         String destinationFileName;
-        String fileUrl = "C:\\Users\\user\\git\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\JMLprofile\\";
         
         do { 
             destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension; 
@@ -194,12 +196,11 @@ public class MemberController {
 		HttpSession session = request.getSession();
 		MemberDto memberdto = ((MemberDto)session.getAttribute("member"));
 		
-		String uploadPath = "C:\\Users\\user\\git\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\JMLprofile\\";
 		
 		if(files.getOriginalFilename()!= null && !files.getOriginalFilename().equals("")) {
 			String sourcefileName = files.getOriginalFilename(); 
 			
-			new File(uploadPath + request.getParameter("rfileName")).delete();
+			new File(fileUrl + request.getParameter("rfileName")).delete();
 			// new File(uploadPath + request.getParameter("rfileName")).renameTo(new File(uploadPath + "test.jpg"));
 			
             String sourcefileNameExtension = FilenameUtils.getExtension(sourcefileName).toLowerCase(); 
@@ -207,7 +208,7 @@ public class MemberController {
             String destinationFileName; 
             do { 
                 destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourcefileNameExtension; 
-                destinationFile = new File(uploadPath + destinationFileName); 
+                destinationFile = new File(fileUrl + destinationFileName); 
             } while (destinationFile.exists()); 
             
             destinationFile.getParentFile().mkdirs(); 
@@ -222,7 +223,7 @@ public class MemberController {
 			  
 		dto.setUser_id(request.getParameter("user_id"));
          
-		dto.setRfileUrl(uploadPath);
+		dto.setRfileUrl(fileUrl);
 		dto.setPassword(request.getParameter("password"));
 		dto.setName(request.getParameter("name"));
 		dto.setPost_code(request.getParameter("post_code"));
