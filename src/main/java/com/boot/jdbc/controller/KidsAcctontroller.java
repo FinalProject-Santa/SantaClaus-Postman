@@ -107,7 +107,6 @@ public class KidsAcctontroller {
 		  	 
 		  kidsbiz.addFile(file);
 		  
-		  session.setAttribute("kids", dto);
 		  
 		return "redirect:/kidsaccount/main";
 	}
