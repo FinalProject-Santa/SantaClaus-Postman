@@ -121,7 +121,8 @@ public class MemberController {
 		}else {
 			for(int i=0; i<kidsDto.size(); i++) {
 				if(kidsDto.get(i).getKids_nickname().equals(name)) {
-					session.setAttribute("kidsDto", kidsDto.get(i));
+					session.setAttribute("member", memberDto);
+					session.setAttribute("kids", kidsDto.get(i));
 					break;
 				}
 			}

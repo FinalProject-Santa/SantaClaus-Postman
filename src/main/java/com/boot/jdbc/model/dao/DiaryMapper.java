@@ -18,7 +18,7 @@ public interface DiaryMapper {
 	@Insert("INSERT INTO DIARY VALUES(NULL,#{userId},#{kidsNo},#{filePath},NOW(),#{userEmail})")
 	int saveDiary(String userId, int kidsNo, String filePath, String userEmail);
 	
-	@Insert("INSERT INTO DIARY VALUES(NULL,#{userID},#{kidsNO},#{filePath},#{localdate},#{userEmail})")
+	@Insert("INSERT INTO DIARY VALUES(NULL,#{userId},#{kidsNo},#{filePath},#{localdate},#{userEmail})")
 	int fillDiary(String userId, int kidsNo, String filePath, LocalDate localdate, String userEmail);
 	
 	@Select("SELECT DIARY_CONTENT FROM DIARY WHERE USER_ID=#{user_id}")
