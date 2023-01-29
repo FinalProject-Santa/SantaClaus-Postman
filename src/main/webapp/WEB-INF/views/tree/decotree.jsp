@@ -1,59 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- CSS only -->
-
-</head>
-<style>
-#divdiv
-
-img{
-	display: block;
-
-margin-left: auto;
-
-margin-right: auto;
-}
-
-.ornament{
-  width: 90px;
-  height: 90px;
-  cursor:pointer;
-}
-
-#tree-container #tree-or-container{
-  position: relative;
-
-}
- 
-#tree-container #tree-or-container .ornament{
-  position: absolute;
-}
-
-#or-container{
-	margin: 100px auto;
-	width: 300px;
-	height: 500px;
-	float:right;
-	display: grid;
-	grid-template-columns: 100px 100px 100px;
-	grid-template-rows: 100px 100px 100px;
-}
-#container{
-	width: 500px;
-	float:left;
-	
-}
-#btnarea{
-	position:absolute
-}
-
-</style>
-<title></title>
+    
+<link rel="stylesheet" href="/resources/css/nytree/decotree.css">
 <body>
 <%@include file="../include/header.jsp" %>
 <%@include file="../include/floatingMenu.jsp"%>
@@ -68,13 +16,21 @@ margin-right: auto;
 	   <img src='/resources/image/treeimg/오너6.png' alt="" class="ornament" draggable="true" data-key="o6"><input type="hidden" class="img" name="or_name" value="o6">
 	   <img src='/resources/image/treeimg/오너7.png' alt="" class="ornament" draggable="true" data-key="o7"><input type="hidden" class="img" name="or_name" value="o7">
 	   <img src='/resources/image/treeimg/오너8.png' alt="" class="ornament" draggable="true" data-key="o8"><input type="hidden" class="img" name="or_name" value="o8">
-	   <img src='/resources/image/treeimg/오너9.png' alt="" class="ornament" draggable="true" data-key="o9"><input type="hidden" class="img" name="or_name" value="o9">
 	   <img src='/resources/image/treeimg/오너10.png' alt="" class="ornament" draggable="true" data-key="o10"><input type="hidden" class="img" name="or_name" value="o10">
 	   <img src='/resources/image/treeimg/오너11.png' alt="" class="ornament" draggable="true" data-key="o11"><input type="hidden" class="img" name="or_name" value="o11">
 	   <img src='/resources/image/treeimg/오너12.png' alt="" class="ornament" draggable="true" data-key="o12"><input type="hidden" class="img" name="or_name" value="o12">
 	   <img src='/resources/image/treeimg/오너13.png' alt="" class="ornament" draggable="true" data-key="o13"><input type="hidden" class="img" name="or_name" value="o13">
 	   <img src='/resources/image/treeimg/오너16.png' alt="" class="ornament" draggable="true" data-key="o16"><input type="hidden" class="img" name="or_name" value="o16">
 	   <img src='/resources/image/treeimg/오너17.png' alt="" class="ornament" draggable="true" data-key="o17"><input type="hidden" class="img" name="or_name" value="o17">
+	   <img src='/resources/image/treeimg/오너18.png' alt="" class="ornament" draggable="true" data-key="o18"><input type="hidden" class="img" name="or_name" value="o18">
+	   <img src='/resources/image/treeimg/오너19.png' alt="" class="ornament" draggable="true" data-key="o19"><input type="hidden" class="img" name="or_name" value="o19">
+	   <img src='/resources/image/treeimg/오너20.png' alt="" class="ornament" draggable="true" data-key="o20"><input type="hidden" class="img" name="or_name" value="o20">
+	   <img src='/resources/image/treeimg/오너22.png' alt="" class="ornament" draggable="true" data-key="o22"><input type="hidden" class="img" name="or_name" value="o22">
+	   <img src='/resources/image/treeimg/오너23.png' alt="" class="ornament" draggable="true" data-key="o23"><input type="hidden" class="img" name="or_name" value="o23">
+	   <img src='/resources/image/treeimg/오너24.png' alt="" class="ornament" draggable="true" data-key="o24"><input type="hidden" class="img" name="or_name" value="o24">
+	   <img src='/resources/image/treeimg/오너25.png' alt="" class="ornament" draggable="true" data-key="o25"><input type="hidden" class="img" name="or_name" value="o25">
+	   <img src='/resources/image/treeimg/오너26.png' alt="" class="ornament" draggable="true" data-key="o26"><input type="hidden" class="img" name="or_name" value="o26">
+	   <img src='/resources/image/treeimg/오너27.png' alt="" class="ornament" draggable="true" data-key="o27"><input type="hidden" class="img" name="or_name" value="o27">
 	</div>
 	 
 <form action="/tree/treeOrderForm" method='post' id="myfrom">
@@ -230,6 +186,6 @@ const posY = event.offsetX;
   }); */ 
   
 </script>
- 
+ <%@include file="../include/footer.jsp" %>
 </body>
 </html>
