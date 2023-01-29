@@ -155,10 +155,10 @@ public class KidsAcctontroller {
 		  dto.setKids_letter_img(destinationFileName);
 		  dto.setKids_no(kids_no);
 		  kidsbiz.addmail(dto);
-		  }		  
+		  }	  
 
 		  
-		 return "redirect:/kidsaccount/main";
+		 return "redirect:/kidsaccount/modify?no="+i;
 	}
 	
 
@@ -175,14 +175,13 @@ public class KidsAcctontroller {
 	//수정하기
 	@PostMapping("/updateProfile")
 	private String updateProfile(KidsDto dto,@RequestPart MultipartFile files, HttpServletRequest request) throws IllegalStateException, IOException {
-		session = request.getSession();
+
 		List<KidsDto> list = kidsbiz.selectAll(); 
 		kids_no = list.get(i-1).getKids_no();
-		
+		System.out.println(kids_no+" " +i);
 		
 		  KidFileDto file = new KidFileDto();
 		  
-		  //String uploadPath ="C:/Users/Home/git/SantaClaus-Postman/src/main/resources/static/files/";
 		  String sourceFileName = files.getOriginalFilename(); 
 		  String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
 		  File destinationFile; 
@@ -202,14 +201,17 @@ public class KidsAcctontroller {
 		  if(!files.isEmpty()) {
 		  file.setFile_name(destinationFileName);
 		  file.setFile_oname(sourceFileName); 
-		  file.setFile_path(uploadFileDir);}
+		  file.setFile_path(uploadFileDir);
+		  kidsbiz.addFile(file);
+		  }
 		  
-		  kidsbiz.addFile2(file);
-
-		
-		//최종적으로 쿼리문 실행
-		kidsbiz.update(dto);
-		return "redirect:/kidsaccount/modify?no="+request.getParameter("no");
+		  if(!files.isEmpty()) {
+		  dto.setKids_thumbnail(destinationFileName);
+		  }
+		  dto.setKids_no(kids_no);
+		  
+		  kidsbiz.update(dto);
+		  return "redirect:/kidsaccount/modify?no="+i;
 	}
 	
 

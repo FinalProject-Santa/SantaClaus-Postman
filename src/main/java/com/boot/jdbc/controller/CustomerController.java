@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -177,6 +178,13 @@ public class CustomerController {
 		qnabiz.insertReply(dto);
 		
 		return "redirect:/customer/qnalist";
+	}
+	
+	@GetMapping("/qnaDelete/{qna_no}")
+	public String qnaDelete(@PathVariable int qna_no) {
+		qnabiz.deleteQnafile(qna_no);
+		qnabiz.deleteQna(qna_no);
+		return"redirect:/customer/qnalist";
 	}
 	
 }

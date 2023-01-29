@@ -28,18 +28,17 @@
         <h3>1:1문의</h3>
         
        <form action="/customer/qnainsert" method="post"  enctype="multipart/form-data">
-        <label for="qna_title">제목</label>
-        	<input type="text" name="qna_title" id="qna_title"><br>
-        
-        	<span style="padding:20px">문의유형</span>
-       		 <select name="qna_type" >
+        	<span class="type">문의유형</span>
+       		 <select name="qna_type" class="select">
            	  <option>배송문의</option>
            	  <option>상품문의</option>
            	  <option>기타문의</option>
         	</select>
+        	  <label class="title" for="qna_title">제목</label>
+        	<input type="text" name="qna_title" id="qna_title"><br>
         <br>
       <textarea cols="80px" rows="20px" name="qna_content"></textarea><br>
-        <input type="file" name="files">
+        <input type="file" name="files" style="padding:10px">
         <input type="submit" value="등록" onclick="alert('등록되었습니다.')">
       <!-- 비밀글 설정 체크박스 -->
      		<div class="form-check form-check-inline mt-3">

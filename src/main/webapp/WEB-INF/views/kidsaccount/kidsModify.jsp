@@ -72,7 +72,7 @@
                              
                              <div class="form-group">
                                   <div class="nickname-box">
-                                    <input type="text" name="kids_nickname" class="nickname" placeholder="${list[i].kids_nickname}" minlength="2" maxlength="8" style="text-align:center;">
+                                    <input type="text" name="kids_nickname" class="nickname" required="required" placeholder="${list[i].kids_nickname}" minlength="2" maxlength="8" style="text-align:center; ">
                                   <small>(2글자 이상 8글자 이하)</small>
                                   </div>
                               </div>

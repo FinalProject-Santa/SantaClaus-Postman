@@ -44,7 +44,7 @@ public interface KidsMapper {
 	List<StickerDto> sticker();
 	
 	//계정 닉네임/썸네일 변경
-	@Update("UPDATE KIDS_SETTING SET KIDS_THUMBNAIL = #{kids_thumbnail} , KIDS_NICKNAME = #{kids_nickname}) WHERE KIDS_NO=#{kids_no}")
+	@Update("UPDATE KIDS_SETTING SET KIDS_THUMBNAIL=#{kids_thumbnail} , KIDS_NICKNAME=#{kids_nickname} WHERE KIDS_NO=#{kids_no}")
 	int update(KidsDto dto);
 
 	@Delete("DELETE FROM KIDS_FILE WHERE KIDS_NO=#{kids_no}")
