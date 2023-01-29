@@ -3,9 +3,12 @@ package com.boot.jdbc.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -30,8 +33,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.boot.jdbc.model.biz.DiaryBiz;
 import com.boot.jdbc.model.biz.MailHandler;
 import com.boot.jdbc.model.biz.StickerBiz;
-import com.boot.jdbc.model.dto.MemberDto;
 import com.boot.jdbc.model.dto.KidsDto;
+import com.boot.jdbc.model.dto.MemberDto;
 
 import edu.emory.mathcs.backport.java.util.Collections;
 
@@ -49,6 +52,9 @@ public class KidsController {
 	private StickerBiz stickerbiz;
 	@Autowired
 	private JavaMailSender mailSender;
+	
+	HttpSession session;
+	
 	
 	@GetMapping("/main")
 	public String main() {
@@ -92,7 +98,7 @@ public class KidsController {
 	@RequestMapping(value = {"selectDate"}, method = RequestMethod.POST)
 	public String selectDate(HttpServletRequest request) {
 		
-		HttpSession session = request.getSession();
+		session = request.getSession();
 		String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
 		
 		//String userId = request.getParameter("userID");
@@ -109,7 +115,7 @@ public class KidsController {
 	@RequestMapping(value = {"fillDate"}, method = RequestMethod.POST)
 	public String fillDate(HttpServletRequest request) {
 		
-		HttpSession session = request.getSession();
+		session = request.getSession();
 		String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
 		
 		String fillDate = request.getParameter("fillDate");
@@ -130,7 +136,7 @@ public class KidsController {
 		
 		String binaryData = request.getParameter("imgSrc");
 		
-		HttpSession session = request.getSession();
+		session = request.getSession();
 		
 		String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
 		String userEmail = ((MemberDto)session.getAttribute("member")).getEmail();
@@ -182,7 +188,7 @@ public class KidsController {
 		ModelMap Map = new ModelMap();
 		String binaryData = request.getParameter("imgSrc");
 		
-		HttpSession session = request.getSession();
+		session = request.getSession();
 		
 		String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
 		String userEmail = ((MemberDto)session.getAttribute("member")).getEmail();
@@ -238,7 +244,7 @@ public class KidsController {
 		String path = request.getParameter("imgSrc");
 		System.out.println(path);
 		
-		HttpSession session = request.getSession();
+		session = request.getSession();
 		
 		//String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
 		String userEmail = ((MemberDto)session.getAttribute("member")).getEmail();
@@ -256,12 +262,20 @@ public class KidsController {
 	}
 	
 	@GetMapping("/FillSticker")
-	public String FillSticker(HttpServletRequest request, Model model) {
+	public String FillSticker(HttpServletRequest request, Model model) throws ParseException {
 		
 		String fillDate = request.getParameter("write_date");
 		System.out.println(fillDate);
 		
+		SimpleDateFormat dtFormat = new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy년 MM월 dd일");
+		
+		Date formatDate = dtFormat.parse(fillDate);
+		String strDate = simpleDateFormat.format(formatDate);
+		System.out.println("strDate: "+strDate);
+		
 		model.addAttribute("Date",fillDate);
+		model.addAttribute("strDate",strDate);
 		return "kids/fill_diary";
 	}
 	
@@ -270,7 +284,7 @@ public class KidsController {
 	public String selectSticker(HttpServletRequest request,Model model) {
 		
 		int i;
-		HttpSession session = request.getSession();
+		session = request.getSession();
 		
 		String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
 		int kidsNo = ((KidsDto)session.getAttribute("kids")).getKids_no();
@@ -325,7 +339,7 @@ public class KidsController {
 	public String selectSticker_menu(HttpServletRequest request,Model model) {
 		
 		int i;
-		HttpSession session = request.getSession();
+		session = request.getSession();
 		
 		String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
 		int kidsNo = ((KidsDto)session.getAttribute("kids")).getKids_no();
@@ -386,7 +400,7 @@ public class KidsController {
 	@RequestMapping(value = {"gamePoint"}, method = RequestMethod.POST)
 	public String gamePoint(HttpServletRequest request) {
 		
-		HttpSession session = request.getSession();
+		session = request.getSession();
 		
 		int kidsNo = ((KidsDto)session.getAttribute("kids")).getKids_no();
 		

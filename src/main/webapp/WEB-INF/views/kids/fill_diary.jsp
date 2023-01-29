@@ -18,7 +18,7 @@
     <div class="diary">
     <div class="drawing">
 	        <span id="text">오늘 무엇을 했나요?</span>
-	        <span id="text2">${Date } ${kids.kids_nickname }의 그림일기</span>
+	        <span id="text2">${strDate } ${kids.kids_nickname }의 그림일기</span>
     </div>
     <section id="diary_box">
     <canvas id="jsCanvas" class="canvas" width='1000px' height='500px'></canvas>

@@ -113,7 +113,7 @@ body {
         <h1 id="logo"><a href="./main" class="atag">Dear Santa</a></h1>
 
         <ul id="sidemenu">
-             <li>${kidsDto.kids_nickname }야 만나서 반가워!</li>
+             <li>${kids.kids_nickname }야 만나서 반가워!</li>
         </ul>
         </div>
     </div>

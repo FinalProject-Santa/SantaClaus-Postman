@@ -110,7 +110,7 @@
                     success:function(date){
                         console.log("날짜 :"+date);
                         if(date!=""){
-                        	alert("오늘 작성했습니다.");
+                        	alert("오늘은 일기를 작성했어요ㅠㅠ\n일기장을 그람판으로 사용해보세요!");
                         	$("#success_btn").hide();
                             /* $("#success_btn").attr("disabled",true);
                             $("#success_btn").css('backgroundColor','yellow'); */
