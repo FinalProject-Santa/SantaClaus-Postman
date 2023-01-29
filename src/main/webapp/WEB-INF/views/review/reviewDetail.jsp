@@ -3,44 +3,33 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="refresh">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-	crossorigin="anonymous"></script>
-	<script src="https://kit.fontawesome.com/9af41011f1.js" crossorigin="anonymous"></script>
-<title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/review/reviewDetail.css">
-</head>
+
 <body>
+<%@include file="../include/header.jsp" %>
+<%@include file="../include/floatingMenu.jsp" %>
+
+<div class="inner">
 	<div class="container">
-		<div class="row">
+		<div class="col-sm-11" >
+			<div class="col-sm-12">
+						<img alt="" src="/resources/image/uploadFiles/${files.rfile_name}">
+						<br>
+						<br>
 		
-			<h3><i class="fa-sharp fa-solid fa-check"></i>후기</h3>
+			<h3><i class="fa-sharp fa-solid fa-table-list" style="margin-right:5px;"></i>후기</h3>
 			<table class="table table-success">
 				<tr>
-					<th width=20% class="text-center primary">게시글 번호</th>
-					<td width=30% class="text-left">${reviewdetail.review_no }</td>
-					<th width=20% class="text-center ">작성일</th>
-					<td width=30% class="text-left"><fmt:formatDate
-							value="${reviewdetail.review_date}" pattern="yyyy-MM-dd" /></td>
+					<th width=30% height=40px class="text-center ">제목</th>
+					<td width=40% height=40px class="text-left">${reviewdetail.review_title }</td>
+					<th width=30% height=40px class="text-center ">별점</th>
+					<td width=40% height=40px class="text-left"><span class="star-prototype">${reviewdetail.review_best}</span></td>
 				</tr>
 				<tr>
-					<th width=20% class="text-center ">이름</th>
-					<td width=30% class="text-left">${reviewdetail.user_id }</td>
-					<th width=20% class="text-center ">조회수</th>
-					<td width=30% class="text-left">${reviewdetail.review_count }</td>
-				</tr>
-				<tr>
-					<th width=20% class="text-center ">제목</th>
-					<td width=30% class="text-left">${reviewdetail.review_title }</td>
-					<th width=20% class="text-center ">별점</th>
-					<td width=30% class="text-left"><span class="star-prototype">${reviewdetail.review_best}</span>(${reviewdetail.review_best}점)</td>
+					<th width=30% height=40px class="text-center ">이름</th>
+					<td width=40% height=40px class="text-left">${reviewdetail.user_id }</td>
+					<th width=30% height=40px class="text-center ">조회수</th>
+					<td width=40% height=40px class="text-left">${reviewdetail.review_count }</td>
 				</tr>
 				<!-- <c:if test="${vo.filecount>0 }">
 					<tr>
@@ -55,39 +44,45 @@
 					</tr>
 				</c:if>  -->
 				<tr class="view">
-					<td colspan="4" class="text-left" valign="top" height=200>
+					<td colspan="4" class="text-left" valign="top" height=150>
 					<div class="detail">
-						<img alt="" src="/resources/image/uploadFiles/${files.rfile_name}">
-						<br>
-						<br>
-					<div>
+				
 						<p>${reviewdetail.review_content }</p>
-					</div>
-										
+		
 					</div>
 					
 						
 					</td>
 				</tr>
 			</table>
+					
+				<span class="list_area">					
 					<c:if test="${prev ne 0 }">
-						<a href="${pageContext.request.contextPath }/review/reviewDetail/${prev }">이전글</a>
+						<i class="fa-sharp fa-solid fa-caret-down" style="margin-right:5px;"></i><a href="${pageContext.request.contextPath }/review/reviewDetail/${prev }" >이전글</a>
 					</c:if>	
-					
+					<span style="margin-left:768px;"></span>
 					<c:if test="${next ne 0 }">
-						<a href="${pageContext.request.contextPath }/review/reviewDetail/${next }">다음글</a>
+						<i class="fa-sharp fa-solid fa-chevron-up" style="margin-right:5px;"></i><a href="${pageContext.request.contextPath }/review/reviewDetail/${next }" style="">다음글</a>
 					</c:if>						
-					
-						<button class="btn btn-primary"
+				</span>	
+				<span class="btn_area">
+						<button onclick="location.href='/review/reviewList'" class="btn btn-sm btn-warning" >목록</button>
+					<c:if test="${sessionScope.member != null}">
+						<button class="btn"
 							onclick="location.href='/review/reviewUpdate/${reviewdetail.review_no }'">수정</button>
-						<button class="btn btn-primary"
-							onclick="location.href='/review/reviewDelete/${reviewdetail.review_no }'">삭제</button>
-						<a href="/review/reviewList" class="btn btn-sm btn-warning">목록</a>
+						<button class="btn" id="btn_del"
+							onclick="location.href='/review/reviewDelete/${reviewdetail.review_no }'" >삭제</button>
+					</c:if>
+				</span>
+			</div>
+			</div>
 		</div>
-	</div>
+	</div>	
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
-
 	<script>
+	
+	function 
+	
 	$.fn.generateStars = function() {
 	    return this.each(function(i,e){$(e).html($('<span/>').width($(e).text()*16));});
 	};
@@ -95,6 +90,6 @@
 	// 숫자 평점을 별로 변환하도록 호출하는 함수
 	$('.star-prototype').generateStars();
 	</script>
-
+<%@include file="../include/footer.jsp" %>
 </body>
 </html>
