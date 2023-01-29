@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,8 +43,8 @@ public class CustomerController {
 	@Autowired
 	private QnaBiz qnabiz;
 	
-//	@Value("${upload.path}")
-//	private String uploadPath;
+	@Value("${file.upload.directory}")
+	String uploadFileDir;
 	
 	@GetMapping("/faq")
 	public String faq() {
@@ -102,7 +103,7 @@ public class CustomerController {
 		
 		QnaFileDto file = new QnaFileDto();
 		
-		String uploadPath = "C:/Users/Home/git/SantaClaus-Postman/src/main/resources/static/files/";
+		//String uploadPath = "C:/Users/Home/git/SantaClaus-Postman/src/main/resources/static/files/";
 		String sourceFileName = files.getOriginalFilename(); 
         String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
         File destinationFile; 
@@ -112,7 +113,7 @@ public class CustomerController {
         
         do { 
             destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension; 
-            destinationFile = new File(uploadPath + destinationFileName); 
+            destinationFile = new File(uploadFileDir + destinationFileName); 
         } while (destinationFile.exists()); 
         
         destinationFile.getParentFile().mkdirs(); 
@@ -123,7 +124,7 @@ public class CustomerController {
 		 file.setQna_no(dto.getQna_no());
          file.setFile_name(destinationFileName);
          file.setFile_oname(sourceFileName);
-         file.setFile_path(uploadPath);
+         file.setFile_path(uploadFileDir);
          
          qnabiz.insertFile(file); 
          return "redirect:/customer/qnalist";

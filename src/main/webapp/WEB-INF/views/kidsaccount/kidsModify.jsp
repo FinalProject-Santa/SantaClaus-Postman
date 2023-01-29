@@ -95,7 +95,7 @@
                           <img src="/resources/files/${list[i].kids_letter_img}" class="image-box" />
                          </c:if>
                                 
-                        <c:if test="${empty list[i].kids_thumbnail}">
+                        <c:if test="${empty list[i].kids_letter_img}">
                         <img src="https://i0.wp.com/adventure.co.kr/wp-content/uploads/2020/09/no-image.jpg" class="image-box" />
                          </c:if>
                
