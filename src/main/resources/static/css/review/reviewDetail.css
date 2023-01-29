@@ -1,8 +1,36 @@
 @charset "UTF-8";
 
+.inner{
+    width: 1400px;
+    margin: 0 auto;
+}
+.container{
+	padding-top: 150px;
+}
+.col-sm-11{
+	width: 900px;
+	margin: 0px auto; 
+}
+
+.col-sm-12{
+	display: flex;
+	flex-direction: column;
+
+	width: 900px;
+	align-items: center;
+	padding-top: 10px;
+	margin: 0px auto; 
+	
+}
 .row {
-	margin: 0px auto;
-	width: 700px;
+	
+}
+a{
+	text-decoration: none;
+    color: black;
+}
+h3{
+
 }
 
 table{
@@ -16,9 +44,21 @@ th, td{
 }
 
 
-h1 {
-	text-align: left;
+h3 {
+	margin-right: auto;
 }
+
+.list_area{
+	margin-right: auto;
+	margin-top: 7px;
+}
+
+.btn_area{
+	margin-left: auto;
+	margin-top: 7px;
+}
+
+
 span.star-prototype, span.star-prototype > * {
     height: 16px; 
     background: url(http://i.imgur.com/YsyS5y8.png) 0 -16px repeat-x;

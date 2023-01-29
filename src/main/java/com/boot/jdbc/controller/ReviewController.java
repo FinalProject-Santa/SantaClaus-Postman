@@ -81,7 +81,6 @@ public class ReviewController {
 
 	@GetMapping("/reviewinsertform")
 	public String rinsertform() {
-		// 세션에 담긴 값 꺼내기
 
 		return "review/reviewInsertForm";
 		
