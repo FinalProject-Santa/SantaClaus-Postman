@@ -67,7 +67,7 @@ body{
     height: 480px;
     display: grid; /*항상 일정한 비율로 개수가 정렬이 되도록 */
     grid-template-columns: repeat(6, 1fr);
-    margin-left: 139px;
+    margin-left: 140px;
     margin-top: 0;
 }
 .num{
