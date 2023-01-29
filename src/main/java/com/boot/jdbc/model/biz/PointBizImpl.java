@@ -1,13 +1,14 @@
 package com.boot.jdbc.model.biz;
 
 import java.util.List;
-import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.boot.jdbc.model.dao.PointMapper;
 import com.boot.jdbc.model.dto.Criteria;
+import com.boot.jdbc.model.dto.MemberDto;
 import com.boot.jdbc.model.dto.PointDto;
 
 @Service
@@ -20,19 +21,6 @@ public class PointBizImpl implements PointBiz{
 	public int signUpPoint(String user_id) {
 		return pointMapper.signUpPoint(user_id);
 	}
-	
-	@Override
-	public int pointAlll(String user_id) {
-		return pointMapper.pointAll(user_id);
-	}
-	
-	
-	
-
-//	@Override
-//	public List<PointDto> selectList() {
-//		return pointMapper.selectList();
-//	}
 
 	@Override
 	public int pointAll(String user_id) {
@@ -46,14 +34,19 @@ public class PointBizImpl implements PointBiz{
 	}
 
 	@Override
-	public List<PointDto> selectList(Criteria cri) {
+	public List<PointDto> selectList(@Param("memberDto")MemberDto memberDto, @Param("cri")Criteria cri) {
 		// TODO Auto-generated method stub
-		return pointMapper.selectList(cri);
+		return pointMapper.selectList(memberDto, cri);
 	}
 
 	@Override
 	public int insertPoint(PointDto pointDto) {
 		return pointMapper.insertPoint(pointDto);
+	}
+
+	@Override
+	public PointDto selectpoint(String user_id) {
+		return pointMapper.selectpoint(user_id);
 	}
 	
 

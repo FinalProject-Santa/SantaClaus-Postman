@@ -23,44 +23,44 @@ import com.boot.jdbc.model.dto.PointDto;
 @Controller
 @RequestMapping("/mypage")
 public class MypageController {
-	
+
 	@Autowired
 	private MemberBiz memberBiz;
 
 	@GetMapping("/main")
 	public String mainpage(Model model, MemberDto memberDto, String user_id, HttpServletRequest request) {
-		HttpSession session = request.getSession();				
-		MemberDto memberdto = ((MemberDto)session.getAttribute("member"));
-		if(memberdto!=null) {
-			model.addAttribute("memberdto",memberBiz.infoUpdateform(user_id));
-			model.addAttribute("memberdto",memberdto);
+		HttpSession session = request.getSession();
+		MemberDto memberdto = ((MemberDto) session.getAttribute("member"));
+		if (memberdto != null) {
+			model.addAttribute("memberdto", memberBiz.infoUpdateform(user_id));
+			model.addAttribute("memberdto", memberdto);
 			return "mypage/mypage";
-		}else {
-			return "redirect:/main/loginForm";
-		}
-	}
-	
-	//회원 정보 수정 페이지
-	@GetMapping("/infoUpdateform")
-	public String infoUpdateForm(Model model, MemberDto memberDto, String user_id, HttpServletRequest request) {
-		HttpSession session = request.getSession();	
-		MemberDto memberdto = ((MemberDto)session.getAttribute("member"));
-		if(memberdto!=null) {
-			model.addAttribute("memberdto",memberBiz.infoUpdateform(user_id));
-			model.addAttribute("memberdto",memberdto);
-			return "mypage/myinfoUpdate";
-		}else {
+		} else {
 			return "redirect:/main/loginForm";
 		}
 	}
 
-	//주문 조회 페이지
+	// 회원 정보 수정 페이지
+	@GetMapping("/infoUpdateform")
+	public String infoUpdateForm(Model model, MemberDto memberDto, String user_id, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberDto memberdto = ((MemberDto) session.getAttribute("member"));
+		if (memberdto != null) {
+			model.addAttribute("memberdto", memberBiz.infoUpdateform(user_id));
+			model.addAttribute("memberdto", memberdto);
+			return "mypage/myinfoUpdate";
+		} else {
+			return "redirect:/main/loginForm";
+		}
+	}
+
+	// 주문 조회 페이지
 	@Autowired
 	private OrderInfoBiz orderBiz;
-	
+
 	@GetMapping("/order")
 	public String order(Model model) {
-		model.addAttribute("orderlist",orderBiz.orderList());
+		model.addAttribute("orderlist", orderBiz.orderList());
 		return "mypage/myorder";
 	}
 //	@RequestMapping("/selectOrder")
@@ -68,34 +68,34 @@ public class MypageController {
 //		model.addAttribute("orderlist",orderBiz.selectOrder());
 //		return "mypage/myorder";
 //	}
-	
-	
-	
-	//마이포인트 페이지
+
+	// 마이포인트 페이지
 	@Autowired
 	private PointBiz pointBiz;
-	
+
 	@RequestMapping(value = "/point")
-	public ModelAndView point(Model model, Criteria cri) throws Exception {
+	public ModelAndView point(Criteria cri, HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView("/mypage/mypoint");
-		
-		model.addAttribute("list",pointBiz.selectList(cri));
-		
-		String user_id = "tmdwpckd"; //세션 연결
-		model.addAttribute("mypoint", pointBiz.pointAlll(user_id));
-		
-		System.out.println(pointBiz.pointAlll(user_id));
-		
+
+		HttpSession session = request.getSession();
+		MemberDto memberDto = ((MemberDto)session.getAttribute("member"));
+//		PointDto pointDto = pointBiz.selectpoint(user_id);
+//		model.addAttribute("list", pointDto );
+		System.out.println(memberDto.getUser_id());
+
+		mav.addObject("mypoint", pointBiz.pointAll(memberDto.getUser_id()));
+		System.out.println("페이지:"+cri.getPageStart());
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(pointBiz.countBoardListTotal());
-		List<PointDto> list = pointBiz.selectList(cri);
-		
+		List<PointDto> list = pointBiz.selectList(memberDto, cri);
+//		model.addAttribute("list",list);
+
+		System.out.println(list);
+
 		mav.addObject("list", list);
-		
-		mav.addObject("pageMaker",pageMaker);
-		
-//		model.addAttribute("myPoint",pointBiz.pointAlll(user_id));
+		mav.addObject("pageMaker", pageMaker);
+
 		return mav;
 	}
 	
@@ -108,7 +108,6 @@ public class MypageController {
 	
 	
 	
+	
+
 }
-
-
-
