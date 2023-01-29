@@ -25,26 +25,49 @@ body{
     font-size: 55px;
     margin-bottom: 0;
     margin-top: 160px;
-    margin-left: 85px;
+    margin-left: 90px;
+    text-shadow: 3px 2px 2px black;
+    font-weight: 600;
+}
+.title2{
+    font-size: 55px;
+    margin-bottom: 0;
+    margin-top: 160px;
+    margin-left: 105px;
     text-shadow: 3px 2px 2px black;
     font-weight: 600;
 }
 .text{
     font-size: 35px;
-    margin-top: 240px;
-    margin-left: -200px;
     text-shadow: 2px 1px 1px black;
     font-weight: 600;
+    margin-top: 13px;
+    text-align: center;
+}
+.text2{
+    font-size: 35px;
+    text-shadow: 2px 1px 1px black;
+    font-weight: 600;
+    margin-top: 13px;
+    text-align: center;
 }
 .main{
     display: flex;
 }
-.sticker_Dec, .sticker_Jan{
+.sticker_Dec{
     width: 500px;
     height: 480px;
     display: grid; /*항상 일정한 비율로 개수가 정렬이 되도록 */
     grid-template-columns: repeat(6, 1fr);
-    margin-left: 155px;
+    margin-left: 125px;
+    margin-top: 0;
+}
+.sticker_Jan{
+    width: 500px;
+    height: 480px;
+    display: grid; /*항상 일정한 비율로 개수가 정렬이 되도록 */
+    grid-template-columns: repeat(6, 1fr);
+    margin-left: 139px;
     margin-top: 0;
 }
 .num{

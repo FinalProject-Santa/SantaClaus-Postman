@@ -9,6 +9,7 @@
     
     	$(function(){
     		$('.sticker_Jan').hide();
+    		$('#month2').hide();
     	});
     	
     </script>
@@ -25,11 +26,14 @@
 	
 	        <p id="kids"><span style="color: rgb(255, 225, 0);">${kids.kids_nickname }의</span> <span style="color: rgb(252, 0, 126); font-size: 75px;">칭찬</span><span style="color: rgb(49, 172, 254);">스티커판</span></p>
 	    <div class="main">
-	        <div id="month"><p class="title" style="color: rgb(252, 0, 126);">12월</p></div>
-	        <p class="text" style="color: rgb(49, 172, 254);">칭찬스티커 개수: ${JanSize }개</p>
+	    
+	        <div id="month"><p class="title" style="color: rgb(252, 0, 126);">12월</p>
+	        <p class="text" style="color: rgb(49, 172, 254);">칭찬스티커 개수: 15개</p> <!-- ${DecSize } --></div>
+	        
+			<div id="month2"><p class="title2" style="color: rgb(252, 0, 126);">1월</p>
+	        <p class="text2" style="color: rgb(49, 172, 254);">칭찬스티커 개수: ${JanSize }개</p></div>
 
 
-	    <c:out value="${DecSize }"></c:out>
 	    <div class="sticker_Dec">
 	    	<c:set var="j" value="0"/>
 	       	<c:forEach var="i" items="${totalDay }">
@@ -90,13 +94,16 @@
 	$("#Dec_btn").on("click",function(){
 		$(".sticker_Jan").hide();
 		$(".sticker_Dec").show();
-		$(".title").text("12월");
+		$('#month').show();
+		$('#month2').hide();
+
 	});
 	
 	$("#Jan_btn").on("click",function(){
 		$(".sticker_Dec").hide();
 		$(".sticker_Jan").show();
-		$(".title").text("01월");
+		$('#month').hide();
+		$('#month2').show();
 	});
 	
 	$(".Dec_num").on("click",function(){
