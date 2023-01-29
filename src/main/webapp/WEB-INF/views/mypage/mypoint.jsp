@@ -45,25 +45,16 @@
 						<th>주문번호</th>
 						<th>사용/적립 내용</th>
 					</tr>
-					<c:choose>
-						<c:when test="${empty list}">
-							<tr>
-								<td colspan="5" align="center">----- 적립된 포인트가 없습니다 -----</td>
-							</tr>
-						</c:when>
-						<c:otherwise>
-							<c:forEach var="dto" items="${list}">
-								<tr>
-									<td>${dto.point_purpose}</td>
-									<td><fmt:formatDate pattern="yyyy-MM-dd"
-											value="${dto.point_date}" /></td>
-									<td><span id="save">${dto.point}</span></td>
-									<td>${dto.order_no}</td>
-									<td>${dto.point_content}</td>
-								</tr>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
+					<c:forEach var="list" items="${list}">
+						<tr>
+							<td>${list.point_purpose}</td>
+							<td><fmt:formatDate pattern="yyyy-MM-dd"
+									value="${list.point_date}" /></td>
+							<td><span id="save">${list.point}</span></td>
+							<td>${list.order_no}</td>
+							<td>${list.point_content}</td>
+						</tr>
+					</c:forEach>
 					<tr id="paging" >
 						<td colspan="6" align="right">
 							<ul class="btn-group pagination">

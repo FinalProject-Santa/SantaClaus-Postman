@@ -1,13 +1,14 @@
 package com.boot.jdbc.model.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.boot.jdbc.model.dto.Criteria;
+import com.boot.jdbc.model.dto.MemberDto;
 import com.boot.jdbc.model.dto.PointDto;
 
 @Mapper
@@ -23,12 +24,15 @@ public interface PointMapper {
 //	@Select(" SELECT * FROM POINT ORDER BY ORDER_NO DESC ")
 //	List<PointDto> selectList();
 
-	@Select("SELECT COUNT(*) FROM POINT")
+	@Select(" SELECT COUNT(*) FROM POINT ")
 	int countBoardList();
 
-	@Select("SELECT * FROM POINT ORDER BY ORDER_NO DESC LIMIT #{pageStart}, #{perPageNum}")
-	List<PointDto> selectList(Criteria cri);
+	@Select(" SELECT * FROM `POINT` WHERE USER_ID=#{memberDto.user_id} ORDER BY ORDER_NO DESC LIMIT #{cri.pageStart}, #{cri.perPageNum} ")
+	List<PointDto> selectList(@Param("memberDto")MemberDto memberDto, @Param("cri")Criteria cri);
 
 	@Insert("INSERT INTO POINT VALUES(NULL, #{order_no}, #{user_id}, #{point}, NOW(), #{point_content}, #{point_purpose}, #{point_all})")
 	int insertPoint(PointDto pointDto);
+
+	@Select(" SELECT * FROM POINT WHERE USER_ID=#{user_id} ORDER BY POINT_NO DESC ")
+	PointDto selectpoint(String user_id);
 }

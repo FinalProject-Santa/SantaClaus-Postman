@@ -22,7 +22,7 @@
 	      	<a href="/mypage/infoUpdateform" id="btn">
 	      		<b>회원정보 수정/탈퇴</b>
 	      	</a>
-            <img id="profile" src="/resources/image/profile/${memberdto.rfileName} "></img>
+            <img id="profile" src="/resources/image/JMLprofile/${memberdto.rfileName} "></img>
             
             
             <div id="section1" class="section">

@@ -64,7 +64,7 @@ public class MemberController {
         String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
         File destinationFile; 
         String destinationFileName;
-        String fileUrl = "C:\\Users\\parkjiyoung\\git\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\member-account\\";
+        String fileUrl = "C:\\Users\\user\\git\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\JMLprofile\\";
         
         do { 
             destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension; 
@@ -194,7 +194,7 @@ public class MemberController {
 		HttpSession session = request.getSession();
 		MemberDto memberdto = ((MemberDto)session.getAttribute("member"));
 		
-		String uploadPath = "C:\\workspace\\finalproject\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\profile\\";
+		String uploadPath = "C:\\Users\\user\\git\\SantaClaus-Postman\\src\\main\\resources\\static\\image\\JMLprofile\\";
 		
 		if(files.getOriginalFilename()!= null && !files.getOriginalFilename().equals("")) {
 			String sourcefileName = files.getOriginalFilename(); 
