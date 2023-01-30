@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.boot.jdbc.model.dao.OrderInfoMapper;
 import com.boot.jdbc.model.dto.LetterDto;
 import com.boot.jdbc.model.dto.MemberDto;
+import com.boot.jdbc.model.dto.OrderDto;
 import com.boot.jdbc.model.dto.OrderInfoDto;
 
 @Service
@@ -20,6 +21,11 @@ public class OrderInfoBizImpl implements OrderInfoBiz{
 	@Override
 	public List<OrderInfoDto> orderList(@Param("memberDto")MemberDto memberDto, @Param("startdate")String startdate, @Param("enddate")String enddate) {
 		return orderMapper.orderList(memberDto, startdate, enddate);
+	}
+
+	@Override
+	public List<OrderDto> orderDtoList(String user_id) {
+		return orderMapper.orderDtoList(user_id);
 	}
 
 //	@Override

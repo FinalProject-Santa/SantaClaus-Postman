@@ -1,20 +1,28 @@
 package com.boot.jdbc.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.boot.jdbc.model.biz.CartBiz;
 import com.boot.jdbc.model.biz.MemberBiz;
+import com.boot.jdbc.model.biz.OrderBiz;
 import com.boot.jdbc.model.biz.OrderInfoBiz;
 import com.boot.jdbc.model.biz.PointBiz;
 import com.boot.jdbc.model.dto.CartDto;
@@ -22,6 +30,7 @@ import com.boot.jdbc.model.dto.Criteria;
 import com.boot.jdbc.model.dto.LetterDto;
 import com.boot.jdbc.model.dto.MemberDto;
 import com.boot.jdbc.model.dto.OptionDto;
+import com.boot.jdbc.model.dto.OrderDto;
 import com.boot.jdbc.model.dto.PageMaker;
 import com.boot.jdbc.model.dto.PointDto;
 
@@ -32,29 +41,85 @@ public class MypageController {
 	@Autowired
 	private MemberBiz memberBiz;
 
+	@Value("${file.upload.directory}")
+	String fileUrl;
+	
 	//장바구니 페이지 이동
 	@Autowired
 	private CartBiz cartBiz;
 	
+	//주문 biz
+	@Autowired
+	private OrderInfoBiz orderInfoBiz;
+	
 	List<CartDto> cartDtoList = new ArrayList<CartDto>();
 	String user_id;
 		
+	//회원정보 수정
+	@PostMapping("/main")
+	public String myinfoUpdate(Model model, MemberDto dto,HttpSession session1, String user_id, HttpServletRequest request, @RequestPart MultipartFile files) throws Exception {
+		
+		session1.setAttribute("member", dto);
+		
+		HttpSession session = request.getSession();
+		MemberDto memberdto = ((MemberDto)session.getAttribute("member"));
+		
+		if(files.getOriginalFilename()!= null && !files.getOriginalFilename().equals("")) {
+			String sourcefileName = files.getOriginalFilename(); 
+			
+			new File(fileUrl + request.getParameter("rfileName")).delete();
+			// new File(uploadPath + request.getParameter("rfileName")).renameTo(new File(uploadPath + "test.jpg"));
+			
+            String sourcefileNameExtension = FilenameUtils.getExtension(sourcefileName).toLowerCase(); 
+            File destinationFile; 
+            String destinationFileName; 
+            do { 
+                destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourcefileNameExtension; 
+                destinationFile = new File(fileUrl + destinationFileName); 
+            } while (destinationFile.exists()); 
+            
+            destinationFile.getParentFile().mkdirs(); 
+            files.transferTo(destinationFile);
+            
+            dto.setRfileName(destinationFileName);
+            dto.setRfileOriName(sourcefileName);
+		}else {  // 새로운 파일이 등록되지 않았다면
+			  // 기존 이미지를 그대로 사용
+			dto.setRfileName(request.getParameter("rfileName"));
+		}
+			  
+		dto.setUser_id(request.getParameter("user_id"));
+         
+		dto.setRfileUrl(fileUrl);
+		dto.setPassword(request.getParameter("password"));
+		dto.setName(request.getParameter("name"));
+		dto.setPost_code(request.getParameter("post_code"));
+		dto.setDefault_addr(request.getParameter("default_addr"));
+		dto.setDetail_addr(request.getParameter("detail_addr"));
+		dto.setPhone(request.getParameter("phone"));
+		dto.setEmail(request.getParameter("email"));
+		dto.setPhone(request.getParameter("phone"));
+        
+		memberBiz.myinfoUpdate(dto);
+		model.addAttribute("memberdto",memberBiz.infoUpdateform(user_id));
+		return "main/main";
+	}
 	@GetMapping("/main")
-	public String mainpage(Model model, MemberDto memberDto, String user_id, HttpServletRequest request) {
+	public String mainpage(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		MemberDto memberdto = ((MemberDto) session.getAttribute("member"));
-		if (memberdto != null) {
-			model.addAttribute("memberdto", memberBiz.infoUpdateform(user_id));
-			model.addAttribute("memberdto", memberdto);
-			return "mypage/mypage";
-		} else {
-			return "redirect:/main/loginForm";
-		}
+		String user_id = memberdto.getUser_id();
+		System.out.println("zzzzzzzzzzzzzzzzz" +  user_id);
+		System.out.println("test1 : " + memberBiz.infoUpdateform(user_id).getRfileName());
+		System.out.println("test2 : " + memberBiz.infoUpdateform(user_id).getRfileUrl());
+		model.addAttribute("memberdto", memberBiz.infoUpdateform(user_id));
+		return "mypage/mypage";
 	}
 
 	// 회원 정보 수정 페이지
 	@GetMapping("/infoUpdateform")
-	public String infoUpdateForm(Model model, MemberDto memberDto, String user_id, HttpServletRequest request) {
+	public String infoUpdateForm(Model model,HttpSession session1, MemberDto memberDto, String user_id, HttpServletRequest request) {
+//		session1.setAttribute("member", memberDto);
 		HttpSession session = request.getSession();
 		MemberDto memberdto = ((MemberDto) session.getAttribute("member"));
 		if (memberdto != null) {
@@ -66,12 +131,11 @@ public class MypageController {
 		}
 	}
 
-	// 주문 조회 페이지
-	@Autowired
-	private OrderInfoBiz orderBiz;
-
 	@GetMapping("/order")
-	public String order(Model model) {
+	public String order(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String user_id = ((MemberDto) session.getAttribute("member")).getUser_id();
+		List<OrderDto> orderDtoList =  orderInfoBiz.orderDtoList(user_id);
 //		model.addAttribute("orderlist", orderBiz.orderList());
 		return "mypage/myorder";
 	}

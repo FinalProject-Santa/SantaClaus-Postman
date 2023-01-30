@@ -195,60 +195,6 @@ public class MemberController {
 ////	}
 	 
 
-	//회원정보 수정
-	@PostMapping("/myinfoUpdate")
-	public String myinfoUpdate(Model model, MemberDto dto, String user_id, HttpServletRequest request, @RequestPart MultipartFile files) throws Exception {
-		HttpSession session = request.getSession();
-		MemberDto memberdto = ((MemberDto)session.getAttribute("member"));
-		
-		
-		if(files.getOriginalFilename()!= null && !files.getOriginalFilename().equals("")) {
-			String sourcefileName = files.getOriginalFilename(); 
-			
-			new File(fileUrl + request.getParameter("rfileName")).delete();
-			// new File(uploadPath + request.getParameter("rfileName")).renameTo(new File(uploadPath + "test.jpg"));
-			
-            String sourcefileNameExtension = FilenameUtils.getExtension(sourcefileName).toLowerCase(); 
-            File destinationFile; 
-            String destinationFileName; 
-            do { 
-                destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourcefileNameExtension; 
-                destinationFile = new File(fileUrl + destinationFileName); 
-            } while (destinationFile.exists()); 
-            
-            destinationFile.getParentFile().mkdirs(); 
-            files.transferTo(destinationFile);
-            
-            dto.setRfileName(destinationFileName);
-            dto.setRfileOriName(sourcefileName);
-		}else {  // 새로운 파일이 등록되지 않았다면
-			  // 기존 이미지를 그대로 사용
-			dto.setRfileName(request.getParameter("rfileName"));
-		}
-			  
-		dto.setUser_id(request.getParameter("user_id"));
-         
-		dto.setRfileUrl(fileUrl);
-		dto.setPassword(request.getParameter("password"));
-		dto.setName(request.getParameter("name"));
-		dto.setPost_code(request.getParameter("post_code"));
-		dto.setDefault_addr(request.getParameter("default_addr"));
-		dto.setDetail_addr(request.getParameter("detail_addr"));
-		dto.setPhone(request.getParameter("phone"));
-		dto.setEmail(request.getParameter("email"));
-		dto.setPhone(request.getParameter("phone"));
-        
-		model.addAttribute("memberdto",biz.infoUpdateform(user_id));
-		model.addAttribute("memberdto",memberdto);
-		
-		if(biz.myinfoUpdate(dto)>0) {
-			System.out.println("회원정보 수정 완료");
-			return "mypage/mypage";
-		}else {
-			System.out.println("회원정보 수정 실패");
-			return "redirect:/mypage/myinfoUpdate/"+request.getParameter("user_id");
-		}
-	}
 	 
 	@GetMapping("/delete")
 	public String delete(HttpServletRequest request) {
