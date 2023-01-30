@@ -15,8 +15,8 @@ import com.boot.jdbc.model.dto.DiaryDto;
 @Mapper
 public interface StickerMapper {
 	
-	@Select("SELECT WRITE_DATE FROM DIARY WHERE USER_ID=#{userId}")
-	ArrayList<String> selectStickerDate(String userId);
+	@Select("SELECT WRITE_DATE FROM DIARY WHERE KIDS_NO=#{kidsNo}")
+	ArrayList<String> selectStickerDate(int kidsNo);
 	
 	@Select("SELECT COUNT(*) FROM DIARY WHERE KIDS_NO=#{kidsNo}")
 	int selectDiary(int kidsNo);

@@ -111,7 +111,12 @@ body {
                     	<li><a href="../tree/decotree" class="atag">Tree</a></li>
                     	<li><a href="../review/reviewList" class="atag">Review</a></li>
                     	<li id="nbsp"><a href="../mypage/main" class="atag">My Page</a></li>
-                        <li><a href="#about" id="scroll_move" class="atag">About</a></li>
+                    	<li><a href="#about" id="scroll_move" class="atag">About</a></li>
+                    	<c:choose>
+	      				<c:when test="${sessionScope.member != null }">
+                        <li onclick="location.href='/main/main_profile'" class="atag">Profile</li>
+                        </c:when>
+                        </c:choose>
                     </ul>
                 </div>
                 </div>
