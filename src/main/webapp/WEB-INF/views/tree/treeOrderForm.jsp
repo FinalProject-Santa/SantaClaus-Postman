@@ -2,20 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
 
-.content {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	column-gap: 30px;
-	row-gap: 30px;
-}
-</style>
+
+<link rel="stylesheet" href="/resources/css/nytree/treeorderform.css">
+<body>
+<%@include file="../include/header.jsp" %>
+<%@include file="../include/floatingMenu.jsp"%>
+
 <script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <!-- iamport.payment.js -->
@@ -239,9 +232,12 @@
 		$("#payment").click(function(){
 			email();
 			phone();
-			
+			$('#form').submit();
 			const data = {
+				 	user_email : $("#user_email").val(),
+					user_name : $("#user_name").val(),
 					orderNum : createOrderNum(),
+					name : "크리스마스 트리",
 					price : parseInt($("input[name=total_price]").val())
 				}
 				console.log("주문번호 : " + data.orderNum);
@@ -251,9 +247,10 @@
 				// KG이니시스
 				IMP.request_pay({
 				    pg : 'html5_inicis.INIpayTest',
+				    buyer_name : data.user_name,
+				    buyer_email : data.user_email,
 				    merchant_uid: data.orderNum, // 주문번호
-				    name : "크리스마스 트리",
-				    //amount : data.price,
+				    name : data.name,
 				    amount : 100,
 				    buyer_tel : '010-1234-5678',   //필수 파라미터 입니다.
 				    m_redirect_url : '{모바일에서 결제 완료 후 리디렉션 될 URL}',
@@ -263,7 +260,11 @@
 				    }, */
 				}, function(rsp) { // callback 로직
 					if(rsp.success){
+						console.log(rsp);
+						$("input[name=pay_method]").val(rsp.pay_method);
+						
 						$('#form').submit();
+
 					}
 					
 				});
@@ -278,6 +279,8 @@
 </script>
 </head>
 <body>
+<div class="inner">
+  <div class="flexCon">
 	<div class="title">
         <h2>주문서 작성</h2>
     </div>
@@ -305,7 +308,7 @@
                <tr>
                    <td><input type="checkbox" name="chkBox"></td>
                    <td>트리</td>
-                   <td><img src="/resources/image/treeimg/트리1.png"></td>
+                   <td><img src="/resources/image/treeimg/트리1.png" id="treeImg"></td>
                    <td>
                        <p >
                            크리스마스 트리
@@ -355,6 +358,7 @@
                		<button type="button" id="deleteOption">삭제</button>
                	</td>
                    <td colspan="7">
+                   <span style="padding-left:550px;"></span>
                    	<span id="deliveryType">[기본 배송]</span>
               			<input type='hidden' value="${treePrice + totalOptionPrice }"/>
               			<span id="deliveryCharge">
@@ -382,12 +386,18 @@
                </tbody>
            </table>
        </div>
+       <br>
+       <br>
        <div class="title">
            <h3>배송 정보</h3>
        </div>
        <form action="/tree/treeOrder" method="post" id="form">
            <table border="1">
                <tbody>
+               <colgroup>
+                   <col width="120"/>		
+                   <col width="1000"/>		
+               </colgroup>
                    <tr>
                        <th>배송지 선택</th>
                        <td>
@@ -441,7 +451,8 @@
                    <tr>
                            <th>배송메세지</th>
                            <td><textarea name="delivery_message"></textarea></td>
-                   </tr>		
+                   </tr>	
+                   				
                    <!-- <tr>
                        <th>배송일</th>
                        <td>
@@ -451,6 +462,8 @@
                	</tr> -->
                </tbody>
            </table>
+            <br>
+       		<br>
 	       <div class="title">
 	           <h3>결제 금액</h3>
 	       </div>
@@ -460,18 +473,18 @@
 	                   <colgroup>
 	                       <col width="300"/>		
 	                       <col width="300"/>		
-	                       <col width="300"/>
+	                       <col width="520"/>
 	                   </colgroup>
 	                   <tr>
-	                       <th>총 주문 금액</th>
-	                       <th>배송비</th>
-	                       <th>총 결제 금액</th>
+	                       <th bgcolor="#F2F2F2">총 주문 금액</th>
+	                       <th bgcolor="#F2F2F2">배송비</th>
+	                       <th bgcolor="#F2F2F2">총 결제 금액</th>
 	                   </tr>
 	                   <tr>
-	                       <td id="paymentInfo_totalPrice">
+	                       <td id="paymentInfo_totalPrice"  style="text-align: center;">
 							<fmt:formatNumber type="number" value="${treePrice + totalOptionPrice }"/>원
 						</td>
-	                       <td id="paymentInfo_deliveryCharge">
+	                       <td id="paymentInfo_deliveryCharge" style="text-align: center;">
 	                       	<c:choose>
 	                			<c:when test="${treePrice + totalOptionPrice ge 20000}">
 	                				0원
@@ -481,7 +494,7 @@
 	                			</c:otherwise>
 	              				</c:choose>
 						</td>
-	                       	<td id="paymentInfo_totalPricePlusDeliv">
+	                       	<td id="paymentInfo_totalPricePlusDeliv" style="text-align: center;">
 								<c:choose>
 		                			<c:when test="${treePrice + totalOptionPrice ge 20000}">
 										<input type="hidden" value="${treePrice + totalOptionPrice }">
@@ -495,9 +508,9 @@
 							</td>
 	                   </tr>
 	                   <tr>
-	                       <th>포인트</th>
+	                       <th bgcolor="#F2F2F2">포인트</th>
 	                       <td colspan="2">
-	                           <p>
+	                           <p align="left" style="margin-left:100px; margin-top:20px;">
 	                           	<c:choose>
 	                            	<c:when test="${myPoint >= 1000}">
 	                            		<input type="text" id="myPoint" value="${myPoint}">원 (내 포인트 : <fmt:formatNumber type='number' value='${myPoint}'/>pt)
@@ -516,7 +529,10 @@
 	                   </tr>
 	               </tbody>
 	           </table>
-	           <div style="margin-left: 100px;">
+	       </div>
+	       <br>
+	       <br>
+	           <div style="margin-left:">
 	               <p>
                   	<strong>최종결제 금액</strong>
 	               	<span id="paymentInfo_totalPriceMinusPoint">
@@ -568,11 +584,16 @@
 	                   <label for="agree">결제정보를 확인하였으며, 구매진행에 동의합니다.</label>
 	               </p>
                    <input type="hidden" name="order_no">
+                   <input type="hidden" name="pay_method">
+                   <input type="hidden" id="user_name" value="${memberDto.name }">
+                   <input type="hidden" id="user_email" value="${memberDto.email }">
                    <input type="hidden" name="total_price" value="${treePrice + totalOptionPrice + 2500 }">
 	               <p class="payBtn">
 	                   <input type="button" value="결제하기" id="payment">
 	               </p>
 	           </div>
-	       </div>
        </form>
+    </div>
+</div>
+<%@include file="../include/footer.jsp" %>
 </body>
