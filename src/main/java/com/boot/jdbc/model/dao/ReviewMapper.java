@@ -46,7 +46,7 @@ public interface ReviewMapper {
 	@Insert("INSERT INTO RFILES (RF_NO, REVIEW_NO, RFILE_NAME, RFILE_ORINAME, RFILE_URL) VALUES (NULL,#{review_no},#{rfile_name},#{rfile_oriname},#{rfile_url})")
 	int fileInsert(rFileDto file);
 	
-	@Update("UPDATE REVIEW SET REVIEW_TITLE=#{review_title}, REVIEW_BEST=#{review_best}, REVIEW_CONTENT=#{review_content} WHERE REVIEW_NO=#{review_no} ")
+	@Update("UPDATE REVIEW SET REVIEW_TITLE=#{review_title}, REVIEW_BEST=#{review_best}, REVIEW_CONTENT=#{review_content}, RIMG=#{rimg} WHERE REVIEW_NO=#{review_no} ")
 	int reviewUpdate(ReviewDto reviewdto);
 
 	@Update("UPDATE RFILES SET RFILE_NAME=#{rfile_name}, RFILE_ORINAME=#{rfile_oriname} WHERE REVIEW_NO=#{review_no}")
