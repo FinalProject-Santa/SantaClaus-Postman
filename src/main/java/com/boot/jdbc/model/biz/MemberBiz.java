@@ -21,9 +21,13 @@ public interface MemberBiz {
 	// 비밀번호 찾기
 	public String findPw(String userId);
 	public MemberDto infoUpdateform(String user_id);
+	// 회원정보 수정
 	public int myinfoUpdate(MemberDto dto);
+	// 계정 삭제
 	public int delete(String user_id);
+	// 비밀번호 동일 확인
 	public String pwChk(String user_id);
+	// 핸드폰번호 동일 확인
 	public String phoneChk(String user_id);
 	
 	public void logout(HttpSession session);

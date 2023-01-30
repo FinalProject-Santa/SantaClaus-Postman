@@ -101,7 +101,7 @@ public class OrderController {
 			myPoint = myPoint - orderDto.getUse_point();
 			
 			// 사용 포인트 DB 데이터 추가
-			pointDto.setPoint(orderDto.getUse_point());
+			pointDto.setPoint(-orderDto.getUse_point());
 			pointDto.setPoint_all(myPoint);
 			pointDto.setPoint_content("포인트 사용");
 			pointDto.setPoint_purpose("사용");
@@ -109,7 +109,7 @@ public class OrderController {
 		}
 		
 		// 적립 포인트 DB 데이터 추가
-		pointDto.setPoint(orderDto.getSave_point());
+		pointDto.setPoint(+orderDto.getSave_point());
 		pointDto.setPoint_all(myPoint + orderDto.getSave_point());
 		pointDto.setPoint_content("상품 구매");
 		pointDto.setPoint_purpose("적립");		

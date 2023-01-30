@@ -129,13 +129,13 @@ body {
 	      	<c:when test="${sessionScope.member != null }">
 		      	<li><span>${member.name }님</span> 반갑습니다🎅</li>
 		      	<li onclick="location.href='/main/logout'">Log Out</li>
+		      	<li><a href="../mypage/mycart" class="atag">Cart</a></li>
 		      	<script>
                   document.getElementById('logo').style.marginLeft = "150px";
                </script>
 	      	</c:when>
 	      	<c:otherwise>
 	      		<li onclick="location.href='/main/loginForm'">Log In</li>
-            	<li><a href="../mypage/mycart" class="atag">Cart</a></li>
 	      	</c:otherwise>
 	    </c:choose>
         </ul>

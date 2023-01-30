@@ -2,18 +2,18 @@ package com.boot.jdbc.model.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import com.boot.jdbc.model.dto.LetterDto;
+import com.boot.jdbc.model.dto.MemberDto;
 import com.boot.jdbc.model.dto.OrderInfoDto;
 
 
 @Mapper
 public interface OrderInfoMapper {
-	@Select(" SELECT * FROM `ORDER_INFO` ORDER BY ORDER_NO DESC ")
-	List<OrderInfoDto> orderList();
+	@Select(" SELECT * FROM `ORDER_INFO` WHERE USER_ID= #{memberDto.user_id} AND ORDER_DATE BETWEEN #{startdate} AND #{enddate} ORDER BY ORDER_DATE DESC ")
+	List<OrderInfoDto> orderList(@Param("memberDto")MemberDto memberDto, @Param("startdate")String startdate, @Param("enddate")String enddate);
 
 //	@Select(" SELECT * FROM ORDER WHERE ORDER_DATE BETWEEN #{ORDER_DATE ")
 //	List<OrderDto> selectOrder();

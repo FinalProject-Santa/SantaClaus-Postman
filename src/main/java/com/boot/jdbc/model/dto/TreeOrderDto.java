@@ -17,14 +17,15 @@ public class TreeOrderDto {
 	private String delivery_message;
 	private Integer use_point;
 	private Integer save_point;
-
+	private String pay_method;
+	
 	public TreeOrderDto() {
 		super();
 	}
 
 	public TreeOrderDto(String order_no, String user_id, String or_name, Date order_date, Integer total_price,
 			String receiver, String email, String post_code, String default_addr, String detail_addr, String phone,
-			String delivery_message, Integer use_point, Integer save_point) {
+			String delivery_message, Integer use_point, Integer save_point, String pay_method) {
 		super();
 		this.order_no = order_no;
 		this.user_id = user_id;
@@ -40,6 +41,7 @@ public class TreeOrderDto {
 		this.delivery_message = delivery_message;
 		this.use_point = use_point;
 		this.save_point = save_point;
+		this.pay_method = pay_method;
 	}
 
 	public String getOrder_no() {
@@ -154,4 +156,13 @@ public class TreeOrderDto {
 		this.save_point = save_point;
 	}
 
+	public String getPay_method() {
+		return pay_method;
+	}
+
+	public void setPay_method(String pay_method) {
+		this.pay_method = pay_method;
+	}
+
+	
 }

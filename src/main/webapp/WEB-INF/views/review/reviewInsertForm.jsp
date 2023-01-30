@@ -1,63 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- CSS only -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-	crossorigin="anonymous">
-
-</head>
-<title>reviewInsert</title>
-<style>
-
-
-.star {
-	position: relative;
-	font-size: 2rem;
-	color: #ddd;
-}
-
-.star input {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	left: 0;
-	opacity: 0;
-	cursor: pointer;
-}
-
-.star span {
-	width: 0;
-	position: absolute;
-	left: 0;
-	color: yellow;
-	overflow: hidden;
-	pointer-events: none;
-}
-</style>
+	
+<link rel="stylesheet" href="/resources/css/review/reviewinsert.css">
 <body>
+<%@include file="../include/header.jsp" %>
 <%@include file="../include/floatingMenu.jsp" %>
 
-	<div class="container" style="margin: 0 auto">
+<div class="inner">
+	<div class="container">
 		<div>
-			<h3>리뷰 작성</h3>
-			<hr>
+			<i class="fa-sharp fa-solid fa-pen-to-square" style="padding-right: 5px;"></i><label style="font-size:18px;">후기 작성</label> <hr >
 		</div>
-
-		<form name="form1" action="/review/reviewinsert" method="post"
-			enctype="multipart/form-data">
+		<br>
+		<form name="form1" action="/review/reviewinsert" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="review_count" id="count" value="0">
 			<div class="mb-3">
 				<label for="formGroupExampleInput" class="form-label">제목</label> <input
 					type="text" name="review_title" class="form-control"
-					id="title" placeholder="제목을 입력하세요">
+					id="title" placeholder="아이가 정말 좋아해요">
 			</div>
+			<br>
 			<div class="mb-3">
 				<div class="review_rating">
 					<label for="reply_star">별점</label> <span class="star"> ★★★★★
@@ -66,29 +28,36 @@
 					</span>
 				</div>
 			</div>
+			<br>
 			<div class="mb-3">
 				<label>상세 내용</label>
-				<div class="form-floating">
+				<div class="form-floating" style="padding-top:5px;">
 					<textarea name="review_content" class="form-control"
-						placeholder="Leave a comment here" id="content"
-						style="height: 100px"></textarea>
-					<label for="floatingTextarea2">Comments</label>
+						placeholder="아이가 정말 좋아하네요!" id="content"
+						></textarea>
+					<label for="floatingTextarea2"></label>
 				</div>
 			</div>
-			<div class="mb-3">
-				<label>사진 등록</label>
-				<div class="input-group mb-3">
+			<br>
+			<div class="mb-4">
+				<label >사진 등록</label>
+				<div class="input-group mb-3" style="padding-top:5px;">
 					<input type="file" class="form-control" id="inputGroupFile02"
 						name="files"> <label class="input-group-text"
-						for="inputGroupFile02">Upload</label>
+						for="inputGroupFile02">&nbsp</label>
+						<br>
 					<div class="select_img"><img alt="이미지를 업로드해 주세요." src="https://i0.wp.com/adventure.co.kr/wp-content/uploads/2020/09/no-image.jpg" height="100" width="100"></div>
 				</div>
 			</div>
+			<br>
+			<br>
+			<div class="btn_area">
 			<button type="button" class="btn btn-primary btn-sm" id="btnSave">작성</button>
-			<button type="button" class="btn btn-secondary btn-sm">취소</button>
+			<button type="button" class="btn btn-secondary btn-sm" onclick="location.href='/review/reviewList'">취소</button>
+			</div>
 		</form>
 	</div>
-
+</div>
 
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script>
@@ -136,12 +105,10 @@
 		    }
 		    reader.readAsDataURL(this.files[0]);
 		   }
-		  });
-	  
-	 
-	 
-	
+		  });	
 	</script>
+	
+<%@include file="../include/footer.jsp" %>
 </body>
 </html>
 
