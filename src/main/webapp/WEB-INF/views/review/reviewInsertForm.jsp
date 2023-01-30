@@ -20,7 +20,7 @@
 					id="title" placeholder="아이가 정말 좋아해요">
 			</div>
 			<br>
-			<div class="mb-3">
+			<div class="mb-5">
 				<div class="review_rating">
 					<label for="reply_star">별점</label> <span class="star"> ★★★★★
 						<span>★★★★★</span> <input type="range" oninput="drawStar(this)"
