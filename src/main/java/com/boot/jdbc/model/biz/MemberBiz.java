@@ -19,8 +19,7 @@ public interface MemberBiz {
 	// 아이디 찾기
 	public String findId(MemberDto dto);
 	// 비밀번호 찾기
-	public String findPw(MemberDto dto);
-	// 회원정보 수정 페이지 회원정보 가져오기
+	public String findPw(String userId);
 	public MemberDto infoUpdateform(String user_id);
 	// 회원정보 수정
 	public int myinfoUpdate(MemberDto dto);

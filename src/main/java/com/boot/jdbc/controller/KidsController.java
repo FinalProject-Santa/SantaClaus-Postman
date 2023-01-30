@@ -141,6 +141,7 @@ public class KidsController {
 		String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
 		String userEmail = ((MemberDto)session.getAttribute("member")).getEmail();
 		int kidsNo = ((KidsDto)session.getAttribute("kids")).getKids_no();
+		String kidsnickname = ((KidsDto)session.getAttribute("kids")).getKids_nickname();
 				
 		FileOutputStream stream = null;
 		LocalDate today = LocalDate.now();
@@ -152,7 +153,7 @@ public class KidsController {
 		}
 		binaryData = binaryData.replaceAll("data:image/png;base64,","");
 		byte[]file = Base64.decodeBase64(binaryData);
-		String fileName = today+" 그림일기.png"; //UUID.randomUUID().toString()
+		String fileName = today+" "+kidsnickname+"의 그림일기.png"; //UUID.randomUUID().toString()
 		
 		// 폴더 생성
 		File newfile = new File("C:\\그림일기");
@@ -193,6 +194,7 @@ public class KidsController {
 		String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
 		String userEmail = ((MemberDto)session.getAttribute("member")).getEmail();
 		int kidsNo = ((KidsDto)session.getAttribute("kids")).getKids_no();
+		String kidsnickname = ((KidsDto)session.getAttribute("kids")).getKids_nickname();
 		
 		String fillDate = request.getParameter("fillDate");
 		LocalDate localdate = LocalDate.parse(fillDate, DateTimeFormatter.ofPattern("yyyyMMdd"));
@@ -207,7 +209,7 @@ public class KidsController {
 		}
 		binaryData = binaryData.replaceAll("data:image/png;base64,","");
 		byte[]file = Base64.decodeBase64(binaryData);
-		String fileName = localdate+" 그림일기.png";
+		String fileName = localdate+" "+kidsnickname+"의 그림일기.png";
 		
 		// 폴더 생성
 		File newfile = new File("C:\\그림일기");
@@ -246,16 +248,16 @@ public class KidsController {
 		
 		session = request.getSession();
 		
-		//String userId = ((MemberDto)session.getAttribute("member")).getUser_id();
 		String userEmail = ((MemberDto)session.getAttribute("member")).getEmail();
+		String kidsnickname = ((KidsDto)session.getAttribute("kids")).getKids_nickname();
 
 		MailHandler mailHandler = new MailHandler(mailSender);
 		
 		mailHandler.setFrom("jiyoun_908@naver.com");
 		mailHandler.setTo(userEmail);
-		mailHandler.setSubject("제목");
+		mailHandler.setSubject("[Dear Santa_kids] "+kidsnickname+"의 그림일기");
 		
-		String htmlContent = "<img src='data:image/png;base64,"+path+"'>";
+		String htmlContent = "<img src='data:image/png;base64,"+path+"'><br>"+kidsnickname+"의 그림일기를 저장하여 간직하세요 :D";
 		mailHandler.setText(htmlContent,true);
 		//mailHandler.setInline("img1","classpath:resources/image/kids/img1.png");
 		mailHandler.send();

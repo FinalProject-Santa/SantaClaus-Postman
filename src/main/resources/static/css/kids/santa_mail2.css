@@ -19,25 +19,24 @@ body{
 }
 .mailImg2{
     background-color: white;
-    /* background-image: url(../img/mail/pngwing.com.png);
+    background-image: url('/resources/image/kids/mail/santa.png');
     background-size: cover;
-    background-position: center; */
+    background-position: center;
 
 
-    width: 400px;
-    height: 400px;
+    width: 430px;
+    height: 430px;
 
     margin: 38px auto 30px auto;
 
     border-radius: 50%;
-    /* border: 5px solid white; */
     box-shadow: 0px 0px 10px 0px white;
 }
 #img2{
-    width: 200px;
-    height: 250px;
-    margin-top: 80px;
-    margin-left: 100px;
+    width: 170px;
+    height: 200px;
+    margin-top: 190px;
+    margin-left: 111px;
 }
 h1{
     color: white;

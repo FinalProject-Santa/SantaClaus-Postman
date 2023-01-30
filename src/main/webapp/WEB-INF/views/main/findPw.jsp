@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,6 +45,32 @@
       }
 
 }
+   
+/*    function sendEmail(){
+	   let id = $("#memberid").val().trim();
+	   let email = $("#memberemail").val().trim();
+	   
+	      if(id == null || id == "" || email == null || email == ""){
+	         $("#errorid").show();
+	         $("#erroremail").show();   
+	      }else{
+	         $.ajax({
+	            url:"/main/sendEmail",
+	            type:"post",
+	            data:{
+	            	"user_id" : id, 
+	                "email" : email
+	            },
+	            success:function(data){
+	               console.log('성공');
+	            },
+	            error:function(){
+	               alert("통신실패");
+	            }
+	         });
+	      }
+
+	} */
 
 </script>
 </head>
@@ -54,14 +81,16 @@
         </div>
         <div class="closebutton">
         <input type="button" value="x" id="closebutton" onclick="history.back()">
-        </div>    
+        </div>
+        <form method="post" action="/main/sendEmail">
         <div id="findPw-form">
            <input type="text" name="user_id" id="memberid" class="memberinfo" placeholder="아이디*">
                 <span id="errorid">아이디을 입력하세요.</span>
             <input type="text" name="email" id="memberemail" class="memberinfo" placeholder="이메일*">
                 <span id="erroremail">이메일을 입력하세요.</span>
-            <input type="button" id="checkbutton" value="확인" onclick="findPw();">
+            <input type="submit" id="sendbutton" value="인증번호 전송">
         </div>
+        </form>
     </div>
 </body>
 </html>

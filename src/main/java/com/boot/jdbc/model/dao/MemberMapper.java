@@ -33,8 +33,8 @@ public interface MemberMapper {
 	@Select("SELECT USER_ID FROM MEMBER WHERE NAME = #{name} AND EMAIL = #{email}")
 	String findId(MemberDto dto);
 	
-	@Select("SELECT PASSWORD FROM MEMBER WHERE USER_ID = #{user_id} AND EMAIL = #{email}")
-	String findPw(MemberDto dto);
+	@Select("SELECT PASSWORD FROM MEMBER WHERE USER_ID = #{userId}")
+	String findPw(String userId);
 	
 	@Select(" SELECT * FROM MEMBER WHERE USER_ID = #{user_id} ")
 	MemberDto infoUpdateform(String user_id);

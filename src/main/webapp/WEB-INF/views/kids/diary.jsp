@@ -160,21 +160,17 @@
 	    // 메일 보내기
 	    function sendEmail(){
             	var myImg = canvasrr.toDataURL("image/png");
-            	var userId = $("#user").val().trim();
-            	var userEmail = $("#email").val().trim();
                 myImg = myImg.replace("data:image/png;base64,", "");
 
                	$.ajax({
 	                  type:"POST",
 	                  data:{
 	                      "imgSrc":myImg,
-	                      "userID":userId,
-	                      "userEmail":userEmail
 	                  },
 	                  dataType:"text",
 	                  url:"/kids/sendEmail",
 	                  success:function(data){
-	   					alert("전송되었습니다.");
+	   					alert("이메일로 일기가 전송되었습니다.\n메일함을 확인해보세요!");
 	   					location.href='/kids/main';
 	                  },
 	                  error:function(a,b,c){

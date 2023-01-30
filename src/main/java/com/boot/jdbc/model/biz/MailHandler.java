@@ -33,7 +33,7 @@ public class MailHandler{
 	}
 	
 	public void setSubject(String subject) throws MessagingException {
-		mimeMessageHelper.setSubject("제목");
+		mimeMessageHelper.setSubject(subject);
 	}
 	
 	public void setText(String text, boolean useHtml) throws MessagingException {
