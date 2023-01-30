@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 .star {
 	position: relative;
 	font-size: 2rem;
@@ -16,7 +17,7 @@
 }
 
 .star span {
-	width: 100%;
+	width: 0;
 	position: absolute;
 	left: 0;
 	color: yellow;

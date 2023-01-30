@@ -162,12 +162,11 @@ public class ReviewController {
 		String user_id = ((MemberDto)session.getAttribute("member")).getUser_id();
 		reviewdto.setUser_id(user_id);
 		
+		String sourcefileName = files.getOriginalFilename(); 
+		
+		// 사진이 원래 있던 게시글에서 사진을 수정할 때
 		if(files.getOriginalFilename()!= null && !files.getOriginalFilename().equals("")) {
-			String sourcefileName = files.getOriginalFilename(); 
-			System.out.println(request.getParameter("rfileName"));
-			System.out.println(files.getName());
-			System.out.println(files.getOriginalFilename());
-			
+	
 			new File(uploadPath + request.getParameter("rfileName")).delete();
 			// new File(uploadPath + request.getParameter("rfileName")).renameTo(new File(uploadPath + "test.jpg"));
 			
@@ -183,30 +182,28 @@ public class ReviewController {
             destinationFile.getParentFile().mkdirs(); 
             files.transferTo(destinationFile);
             
-            System.out.println(request.getParameter("review_no"));
-            System.out.println(destinationFileName);
-            System.out.println(sourcefileName);
-            System.out.println(uploadFileDir);
-            
-            file.setRfile_name(destinationFileName);
+            reviewdto.setRimg(destinationFileName);
             file.setRfile_oriname(sourcefileName);
+            file.setRfile_name(destinationFileName);
 		}else {  // 새로운 파일이 등록되지 않았다면
 			  // 기존 이미지를 그대로 사용
 			System.out.println("testtest");
-			  file.setRfile_name(request.getParameter("rfileName"));
+			  file.setRfile_name(request.getParameter("rfile_name"));
+			  file.setRfile_oriname(sourcefileName);
 		}
-			  
-		 file.setReview_no(Integer.parseInt(request.getParameter("review_no")));
-         
-         file.setRfile_url(uploadFileDir);
+		
+		file.setReview_no(Integer.parseInt(request.getParameter("review_no")));
+		 
 		reviewdto.setReview_title(request.getParameter("review_title"));
 		reviewdto.setReview_content(request.getParameter("review_content"));
 		reviewdto.setReview_best(Double.parseDouble(request.getParameter("review_best")));
         reviewdto.setReview_no(Integer.parseInt(request.getParameter("review_no")));
         
+        
         reviewbiz.reviewUpdate(reviewdto);
         
         reviewbiz.rfileUpdate(file);
+        
         
         return "redirect:/review/reviewDetail/"+request.getParameter("review_no"); 
     
