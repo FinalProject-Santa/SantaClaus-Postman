@@ -11,6 +11,10 @@
 #info{
     margin: 20px;
 }
+#inputGroupFile02{
+	vertical-align: 12px;
+	height: 45px;
+}
 h1{
 	postion: absolute;
 	margin-top: 20px;
@@ -34,7 +38,7 @@ table {
     margin-right: auto;
 }
 th{
-	background: #fbfde3;
+	background: #efefed;
 }
 td{
 	padding: 15px;

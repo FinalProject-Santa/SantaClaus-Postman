@@ -3,7 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" href="/resources/css/main/profile.css">
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#menu").hide();
+		
+	});
+</script>
 <body>
 	<!-- header, 고객센터 -->
 	<%@include file="../include/header.jsp" %>
@@ -15,7 +21,7 @@
 			<div class="parentProfile">
 				<h3>부모 계정</h3>
 				<a href="/main/login?name=${memberDto.name }">
-					<img src="/resources/image/member-account/${memberDto.rfileName}"><br>
+					<img src="/resources/image/JMLprofile/${memberDto.rfileName}"><br>
 				</a>
 				<span>${memberDto.name }</span>
 			</div>
