@@ -2,23 +2,47 @@
 body{
 }
 .inner {
-	width: 1730px;
-    margin: 0 80px;
+	width: 1400px;
+    margin: 0 auto;
 }
 .profiles{
 	padding-top: 80px;
 	justify-content: center;
 	text-align: center;
 }
+#p{
+	margin-bottom: 10px;
+}
+#c{
+	margin-top : 30px;
+	margin-bottom: 0px;
+}
+#title{
+	font-size: 25px;
+}
+#pname{
+	font-size: 20px;
+}
+#cname{
+	font-size: 20px;
+	margin-right: 5px;
+}
 img{
 	width:300px;
 	height: 300px;
+	border-radius: 50%;
+	margin-bottom: 10px;
 }
 .childrenProfile{
 	background-repeat: no-repeat;
 	display: flex;
 	justify-content:center;
+	margin-right: 30px;
 }
 li{
 	list-style-type: none;
+}
+a{
+	text-decoration: none;
+    color: black;
 }

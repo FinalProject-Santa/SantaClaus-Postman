@@ -22,7 +22,7 @@
 				<tr>
 					<th width=30% height=40px class="text-center ">제목</th>
 					<td width=40% height=40px class="text-left">${reviewdetail.review_title }</td>
-					<th width=30% height=40px class="text-center ">별점</th>
+					<th width=30% height=40px class="text-center">별점</th>
 					<td width=40% height=40px class="text-left"><span class="star-prototype">${reviewdetail.review_best}</span></td>
 				</tr>
 				<tr>
@@ -58,11 +58,11 @@
 					
 				<span class="list_area">					
 					<c:if test="${prev ne 0 }">
-						<i class="fa-sharp fa-solid fa-caret-down" style="margin-right:5px;"></i><a href="${pageContext.request.contextPath }/review/reviewDetail/${prev }" >이전글</a>
+						<i class="fa-sharp fa-solid fa-angle-left" style="margin-right:5px;"></i><a href="${pageContext.request.contextPath }/review/reviewDetail/${prev }" >이전글</a>
 					</c:if>	
 					<span style="margin-left:768px;"></span>
 					<c:if test="${next ne 0 }">
-						<i class="fa-sharp fa-solid fa-chevron-up" style="margin-right:5px;"></i><a href="${pageContext.request.contextPath }/review/reviewDetail/${next }" style="">다음글</a>
+						<a href="${pageContext.request.contextPath }/review/reviewDetail/${next }" style="">다음글</a><i class="fa-sharp fa-solid fa-angle-right" style="margin-left:5px;"></i>
 					</c:if>						
 				</span>	
 				<span class="btn_area">
@@ -80,11 +80,10 @@
 	</div>	
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 	<script>
-	
-	function 
-	
 	$.fn.generateStars = function() {
-	    return this.each(function(i,e){$(e).html($('<span/>').width($(e).text()*16));});
+		return this.each(function(i, e) {
+			$(e).html($('<span/>').width($(e).text() * 16));
+		});
 	};
 
 	// 숫자 평점을 별로 변환하도록 호출하는 함수

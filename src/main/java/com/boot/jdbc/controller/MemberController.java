@@ -299,11 +299,49 @@ public class MemberController {
 	}
 	
 	
+	@GetMapping("/main_profile")
+	public String mainprofile(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String user_id = ((MemberDto)session.getAttribute("member")).getUser_id();
+		String password = ((MemberDto)session.getAttribute("member")).getPassword();
+		
+		memberDto = biz.login(user_id, password);
+		// 기본 프로필없을경우 디폴트 사진 보여주기
+		if(memberDto!=null) {
+			// 아이 프로필이 있을 경우
+			if((biz.selectChildrenProfile(user_id)).size() > 0){
+				kidsDto = biz.selectChildrenProfile(user_id);
+				model.addAttribute("kidsDto", kidsDto);
+			}
+			model.addAttribute("memberDto", memberDto);
+			return "main/profile";
+		}else {
+			System.out.println("로그인 실패");
+			return "redirect:/main/loginForm";
+		}
+	}
 	
-	
-	
-	
-	
+	@GetMapping("/kidsprofile")
+	public String Kidsprofile(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String user_id = ((MemberDto)session.getAttribute("member")).getUser_id();
+		String password = ((MemberDto)session.getAttribute("member")).getPassword();
+		
+		memberDto = biz.login(user_id, password);
+		// 기본 프로필없을경우 디폴트 사진 보여주기
+		if(memberDto!=null) {
+			// 아이 프로필이 있을 경우
+			if((biz.selectChildrenProfile(user_id)).size() > 0){
+				kidsDto = biz.selectChildrenProfile(user_id);
+				model.addAttribute("kidsDto", kidsDto);
+			}
+			model.addAttribute("memberDto", memberDto);
+			return "kids/kidsprofile";
+		}else {
+			System.out.println("로그인 실패");
+			return "redirect:/main/loginForm";
+		}
+	}
 	
 	
 	

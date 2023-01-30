@@ -17,23 +17,23 @@
 	
 	<div class="inner">
 		<div class="profiles">
-			<h1>프로필 계정을 선택 해주세요!</h1>
+			<h1 id="title">프로필 계정을 선택 해주세요!</h1>
 			<div class="parentProfile">
-				<h3>부모 계정</h3>
+				<h3 id="p">•부모 계정•</h3>
 				<a href="/main/login?name=${memberDto.name }">
-					<img src="/resources/image/JMLprofile/${memberDto.rfileName}"><br>
+					<img src="/resources/image/LJYFiles/${memberDto.rfileName}"><br>
 				</a>
-				<span>${memberDto.name }</span>
+				<span id="pname">${memberDto.name }</span>
 			</div>
-			<h3>어린이 계정</h3>
+			<h3 id="c">•어린이 계정•</h3>
 			<div class="childrenProfile">
 				<c:forEach var="dto" items="${kidsDto }">
 					<ul class="child">
 						<li>
 							<a href="/main/login?name=${dto.kids_nickname }">
-								<img src="/resources/image/kids-account/${dto.kids_thumbnail}"><br>
+								<img src="/resources/image/LJYFiles/${dto.kids_thumbnail}"><br>
+								<span id="cname">${dto.kids_nickname}</span>
 							</a>
-							<span>${dto.kids_nickname}</span>
 						</li>
 					</ul>
 				</c:forEach>

@@ -87,11 +87,10 @@ public class KidsController {
 	}
 	
 	
-	
-	@GetMapping("/mailmain")
-	public String mailmain() {
+	@GetMapping("/santamail")
+	public String santamail() {
 		
-		return "kids/mail_main";
+		return "kids/santa_mail";
 	}
 	
 	
@@ -297,9 +296,9 @@ public class KidsController {
 		stickerbiz.insertSticker(kidsNo,stickerCount);
 		
 		//스티커 날짜
-		stickerbiz.selectStickerDate(userId);
+		stickerbiz.selectStickerDate(kidsNo);
 		
-		ArrayList<String> Date = stickerbiz.selectStickerDate(userId);
+		ArrayList<String> Date = stickerbiz.selectStickerDate(kidsNo);
 		
 		List<Integer> DecDay = new ArrayList<>();
 		List<Integer> JanDay = new ArrayList<>(); // 1월 데이터 날짜
@@ -352,9 +351,9 @@ public class KidsController {
 		stickerbiz.insertSticker(kidsNo,stickerCount);
 		
 		//스티커 날짜
-		stickerbiz.selectStickerDate(userId);
+		stickerbiz.selectStickerDate(kidsNo);
 		
-		ArrayList<String> Date = stickerbiz.selectStickerDate(userId);
+		ArrayList<String> Date = stickerbiz.selectStickerDate(kidsNo);
 		
 		List<Integer> DecDay = new ArrayList<>();
 		List<Integer> JanDay = new ArrayList<>(); // 1월 데이터 날짜
