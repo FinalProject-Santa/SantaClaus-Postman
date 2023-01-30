@@ -57,11 +57,12 @@
 							onclick="location.href='/customer/qnaReply?qna_no=${dto.qna_no}&qna_type=${dto.qna_type}&secret=${dto.secret}'">
 						</c:if>
 			</tr>
-			
 			<tr>
 		     	<td>						
 				<c:if test="${user_id == dto.user_id }">
 				<input type="button" value="글 삭제하기" onclick="location.href='/customer/qnaDelete/${dto.qna_no}'">
+				<input type="button" value="글 수정하기" onclick="location.href='/customer/qnaUpdateform?qna_no=${dto.qna_no}'">
+				
 				</c:if>
 				</td>
 			</tr>

@@ -122,15 +122,16 @@ public class CustomerController {
         
 		 qnabiz.insert(dto);
 		
+		 if(!files.isEmpty()) {
 		 file.setQna_no(dto.getQna_no());
          file.setFile_name(destinationFileName);
          file.setFile_oname(sourceFileName);
          file.setFile_path(uploadFileDir);
-         
          qnabiz.insertFile(file); 
+		 }
+         
          return "redirect:/customer/qnalist";
     }
-	
 	
 
 	@GetMapping("/qnadetail")
@@ -138,7 +139,6 @@ public class CustomerController {
 		
 		String user_id = ((MemberDto) session.getAttribute("member")).getUser_id();
 		model.addAttribute("user_id",user_id);
-		
 		model.addAttribute("dto",qnabiz.selectOne(qna_no)); //쿼리문 실행한 결과를 "dto"에 담는다
 		model.addAttribute("files",qnabiz.selectFile(qna_no)); // 파일경로
 		return "customer/qnadetail";
@@ -186,6 +186,73 @@ public class CustomerController {
 		qnabiz.deleteQna(qna_no);
 		return"redirect:/customer/qnalist";
 	}
+	
+	@GetMapping("/qnaUpdateform")
+	public String qnaUpdateform(int qna_no,HttpServletRequest request,Model model) {
+		model.addAttribute("fileDto",qnabiz.selectFile(qna_no));
+		model.addAttribute("dto",qnabiz.selectOne(qna_no));
+		qna_no = Integer.parseInt(request.getParameter("qna_no"));
+		return "/customer/qnaupdate";
+	}
+	
+	
+	@PostMapping("/qnaUpdate")
+	public String qnaUpdate(String qna_title, String qna_content,String secret, int qna_no,@RequestPart MultipartFile files, HttpServletRequest request) throws IllegalStateException, IOException {
+		qnabiz.updateQna(qna_title,qna_content,secret,qna_no);
+
+		String sourceFileName = files.getOriginalFilename(); 
+        String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
+        File destinationFile; 
+        String destinationFileName;
+		
+	
+		QnaFileDto file = new QnaFileDto();
+
+		//사진이 없었던 글에 사진넣기
+        if(request.getParameter("file_name").isEmpty()){
+        	
+        	 do { 
+ 	            destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension; 
+ 	            destinationFile = new File(uploadFileDir + destinationFileName); 
+ 	        } while (destinationFile.exists()); 
+ 		  
+ 		  destinationFile.getParentFile().mkdirs(); 
+ 		  files.transferTo(destinationFile); 
+        	
+			 file.setQna_no(qna_no);
+	         file.setFile_name(destinationFileName);
+	         file.setFile_oname(sourceFileName);
+	         file.setFile_path(uploadFileDir);
+	         qnabiz.insertFile(file); 
+		
+	       //사진이 원래 있던 게시글에서 사진을 수정할때
+		 }else if(files.getOriginalFilename()!= null && !files.getOriginalFilename().equals("")){
+		  new File(uploadFileDir + request.getParameter("file_name")).delete();
+		  System.out.println(request.getParameter("file_name"));
+		
+      	 do { 
+	           destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension; 
+	           destinationFile = new File(uploadFileDir + destinationFileName); 
+	        } while (destinationFile.exists()); 
+		  
+		  destinationFile.getParentFile().mkdirs(); 
+		  files.transferTo(destinationFile); 
+		  file.setQna_no(qna_no); 
+		  file.setFile_name(destinationFileName);
+		  file.setFile_oname(sourceFileName); 
+		  file.setFile_path(uploadFileDir);
+		  qnabiz.updateQnafile(file);
+		  
+		 }
+		
+         //사진 수정 안할때 원래 사진 유지
+		  else { 
+	      file.setFile_name(request.getParameter("file_name")); 
+		   }
+		 
+		return "redirect:/customer/qnalist";
+	}
+	
 	
 }
 	

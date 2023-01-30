@@ -14,4 +14,6 @@ public interface QnaBiz {
 	int insertReply(QnaDto dto); //답변달기
 	int deleteQna(int qna_no);
 	int deleteQnafile(int qna_no);
+	int updateQna(String qna_title, String qna_content,String secret, int qna_no);
+	int updateQnafile(QnaFileDto dto);
 }

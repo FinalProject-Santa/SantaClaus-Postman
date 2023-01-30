@@ -9,8 +9,7 @@
 
 <link rel="stylesheet" href="/resources/css/customer/qnainsert.css">
 
-
-<body>
+ <body>
 
 	<div class="inner">
 	
@@ -27,27 +26,35 @@
     <section id="sec_qna">
         <h3>1:1문의</h3>
         
-       <form action="/customer/qnainsert" method="post"  enctype="multipart/form-data">
+       <form action="/customer/qnaUpdate?qna_no=${dto.qna_no}" method="post" enctype="multipart/form-data">
         	<span class="type">문의유형</span>
-       		 <select name="qna_type" class="select">
+       		 <select name="qna_type" class="select" required="required" >
            	  <option>배송문의</option>
            	  <option>상품문의</option>
            	  <option>기타문의</option>
         	</select>
+        	
         	  <label class="title" for="qna_title">제목</label>
-        	<input type="text" name="qna_title" id="qna_title"><br>
-        <br>
-      <textarea cols="80px" rows="20px" name="qna_content"></textarea><br>
+        	<input type="text" name="qna_title" id="qna_title" value="${dto.qna_title }"><br>
+      		 <br>
+      <c:if test="${!empty fileDto.file_name}">
+       <div style="margin-bottom: 20px;">
+       <img src="/resources/files/${fileDto.file_name}" style="max-width:500px; max-height: 300px;">
+    	</div>
+    	</c:if>
+      <textarea cols="80px" rows="20px" name="qna_content">${dto.qna_content }</textarea><br>
             <div class="form-check form-check-inline mt-3">
      			<span>비밀글 설정</span>
 				<label><input class="form-check-input" type="checkbox" name="secret" value="false" checked="checked" onclick="doOpenCheck(this);">공개</label>
 				<label><input class="form-check-input" type="checkbox" name="secret" value="true" onclick="doOpenCheck(this);">비공개</label>
 			</div>
         <input type="file" name="files" style="padding:10px">
-        <input type="submit" value="등록">
+        <input type="hidden" name="file_name" value="${fileDto.file_name }">
+
+        <input type="submit" value="등록" >
       <!-- 비밀글 설정 체크박스 -->
      		
-        
+        	
     </form>
     </section>   
   </div>
