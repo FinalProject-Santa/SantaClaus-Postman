@@ -32,11 +32,11 @@
 			<div id="tablebox">
 				<table>
 					<colgroup>
+						<col width="170">
+						<col width="200">
 						<col width="150">
 						<col width="200">
-						<col width="100">
-						<col width="150">
-						<col width="300">
+						<col width="250">
 					</colgroup>
 					<tr>
 						<th>사용/적립 구분</th>

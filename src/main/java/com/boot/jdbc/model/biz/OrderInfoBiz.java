@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.boot.jdbc.model.dto.LetterDto;
 import com.boot.jdbc.model.dto.MemberDto;
+import com.boot.jdbc.model.dto.OrderDto;
 import com.boot.jdbc.model.dto.OrderInfoDto;
 
 
@@ -17,6 +18,8 @@ public interface OrderInfoBiz {
 	
 //	//결제 창에서 결제하기 눌렀을 때 삽입 실행
 //	public int orderInsert(OrderDto orderdto);
+	
+	public List<OrderDto> orderDtoList(String user_id);
 
 
 }

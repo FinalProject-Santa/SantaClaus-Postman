@@ -14,7 +14,7 @@
 	<%@include file="../include/floatingMenu.jsp" %>
 	
     <div class="wrapper">
-        <form action="/main/myinfoUpdate" id="submit" method="post" enctype="multipart/form-data">
+        <form action="/mypage/main" id="submit" method="post" enctype="multipart/form-data">
             <div id="info">
            	<h1>회원정보 수정</h1>
            		<input type="button" class="button" id="delete" value="회원탈퇴" >
@@ -26,7 +26,7 @@
             		<tr>
             			<th>프로필 변경</th>
 					    <td>
-					    	<span class="select_img"><img src="https://i0.wp.com/adventure.co.kr/wp-content/uploads/2020/09/no-image.jpg" width="100"></span>
+					    	<span class="select_img"><img src="/resources/image/JMLprofile/${memberdto.rfileName}" width="200"></span>
 					    	<input type="file" class="button" id="inputGroupFile02" name="files" value="test"  >
 					    </td>
 				    </tr>
