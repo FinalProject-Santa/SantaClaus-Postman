@@ -43,8 +43,8 @@ public class MemberBizImpl implements MemberBiz{
 	}
 
 	@Override
-	public String findPw(MemberDto dto) {
-		return memberMapper.findPw(dto);
+	public String findPw(String userId) {
+		return memberMapper.findPw(userId);
 	}
 
 	@Override

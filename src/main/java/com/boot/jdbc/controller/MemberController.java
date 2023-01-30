@@ -1,9 +1,10 @@
 package com.boot.jdbc.controller;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,25 +12,25 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.boot.jdbc.model.biz.MailHandler;
 import com.boot.jdbc.model.biz.MemberBiz;
 import com.boot.jdbc.model.biz.PointBiz;
 import com.boot.jdbc.model.biz.SmsService;
 import com.boot.jdbc.model.dto.KidsDto;
 import com.boot.jdbc.model.dto.MemberDto;
-import com.boot.jdbc.model.dto.ReviewDto;
-import com.boot.jdbc.model.dto.rFileDto;
 
-import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @Controller
@@ -48,6 +49,10 @@ public class MemberController {
 	
 	@Autowired
 	private PointBiz pointBiz;
+	
+	@Autowired
+	private JavaMailSender mailSender;
+	
 	
 	// 메인페이지
 	@GetMapping("/main")
@@ -170,24 +175,24 @@ public class MemberController {
 		return "main/findPw";
 	}
 	
-	@PostMapping("/findPw")
-	@ResponseBody 
-	public String findPw(MemberDto dto) {
-		String pw = biz.findPw(dto);
-		System.out.println(pw);
-		return pw;
-	}
-	
-	@GetMapping("/findPwResult")
-	public String findPwResult(String pw, Model model) {
-		if(pw != null) {
-			model.addAttribute("pw", pw);
-			return "main/findPwResult";
-		}else {
-			return "redirect:/main/findPwForm";
-		}
-		
-	}
+//	@PostMapping("/findPw")
+//	@ResponseBody 
+//	public String findPw(MemberDto dto) {
+//		String pw = biz.findPw(dto);
+//		System.out.println(pw);
+//		return pw;
+//	}
+//	
+////	@GetMapping("/findPwResult")
+////	public String findPwResult(String pw, Model model) {
+////		if(pw != null) {
+////			model.addAttribute("pw", pw);
+////			return "main/findPwResult";
+////		}else {
+////			return "redirect:/main/findPwForm";
+////		}
+////		
+////	}
 	 
 
 	//회원정보 수정
@@ -346,6 +351,79 @@ public class MemberController {
 	}
 	
 	
+	@PostMapping("/sendEmail")
+	public String sendEmail(HttpServletRequest request, Model model) throws MessagingException {
+		
+		String userEmail = request.getParameter("email");
+		String userId = request.getParameter("user_id");
+		System.out.println(userId);
+		
+		 //인증 번호 생성기
+        StringBuffer temp =new StringBuffer();
+        Random rnd = new Random();
+        for(int i=0;i<10;i++)
+        {
+            int rIndex = rnd.nextInt(3);
+            switch (rIndex) {
+            case 0:
+                // a-z
+                temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+                break;
+            case 1:
+                // A-Z
+                temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+                break;
+            case 2:
+                // 0-9
+                temp.append((rnd.nextInt(10)));
+                break;
+            }
+        }
+        String tempkey = temp.toString();
+        System.out.println(tempkey);
+        
+      
+		MailHandler mailHandler = new MailHandler(mailSender);
+		
+		mailHandler.setFrom("jiyoun_908@naver.com");
+		mailHandler.setTo(userEmail);
+		mailHandler.setSubject("[Dear Santa] 인증번호 전송 이메일");
+		mailHandler.setText(
+				"안녕하세요 [Dear Santa] 인증 메일입니다."+
+				"<br>오늘도 [Dear Santa]를 찾아주셔서 감사힙니다 :D"+
+				"<br>아래 인증번호를 홈페이지에 입력해주세요."+
+				"<br>인증번호 : "+temp
+				,true);
+		
+		mailHandler.send();
+		
+		model.addAttribute("tempkey",tempkey);
+		model.addAttribute("userId",userId);
+		
+		return "main/findPwResult";
+
+	}
+	
+	@PostMapping("/findpw")
+	public String findPw(HttpServletRequest request, Model model) {
+		
+		String number = request.getParameter("number");
+		System.out.println(number);
+		String tempkey = request.getParameter("temp");
+		System.out.println(tempkey);
+		String userId = request.getParameter("userId");
+		System.out.println("아이디: "+userId);
+		
+		System.out.println("비즈: "+biz.findPw(userId));
+		
+		if(number.equals(tempkey)) {
+			model.addAttribute("pw",biz.findPw(userId));
+		}else {
+			model.addAttribute("no","no");
+		}
+		
+		return "main/findPwResult";
+	}
 	
 	
 }

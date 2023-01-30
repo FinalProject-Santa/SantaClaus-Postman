@@ -19,7 +19,7 @@ public interface MemberBiz {
 	// 아이디 찾기
 	public String findId(MemberDto dto);
 	// 비밀번호 찾기
-	public String findPw(MemberDto dto);
+	public String findPw(String userId);
 	public MemberDto infoUpdateform(String user_id);
 	public int myinfoUpdate(MemberDto dto);
 	public int delete(String user_id);
