@@ -55,6 +55,17 @@ public class QnaBizImpl implements QnaBiz {
 		return qnaMapper.deleteQnafile(qna_no);
 	}
 
+	@Override
+	public int updateQna(String qna_title, String qna_content,String secret, int qna_no) {
+		return qnaMapper.updateQna(qna_title,qna_content,secret,qna_no);
+	}
+
+	@Override
+	public int updateQnafile(QnaFileDto dto) {
+		return qnaMapper.updateQnafile(dto);
+	}
+	
+
 	
 	
 	

@@ -14,15 +14,16 @@
    <script>    
     function chatbot_click(){
         $('.menu').toggle();
-    }
+        }
+    
     </script>
     
 </head>
 
 <body>
     <div class="floating-parent" onclick="chatbot_click();">
-    <div class="right-button"></div>
-    <span class="widgetlabel">click!</span>
+    <div class="right-button" ></div>
+    <span class="widgetlabel" >click!</span>
     </div>
 
     <div class="menu-parent">

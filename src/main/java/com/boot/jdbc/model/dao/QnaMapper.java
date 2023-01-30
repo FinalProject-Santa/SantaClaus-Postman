@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.boot.jdbc.model.dto.QnaDto;
 import com.boot.jdbc.model.dto.QnaFileDto;
@@ -64,4 +65,13 @@ public interface QnaMapper {
 	
 	@Delete("DELETE FROM QNA_FILE WHERE QNA_NO=#{qna_no}")
 	int deleteQnafile(int qna_no);
+	
+	@Update("UPDATE QNA SET QNA_TITLE=#{qna_title}, QNA_CONTENT = #{qna_content}, SECRET=#{secret} WHERE QNA_NO=#{qna_no}")
+	int updateQna(String qna_title, String qna_content, String secret, int qna_no);
+	
+	@Update("UPDATE QNA_FILE SET file_oname = #{file_oname}, file_name=#{file_name} "
+			+ "WHERE QNA_NO=#{qna_no}")
+	@Options(useGeneratedKeys = true, keyProperty = "file_no")
+	int updateQnafile(QnaFileDto dto);
+	
 }

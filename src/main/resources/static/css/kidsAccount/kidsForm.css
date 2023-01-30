@@ -224,3 +224,18 @@ input.nickname {
     margin-left: 0;
     text-align: center;
 }
+
+input[type=submit]{
+	margin-top :10px;
+	padding : 0.5em;
+	width:100px;
+    color: black;
+    border: thin solid rgb(203,217,228);
+    border-radius: 3px;
+    background: rgb(239,243,248);
+}
+
+input[type=submit]:hover{
+	border: thin solid black;
+}
+
