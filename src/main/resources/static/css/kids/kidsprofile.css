@@ -1,0 +1,34 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Hi+Melody&display=swap');
+body{
+	font-family: 'Gaegu', cursive;
+}
+.inner{
+    width: 1400px;
+    margin: 0 auto;
+}
+.profiles{
+	padding-top: 150px;
+	justify-content: center;
+	text-align: center;
+}
+#title{
+	font-size: 38px;
+	margin-bottom: 28px;
+}
+img{
+	width:300px;
+	height: 300px;
+	border-radius: 50%;
+}
+.childrenProfile{
+	background-repeat: no-repeat;
+	display: flex;
+	justify-content:center;
+}
+li{
+	list-style-type: none;
+}
+#nickname{
+	font-size: 30px;
+}

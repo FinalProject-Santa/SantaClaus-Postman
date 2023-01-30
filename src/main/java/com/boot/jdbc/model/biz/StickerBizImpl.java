@@ -14,9 +14,9 @@ public class StickerBizImpl implements StickerBiz{
 	private StickerMapper StickerMapper;
 	
 	@Override
-	public ArrayList<String> selectStickerDate(String userId) {
+	public ArrayList<String> selectStickerDate(int kidsNo) {
 		
-		return StickerMapper.selectStickerDate(userId);
+		return StickerMapper.selectStickerDate(kidsNo);
 	}
 
 	@Override
