@@ -2,12 +2,15 @@
     pageEncoding="UTF-8"%>
     
 <link rel="stylesheet" href="/resources/css/nytree/decotree.css">
+
 <body>
 <%@include file="../include/header.jsp" %>
 <%@include file="../include/floatingMenu.jsp"%>
 
-<div class="divdiv" style="width:900px; padding-top: 5%;" >
-	<div id="or-container">
+<div class="inner">
+	<div style="padding-left:490px;"><h2>Drag&amp;Drop으로 나만의 트리를 완성하세요!</h2></div>
+		<div class="flexCon">
+			<div id="or-container1">
 	   <img src='/resources/image/treeimg/오너1.png' alt="" class="ornament" draggable="true" data-key="o1"><input type="hidden" class="img" name="or_name" value="o1">
 	   <img src='/resources/image/treeimg/오너2.png' alt="" class="ornament" draggable="true" data-key="o2"><input type="hidden" class="img" name="or_name" value="o2">
 	   <img src='/resources/image/treeimg/오너3.png' alt="" class="ornament" draggable="true" data-key="o3"><input type="hidden" class="img" name="or_name" value="o3">
@@ -19,6 +22,27 @@
 	   <img src='/resources/image/treeimg/오너10.png' alt="" class="ornament" draggable="true" data-key="o10"><input type="hidden" class="img" name="or_name" value="o10">
 	   <img src='/resources/image/treeimg/오너11.png' alt="" class="ornament" draggable="true" data-key="o11"><input type="hidden" class="img" name="or_name" value="o11">
 	   <img src='/resources/image/treeimg/오너12.png' alt="" class="ornament" draggable="true" data-key="o12"><input type="hidden" class="img" name="or_name" value="o12">
+	   <img src='/resources/image/treeimg/오너28.png' alt="" id="ornament1" class="ornament" draggable="true" data-key="o28"><input type="hidden" class="img" name="or_name" value="o28">
+	 </div>
+	 
+	
+	 
+<form action="/tree/treeOrderForm" method='post' id="myfrom">
+	<div id="container">
+		<div id="tree-container">
+		  <div id="tree-or-container">
+		    <img alt="" src="/resources/image/treeimg/트리1.png">
+		  </div>
+		</div>
+	</div>
+	<div id="btnarea">
+		<input type="button" id="re_btn" value="다시 꾸미기" onClick="window.location.reload()">
+		<input type="button" id="save_btn" value="저장">
+		<input type="submit" id="buy_btn" value="구매" style="visibility : hidden;">
+	</div>
+</form>
+
+	 <div id="or-container2">
 	   <img src='/resources/image/treeimg/오너13.png' alt="" class="ornament" draggable="true" data-key="o13"><input type="hidden" class="img" name="or_name" value="o13">
 	   <img src='/resources/image/treeimg/오너16.png' alt="" class="ornament" draggable="true" data-key="o16"><input type="hidden" class="img" name="or_name" value="o16">
 	   <img src='/resources/image/treeimg/오너17.png' alt="" class="ornament" draggable="true" data-key="o17"><input type="hidden" class="img" name="or_name" value="o17">
@@ -32,21 +56,7 @@
 	   <img src='/resources/image/treeimg/오너26.png' alt="" class="ornament" draggable="true" data-key="o26"><input type="hidden" class="img" name="or_name" value="o26">
 	   <img src='/resources/image/treeimg/오너27.png' alt="" class="ornament" draggable="true" data-key="o27"><input type="hidden" class="img" name="or_name" value="o27">
 	</div>
-	 
-<form action="/tree/treeOrderForm" method='post' id="myfrom">
-	<div id="container">
-		<div id="tree-container">
-		  <div id="tree-or-container">
-		    <img alt="" src="/resources/image/treeimg/트리1.png">
-		  </div>
-		</div>
-	</div>
-	<div id="btnarea">
-		<input type="button" id="re_btn" value="다시 꾸미기" onClick="window.location.reload()">
-		<input type="button" id="save_btn" value="저장">
-		<input type="submit" id="buy_btn" value="구매">
-	</div>
-</form>
+</div>	
 </div>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
@@ -70,8 +80,24 @@
    }
   */
  
-   
-document.querySelectorAll("#or-container .ornament").forEach((element) => {
+  document.querySelectorAll("#or-container2 .ornament").forEach((element) => {
+	   element.addEventListener("dragstart", (event) => {
+
+//	        const id = event.target.dataset["ornament"];
+
+	//const posX = event.offsetX;
+	//const posY = event.offsetY;
+
+	const posX = event.offsetX;
+	const posY = event.offsetX; 
+	//event.dataTransfer.setData("text/plain", `${event.target.dataset["ornament"]},${posX});
+
+	       event.dataTransfer.setData("text/plain", `\${event.target.dataset.key},\${posX},\${posY}`);
+	       console.log(event.target.dataset.key);
+	     });
+	   });
+  
+document.querySelectorAll("#or-container1 .ornament").forEach((element) => {
    element.addEventListener("dragstart", (event) => {
 
 //        const id = event.target.dataset["ornament"];
@@ -91,16 +117,13 @@ const posY = event.offsetX;
  document.querySelector("#tree-container").addEventListener("dragover",(event) => {
    event.preventDefault();
    event.stopPropagation();
-   console.log("dragover",event);
  });
 
  document.querySelector("#tree-container").addEventListener("drop", (event) => {
    event.preventDefault();
    event.stopPropagation();
-   console.log("drop",event);
 
    const treeContainer = document.querySelector("#tree-container");
-   
 
    console.log(treeContainer.offsetTop);
    console.log(treeContainer.offsetLeft);
@@ -111,28 +134,41 @@ const posY = event.offsetX;
    const relativeY = event.pageY - treeContainer.offsetTop - parseInt(posY);
 
    //const ornaId = event.dataTransfer.getData("text/plain");
-   const ornaElement = document.querySelector(`#or-container .ornament[data-key=\${id}]`);
-   const imgElement = document.querySelector(`#or-container .ornament[data-key=\${id}] + input`);
+   const ornaElement = document.querySelector(`#or-container1 .ornament[data-key=\${id}]`);
+   const imgElement = document.querySelector(`#or-container1 .ornament[data-key=\${id}] + input`);
+   const ornaElement2 = document.querySelector(`#or-container2 .ornament[data-key=\${id}]`);
+   const imgElement2 = document.querySelector(`#or-container2 .ornament[data-key=\${id}] + input`);
+	console.log(ornaElement)
 	
-
+	if(ornaElement!=null){
+		
    const clonedOrnaElement = ornaElement.cloneNode();
    const clonedImgElement = imgElement.cloneNode();
+   clonedOrnaElement.style.left = relativeX+"px";
+   clonedOrnaElement.style.top = relativeY+"px";
+   document.querySelector("#tree-container #tree-or-container").appendChild(clonedOrnaElement);
+   document.querySelector("#tree-container #tree-or-container").appendChild(clonedImgElement);
+	}else{
+		
+   const clonedOrnaElement2 = ornaElement2.cloneNode();
+   const clonedImgElement2 = imgElement2.cloneNode();
+   clonedOrnaElement2.style.left = relativeX+"px";
+   clonedOrnaElement2.style.top = relativeY+"px";
+   document.querySelector("#tree-container #tree-or-container").appendChild(clonedOrnaElement2);
+   document.querySelector("#tree-container #tree-or-container").appendChild(clonedImgElement2);
+	}
 
    console.log(relativeX);
    console.log(relativeY);
    
-   clonedOrnaElement.style.left = relativeX+"px";
-   clonedOrnaElement.style.top = relativeY+"px";
 
    
-   document.querySelector("#tree-container #tree-or-container").appendChild(clonedOrnaElement);
-   document.querySelector("#tree-container #tree-or-container").appendChild(clonedImgElement);
 // ornaElement.remove();
-   console.log(clonedOrnaElement);
  });
 
  $("#save_btn").on("click", function(){
 	 screenShot($("#container"));
+	 $("#buy_btn").css({visibility: "visible"});
  });
  function screenShot(target){
 	 if(target != null && target.length>0){
