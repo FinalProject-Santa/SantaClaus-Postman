@@ -26,6 +26,7 @@
             		<tr>
             			<th>프로필 변경</th>
 					    <td>
+					    	<span class="select_img"><img src="https://i0.wp.com/adventure.co.kr/wp-content/uploads/2020/09/no-image.jpg" width="100"></span>
 					    	<input type="file" class="button" id="inputGroupFile02" name="files" value="test"  >
 					    </td>
 				    </tr>
@@ -94,6 +95,7 @@
 	                		<div>
 	                			<label for="phone">핸드폰 번호</label>
 			                    <input type="text" name="phone" id="phone" value="${memberdto.phone}" placeholder="'-'없이 숫자만 입력해주세요" required="required">
+			                    <input type="hidden" id="phoneChk" value="${memberdto.phone}">
 			                    <input type="button" class="button" id="phoneAuth" value="인증번호 전송">
 								<span id="sendSucess"></span>                    
 							</div>
@@ -108,7 +110,7 @@
 	                </tr>
 				</table>
                 <div class="end">
-                    <input type="button" class="button" id="update" value="수정">
+                    <input type="submit" class="button" id="update" value="수정">
                     <input type="button" class="button" id="cancel" value="취소" onclick="location.href='/mypage/main'">
                 </div>
 		    </div>
@@ -125,12 +127,20 @@
 			if(this.files && this.files[0]) {
 				var reader = new FileReader;
 				reader.onload = function(data) {
-					$(".select_img img").attr("src", data.target.result).width(100);        
+					$(".select_img img").attr("src", data.target.result).width(200);        
 				}
 				reader.readAsDataURL(this.files[0]);
 			}
 		});
-			
+		
+		$("#phoneckcode").attr("required", false);
+		$("#phoneckcode").attr("disabled", true);
+		$("#pwConfirm").attr("required", false);
+		$("#pwConfirm").attr("disabled", true);
+		
+		
+		
+		
 		//비밀번호 유효성 검사        
 		var $pw = $("#pw");
 		var $pwChk = $("#pwConfirm");
@@ -140,6 +150,7 @@
 			var regExp = /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{7,}$/;
 				if(!regExp.test($pw.val())){
 					$("#pwConfirm").attr("disabled", true);
+					$("#pwConfirm").attr("required", true);
 					$("#pwChk").html("영문/숫자/특수문자 2가지 이상 조합 (7자리 이상)");
 					$("#pwChk").css({
 						"color" : "red",
@@ -181,6 +192,19 @@
 			
 		});
 	
+		$("#phone").on("keyup", function(){
+			var phoneNum = $("#phone").val();
+			var phoneChk = $("#phoneChk").val();
+			
+			if(phoneNum != phoneChk){
+				$("#phoneckcode").attr("required", true);
+			}else{
+				$("#phoneckcode").attr("required", false);
+				$("#phoneckcode").attr("readonly", true);
+			}
+		
+		});
+		
 			function userPostcode() {
 				new daum.Postcode({
 					oncomplete: function(data) {
@@ -205,6 +229,8 @@
 					}
 				}).open();
 			}
+			
+			
 			
 			$('#phoneAuth').click(function() {
 			$("#sendSucess").text("인증번호를 확인 해주세요.");
@@ -240,36 +266,36 @@
 			var pw = $('#pw').val();
 			
 			
-			$.ajax({
-				url: "/main/pwChk",
-				type : 'POST',
-				data: {
-					"user_id" : id,
-					"pwChk" : pwChk
-					},
-				success: function(res){
-					var updateCk = confirm("수정하시겠습니까?");
-					if(updateCk){
-						if(res == pwChk) {
-							if(pw == " " || pw == "" || pw == null) {
-								pw = pwChk;
-							}
-							console.log("pwChk="+pwChk);
-							console.log("pw="+pw);
-							alert("회원 정보가 수정되었습니다.");
-							$("#submit").submit();
-						}else {
-							alert("비밀번호가 틀렸습니다.");
-							window.location.reload();
-						}
-					}else{
-						return false;
-					}
-				},
-				error: function(error){
-					alert("다시 시도해 주세요.");
-				}	
-			});
+// 			$.ajax({
+// 				url: "/main/pwChk",
+// 				type : 'POST',
+// 				data: {
+// 					"user_id" : id,
+// 					"pwChk" : pwChk
+// 					},
+// 				success: function(res){
+// 					var updateCk = confirm("수정하시겠습니까?");
+// 					if(updateCk){
+// 						if(res == pwChk) {
+// 							if(pw == " " || pw == "" || pw == null) {
+// 								pw = pwChk;
+// 							}
+// 							console.log("pwChk="+pwChk);
+// 							console.log("pw="+pw);
+// 							alert("회원 정보가 수정되었습니다.");
+// 							$("#submit").submit();
+// 						}else {
+// 							alert("비밀번호가 틀렸습니다.");
+// 							window.location.reload();
+// 						}
+// 					}else{
+// 						return false;
+// 					}
+// 				},
+// 				error: function(error){
+// 					alert("다시 시도해 주세요.");
+// 				}	
+// 			});
 			
 		});
 	

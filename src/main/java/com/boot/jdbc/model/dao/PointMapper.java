@@ -14,7 +14,7 @@ import com.boot.jdbc.model.dto.PointDto;
 @Mapper
 public interface PointMapper {
 	// 회원가입 축하 포인트 적립
-	@Insert("INSERT INTO POINT VALUES(NULL, '', #{user_id}, 0, NOW(), '회원가입 축하 포인트','적립', 2000)")
+	@Insert("INSERT INTO POINT VALUES(NULL, '', #{user_id}, +2000, NOW(), '회원가입 축하 포인트','적립', 2000)")
 	int signUpPoint(String user_id);
 	
 	// 현재 포인트 가져오기
@@ -27,7 +27,7 @@ public interface PointMapper {
 	@Select(" SELECT COUNT(*) FROM POINT ")
 	int countBoardList();
 
-	@Select(" SELECT * FROM `POINT` WHERE USER_ID=#{memberDto.user_id} ORDER BY ORDER_NO DESC LIMIT #{cri.pageStart}, #{cri.perPageNum} ")
+	@Select(" SELECT * FROM `POINT` WHERE USER_ID=#{memberDto.user_id} ORDER BY POINT_NO DESC LIMIT #{cri.pageStart}, #{cri.perPageNum} ")
 	List<PointDto> selectList(@Param("memberDto")MemberDto memberDto, @Param("cri")Criteria cri);
 
 	@Insert("INSERT INTO POINT VALUES(NULL, #{order_no}, #{user_id}, #{point}, NOW(), #{point_content}, #{point_purpose}, #{point_all})")

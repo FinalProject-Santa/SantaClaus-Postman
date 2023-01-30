@@ -269,10 +269,8 @@ public class MemberController {
 	@PostMapping("/phoneChk")
 	@ResponseBody
 	public String phoneChk(String user_id) {
-		
-		String phone = biz.phoneChk(user_id);
-		System.out.println(phone);
-		return phone;
+		String phoneNum = biz.phoneChk(user_id);
+		return phoneNum;
 	}
 	
 	

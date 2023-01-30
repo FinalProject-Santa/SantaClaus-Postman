@@ -33,7 +33,7 @@
        		</div>
             <div id="section2" class="section">
            		<p>
-           			<img src="/resources/image/mypage/cart.png" onclick="location.href='/cart/cartpage'">
+           			<img src="/resources/image/mypage/cart.png" onclick="location.href='/mypage/mycart'">
            			<!-- <a href="/cart/cartpage" class="list"> 장바구니</a> -->
             	</p>
             </div>
