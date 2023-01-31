@@ -124,5 +124,13 @@
     justify-content: center;
     }
     
+    .headCategory{
+	margin-right: 50px;
+   }
+    
+    a {
+    text-decoration: none;
+    color: black;
+    }
 
     
