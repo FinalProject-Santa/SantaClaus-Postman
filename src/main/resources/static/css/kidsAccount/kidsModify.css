@@ -228,3 +228,17 @@ small{
 	display: block;
 	padding-top :20px;
 }
+
+.bt{
+    margin-top :10px;
+	padding : 0.3em;
+    color:  #485563;
+    border: thin solid #c0c0c0;
+    border-radius: 3px;
+    width:80px;
+}
+
+.bt:hover{
+	border: thin solid black;
+}
+
