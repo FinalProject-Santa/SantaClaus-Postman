@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/resources/css/review/reviewinsert.css">
 <body>
 <%@include file="../include/header.jsp" %>
 <%@include file="../include/floatingMenu.jsp" %>
 
 <div class="inner">
+<p class="headCategory" style="text-align: right">
+			<a href="/">Home</a> > Review List > Review Detail > Updating Review
+		</p>
 	<div class="container">
 	  <div>
 	    <i class="fa-sharp fa-solid fa-pen-to-square" style="padding-right: 5px;"></i><label style="font-size:18px;">후기 수정</label> <hr >
@@ -16,6 +21,7 @@
 	<form action="/review/reviewUpdate" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="review_count" id="count" value="${review_count }">
 	<input type="hidden" name="review_no" value="${review_no}"/>
+	<input type="hidden" name="rimg" value="${rimg}"/>
 	    
 	    <div class="mb-3">
 	      <label for="formGroupExampleInput" class="form-label">제목</label>
@@ -23,7 +29,7 @@
 	    </div>
 	    <br>
 	    <br>
-	    			<div class="mb-5">
+	    		<div class="mb-5">
 					<div class="review_rating">
 						<label for="reply_star">별점</label> <span class="star"> ★★★★★
 							<span>★★★★★</span> <input type="range" oninput="drawStar(this)"

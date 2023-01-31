@@ -10,7 +10,7 @@
 
 	<div class="inner">
 <p class="headCategory" style="text-align: right">
-			<a href="/">Home</a> > Letter List
+			<a href="/">Home</a> > Review List
 		</p>
 	
 		<div class="container">

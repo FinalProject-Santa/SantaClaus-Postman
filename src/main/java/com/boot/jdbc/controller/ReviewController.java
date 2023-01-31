@@ -163,7 +163,7 @@ public class ReviewController {
 		reviewdto.setUser_id(user_id);
 		
 		String sourcefileName = files.getOriginalFilename(); 
-		
+		String rimg = request.getParameter("rfile_name");
 		// 사진이 원래 있던 게시글에서 사진을 수정할 때
 		if(files.getOriginalFilename()!= null && !files.getOriginalFilename().equals("")) {
 	
@@ -190,10 +190,10 @@ public class ReviewController {
 			System.out.println("testtest");
 			  file.setRfile_name(request.getParameter("rfile_name"));
 			  file.setRfile_oriname(sourcefileName);
+			  reviewdto.setRimg(rimg);
 		}
 		
 		file.setReview_no(Integer.parseInt(request.getParameter("review_no")));
-		 
 		reviewdto.setReview_title(request.getParameter("review_title"));
 		reviewdto.setReview_content(request.getParameter("review_content"));
 		reviewdto.setReview_best(Double.parseDouble(request.getParameter("review_best")));
