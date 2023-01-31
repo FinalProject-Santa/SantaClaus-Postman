@@ -41,7 +41,10 @@
            </c:otherwise>
             </c:choose>
                            
-        <input type="button" value="계정삭제" onclick="location.href='profileDelete/${list[i].kids_no}'">
+     <input type="button" class="bt" id="delete" value="계정삭제">
+         
+			 
+			 
 			 </div>
  
          <nav class="side-menu"></nav>
@@ -80,7 +83,7 @@
                  
 
                   	  <div class="submitbt"><br>
-                   		<input type="submit" value="변경" formaction="/kidsaccount/updateProfile">
+                   		<input type="submit" class="bt" value="변경" formaction="/kidsaccount/updateProfile">
                 		</div>
                        </form>
                  </div>
@@ -110,7 +113,7 @@
 					 </div>
 
 						<div class="submitbt">
-						 <br><input type="submit" value="등록" formaction="/kidsaccount/AddSantamail">
+						 <br><input type="submit" class="bt" value="등록" formaction="/kidsaccount/AddSantamail">
 						</div>
 					</form>
 				</div>
@@ -125,6 +128,13 @@
 
 
 <script>
+$("#delete").click(function(){
+	var deleteCk = confirm("정말 삭제하시겠습니까?");
+	if(deleteCk){
+		location.href='profileDelete/${list[i].kids_no}';
+	} 
+});
+
     const fileDOM = document.querySelector('#file');
     const previews = document.querySelectorAll('.image-box');
     
@@ -141,5 +151,5 @@
     fileDOM2.addEventListener('change', () => {
       const imageSrc = URL.createObjectURL(fileDOM2.files[0]);
       previews[1].src = imageSrc;
-    });
-    </script>
+    });    
+</script>
