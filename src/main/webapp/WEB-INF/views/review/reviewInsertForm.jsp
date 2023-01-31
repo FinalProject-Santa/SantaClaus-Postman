@@ -12,6 +12,7 @@
 			<i class="fa-sharp fa-solid fa-pen-to-square" style="padding-right: 5px;"></i><label style="font-size:18px;">후기 작성</label> <hr >
 		</div>
 		<br>
+		<br>
 		<form name="form1" action="/review/reviewinsert" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="review_count" id="count" value="0">
 			<div class="mb-3">
@@ -20,14 +21,16 @@
 					id="title" placeholder="아이가 정말 좋아해요">
 			</div>
 			<br>
+			<br>
 			<div class="mb-5">
 				<div class="review_rating">
-					<label for="reply_star">별점</label> <span class="star"> ★★★★★
+					<label for="reply_star">별점</label><span class="star"> ★★★★★
 						<span>★★★★★</span> <input type="range" oninput="drawStar(this)"
 						value="1" step="0.5" min="0" max="5" name="review_best" id="best">
 					</span>
 				</div>
 			</div>
+			<br>
 			<br>
 			<div class="mb-3">
 				<label>상세 내용</label>
@@ -38,6 +41,7 @@
 					<label for="floatingTextarea2"></label>
 				</div>
 			</div>
+			<br>
 			<br>
 			<div class="mb-4">
 				<label >사진 등록</label>
@@ -52,8 +56,8 @@
 			<br>
 			<br>
 			<div class="btn_area">
-			<button type="button" class="btn btn-primary btn-sm" id="btnSave">작성</button>
-			<button type="button" class="btn btn-secondary btn-sm" onclick="location.href='/review/reviewList'">취소</button>
+			<button type="button" class="btn" id="btnSave">작성</button>
+			<button type="button" class="btn" onclick="location.href='/review/reviewList'">취소</button>
 			</div>
 		</form>
 	</div>

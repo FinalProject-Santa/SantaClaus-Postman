@@ -11,7 +11,8 @@
 	  <div>
 	    <i class="fa-sharp fa-solid fa-pen-to-square" style="padding-right: 5px;"></i><label style="font-size:18px;">후기 수정</label> <hr >
 	  </div>
-	  
+	  <br>
+		<br>
 	<form action="/review/reviewUpdate" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="review_count" id="count" value="${review_count }">
 	<input type="hidden" name="review_no" value="${review_no}"/>
@@ -20,7 +21,9 @@
 	      <label for="formGroupExampleInput" class="form-label">제목</label>
 	      <input type="text" name="review_title" class="form-control" id="formGroupExampleInput" value="${reviewdetail.review_title}">
 	    </div>
-	    			<div class="mb-3">
+	    <br>
+	    <br>
+	    			<div class="mb-5">
 					<div class="review_rating">
 						<label for="reply_star">별점</label> <span class="star"> ★★★★★
 							<span>★★★★★</span> <input type="range" oninput="drawStar(this)"
@@ -28,23 +31,33 @@
 						</span>
 					</div>
 				</div>
-	  <div class="mb-4">
+				<br>
+				<br>
+	  <div class="mb-3">
 	    <label>상세 내용</label>
-	    <div class="form-floating">
-	      <textarea name="review_content" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2">${reviewdetail.review_title}</textarea>
+	    <div class="form-floating" style="padding-top:5px;">
+	      <textarea name="review_content" class="form-control"  id="floatingTextarea2">${reviewdetail.review_title}</textarea>
 	      <label for="floatingTextarea2"></label>
 	    </div>
 	  </div>
-	  <div class="mb-3">
+	  <br>
+	  <br>
+	  <div class="mb-4">
 	<label>사진 등록</label>
-	  <div class="input-group mb-3">
+	  <div class="input-group mb-3" style="padding-top:5px;">
 	    <input type="file" class="form-control" id="inputGroupFile02" name="files" value="test">
 	    <label class="input-group-text" for="inputGroupFile02">&nbsp</label>
+	  <br>
+	  <div class="select_img"><img alt="이미지를 업로드해 주세요." src="/resources/image/uploadfiles/${rfiles.rfile_name}" height="100" width="100"></div>
 	  </div> 
 	</div>
+	<br>
+	<br>
+	<div class="btn_area">
 	<input type="hidden" name="rfile_name" value="${rfiles.rfile_name}" />
-	<button type="submit" class="btn btn-primary btn-sm">수정</button>
-	<button type="button" class="btn btn-secondary btn-sm" onclick="location.href='/review/reviewList'">취소</button>
+	<button type="submit" class="btn">수정</button>
+	<button type="button" class="btn" onclick="location.href='/review/reviewList'">취소</button>
+	</div>
 	</form>
 	</div>
 </div>

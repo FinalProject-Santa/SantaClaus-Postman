@@ -353,7 +353,7 @@
 						</td>
 	               </tr>
                </c:forEach>
-               <tr>
+               <tr style="padding: 222px;">
                	<td>
                		<button type="button" id="deleteOption">삭제</button>
                	</td>

@@ -79,6 +79,18 @@ span.star-prototype>* {
 #title_id{
 	
 	}
+	
+.headCategory{
+	padding-top:100px;
+	
+}
+.headCategory a{
+	padding-top:100px;
+	text-decoration: none;
+	color: black;
+	
+}
+
 /* .paginationdiv {
   width: 300px;
   margin-left: auto;
