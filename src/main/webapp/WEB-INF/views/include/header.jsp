@@ -39,8 +39,7 @@ body {
     font-weight: bold;
     font-size: 40px;
     cursor: pointer;
-    /* position: absolute;
-    left: 900px; */
+    margin-right: 45px;
 }
 #sidemenu{
     list-style: none;
@@ -131,7 +130,7 @@ body {
 		      	<li onclick="location.href='/main/logout'">Log Out</li>
 		      	<li><a href="/mypage/mycart" class="atag">Cart</a></li>
 		      	<script>
-                  document.getElementById('logo').style.marginLeft = "150px";
+                  document.getElementById('logo').style.marginLeft = "248px";
                </script>
 	      	</c:when>
 	      	<c:otherwise>
