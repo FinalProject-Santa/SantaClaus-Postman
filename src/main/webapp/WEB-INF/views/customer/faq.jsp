@@ -12,6 +12,11 @@
 
    <div class="inner">
         
+        <p class="headCategory" style="text-align: right">
+			<a href="/">Home</a> > FAQ
+		</p>
+        
+        
         <div class=customer_logo>
         <h1>Customer Service</h1>
         </div>

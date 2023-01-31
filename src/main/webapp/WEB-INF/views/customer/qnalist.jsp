@@ -13,6 +13,9 @@
 <body>
 
 	<div class="inner">
+		<p class="headCategory" style="text-align: right">
+			<a href="/">Home</a> > Q&A
+		</p>
 
 		<div class="customer_logo">
 			<h1>Customer Service</h1>

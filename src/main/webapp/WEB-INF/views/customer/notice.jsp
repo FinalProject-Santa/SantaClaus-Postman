@@ -15,6 +15,10 @@
 
 	<div class="inner">
 
+        <p class="headCategory" style="text-align: right">
+			<a href="/">Home</a> > 공지사항
+		</p>
+
 		<div class="customer_logo">
 			<h1>Customer Service</h1>
 		</div>

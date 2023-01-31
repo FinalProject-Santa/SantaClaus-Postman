@@ -91,15 +91,20 @@ input[type=submit] {
 	margin-top :10px;
 	font-weight: bold;
 	padding : 0.3em;
-    color: dodgerblue;
-    border: thin solid grey;
+    color:  #485563;
+    border: thin solid #c0c0c0;
     border-radius: 3px;
+    width:80px;
 }
 
 input::file-selector-button {
     font-weight: bold;
     padding : 0.3em;
-    color: dodgerblue;
-    border: thin solid grey;
+    color:  #485563;
+    border: thin solid #c0c0c0;
     border-radius: 3px;
+}
+
+input[type=submit]:hover{
+	  border: solid 1px black;
 }
