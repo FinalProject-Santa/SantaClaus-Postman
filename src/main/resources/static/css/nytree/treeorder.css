@@ -5,8 +5,21 @@
 }
 
 .flexCon{
-	padding-top: 150px;	
-	padding-left:450px;
+	padding-top: 100px;	
+	padding-left: 230px;
+}
+.orderNum{
+	display: flex;
+	
+}
+.orderMent{
+	font-size: 18pt;
+	font-weight: bold;
+	text
+}
+.orderDiv{
+	text-align:center;
+	vertical-align: middle;
 }
 
 img{ 
@@ -15,8 +28,8 @@ img{
 }
 
 #treeImg{
-	width: 350px;
-	height: 450px;
+	width: 550px;
+	height: 700px;
 }
 
 .content {
@@ -26,16 +39,12 @@ img{
 	row-gap: 30px;
 }
 
-.orderList td {
-  text-align: center;
+th, td{
+	padding:7px 0px 7px 0px;
 }
 
-.paymentInfo th{
-	
-}
-
-.paymentInfo td:first-child{
-  text-align: center;
+table{
+	padding-bottom: 50px;
 }
 
 table, td, th {
@@ -51,19 +60,18 @@ th, td{
 	border-top: 1px solid #444444;
 	border-bottom: 1px solid #444444;
 }
-
-.paymentInfo ul { margin-left:100px; display: table; border: none;}
-.paymentInfo ul li{ margin: 4px 0; background-color: #d1e0e0;}
-
+tr{
+	border: 1px blue;
+}
 .btn {
 	font-family: 'Nanum Myeongjo', serif;
-  color: black;
-	background-color: white;
-  border: 1px solid #D8D8D8; /* Green */
-  transition-duration: 0.4s;
-  border-radius: 4px;
-  width: 100px;
-  height: 30px;
+ 	color: white;
+	background-color: black;
+  	border: 1px solid #D8D8D8; /* Green */
+  	transition-duration: 0.4s;
+  	border-radius: 4px;
+  	width: 200px;
+  	height: 50px;
 }
 
 .btn:hover {
@@ -78,5 +86,12 @@ th, td{
 	padding-top:100px;
 	text-decoration: none;
 	color: black;
-	
+}
+.infoTable{
+	text-align:center;
+}
+#priceRed{
+	font-size:18px;
+	font-weight:bold;
+	color: red;
 }
