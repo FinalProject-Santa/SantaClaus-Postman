@@ -21,7 +21,7 @@
 					</div>
 					<div class="letterInfo">
 						<p><b>${list.LETTER_NAME }</b></p>
-						<p><b><fmt:formatNumber type="number" value="${list.LETTER_PRICE }"/>원</b></p>
+						<p id="price"><b><fmt:formatNumber type="number" value="${list.LETTER_PRICE }"/>원</b></p>
 					</div>
 				</div>
 			</c:forEach>

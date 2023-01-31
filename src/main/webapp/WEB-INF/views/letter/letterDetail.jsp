@@ -28,45 +28,45 @@
 				</div>
 				<div class="letterDetailWrap">
 					<div class="letterInfo">
-						<p>🎅${letterName }</p>
-						<p>
+						<p style="margin-top:30px;"><b>${letterName }</b></p>
+						<p style="color:gray">
 							<fmt:formatNumber type="number" value="${letterPrice }"/>원
 						</p>
 						<input type="hidden" name="letter_name" value="${letterName}">
 						<!-- <hr class="hr1"> -->
 						<input type="hidden" name="letter_price" value="${letterPrice}">
 						<div class="letterContent">
-							<p>편지 내용을 채워주세요</p>
 							<table>
 								<tr>
 									<th>아이 이름</th>
-									<td><input type="text" name="child_name" placeholder="아이 이름" style="width: 100%"><!-- required oninvalid="this.setCustomValidity('🎅아이 이름을 입력해 주세요🎅')" --></td>
+									<td><input type="text" name="child_name" placeholder="아이 이름" style="width: 100%" required="required"></td>
 								</tr>
 								<tr>
 									<th>거주지</th>
-									<td><input type="text" name="address" placeholder="전달받을 거주지" style="width: 100%"> <!-- required oninvalid="this.setCustomValidity('🎅전달 받으실 위치를 입력해 주세요🎅')"> --></td>
+									<td><input type="text" name="address" placeholder="전달받을 거주지" style="width: 100%" required="required"></td>
 								</tr>
 								<tr>
 									<th>P.S</th>
 									<td>
-										<textarea name="ps" placeholder="아이에게 들려주고 싶은 말을 적어주세요" style="width: 100%; height: 150px;"></textarea>
+										<textarea name="ps" placeholder="아이에게 들려주고 싶은&#13;&#10;말을 적어주세요" style="width: 100%; height: 150px;" required="required"></textarea>
 									</td>
 								</tr>
 							</table>
 						</div>
-					</div>
+					</div><br>
+					<p>🎅옵션 상품 목록🎅</p>
 					<div class="payment">
 						<div class="shopList">
 							<span></span>
 						</div>
+						<p>
+							배송비 : 20,000원 이상 무료
+						</p>
 						<div class="payBtn">
 							<input type="submit" formaction="/cart/cartpage" id="shopCart" value="장바구니">
 							<input type="submit" formaction="/order/orderForm" id="buy" value="구매하기">
 						</div>
 					</div>
-					<p>
-							* 배송비는 20,000원 이상 무료입니다.
-					</p>
 				</div>
 			</div>
 		</form>
