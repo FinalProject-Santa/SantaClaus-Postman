@@ -107,10 +107,10 @@ body {
             <div id="menu"onclick="maintoggle();">= Menu
             <div id="menubox">
                     <ul id="menubar">
-                        <li><a href="../letter/letterList" class="atag">Letter</a></li>
-                    	<li><a href="../tree/decotree" class="atag">Tree</a></li>
-                    	<li><a href="../review/reviewList" class="atag">Review</a></li>
-                    	<li id="nbsp"><a href="../mypage/main" class="atag">My Page</a></li>
+                        <li><a href="/letter/letterList" class="atag">Letter</a></li>
+                    	<li><a href="/tree/decotree" class="atag">Tree</a></li>
+                    	<li><a href="/review/reviewList" class="atag">Review</a></li>
+                    	<li id="nbsp"><a href="/mypage/main" class="atag">My Page</a></li>
                     	<li><a href="#about" id="scroll_move" class="atag">About</a></li>
                     	<c:choose>
 	      				<c:when test="${sessionScope.member != null }">
@@ -129,7 +129,7 @@ body {
 	      	<c:when test="${sessionScope.member != null }">
 		      	<li><span>${member.name }님</span> 반갑습니다🎅</li>
 		      	<li onclick="location.href='/main/logout'">Log Out</li>
-		      	<li><a href="../mypage/mycart" class="atag">Cart</a></li>
+		      	<li><a href="/mypage/mycart" class="atag">Cart</a></li>
 		      	<script>
                   document.getElementById('logo').style.marginLeft = "150px";
                </script>

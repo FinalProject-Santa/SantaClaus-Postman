@@ -9,8 +9,9 @@
 <%@include file="../include/floatingMenu.jsp" %>
 
 	<div class="inner">
-
-		<!-- DataTales Example -->
+<p class="headCategory" style="text-align: right">
+			<a href="/">Home</a> > Letter List
+		</p>
 	
 		<div class="container">
 				

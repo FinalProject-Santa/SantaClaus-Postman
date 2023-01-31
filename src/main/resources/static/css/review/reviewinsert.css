@@ -16,7 +16,7 @@
   }
   
   .star span {
-    width: 100%;
+    width: 0;
     position: absolute; 
     left: 0;
     color:#FFFF00;
@@ -31,7 +31,7 @@
 
 .container{
 	padding-top: 150px;
-	padding-left: 350px;
+	padding-left: 300px;
 	width: 800px;
 }
 
@@ -62,7 +62,20 @@ textarea {
   resize: none;
 }
 
-
 .btn_area{
-		
+	margin-left: 400px;
 }
+
+.btn {
+  color: black;
+	background-color: white;
+  border: 2px solid gray; /* Green */
+  transition-duration: 0.4s;
+  border-radius: 8px;
+}
+
+.btn:hover {
+  background-color: gray; /* Green */
+  color: white;
+}
+
