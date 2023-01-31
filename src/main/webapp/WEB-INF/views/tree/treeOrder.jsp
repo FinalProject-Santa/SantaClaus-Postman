@@ -9,6 +9,9 @@
 <%@include file="../include/floatingMenu.jsp"%>
 
 <div class="inner">
+<p class="headCategory" style="text-align: right">
+			<a href="/">Home</a> > Tree Decorating > Tree Order Form > Tree Order
+		</p>
 	<div class="flexCon">
 		<div class="title">
 			<h2>주문 정보 확인</h2>
@@ -123,7 +126,7 @@
 		<br>
 		<br>
 		<div class="homeBtn">
-			<input type="button" value="홈으로">
+			<input type="button" value="홈으로" class="btn">
 		</div>
 	</div>
 </div>

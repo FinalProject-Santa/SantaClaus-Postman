@@ -71,5 +71,30 @@ margin-right: auto;
 	/* float: left; */
 }
 #btnarea{
-	position:absolute
+	padding-left:100px;
+}
+.btn {
+	font-family: 'Nanum Myeongjo', serif;
+  color: black;
+	background-color: white;
+  border: 1px solid #D8D8D8; /* Green */
+  transition-duration: 0.4s;
+  border-radius: 4px;
+  width: 100px;
+  height: 30px;
+}
+
+.btn:hover {
+  background-color: #D8D8D8; /* Green */
+  color: black;
+}
+.headCategory{
+	padding-top:100px;
+	
+}
+.headCategory a{
+	padding-top:100px;
+	text-decoration: none;
+	color: black;
+	
 }

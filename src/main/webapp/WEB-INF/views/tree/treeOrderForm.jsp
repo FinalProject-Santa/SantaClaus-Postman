@@ -280,6 +280,9 @@
 </head>
 <body>
 <div class="inner">
+<p class="headCategory" style="text-align: right">
+			<a href="/">Home</a> > Tree Decorating > Tree Order Form
+		</p>
   <div class="flexCon">
 	<div class="title">
         <h2>주문서 작성</h2>
@@ -353,11 +356,11 @@
 						</td>
 	               </tr>
                </c:forEach>
-               <tr style="padding: 222px;">
-               	<td>
+               <tr>
+               <td style="padding:7px 0px 7px 0px; background-color:#FAFAFA">
                		<button type="button" id="deleteOption">삭제</button>
                	</td>
-                   <td colspan="7">
+                   <td colspan="7" >
                    <span style="padding-left:550px;"></span>
                    	<span id="deliveryType">[기본 배송]</span>
               			<input type='hidden' value="${treePrice + totalOptionPrice }"/>
@@ -392,7 +395,7 @@
            <h3>배송 정보</h3>
        </div>
        <form action="/tree/treeOrder" method="post" id="form">
-           <table border="1">
+           <table class="test" border="1">
                <tbody>
                <colgroup>
                    <col width="120"/>		
@@ -476,9 +479,9 @@
 	                       <col width="520"/>
 	                   </colgroup>
 	                   <tr>
-	                       <th bgcolor="#F2F2F2">총 주문 금액</th>
-	                       <th bgcolor="#F2F2F2">배송비</th>
-	                       <th bgcolor="#F2F2F2">총 결제 금액</th>
+	                       <th bgcolor="#FAFAFA">총 주문 금액</th>
+	                       <th bgcolor="#FAFAFA">배송비</th>
+	                       <th bgcolor="#FAFAFA">총 결제 금액</th>
 	                   </tr>
 	                   <tr>
 	                       <td id="paymentInfo_totalPrice"  style="text-align: center;">
@@ -508,7 +511,7 @@
 							</td>
 	                   </tr>
 	                   <tr>
-	                       <th bgcolor="#F2F2F2">포인트</th>
+	                       <th bgcolor="#FAFAFA">포인트</th>
 	                       <td colspan="2">
 	                           <p align="left" style="margin-left:100px; margin-top:20px;">
 	                           	<c:choose>
@@ -589,7 +592,7 @@
                    <input type="hidden" id="user_email" value="${memberDto.email }">
                    <input type="hidden" name="total_price" value="${treePrice + totalOptionPrice + 2500 }">
 	               <p class="payBtn">
-	                   <input type="button" value="결제하기" id="payment">
+	                   <input type="button" value="결제하기" id="payment" class="btn">
 	               </p>
 	           </div>
        </form>

@@ -7,6 +7,9 @@
 <%@include file="../include/floatingMenu.jsp" %>
 
 <div class="inner">
+<p class="headCategory" style="text-align: right">
+			<a href="/">Home</a> > Review List > Writing Review
+		</p>
 	<div class="container">
 		<div>
 			<i class="fa-sharp fa-solid fa-pen-to-square" style="padding-right: 5px;"></i><label style="font-size:18px;">후기 작성</label> <hr >
@@ -22,16 +25,16 @@
 			</div>
 			<br>
 			<br>
-			<div class="mb-5">
-				<div class="review_rating">
-					<label for="reply_star">별점</label><span class="star"> ★★★★★
-						<span>★★★★★</span> <input type="range" oninput="drawStar(this)"
-						value="1" step="0.5" min="0" max="5" name="review_best" id="best">
-					</span>
+<div class="mb-5">
+					<div class="review_rating">
+						<label for="reply_star">별점</label> <span class="star"> ★★★★★
+							<span>★★★★★</span> <input type="range" oninput="drawStar(this)"
+							value="1" step="0.5" min="0" max="5" name="review_best">
+						</span>
+					</div>
 				</div>
-			</div>
-			<br>
-			<br>
+				<br>
+				<br>
 			<div class="mb-3">
 				<label>상세 내용</label>
 				<div class="form-floating" style="padding-top:5px;">

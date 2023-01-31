@@ -8,6 +8,9 @@
 <%@include file="../include/floatingMenu.jsp"%>
 
 <div class="inner">
+<p class="headCategory" style="text-align: right">
+			<a href="/">Home</a> > Tree Decorating
+		</p>
 	<div style="padding-left:490px;"><h2>Drag&amp;Drop으로 나만의 트리를 완성하세요!</h2></div>
 		<div class="flexCon">
 			<div id="or-container1">
@@ -36,9 +39,9 @@
 		</div>
 	</div>
 	<div id="btnarea">
-		<input type="button" id="re_btn" value="다시 꾸미기" onClick="window.location.reload()">
-		<input type="button" id="save_btn" value="저장">
-		<input type="submit" id="buy_btn" value="구매" style="visibility : hidden;">
+		<input type="button" class="btn" id="re_btn" value="다시 꾸미기" onClick="window.location.reload()">
+		<input type="button" class="btn" id="save_btn" value="저장">
+		<input type="submit" class="btn" id="buy_btn" value="구매" style="visibility : hidden;">
 	</div>
 </form>
 
