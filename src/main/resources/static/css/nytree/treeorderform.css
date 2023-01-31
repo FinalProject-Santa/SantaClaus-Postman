@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .inner{
-    width: 1400px;
+    width: 1600px;
     margin: 0 auto;  
 }
 
@@ -37,6 +37,11 @@ img{
 	padding:7px 0px 7px 0px;
 }
 
+.orderList th{
+	padding:7px 0px 7px 0px;
+}
+
+
 .paymentInfo th{
 	padding:7px 0px 7px 0px;
 }
@@ -62,9 +67,24 @@ th, td{
 }
 
 .paymentInfo ul { margin-left:100px; display: table; border: none;}
-.paymentInfo ul li{ margin: 4px 0; background-color: #d1e0e0;}
+.paymentInfo ul li:first-child{ margin: 4px 0; background-color: #d1e0e0;}
 
-.btn {
+.divdiv .btn {
+	font-family: 'Nanum Myeongjo', serif;
+ 	color: white;
+	background-color: black;
+  	border: 1px solid #D8D8D8; /* Green */
+  	transition-duration: 0.4s;
+  	border-radius: 4px;
+  	width: 367px;
+  	height: 50px;
+}
+
+.divdiv .btn:hover {
+  background-color: #D8D8D8; /* Green */
+  color: black;
+}
+.orderList .btn {
 	font-family: 'Nanum Myeongjo', serif;
   color: black;
 	background-color: white;
@@ -75,7 +95,7 @@ th, td{
   height: 30px;
 }
 
-.btn:hover {
+.orderList .btn:hover {
   background-color: #D8D8D8; /* Green */
   color: black;
 }
@@ -88,4 +108,17 @@ th, td{
 	text-decoration: none;
 	color: black;
 	
+}
+
+#paymentInfo_totalPriceMinusPoint{
+	color:red;
+	font-size:13pt;
+}
+
+#paymentInfo_totalPoint, #paymentInfo_totalPriceMinusPoint{
+	float:right;
+	vertical-align:middle;
+}
+.agreement{
+	margin-top:30px;
 }

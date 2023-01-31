@@ -297,7 +297,7 @@
                    <col width="200"/>		
                    <col width="100"/>	
                    <col width="100"/>		
-                   <col width="100"/>
+                   <col width="230"/>
                </colgroup>
                <tr>
                    <th><input type="checkbox" id="chkAll"></th>
@@ -358,7 +358,7 @@
                </c:forEach>
                <tr>
                <td style="padding:7px 0px 7px 0px; background-color:#FAFAFA">
-               		<button type="button" id="deleteOption">삭제</button>
+               		<button type="button" id="deleteOption" class="btn">삭제</button>
                	</td>
                    <td colspan="7" >
                    <span style="padding-left:550px;"></span>
@@ -399,7 +399,7 @@
                <tbody>
                <colgroup>
                    <col width="120"/>		
-                   <col width="1000"/>		
+                   <col width="1180"/>		
                </colgroup>
                    <tr>
                        <th>배송지 선택</th>
@@ -476,7 +476,7 @@
 	                   <colgroup>
 	                       <col width="300"/>		
 	                       <col width="300"/>		
-	                       <col width="520"/>
+	                       <col width="300"/>
 	                   </colgroup>
 	                   <tr>
 	                       <th bgcolor="#FAFAFA">총 주문 금액</th>
@@ -532,13 +532,10 @@
 	                   </tr>
 	               </tbody>
 	           </table>
-	       </div>
-	       <br>
-	       <br>
-	           <div style="margin-left:">
-	               <p>
-                  	<strong>최종결제 금액</strong>
-	               	<span id="paymentInfo_totalPriceMinusPoint">
+	           	           <div class="divdiv" style="margin-left:30px;">
+	               
+                  	<span style="margin-top: 50px;">최종결제 금액</span>
+	               	<span id="paymentInfo_totalPriceMinusPoint" >
 	                   	<c:choose>
 	               			<c:when test="${treePrice + totalOptionPrice ge 20000}">
 	               				<c:choose>
@@ -566,10 +563,10 @@
 	               			</c:otherwise>
 	          				</c:choose>
 					</span>
-	               </p>
+
 	               <p>
-	               	   <strong>총 적립예정금액</strong>
-	                   <span id="paymentInfo_totalPoint">
+	               	   <span>총 적립예정금액</span>
+	                   <span id="paymentInfo_totalPoint" >
 	                   	<fmt:formatNumber type="number" value="${treePoint + totalOptionPoint }"/>pt
 	                  	<input type="hidden" name="save_point" value="${treePoint + totalOptionPoint }"/>
 	                   </span>
@@ -595,6 +592,10 @@
 	                   <input type="button" value="결제하기" id="payment" class="btn">
 	               </p>
 	           </div>
+	       </div>
+	       <br>
+	       <br>
+
        </form>
     </div>
 </div>
