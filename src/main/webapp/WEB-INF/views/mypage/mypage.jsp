@@ -27,7 +27,7 @@
             
             <div id="section1" class="section">
             	<p>
-            		<img src="/resources/image/mypage/bill.png" onclick="location.href='/mypage/order'">
+            		<img src="/resources/image/mypage/bill.png" onclick="location.href='/mypage/myorder'">
            			<!-- <a href="/mypage/order" class="list">주문 정보</a> -->
            		</p>
        		</div>
