@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Dear Santa</title>
+<link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 	<link rel="stylesheet" href="/resources/css/main/main.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

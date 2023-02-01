@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
+<title>Q&A</title>
+<link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 <%@include file="../include/header.jsp"%>
 <%@include file="../include/floatingMenu.jsp"%>
 <link rel="stylesheet" href="/resources/css/customer/qnadetail.css">
