@@ -16,18 +16,18 @@
 	<div style="padding-left:490px;"><h2>Drag&amp;Drop으로 나만의 트리를 완성하세요!</h2></div>
 		<div class="flexCon">
 			<div id="or-container1">
-	   <img src='/resources/image/treeimg/오너1.png' alt="" class="ornament" draggable="true" data-key="o1"><input type="hidden" class="img" name="or_name" value="o1">
-	   <img src='/resources/image/treeimg/오너2.png' alt="" class="ornament" draggable="true" data-key="o2"><input type="hidden" class="img" name="or_name" value="o2">
-	   <img src='/resources/image/treeimg/오너28.png' alt="" id="ornament1" class="ornament" draggable="true" data-key="o28"><input type="hidden" class="img" name="or_name" value="o28">
-	   <img src='/resources/image/treeimg/오너3.png' alt="" class="ornament" draggable="true" data-key="o3"><input type="hidden" class="img" name="or_name" value="o3">
-	   <img src='/resources/image/treeimg/오너4.png' alt="" class="ornament" draggable="true" data-key="o4"><input type="hidden" class="img" name="or_name" value="o4">
-	   <img src='/resources/image/treeimg/오너5.png' alt="" class="ornament" draggable="true" data-key="o5"><input type="hidden" class="img" name="or_name" value="o5">
-	   <img src='/resources/image/treeimg/오너6.png' alt="" class="ornament" draggable="true" data-key="o6"><input type="hidden" class="img" name="or_name" value="o6">
-	   <img src='/resources/image/treeimg/오너7.png' alt="" class="ornament" draggable="true" data-key="o7"><input type="hidden" class="img" name="or_name" value="o7">
-	   <img src='/resources/image/treeimg/오너8.png' alt="" class="ornament" draggable="true" data-key="o8"><input type="hidden" class="img" name="or_name" value="o8">
-	   <img src='/resources/image/treeimg/오너10.png' alt="" class="ornament" draggable="true" data-key="o10"><input type="hidden" class="img" name="or_name" value="o10">
-	   <img src='/resources/image/treeimg/오너11.png' alt="" class="ornament" draggable="true" data-key="o11"><input type="hidden" class="img" name="or_name" value="o11">
-	   <img src='/resources/image/treeimg/오너12.png' alt="" class="ornament" draggable="true" data-key="o12"><input type="hidden" class="img" name="or_name" value="o12">
+	   <img src='/resources/image/treeimg/Blue Bauble.png' alt="" class="ornament" draggable="true" data-key="o1"><input type="hidden" class="img" name="or_name" value="o1">
+	   <img src='/resources/image/treeimg/Letterbox.png' alt="" class="ornament" draggable="true" data-key="o2"><input type="hidden" class="img" name="or_name" value="o2">
+	   <img src='/resources/image/treeimg/Star.png' alt="" id="ornament1" class="ornament" draggable="true" data-key="o28"><input type="hidden" class="img" name="or_name" value="o28">
+	   <img src='/resources/image/treeimg/Hanging3.png' alt="" class="ornament" draggable="true" data-key="o3"><input type="hidden" class="img" name="or_name" value="o3">
+	   <img src='/resources/image/treeimg/Hanging2.png' alt="" class="ornament" draggable="true" data-key="o4"><input type="hidden" class="img" name="or_name" value="o4">
+	   <img src='/resources/image/treeimg/Hanging.png' alt="" class="ornament" draggable="true" data-key="o5"><input type="hidden" class="img" name="or_name" value="o5">
+	   <img src='/resources/image/treeimg/Astronaut.png' alt="" class="ornament" draggable="true" data-key="o6"><input type="hidden" class="img" name="or_name" value="o6">
+	   <img src='/resources/image/treeimg/Wreath.png' alt="" class="ornament" draggable="true" data-key="o7"><input type="hidden" class="img" name="or_name" value="o7">
+	   <img src='/resources/image/treeimg/Pink Ball.png' alt="" class="ornament" draggable="true" data-key="o8"><input type="hidden" class="img" name="or_name" value="o8">
+	   <img src='/resources/image/treeimg/Hanging4.png' alt="" class="ornament" draggable="true" data-key="o10"><input type="hidden" class="img" name="or_name" value="o10">
+	   <img src='/resources/image/treeimg/Coffee.png' alt="" class="ornament" draggable="true" data-key="o11"><input type="hidden" class="img" name="or_name" value="o11">
+	   <img src='/resources/image/treeimg/Bottle.png' alt="" class="ornament" draggable="true" data-key="o12"><input type="hidden" class="img" name="or_name" value="o12">
 	 </div>
 	 
 	
@@ -48,18 +48,18 @@
 </form>
 
 	 <div id="or-container2">
-	   <img src='/resources/image/treeimg/오너13.png' alt="" class="ornament" draggable="true" data-key="o13"><input type="hidden" class="img" name="or_name" value="o13">
-	   <img src='/resources/image/treeimg/오너16.png' alt="" class="ornament" draggable="true" data-key="o16"><input type="hidden" class="img" name="or_name" value="o16">
-	   <img src='/resources/image/treeimg/오너17.png' alt="" class="ornament" draggable="true" data-key="o17"><input type="hidden" class="img" name="or_name" value="o17">
-	   <img src='/resources/image/treeimg/오너18.png' alt="" class="ornament" draggable="true" data-key="o18"><input type="hidden" class="img" name="or_name" value="o18">
-	   <img src='/resources/image/treeimg/오너19.png' alt="" class="ornament" draggable="true" data-key="o19"><input type="hidden" class="img" name="or_name" value="o19">
-	   <img src='/resources/image/treeimg/오너20.png' alt="" class="ornament" draggable="true" data-key="o20"><input type="hidden" class="img" name="or_name" value="o20">
-	   <img src='/resources/image/treeimg/오너22.png' alt="" class="ornament" draggable="true" data-key="o22"><input type="hidden" class="img" name="or_name" value="o22">
-	   <img src='/resources/image/treeimg/오너23.png' alt="" class="ornament" draggable="true" data-key="o23"><input type="hidden" class="img" name="or_name" value="o23">
-	   <img src='/resources/image/treeimg/오너24.png' alt="" class="ornament" draggable="true" data-key="o24"><input type="hidden" class="img" name="or_name" value="o24">
-	   <img src='/resources/image/treeimg/오너25.png' alt="" class="ornament" draggable="true" data-key="o25"><input type="hidden" class="img" name="or_name" value="o25">
-	   <img src='/resources/image/treeimg/오너26.png' alt="" class="ornament" draggable="true" data-key="o26"><input type="hidden" class="img" name="or_name" value="o26">
-	   <img src='/resources/image/treeimg/오너27.png' alt="" class="ornament" draggable="true" data-key="o27"><input type="hidden" class="img" name="or_name" value="o27">
+	   <img src='/resources/image/treeimg/Santa Doll.png' alt="" class="ornament" draggable="true" data-key="o13"><input type="hidden" class="img" name="or_name" value="o13">
+	   <img src='/resources/image/treeimg/Cookie House.png' alt="" class="ornament" draggable="true" data-key="o16"><input type="hidden" class="img" name="or_name" value="o16">
+	   <img src='/resources/image/treeimg/Gingerbread Man.png' alt="" class="ornament" draggable="true" data-key="o17"><input type="hidden" class="img" name="or_name" value="o17">
+	   <img src='/resources/image/treeimg/Angel Wings.png' alt="" class="ornament" draggable="true" data-key="o18"><input type="hidden" class="img" name="or_name" value="o18">
+	   <img src='/resources/image/treeimg/Gingerbread.png' alt="" class="ornament" draggable="true" data-key="o19"><input type="hidden" class="img" name="or_name" value="o19">
+	   <img src='/resources/image/treeimg/Puppy Doll.png' alt="" class="ornament" draggable="true" data-key="o20"><input type="hidden" class="img" name="or_name" value="o20">
+	   <img src='/resources/image/treeimg/Candy Stick.png' alt="" class="ornament" draggable="true" data-key="o22"><input type="hidden" class="img" name="or_name" value="o22">
+	   <img src='/resources/image/treeimg/Cake.png' alt="" class="ornament" draggable="true" data-key="o23"><input type="hidden" class="img" name="or_name" value="o23">
+	   <img src='/resources/image/treeimg/Blue Ball.png' alt="" class="ornament" draggable="true" data-key="o24"><input type="hidden" class="img" name="or_name" value="o24">
+	   <img src='/resources/image/treeimg/White Ball.png' alt="" class="ornament" draggable="true" data-key="o25"><input type="hidden" class="img" name="or_name" value="o25">
+	   <img src='/resources/image/treeimg/Pine Cone.png' alt="" class="ornament" draggable="true" data-key="o26"><input type="hidden" class="img" name="or_name" value="o26">
+	   <img src='/resources/image/treeimg/Cherry.png' alt="" class="ornament" draggable="true" data-key="o27"><input type="hidden" class="img" name="or_name" value="o27">
 	</div>
 </div>	
 </div>
