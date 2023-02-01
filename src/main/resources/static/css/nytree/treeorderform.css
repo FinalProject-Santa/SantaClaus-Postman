@@ -112,6 +112,7 @@ th, td{
 #paymentInfo_totalPriceMinusPoint{
 	color:red;
 	font-size:13pt;
+	font-weight: bold;
 }
 
 #paymentInfo_totalPoint, #paymentInfo_totalPriceMinusPoint{
@@ -122,3 +123,17 @@ th, td{
 	margin-top:30px;
 }
 
+.postcodeBtn{
+    color: white;
+    background-color: black;
+      border: 1px solid #D8D8D8; 
+      transition-duration: 0.4s;
+      border-radius: 4px;
+      width: 80px;
+      height: 25px;
+      vertical-align: middle;
+}
+.postcodeBtn:hover {
+  background-color: #D8D8D8; 
+  color: black;
+}

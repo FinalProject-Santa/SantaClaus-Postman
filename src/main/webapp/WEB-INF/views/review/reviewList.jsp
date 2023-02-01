@@ -88,8 +88,7 @@
 						</tbody>	
 						</table>
 					</div>
-					
-					
+				
 	<c:if test="${sessionScope.member != null}">
 						<button class="btn btn-primary btn-sm"
 							style="float: right; font-size: 13px;"

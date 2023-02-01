@@ -5,21 +5,19 @@
 }
 
 .flexCon{
-	padding-top: 100px;	
+	padding-top: 50px;	
 	padding-left: 230px;
 }
 .orderNum{
-	display: flex;
-	
+   display: flex;
 }
-.orderMent{
-	font-size: 18pt;
-	font-weight: bold;
-	text
+#orderMent{
+   font-family:sans-serif;
+   font-size: 15pt;
 }
 .orderDiv{
-	text-align:center;
-	vertical-align: middle;
+   margin-left:100px;
+   margin-top:250px;
 }
 
 img{ 
@@ -70,8 +68,9 @@ tr{
   	border: 1px solid #D8D8D8; /* Green */
   	transition-duration: 0.4s;
   	border-radius: 4px;
-  	width: 200px;
-  	height: 50px;
+  	width: 70px;
+  	height: 40px;
+  	margin-left:880px;
 }
 
 .btn:hover {

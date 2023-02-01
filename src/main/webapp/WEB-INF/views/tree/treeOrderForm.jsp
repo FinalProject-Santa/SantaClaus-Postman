@@ -232,7 +232,6 @@
 		$("#payment").click(function(){
 			email();
 			phone();
-			$('#form').submit();
 			const data = {
 				 	user_email : $("#user_email").val(),
 					user_name : $("#user_name").val(),
@@ -280,7 +279,7 @@
 </head>
 <body>
 <div class="inner">
-<p class="headCategory" style="text-align: right">
+<p class="headCategory" style="text-align: right; padding-right:147px;">
 			<a href="/">Home</a> > Tree Decorating > Tree Order Form
 		</p>
   <div class="flexCon">
@@ -300,30 +299,30 @@
                    <col width="230"/>
                </colgroup>
                <tr>
-                   <th><input type="checkbox" id="chkAll"></th>
-                   <th>구분</th>
-                   <th>이미지</th>
-                   <th>상품정보</th>
-                   <th>판매가</th>
-                   <th>수량</th>
-                   <th>포인트</th>
+                   <th bgcolor="#FAFAFA"><input type="checkbox" id="chkAll"></th>
+                   <th bgcolor="#FAFAFA">구분</th>
+                   <th bgcolor="#FAFAFA">이미지</th>
+                   <th bgcolor="#FAFAFA">상품정보</th>
+                   <th bgcolor="#FAFAFA">판매가</th>
+                   <th bgcolor="#FAFAFA">수량</th>
+                   <th bgcolor="#FAFAFA">포인트</th>
                </tr>
                <tr>
                    <td><input type="checkbox" name="chkBox"></td>
                    <td>트리</td>
                    <td><img src="/resources/image/treeimg/트리1.png" id="treeImg"></td>
                    <td>
-                       <p >
+                       <p>
                            크리스마스 트리
                        </p>
                    </td>
-                   <td>
+                   <td style="font-weight:bold">
 	              		<c:set var="treePrice" value="150000"/>
                 		150,000원
                 		<input type='hidden' value="150000"/>
                    </td>
                    <td>1</td>
-                   <td>
+                   <td style="color:gray; font-weight: bold">
 	                   <fmt:parseNumber var="point" value="${treePrice * 0.01 }" integerOnly="true" />
 	                   <fmt:formatNumber type="number" value="${point}"/>pt
 	                   <c:set var="treePoint" value="${point}"/>
@@ -343,12 +342,12 @@
 	                           ${dto.or_name }
 	                       </p>
 	                   </td>
-	                   <td>
+	                   <td style="font-weight:bold">
 	                   	<input type='hidden' value="${dto.or_price }"/>
 	                   	<fmt:formatNumber type="number" value="${dto.or_price }"/>원
 	                   </td>
 	                   <td>1</td>
-	                   <td>
+	                   <td style="color:gray; font-weight: bold">
 	                   	<fmt:parseNumber var="point" value="${dto.or_price * 0.01 }" integerOnly="true" />
 		                <c:set var="totalOptionPoint" value="${totalOptionPoint + point}"/>
 		                <fmt:formatNumber type="number" value="${point }"/>pt
@@ -361,29 +360,24 @@
                		<button type="button" id="deleteOption" class="btn">삭제</button>
                	</td>
                    <td colspan="7" >
-                   <span style="padding-left:550px;"></span>
-                   	<span id="deliveryType">[기본 배송]</span>
-              			<input type='hidden' value="${treePrice + totalOptionPrice }"/>
-              			<span id="deliveryCharge">
-              				<c:choose>
-	                			<c:when test="${treePrice + totalOptionPrice ge 20000}">
-	                				배송비 : 무료
-	                			</c:when>
-	                			<c:otherwise>
-	                				배송비 : 2,500원
-	                			</c:otherwise>
-              				</c:choose>
-              			</span>
-                   	[합계] : <span id="totalPirce">
-                   		<fmt:formatNumber type="number" value="${treePrice + totalOptionPrice }"/>원
-                   		<input type='hidden' value="${treePrice + totalOptionPrice }"/>
-                   	</span>
-                   		
-                   	<span>[포인트]</span>
-                   		적립 예정 : <span id="totalPoint"> 
-                   		<fmt:formatNumber type="number" value="${treePoint + totalOptionPoint }"/>pt
-                   		<input type='hidden' value="${treePoint + totalOptionPoint }"/>
-                   	</span>
+                   <span style="padding-left:781px;"></span>
+                  <span id="deliveryCharge">
+                     <c:choose>
+                       <c:when test="${letterDto.letter_price + totalOptionPrice ge 20000}">
+                          [배송비] : <b>무료</b>
+                       </c:when>
+                       <c:otherwise>
+                          [배송비] : <b>2,500원</b>
+                       </c:otherwise>
+                     </c:choose>
+                     </span>&nbsp;[합계] : <span id="totalPirce" style="font-weight: bold">
+                       <fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice }"/>원
+                       <input type='hidden' value="${letterDto.letter_price + totalOptionPrice }"/>
+                    </span>
+                    &nbsp;[포인트 적립] : <span id="totalPoint" style="font-weight: bold"> 
+                       <fmt:formatNumber type="number" value="${letterPoint + totalOptionPoint }"/>pt
+                       <input type='hidden' value="${letterPoint + totalOptionPoint }"/>
+                    </span>
                    </td>
                </tr>
                </tbody>
@@ -402,8 +396,8 @@
                    <col width="1180"/>		
                </colgroup>
                    <tr>
-                       <th>배송지 선택</th>
-                       <td>
+                       <th bgcolor="#FAFAFA">배송지 선택</th>
+                       <td style="padding-left:20px;">
                            <div class="address">
                                <input type="radio" name="addr" id="sameDestination">
                                <label for ="sameDestination">회원 정보와 동일</label>&nbsp;
@@ -414,28 +408,28 @@
                        </td>
                    </tr>
                    <tr>
-                       <th>받으시는 분</th>
-                       <td><input type="text" value="" name="receiver"></td>
+                       <th bgcolor="#FAFAFA">받으시는 분</th>
+                       <td style="padding-left:20px;"><input type="text" value="" name="receiver"></td>
                    </tr>
                    <tr>
-                       <th>주소</th>
-                       <td>
+                       <th bgcolor="#FAFAFA">주소</th>
+                       <td style="padding-left:20px;">
                        	<input name="post_code" type="text">
-						<input id="userPostcode" class="button" type="button" value="우편번호"><br><br>
+						<input id="userPostcode" class="postcodeBtn" type="button" value="우편번호"><br><br>
 						<input name="default_addr" type="text"> 기본 주소<br><br>
 						<input name="detail_addr" type="text"> 나머지 주소
                        </td>
                    </tr>
                    <tr>
-                       <th>휴대전화</th>
-                       <td>
+                       <th bgcolor="#FAFAFA">휴대전화</th>
+                       <td style="padding-left:20px;">
                        	<input type="text" value="010">&nbsp; - <input type="text" id="frontNum">&nbsp; - <input type="text" id="backNum">&nbsp;
                        	<input type="hidden" id="phone" name="phone">
                       	</td>
                    </tr>
                    <tr>
-                       <th>이메일</th>
-                       <td>
+                       <th bgcolor="#FAFAFA">이메일</th>
+                       <td style="padding-left:20px;">
                            <input id="emailId" type="text" required="required">
 						<span>@</span>
 						<select id="emailDomain">
@@ -452,8 +446,8 @@
                        </td>
                    </tr>
                    <tr>
-                           <th>배송메세지</th>
-                           <td><textarea name="delivery_message" style="width:295px; height:100px;"></textarea></td>
+                           <th bgcolor="#FAFAFA">배송메세지</th>
+                           <td style="padding-left:20px;"><textarea name="delivery_message" style="width:295px; height:100px;"></textarea></td>
                    </tr>	
                    				
                    <!-- <tr>
