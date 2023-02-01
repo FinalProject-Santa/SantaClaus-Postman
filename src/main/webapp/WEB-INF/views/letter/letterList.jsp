@@ -26,19 +26,19 @@
 				</div>
 			</c:forEach>
 		</div>
-		<ul class="pagination">
+		<ul class="paginationUl">
 			<c:if test="${pageMaker.prev }">
-				<li class="page-item">
+				<li class="pagination">
 					<a class="page-link" href='<c:url value="/letter/letterList?page=${pageMaker.startPage-1 }"/>'><span aria-hidden="true">&laquo;</span></a>
 				</li>
 			</c:if>
 			<c:forEach begin="${pageMaker.startPage }"
 				end="${pageMaker.endPage }" var="pageNum">
-				<li class="page-item"><a class="page-link" href='<c:url value="/letter/letterList?page=${pageNum }"/>'>${pageNum }</a>
+				<li class="pagination"><a class="page-link" href='<c:url value="/letter/letterList?page=${pageNum }"/>'>${pageNum }</a>
 				</li>
 			</c:forEach>
 			<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
-				<li class="page-item"><a class="page-link" href='<c:url value="/letter/letterList?page=${pageMaker.endPage+1 }"/>' aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+				<li class="pagination"><a class="page-link" href='<c:url value="/letter/letterList?page=${pageMaker.endPage+1 }"/>' aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
 			</c:if>
 		</ul>
 	</div>

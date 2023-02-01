@@ -3,6 +3,7 @@ package com.boot.jdbc.model.dto;
 import java.util.Date;
 
 public class ReviewDto {
+	private String order_no;
 	private int review_no;
 	private String user_id;
 	private String review_title;
@@ -18,10 +19,10 @@ public class ReviewDto {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public ReviewDto(int review_no, String user_id, String review_title, double review_best, String review_content,
-			int review_count, Date review_date, String rimg) {
+	public ReviewDto(String order_no, int review_no, String user_id, String review_title, double review_best,
+			String review_content, int review_count, Date review_date, String rimg) {
 		super();
+		this.order_no = order_no;
 		this.review_no = review_no;
 		this.user_id = user_id;
 		this.review_title = review_title;
@@ -32,6 +33,13 @@ public class ReviewDto {
 		this.rimg = rimg;
 	}
 
+	public String getOrder_no() {
+		return order_no;
+	}
+
+	public void setOrder_no(String order_no) {
+		this.order_no = order_no;
+	}
 
 	public int getReview_no() {
 		return review_no;

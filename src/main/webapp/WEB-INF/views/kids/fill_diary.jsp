@@ -108,8 +108,7 @@
                         console.log("날짜 :"+date);
                         if(date!=""){
                         	alert("해당 날짜는 작성되었습니다.");
-                            $("#success_btn").attr("disabled",true);
-                            $("#success_btn").css('backgroundColor','yellow');
+                        	$("#success_btn").hide();
                     	}
                     },
                     error:function(a,b,c){

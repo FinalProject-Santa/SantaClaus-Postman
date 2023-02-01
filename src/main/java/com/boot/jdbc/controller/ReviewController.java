@@ -32,6 +32,7 @@ import com.boot.jdbc.model.dto.rFileDto;
 @RequestMapping("/review")
 public class ReviewController {
 	
+	String orderNo="";
 	@Autowired
 	private ReviewBiz reviewbiz;
 	
@@ -80,8 +81,8 @@ public class ReviewController {
 	}
 
 	@GetMapping("/reviewinsertform")
-	public String rinsertform() {
-
+	public String rinsertform(String order_no) {
+		orderNo = order_no;
 		return "review/reviewInsertForm";
 		
 	}
@@ -93,6 +94,7 @@ public class ReviewController {
 		HttpSession session = request.getSession();
 		String user_id = ((MemberDto)session.getAttribute("member")).getUser_id();
 		reviewdto.setUser_id(user_id);
+		reviewdto.setOrder_no(orderNo);
 		
 		rFileDto file = new rFileDto();
 		
