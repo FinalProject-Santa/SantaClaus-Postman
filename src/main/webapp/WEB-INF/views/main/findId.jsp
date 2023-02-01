@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
 <title>Find ID</title>
 <link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 <link href="/resources/css/main/findId.css" rel="stylesheet">
+<%@include file="../include/header.jsp"%>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <script>
    $(function(){
@@ -48,6 +45,8 @@
 </script>
 </head>
 <body>
+
+	<div class="inner">
    <div class="findId">
         <div class="title">
         <h2>아이디 찾기</h2>
@@ -56,12 +55,13 @@
         <input type="button" value="x" id="closebutton" onclick="history.back()">
         </div>    
         <div id="findId-form">
-            <input type="text" name="user_id" id="membername" class="memberinfo" placeholder="이름*">
+            <input type="text" name="user_id" id="membername" class="memberinfo" placeholder="이름*"style="border-bottom: 1px solid #c7c4c4; margin-bottom:21px;" >
                 <span id="errorname">이름을 입력하세요.</span>
-            <input type="text" name="email" id="memberemail" class="memberinfo" placeholder="이메일*">
+            <input type="text" name="email" id="memberemail" class="memberinfo" placeholder="이메일*" style="border-bottom: 1px solid #c7c4c4;">
                 <span id="erroremail">이메일을 입력하세요.</span>
             <input type="button" id="checkbutton" value="확인" onclick="findId();">
         </div>
     </div>
-</body>
-</html>
+    </div>
+    
+<%@include file="../include/footer.jsp" %>

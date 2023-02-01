@@ -1,16 +1,14 @@
-@charset "UTF-8";
-*{
-    padding: 0;
-    margin: 0;
-}
-body{
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-}
+
+.inner {
+padding-top : 90px;
+min-height : 100%;
+height : 1200px;
+margin: auto;
+	}
+
 .login{
     position: absolute;
     padding: 20px;
-    width: 300px;
     border-radius: 5px;
     top: 50%;
     left: 50%;
@@ -26,10 +24,10 @@ body{
     height: 48px;
     padding: 0 10px;
     box-sizing: border-box;
-    border-radius: 6px;
-    background-color: #F8F8F8;
+    background-color: transparent;
     margin-bottom: 5px;
     outline: none;
+   
 }
 #login-form > input:focus{
     background-color: rgba(224, 224, 224, 0.644);
@@ -38,18 +36,16 @@ body{
     color: #cacaca;
 }
 #login-form > input[type="submit"]{
-    font-size: 16px;
-    color: black;
-    background-color: white;
-    margin-top: 20px;
-    border-radius: 50px;
-    border: rgb(189, 185, 185) solid;
-    width: 50%;
+    font-size: 13px;
+    color: white;
+    background-color: black;
+    margin-top: -10px;
+    width: 100%;
     height: 48px;
-    margin-left: 75px;
 }
 #login-form > input[type="submit"]:hover{
-   background-color: #ebebeb;
+   background-color: white;
+   color: black;
 }
 .memberinfo{
     border: none;
@@ -101,8 +97,8 @@ span{
     float: right;
 }
 .findInfo{
+	text-align: center;
     margin-top: 20px;
-    margin-left: 55px;
 }
 #errorlogin{
     margin-left: 13px;
@@ -113,19 +109,19 @@ span{
     font-size: 16px;
 }
 .closebutton{
-    float: right;
-    margin-bottom: 30px;
+    margin-left: 381px;
 }
 #closebutton{
     width: 20px;
-    height: 20px;
+    height: 62px;
     border: none;
     background-color: white;
     font-size: 20px;
 }
-a{
+#a{
+	font-size:13px;
     text-decoration: none;
     color: black;
 }
-a:hover {
+#a:hover {
   text-decoration: underline;

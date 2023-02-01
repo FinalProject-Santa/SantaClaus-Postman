@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
 <title>Find Pw</title>
 <link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 <link href="/resources/css/main/findPw.css" rel="stylesheet">
+<%@include file="../include/header.jsp"%>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <script>
    $(function(){
@@ -74,9 +71,12 @@
 	} */
 
 </script>
-</head>
+
+
 <body>
-   <div class="findPw">
+
+	<div class="inner">
+    <div class="findPw">
         <div class="title">
         <h2>비밀번호 찾기</h2>
         </div>
@@ -85,13 +85,14 @@
         </div>
         <form method="post" action="/main/sendEmail">
         <div id="findPw-form">
-           <input type="text" name="user_id" id="memberid" class="memberinfo" placeholder="아이디*">
+           <input type="text" name="user_id" id="memberid" class="memberinfo" placeholder="아이디*" style="border-bottom: 1px solid #c7c4c4; margin-bottom:21px;">
                 <span id="errorid">아이디을 입력하세요.</span>
-            <input type="text" name="email" id="memberemail" class="memberinfo" placeholder="이메일*">
+            <input type="text" name="email" id="memberemail" class="memberinfo" placeholder="이메일*" style="border-bottom: 1px solid #c7c4c4;">
                 <span id="erroremail">이메일을 입력하세요.</span>
             <input type="submit" id="sendbutton" value="인증번호 전송">
         </div>
         </form>
     </div>
-</body>
-</html>
+    </div>
+    
+    <%@include file="../include/footer.jsp" %>
