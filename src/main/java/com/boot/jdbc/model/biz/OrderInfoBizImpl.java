@@ -11,6 +11,7 @@ import com.boot.jdbc.model.dto.LetterDto;
 import com.boot.jdbc.model.dto.MemberDto;
 import com.boot.jdbc.model.dto.OptionDto;
 import com.boot.jdbc.model.dto.OrderDto;
+import com.boot.jdbc.model.dto.OrderInfoDto;
 import com.boot.jdbc.model.dto.ReviewDto;
 
 @Service
@@ -44,7 +45,7 @@ public class OrderInfoBizImpl implements OrderInfoBiz{
 	}
 
 	@Override
-	public OptionDto selectOption(String option_name) {
+	public List<OrderInfoDto> selectOption(String option_name) {
 		return orderMapper.selectOption(option_name);
 	}
 

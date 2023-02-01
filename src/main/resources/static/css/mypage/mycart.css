@@ -12,12 +12,13 @@
 	color:black;
 }
 #head{
-	font-size: 26px;
+	font-size: 32px;
+	margin-bottom: 15px;
 }
 #wrapper{
 	width: 960px;
 	margin: 0 auto;
-	padding-top: 240px;
+	padding-top: 200px;
 	padding-bottom: 300px;
  	padding-left: 210px;
 	padding-right: 210px;
