@@ -325,11 +325,11 @@ public class KidsController {
 				Collections.sort(DecDay);
 				model.addAttribute("DecDay",DecDay);
 				model.addAttribute("DecSize", DecDay.size());
-			}else if(Date.get(i).matches("(.*)-01-(.*)")) {
+			}else if(Date.get(i).matches("(.*)-02-(.*)")) {
 				JanDay.add(Integer.parseInt(Date.get(i).substring(8)));
 				Collections.sort(JanDay);
-				model.addAttribute("JanDay",JanDay);
-				model.addAttribute("JanSize", JanDay.size());
+				model.addAttribute("JanDay",JanDay); //FebDay
+				model.addAttribute("JanSize", JanDay.size()); //FebSize
 			}
 		}
 		
@@ -380,11 +380,11 @@ public class KidsController {
 				Collections.sort(DecDay);
 				model.addAttribute("DecDay",DecDay);
 				model.addAttribute("DecSize", DecDay.size());
-			}else if(Date.get(i).matches("(.*)-01-(.*)")) {
+			}else if(Date.get(i).matches("(.*)-02-(.*)")) {
 				JanDay.add(Integer.parseInt(Date.get(i).substring(8)));
 				Collections.sort(JanDay);
-				model.addAttribute("JanDay",JanDay);
-				model.addAttribute("JanSize", JanDay.size());
+				model.addAttribute("JanDay",JanDay); //FebDay
+				model.addAttribute("JanSize", JanDay.size()); //FebSize
 			}
 		}
 		
