@@ -35,6 +35,12 @@ form>input{
     text-align: center;
     padding: 18px;
 }
+#letter_img{
+	width: 300px;
+}
+#option_img{
+	height:180px;
+}
 .end{
     text-align: center;
     padding-top: 80px;

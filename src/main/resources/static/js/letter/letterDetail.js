@@ -18,7 +18,7 @@ $(function(){
 		}else{
 			shopList.append("<div class='selectedItem'><p>" + name + 
 				
-					"</p><div><span><input type='button' id='minus' value='-' disabled='disabled'><input type='text' value='1' readonly='readonly'><input type='hidden' value='1' name='optionDtoList["+ count + "].option_quantity'><input type='button' id='plus' value='+'></span><span>" + priceWithComma + "</span>원<input type='hidden' value='"+price+"' name='optionDtoList["+ count + "].option_price'><input type='hidden' value='"+price+"'><input class='deleteItem' type='button' value='X'><input type='hidden' value='"+name+"' name='optionDtoList["+ count + "].option_name'><input type='hidden' value='"+ img +"' name='optionDtoList["+ count + "].option_img'><span id='"+name+"'</div>");
+					"</p><div><span><input type='button' id='minus' value='-' disabled='disabled'><input style='text-align:center; width:30px' type='text' value='1' readonly='readonly'><input type='hidden' value='1' name='optionDtoList["+ count + "].option_quantity'><input type='button' id='plus' value='+'></span><span style='color:gray; font-weight:bold'>" + priceWithComma + "</span>원<input type='hidden' value='"+price+"' name='optionDtoList["+ count + "].option_price'><input type='hidden' value='"+price+"'><img src='/resources/image/letter/deleteBtn.JPG' class='deleteItem' type='button'><input type='hidden' value='"+name+"' name='optionDtoList["+ count + "].option_name'><input type='hidden' value='"+ img +"' name='optionDtoList["+ count + "].option_img'><span id='"+name+"'</div><br><br>");
 			count ++;
 		}
 	});

@@ -9,23 +9,29 @@
 <%@include file="../include/floatingMenu.jsp"%>
 
 <div class="inner">
+<p class="headCategory" style="text-align: right">
+			<a href="/">Home</a> > Tree Decorating > Tree Order Form > Tree Order
+		</p>
 	<div class="flexCon">
 		<div class="title">
 			<h2>주문 정보 확인</h2>
 		</div>
-		<div style="display: flex;">
-			<span><img alt="" src="${myimg}" id="treeImg"></span>
-			<p>
-				고객님의 주문이 완료 되었습니다.<br> 주문번호 : ${orderDto.order_no }
-			</p>
+		<div class="orderNum">
+			<img alt="" src="${myimg}" id="treeImg">
+			<div class="orderDiv">
+				<p class="orderMent">고객님의 주문이 완료 되었습니다.</p><br>
+				주문번호 : ${orderDto.order_no }
+			</div>
 		</div>
 		<br>
 		<br>
 		<strong>결제 정보</strong>
+		<br>
+		<br>
 		<table border="1">
 			<colgroup>
-				<col style="width: 160px;">
-				<col style="width: auto">
+				<col style="width: 120px;">
+				<col style="width: 830PX;">
 			</colgroup>
 		        <tbody>
 	            <tr>
@@ -42,9 +48,9 @@
 	            <tr>
 	                <th>최종결제금액</th>
 	                <td>
-	                	<strong>
+	                	<span id="priceRed">
 	                		<fmt:formatNumber type="number" value="${orderDto.total_price }"/>원
-	                	</strong>
+	                	</span>
 	                </td>
 	            </tr>
 	        </tbody>
@@ -52,13 +58,15 @@
 	    <br>
 	    <br>
 		<strong>주문 상품 정보</strong>
-		<table border="1">
+		<br>
+		<br>
+		<table border="1" class="infoTable">
 			<colgroup>
 				<col style="width: 50px;">
 				<col style="width: 300px">
 				<col style="width: 200px;">
-				<col style="width: 100px;">
-				<col style="width: 100px;">
+				<col style="width: 200px;">
+				<col style="width: 200px;">
 			</colgroup>
 			<tbody>
 				<tr>
@@ -94,10 +102,12 @@
 		<br>
 		<br>
 		<strong>배송지 정보</strong>
+		<br>
+		<br>
 		<table border="1">
 			<colgroup>
 				<col style="width: 160px;">
-				<col style="width: auto">
+				<col style="width: 790px;">
 			</colgroup>
 			<tbody>
 				<tr>
@@ -123,7 +133,7 @@
 		<br>
 		<br>
 		<div class="homeBtn">
-			<input type="button" value="홈으로">
+			<input type="button" value="홈으로" class="btn">
 		</div>
 	</div>
 </div>

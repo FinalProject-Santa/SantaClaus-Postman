@@ -58,13 +58,7 @@
 				$("#totalPoint").html(totalPoint);
 				
 				$(this).parent("td").parent("tr").remove();
-				itemName = $(this).parent("td").next().next().next().text().trim();
 				
-				$.ajax({
-					url:"/cart/delete?itemName=" + itemName,
-					success : function(data){
-					}
-				});
 			});
 			
 			$("#totalPirce").html(totalPrice.toLocaleString() + '원');
@@ -84,7 +78,6 @@
 	<div id="wrapper">
 		<nav>
 			<h1>장바구니</h1>
-			<p>일반상품(수량)</p>
 		</nav>
 		<section>
 			<form action="/order/orderForm" method="post">
@@ -93,7 +86,7 @@
                <colgroup>
                    <col width="50"/>		
                    <col width="70"/>		
-                   <col width="500"/>		
+                   <col width="400"/>		
                    <col width="200"/>		
                    <col width="100"/>	
                    <col width="100"/>		
@@ -108,13 +101,22 @@
                    <th>수량</th>
                    <th>포인트</th>
                </tr>
+                <c:choose>
+                    <c:when test="${empty letterList }">
+                         <tr>
+                             <td colspan="7" align="center">
+                                 장바구니에 담긴 상품이 없습니다.
+                             </td>
+                         </tr>
+                    </c:when>
+                    <c:otherwise>
                <c:set var="totalLetterPrice"/>
                <c:forEach var="letterDto" items="${letterList }" >
                <c:set var="totalLetterPrice" value="${totalLetterPrice + letterDto.letter_price}"/>
 	               <tr>
-	                   <td><input type="checkbox"></td>
+	                   <td><input type="checkbox" name="chkBox"></td>
 	                   <td>엽서</td>
-	                   <td><img src="${letterDto.letter_img }"></td>
+	                   <td><img id="letter_img" src="${letterDto.letter_img }"></td>
 	                   <td>
 	                       <p id="letterName">
 	                           ${letterDto.letter_name }
@@ -122,6 +124,7 @@
 	                       <input type="hidden" value="${letterDto.letter_name }" name="letter_name">
 	                   </td>
 	                   <td>
+                   			<input type='hidden' value="${letterDto.letter_price }"/>
 	                		<fmt:formatNumber type="number" value="${letterDto.letter_price }"/>원
 	                   </td>
 	                   <td>1</td>
@@ -129,29 +132,30 @@
 	                   		<fmt:parseNumber var="point" value="${letterDto.letter_price * 0.01 }" integerOnly="true" />
 	                		<fmt:formatNumber type="number" value="${point}"/>pt
 			                <c:set var="letterPoint" value="${point}"/>
+			                <input type='hidden' value="${point }"/>
 					   </td>
 	               </tr>
                </c:forEach>
                <c:set var="totalOptionPrice"/>
                <c:set var="totalOptionPoint"/>
                <c:forEach var="dto" items="${optionList }" >
-                <c:set var="totalOptionPrice" value="${totalOptionPrice + dto.option_price}"/>
+                <c:set var="totalOptionPrice" value="${totalOptionPrice + dto.option_price * dto.option_quantity}"/>
                 <tr>
                     <td><input type="checkbox" name="chkBox"></td>
                     <td>옵션</td>
-                    <td><img src="${dto.option_img }"></td>
+                    <td><img id="option_img" src="${dto.option_img }"></td>
                     <td>
                         <p class="itemName">
                             ${dto.option_name }
                         </p>
                     </td>
                     <td>
-                    	<input type='hidden' value="${dto.option_price }"/>
-                    	<fmt:formatNumber type="number" value="${dto.option_price }"/>원
+                    	<input type='hidden' value="${dto.option_price * dto.option_quantity }"/>
+                    	<fmt:formatNumber type="number" value="${dto.option_price * dto.option_quantity }"/>원
                     </td>
                     <td>${dto.option_quantity}</td>
                     <td>
-                    	<fmt:parseNumber var="point" value="${dto.option_price * 0.01 }" integerOnly="true" />
+                    	<fmt:parseNumber var="point" value="${dto.option_price * dto.option_quantity * 0.01 }" integerOnly="true" />
 		                <c:set var="totalOptionPoint" value="${totalOptionPoint + point}"/>
 		                <fmt:formatNumber type="number" value="${point }"/>pt
                     	<input type='hidden' value="${point }"/>
@@ -187,12 +191,13 @@
                    	</span>
                    </td>
                </tr>
+               </c:otherwise>
+               </c:choose>
                </tbody>
            </table>
 			<div class="end">
-				<input type="submit" class="payment" value="결제하기"> <input
-					type="button" class="continue" value="쇼핑 계속하기"
-					onclick="location.href='/letter/letterList'">
+				<input type="submit" class="payment" value="결제하기"> 
+				<input type="button" class="continue" value="엽서 목록" onclick="location.href='/letter/letterList'">
 			</div>
 			</form>
 		</section>

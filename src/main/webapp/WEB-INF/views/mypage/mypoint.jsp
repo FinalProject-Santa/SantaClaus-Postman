@@ -24,7 +24,7 @@
         <nav>
             <h1>포인트</h1>
             <p class="color1">고객님의 사용가능 포인트 금액입니다.</p>
-            <p class="box1">총 포인트 ${mypoint}</p>
+            <p class="box1">총 포인트 <fmt:formatNumber type="number" value="${mypoint}"/></p>
         </nav>
         <section>
 			<p class="box2">포인트 내역</p>
@@ -50,7 +50,7 @@
 							<td>${list.point_purpose}</td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
 									value="${list.point_date}" /></td>
-							<td><span id="save">${list.point}</span></td>
+							<td><span id="save"><fmt:formatNumber type="number" value="${list.point}"></fmt:formatNumber></span></td>
 							<td>${list.order_no}</td>
 							<td>${list.point_content}</td>
 						</tr>

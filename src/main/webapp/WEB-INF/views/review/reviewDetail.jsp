@@ -10,10 +10,13 @@
 <%@include file="../include/floatingMenu.jsp" %>
 
 <div class="inner">
+<p class="headCategory" style="text-align: right">
+			<a href="/">Home</a> > Review List > Review Detail
+		</p>
 	<div class="container">
 		<div class="col-sm-11" >
 			<div class="col-sm-12">
-						<img alt="" src="/resources/image/uploadFiles/${files.rfile_name}">
+						<img alt="" src="/resources/image/uploadFiles/${files.rfile_name}" height="300" width="300">
 						<br>
 						<br>
 		
@@ -67,11 +70,10 @@
 				</span>	
 				<span class="btn_area">
 						<button onclick="location.href='/review/reviewList'" class="btn btn-sm btn-warning" >목록</button>
-					<c:if test="${sessionScope.member != null}">
+					<c:if test="${sessionScope.member.user_id == reviewdetail.user_id}">
 						<button class="btn"
 							onclick="location.href='/review/reviewUpdate/${reviewdetail.review_no }'">수정</button>
-						<button class="btn" id="btn_del"
-							onclick="location.href='/review/reviewDelete/${reviewdetail.review_no }'" >삭제</button>
+						<button class="btn" id="btn_del">삭제</button>
 					</c:if>
 				</span>
 			</div>
@@ -88,6 +90,14 @@
 
 	// 숫자 평점을 별로 변환하도록 호출하는 함수
 	$('.star-prototype').generateStars();
+	
+	$("#btn_del").click(function(){
+		var deleteCk = confirm("정말 삭제하시겠습니까?");
+		if(deleteCk){
+			location.href='/review/reviewDelete/${reviewdetail.review_no }';
+		} 
+	});
+	
 	</script>
 <%@include file="../include/footer.jsp" %>
 </body>

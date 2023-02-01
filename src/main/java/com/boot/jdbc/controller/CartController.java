@@ -136,6 +136,8 @@ public class CartController {
 		
 		String cart_letterNames = "";
 		String cart_optionNames = "";
+		if(cartDtoList.size()>0) {
+			
 		
 		for(int i=0; i<cartDtoList.size(); i++){
 //			cart_letterDto.setLetter_name(cartDtoList.get(i).getLetter_name() + ",");
@@ -185,7 +187,7 @@ public class CartController {
 		}
 		
 		model.addAttribute("letterList", cart_letterList);
-		
+		}
 		System.out.println("끝");
 		return "/mypage/mycart";
 	}

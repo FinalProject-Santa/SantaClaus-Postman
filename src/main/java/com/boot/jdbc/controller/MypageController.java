@@ -22,7 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.boot.jdbc.model.biz.CartBiz;
 import com.boot.jdbc.model.biz.MemberBiz;
-import com.boot.jdbc.model.biz.OrderBiz;
 import com.boot.jdbc.model.biz.OrderInfoBiz;
 import com.boot.jdbc.model.biz.PointBiz;
 import com.boot.jdbc.model.dto.CartDto;
@@ -33,6 +32,7 @@ import com.boot.jdbc.model.dto.OptionDto;
 import com.boot.jdbc.model.dto.OrderDto;
 import com.boot.jdbc.model.dto.PageMaker;
 import com.boot.jdbc.model.dto.PointDto;
+import com.boot.jdbc.model.dto.ReviewDto;
 
 @Controller
 @RequestMapping("/mypage")
@@ -104,22 +104,25 @@ public class MypageController {
 		model.addAttribute("memberdto",memberBiz.infoUpdateform(user_id));
 		return "main/main";
 	}
+	@SuppressWarnings("unused")
 	@GetMapping("/main")
-	public String mainpage(Model model, HttpServletRequest request) {
+	public String mainpage(Model model, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		MemberDto memberdto = ((MemberDto) session.getAttribute("member"));
 		String user_id = memberdto.getUser_id();
-		System.out.println("zzzzzzzzzzzzzzzzz" +  user_id);
-		System.out.println("test1 : " + memberBiz.infoUpdateform(user_id).getRfileName());
-		System.out.println("test2 : " + memberBiz.infoUpdateform(user_id).getRfileUrl());
-		model.addAttribute("memberdto", memberBiz.infoUpdateform(user_id));
-		return "mypage/mypage";
+		
+		if (memberdto != null) {
+			model.addAttribute("memberdto", memberBiz.infoUpdateform(user_id));
+			return "mypage/mypage";
+		} else {
+			return "/main/loginForm";
+		}
 	}
 
 	// 회원 정보 수정 페이지
 	@GetMapping("/infoUpdateform")
 	public String infoUpdateForm(Model model,HttpSession session1, MemberDto memberDto, String user_id, HttpServletRequest request) {
-//		session1.setAttribute("member", memberDto);
+//		session1.setAttribute("member", memberDto); 매개변수 삭제해도 되나?
 		HttpSession session = request.getSession();
 		MemberDto memberdto = ((MemberDto) session.getAttribute("member"));
 		if (memberdto != null) {
@@ -127,24 +130,90 @@ public class MypageController {
 			model.addAttribute("memberdto", memberdto);
 			return "mypage/myinfoUpdate";
 		} else {
-			return "redirect:/main/loginForm";
+			return "/main/loginForm";
 		}
 	}
 
-	@GetMapping("/order")
-	public String order(Model model, HttpServletRequest request) {
+	@GetMapping("/myorder")
+	public String order(Model model, HttpServletRequest request, String startdate, String enddate) {
 		HttpSession session = request.getSession();
-		String user_id = ((MemberDto) session.getAttribute("member")).getUser_id();
-		List<OrderDto> orderDtoList =  orderInfoBiz.orderDtoList(user_id);
-//		model.addAttribute("orderlist", orderBiz.orderList());
+		MemberDto memberDto = ((MemberDto) session.getAttribute("member"));
+		String user_id = memberDto.getUser_id();
+		
+		//오더테이블 공간 만들어서 주문완료된거 가져와 담기
+		List<OrderDto> orderdtolist =  new ArrayList<OrderDto>();
+		orderdtolist = orderInfoBiz.orderDtoList(user_id);
+		
+		//datepicker 날짜 ajax로 받아서 기간설정에 해당되는 주문들 조회해주기
+//		orderdtolist =  orderInfoBiz.orderList(memberDto, startdate, enddate);
+		
+		String orderno = "";
+		String letter_name = "";
+		String option_name = "";
+		
+		//주문테이블의 주문 완료된 아이들 셀렉트하여 리스트로 가져온거 담기
+		for(int i=0; i<orderdtolist.size(); i++) {
+			orderno += orderdtolist.get(i).getOrder_no() + "/";
+			letter_name += orderdtolist.get(i).getLetter_name() + "/";
+			option_name += orderdtolist.get(i).getOption_name() + "/";
+		}
+		//String 변수에 담은 아이들 끝에 있는 '/' 빼주기
+		orderno = orderno.substring(0, orderno.length()-1);
+		letter_name =letter_name.substring(0, letter_name.length()-1);
+		option_name = option_name.substring(0, option_name.length()-1);
+
+		String[] ordernoArr =  orderno.split("/");
+		//주문 완료 된 상태의 주문번호들
+//		for(int i=0; i<ordernoArr.length; i++) {
+//			System.out.println(ordernoArr[i]);
+//		}
+		
+		ReviewDto review_noBox = new ReviewDto();
+		List<ReviewDto> review_noList = new ArrayList<ReviewDto>();
+		
+		for(int i=0; i<ordernoArr.length; i++) {
+			  //주문번호가 x인 리뷰컬럼(조회수) 가져오기
+				review_noBox = orderInfoBiz.selectReview(ordernoArr[i]);
+				review_noList.add(review_noBox);
+		}
+			System.out.println(orderdtolist);
+			System.out.println(review_noList);
+		String[] letterNameArr =  letter_name.split("/");
+		
+		
+		String[] optionNameArr =  option_name.split("/");
+		
+		
+//		orderdtolist.add(orderdto);
+		
+		
+		
+		model.addAttribute("orderdtolist", orderdtolist);
+		model.addAttribute("review_noList", review_noList);
+		
 		return "mypage/myorder";
 	}
+	/*
+	order_date
+	order_no
+	<letter_img>
+	<option_img>
+	letter_name
+	option_name
+	total_price
+	*/
+	
 //	@RequestMapping("/selectOrder")
 //	public String selectOrder(Model model) {
 //		model.addAttribute("orderlist",orderBiz.selectOrder());
 //		return "mypage/myorder";
 //	}
 
+	
+	
+	
+	
+	
 	// 마이포인트 페이지
 	@Autowired
 	private PointBiz pointBiz;
