@@ -1,13 +1,26 @@
-*{
-    box-sizing: border-box;
-}
-#wrapper{
+#aio{
 	width: 1400px;
 	margin: 0 auto;
+}
+.headCategory{
+	float: right;
+	margin-top: 90px;
+	font-size: 19px; 
+}
+.headCategory a{
+	text-decoration:none;
+	color:black;
+}
+#head{
+	font-size: 26px;
+}
+#wrapper{
+	width: 960px;
+	margin: 0 auto;
 	padding-top: 240px;
-	padding-bottom: 150px;
- 	padding-left: 130px;
-	padding-right: 130px;
+	padding-bottom: 300px;
+ 	padding-left: 210px;
+	padding-right: 210px;
 }
 nav p{
     font-size: 10pt;
@@ -48,20 +61,50 @@ form>input{
 .payment{
     width: 150px;
     height: 50px;
-    background-color: steelblue;
-    color: aliceblue;
     margin-right: 10px;
-    border-radius: 5px;
-    cursor: pointer;
+	font-family: 'Nanum Myeongjo', serif;
+ 	color: white;
+	background-color: black;
+  	border: 1px solid #D8D8D8; /* Green */
+  	transition-duration: 0.4s;
+  	border-radius: 4px;
+	font-size: 18px;
+	font-weight: bold;
+}
+.payment:hover {
+  background-color: #D8D8D8; /* Green */
+  color: black;
 }
 .continue{
     margin-left: 10px;
     width: 150px;
     height: 50px;
-    border-radius: 5px;
-    cursor: pointer;
+	font-family: 'Nanum Myeongjo', serif;
+ 	color: black;
+	background-color: white;
+	border: 1px solid #D8D8D8; /* Green */
+	transition-duration: 0.4s;
+	border-radius: 4px;
+	font-size: 18px;
+	font-weight: bold;
+}
+.continue:hover {
+  background-color: #D8D8D8; /* Green */
+  color: black;
 }
 table hr{
     width: 80%;
 }
-
+#deleteOption{
+	font-family: 'Nanum Myeongjo', serif;
+ 	color: black;
+	background-color: white;
+	border: 1px solid #D8D8D8; /* Green */
+	transition-duration: 0.4s;
+	border-radius: 4px;
+	
+}
+#deleteOption:hover {
+  background-color: #D8D8D8; /* Green */
+  color: black;
+}

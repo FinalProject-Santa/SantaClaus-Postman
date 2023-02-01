@@ -1,22 +1,38 @@
-*{
-    box-sizing: border-box;
-    text-decoration: none;
-}
-#wrapper{
+/* *{ */
+/*     box-sizing: border-box; */
+/*     text-decoration: none; */
+/* } */
+#aio{
 	width: 1400px;
 	margin: 0 auto;
-	padding-top: 240px;
-	padding-bottom: 150px;
- 	padding-left: 130px;
-	padding-right: 130px;
 }
-h1{
+.headCategory{
+	float: right;
+	margin-top: 90px;
+	font-size: 19px; 
+}
+.ss{
+	text-decoration:none;
+	color:black;
+}
+#wrapper{
+	width: 1100px;
+	margin: 0 auto;
+	padding-top: 210px;
+	padding-bottom: 250px;
+ 	padding-left: 180px;
+	padding-right: 180px;
+}
+#title{
     margin-bottom: -5px;
     font-size: 27pt;
 }
-hr{
+.line{
     margin-top: -24px;
-    width: 1140px;
+    width: 1120px;
+    margin-left: 3px;
+    margin-top: -22px;
+    z-index: -10;
     color: #444444;;
 }
 .color1{
@@ -25,14 +41,17 @@ hr{
 .box1{
     border: 1px solid lightgrey;
     border-radius: 5px;
-    width: 400px;
-    height: 100px;
-    line-height: 100px;
+    width: 360px;
+    height: 60px;
+    z-index: 5;
+    line-height: 60px;
     padding-left: 20px;
+    font-size: 18px;
+    font-weight: bold;
 }
 .box2{
-    width: 400px;
-    height: 50px;
+    width: 360px;
+    height: 30px;
     border-radius: 5px;
     background-color: rgb(77, 77, 77);
     color: aliceblue;
@@ -46,8 +65,9 @@ hr{
 	margin-right: 15px;
 }
 table{
+	width: 1100px;
     border-top: 1px solid black;
-    margin-top: 30px;
+/*     margin-top: 20px; */
 	margin-bottom: 10px;
     width: 1100px;
    	border-collapse:collapse;
@@ -67,16 +87,35 @@ tr ul li{
 	width: 30px ;
 	height: 30px ;
 	text-align: center;
-}
+    list-style:none;
+   	float:left;
+	margin:0 7px 0 0;
+	position:relative;
+	}
 #paging td{
+	padding-top: 50px;
 	border-bottom: none;
-	padding-left: 500px;
-	padding-right: 500px;
+	padding-left: 400px;
+	padding-right: 400px;
+
+/* 	test-align: center; */
+/* 	margin: 0 auto; */
 }
-a{
+.a{
+	top: 20px;
+	position:relative;
+	padding: 5px 9px;
 	text-decoration: none;
-	color: blue;
+	transition: background-color .3s;
+	border-radius: 5px;
+	color: black;	
+    font-family: 'Nanum Myeongjo', serif;
 }
-i{
-	font-style: Arial;
+.a:hover:not(.active) {
+	background-color: #ddd;
+	text-decoration: none;
+	}
+.fddddda{
+/* 	font-style: Arial; */
+    font-family: 'Nanum Myeongjo', serif;
 }
