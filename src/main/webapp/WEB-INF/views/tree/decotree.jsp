@@ -16,6 +16,7 @@
 			<div id="or-container1">
 	   <img src='/resources/image/treeimg/오너1.png' alt="" class="ornament" draggable="true" data-key="o1"><input type="hidden" class="img" name="or_name" value="o1">
 	   <img src='/resources/image/treeimg/오너2.png' alt="" class="ornament" draggable="true" data-key="o2"><input type="hidden" class="img" name="or_name" value="o2">
+	   <img src='/resources/image/treeimg/오너28.png' alt="" id="ornament1" class="ornament" draggable="true" data-key="o28"><input type="hidden" class="img" name="or_name" value="o28">
 	   <img src='/resources/image/treeimg/오너3.png' alt="" class="ornament" draggable="true" data-key="o3"><input type="hidden" class="img" name="or_name" value="o3">
 	   <img src='/resources/image/treeimg/오너4.png' alt="" class="ornament" draggable="true" data-key="o4"><input type="hidden" class="img" name="or_name" value="o4">
 	   <img src='/resources/image/treeimg/오너5.png' alt="" class="ornament" draggable="true" data-key="o5"><input type="hidden" class="img" name="or_name" value="o5">
@@ -25,7 +26,6 @@
 	   <img src='/resources/image/treeimg/오너10.png' alt="" class="ornament" draggable="true" data-key="o10"><input type="hidden" class="img" name="or_name" value="o10">
 	   <img src='/resources/image/treeimg/오너11.png' alt="" class="ornament" draggable="true" data-key="o11"><input type="hidden" class="img" name="or_name" value="o11">
 	   <img src='/resources/image/treeimg/오너12.png' alt="" class="ornament" draggable="true" data-key="o12"><input type="hidden" class="img" name="or_name" value="o12">
-	   <img src='/resources/image/treeimg/오너28.png' alt="" id="ornament1" class="ornament" draggable="true" data-key="o28"><input type="hidden" class="img" name="or_name" value="o28">
 	 </div>
 	 
 	
@@ -41,7 +41,7 @@
 	<div id="btnarea">
 		<input type="button" class="btn" id="re_btn" value="다시 꾸미기" onClick="window.location.reload()">
 		<input type="button" class="btn" id="save_btn" value="저장">
-		<input type="submit" class="btn" id="buy_btn" value="구매" style="visibility : hidden;">
+		<input type="submit" class="btn" id="buy_btn" value="구매" disabled="disabled">
 	</div>
 </form>
 
@@ -171,7 +171,7 @@ const posY = event.offsetX;
 
  $("#save_btn").on("click", function(){
 	 screenShot($("#container"));
-	 $("#buy_btn").css({visibility: "visible"});
+	 $("#buy_btn").attr("disabled", false);
  });
  function screenShot(target){
 	 if(target != null && target.length>0){

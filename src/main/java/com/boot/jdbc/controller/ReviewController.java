@@ -22,11 +22,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.boot.jdbc.model.biz.ReviewBiz;
-import com.boot.jdbc.model.dto.Criteria;
+import com.boot.jdbc.model.dto.MemberDto;
 import com.boot.jdbc.model.dto.PageMaker;
 import com.boot.jdbc.model.dto.ReviewDto;
+import com.boot.jdbc.model.dto.SearchCriteria;
 import com.boot.jdbc.model.dto.rFileDto;
-import com.boot.jdbc.model.dto.MemberDto;
 
 @Controller
 @RequestMapping("/review")
@@ -40,7 +40,7 @@ public class ReviewController {
 	String uploadFileDir;
 	
 	@RequestMapping(value = "/reviewList")
-	public ModelAndView openReviewList(Criteria cri) throws Exception {
+	public ModelAndView openReviewList(SearchCriteria cri) throws Exception {
 		
 		ModelAndView mav = new ModelAndView("/review/reviewList");
 		

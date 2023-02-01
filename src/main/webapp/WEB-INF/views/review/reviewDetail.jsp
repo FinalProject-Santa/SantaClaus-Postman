@@ -63,7 +63,7 @@
 					<c:if test="${prev ne 0 }">
 						<i class="fa-sharp fa-solid fa-angle-left" style="margin-right:5px;"></i><a href="${pageContext.request.contextPath }/review/reviewDetail/${prev }" >이전글</a>
 					</c:if>	
-					<span style="margin-left:768px;"></span>
+					<span style="margin-left:772px;"></span>
 					<c:if test="${next ne 0 }">
 						<a href="${pageContext.request.contextPath }/review/reviewDetail/${next }" style="">다음글</a><i class="fa-sharp fa-solid fa-angle-right" style="margin-left:5px;"></i>
 					</c:if>						

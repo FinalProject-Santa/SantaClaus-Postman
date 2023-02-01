@@ -11,8 +11,8 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.boot.jdbc.model.dto.Criteria;
 import com.boot.jdbc.model.dto.ReviewDto;
+import com.boot.jdbc.model.dto.SearchCriteria;
 import com.boot.jdbc.model.dto.rFileDto;
 
 @Mapper
@@ -27,7 +27,7 @@ public interface ReviewMapper {
 	
 	//페이징
 	@Select("SELECT * FROM REVIEW ORDER BY REVIEW_NO DESC LIMIT #{pageStart}, #{perPageNum}")
-	List<Map<String, Object>> reviewList(Criteria cri);
+	List<Map<String, Object>> reviewList(SearchCriteria cri);
 	//토탈 글 개수 
 	@Select("SELECT COUNT(*) FROM REVIEW")
 	int countBoardList();
