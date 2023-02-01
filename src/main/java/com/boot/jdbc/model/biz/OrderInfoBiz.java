@@ -2,12 +2,9 @@ package com.boot.jdbc.model.biz;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.boot.jdbc.model.dto.LetterDto;
-import com.boot.jdbc.model.dto.MemberDto;
-import com.boot.jdbc.model.dto.OptionDto;
 import com.boot.jdbc.model.dto.OrderDto;
+import com.boot.jdbc.model.dto.OrderInfoDto;
 import com.boot.jdbc.model.dto.ReviewDto;
 
 
@@ -27,6 +24,6 @@ public interface OrderInfoBiz {
 	//리뷰 작성 버튼 기능(조회수 가져오기)
 	public ReviewDto selectReview(String order_no);
 
-	public OptionDto selectOption(String option_name);
+	public List<OrderInfoDto> selectOption(String option_name);
 	public LetterDto selectLetter(String letter_name);
 }

@@ -32,6 +32,7 @@ import com.boot.jdbc.model.dto.LetterDto;
 import com.boot.jdbc.model.dto.MemberDto;
 import com.boot.jdbc.model.dto.OptionDto;
 import com.boot.jdbc.model.dto.OrderDto;
+import com.boot.jdbc.model.dto.OrderInfoDto;
 import com.boot.jdbc.model.dto.PageMaker;
 import com.boot.jdbc.model.dto.PointDto;
 import com.boot.jdbc.model.dto.ReviewDto;
@@ -137,73 +138,60 @@ public class MypageController {
 	}
 
 	@GetMapping("/myorder")
-	public String order(Model model, HttpServletRequest request, String startdate, String enddate) {
+	public String order(Model model, HttpServletRequest request, String startdate, String enddate) throws Exception {
 		HttpSession session = request.getSession();
 		MemberDto memberDto = ((MemberDto) session.getAttribute("member"));
 		String user_id = memberDto.getUser_id();
+		List<OrderInfoDto> orderInfodtolist =  new ArrayList<OrderInfoDto>();
+		
 		
 		//오더테이블 공간 만들어서 주문완료된거 가져와 담기
 		List<OrderDto> orderdtolist =  new ArrayList<OrderDto>();
 		orderdtolist = orderInfoBiz.orderDtoList(user_id);
 		
-		String orderno = "";
-		String letter_name = "";
-		String option_name = "";
+		String[] optionName = null;
+		List<String> option_name = new ArrayList<String>();
+		List<String> option_img = new ArrayList<String>();
 		
 		//주문테이블의 주문 완료된 아이들 셀렉트하여 리스트로 가져온거 담기
 		for(int i=0; i<orderdtolist.size(); i++) {
-			orderno += orderdtolist.get(i).getOrder_no() + "/";
-			letter_name += orderdtolist.get(i).getLetter_name() + "/";
-			option_name += orderdtolist.get(i).getOption_name() + "/";
+			OrderInfoDto orderInfoDto = new OrderInfoDto();
+			
+			orderInfoDto.setOrder_no(orderdtolist.get(i).getOrder_no());
+			orderInfoDto.setOrder_date(orderdtolist.get(i).getOrder_date());
+			orderInfoDto.setLetter_name(orderdtolist.get(i).getLetter_name());
+			orderInfoDto.setLetter_img((orderInfoBiz.selectLetter(orderdtolist.get(i).getLetter_name())).getLetter_img());
+			option_name.add(orderdtolist.get(i).getOption_name());
+			orderInfoDto.setOption_name(option_name);
+			
+//			for(int j=0; j<)
+			System.out.println("옵션이름!! : "+orderdtolist.get(i).getOption_name().split(","));
+			
+//			optionName += orderdtolist.get(i).getOption_name()
+//			System.out.println("옵션이름!! : "+orderdtolist.get(i).getOption_name());
+//				option_img.add((orderInfoBiz.selectOption(orderdtolist.get(i).getOption_name())).getOption_img());
+//				orderInfoDto.setOption_img(option_img);
+			orderInfoDto.setTotal_price(orderdtolist.get(i).getTotal_price());
+			System.out.println("리뷰번호!! : "+orderInfoBiz.selectReview(orderdtolist.get(i).getOrder_no()));
+			orderInfoDto.setReview_no((orderInfoBiz.selectReview(orderdtolist.get(i).getOrder_no())).getReview_no());
+			
+			orderInfodtolist.add(orderInfoDto);
 		}
+		
+		
+		
 		//String 변수에 담은 아이들 끝에 있는 '/' 빼주기
-		orderno = orderno.substring(0, orderno.length()-1);
-		letter_name =letter_name.substring(0, letter_name.length()-1);
-		option_name = option_name.substring(0, option_name.length()-1);
-
-		String[] ordernoArr =  orderno.split("/");
-		//주문 완료 된 상태의 주문번호들
-		for(int i=0; i<ordernoArr.length; i++) {
-			System.out.println(ordernoArr[i]);
-		}
+//		orderno = orderno.substring(0, orderno.length()-1);
 		
-		ReviewDto review_noBox = new ReviewDto();
-		List<ReviewDto> review_noList = new ArrayList<ReviewDto>();
 		
-		for(int i=0; i<ordernoArr.length; i++) {
-			  //주문번호가 x인 리뷰컬럼(리뷰번호) 가져오기
-				review_noBox = orderInfoBiz.selectReview(ordernoArr[i]);
-				System.out.println("박스 " +review_noBox);
-				review_noList.add(review_noBox);
-		}
-			System.out.println(orderdtolist);
-			System.out.println(review_noList);
-			
-			
-		String[] letterNameArr =  letter_name.split("/");
-		LetterDto letterimg = new LetterDto();
-		List<LetterDto> letterimgList = new ArrayList<LetterDto>();
-		for(int i=0; i<letterNameArr.length; i++) {
-				letterimg = orderInfoBiz.selectLetter(letterNameArr[i]);
-				letterimgList.add(letterimg);
+		for(int i=0; i<orderInfodtolist.size(); i++) {
+			System.out.println("리스트 확인 "+i+" : "+orderInfodtolist.get(i));
 		}
 		
 		
 //		String[] optionNameArr =  option_name.split("/");
-//		System.out.println("1 : "+ optionNameArr);
-//		OptionDto optionimg = new OptionDto();
-//		List<Map<String, OrderDto>> optionimgList = new ArrayList<Map<String, OrderDto>>();
-//		for(int i=0; i<optionNameArr.length; i++) {
-//				optionimg = orderInfoBiz.selectOption(optionNameArr[i]);
-//				System.out.println("2 : "+ optionimg);
-//				optionimgList.add(optionimg);
-//		}
-//		System.out.println("3 : "+ optionimgList);
 		
-		
-		model.addAttribute("orderdtolist", orderdtolist);
-		model.addAttribute("letterimgList", letterimgList);
-		model.addAttribute("review_noList", review_noBox);
+		model.addAttribute("orderInfodtolist", orderInfodtolist);
 		return "/mypage/myorder";
 	}
 	

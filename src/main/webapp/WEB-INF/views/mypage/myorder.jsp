@@ -214,44 +214,45 @@
 	                <table>
 	                    <colgroup>
 	                        <col width="150">
-	                        <col width="200">
-	                        <col width="400">
+	                        <col width="600">
 	                        <col width="150">
 	                        <col width="150">
 	                    </colgroup>
 	                    <tr>
 	                        <th>주문일자<br>[주문번호]</th>
-	                        <th>이미지</th>
 	                        <th>상품정보</th>
 	                        <th>주문금액<br><span style="font-size: 10pt;">(배송비 포함)</span></th>
 	                        <th>리뷰</th>
 	                    </tr>
 	                    <c:choose>
-	                        <c:when test="${empty orderdtolist}">
+	                        <c:when test="${empty orderInfodtolist}">
 	                             <tr>
-	                                 <td colspan="5" align="center">
+	                                 <td colspan="4" align="center">
 	                                     주문 내역이 아직 없네요.<br>
 	                                     아이에게 산타와의 추억을 선물해 보세요!
 	                                 </td>
 	                             </tr>
 	                        </c:when>
 	                        <c:otherwise>
-	                             <c:forEach items="${orderdtolist}" var="orderdtolist">
+	                             <c:forEach items="${orderInfodtolist}" var="orderInfodtolist">
 	                                 <tr>
-	                                     <td><fmt:formatDate pattern="yyyy-MM-dd" value="${orderdtolist.order_date}"/>
-	                                    	 <p id="orderdate">[${orderdtolist.order_no}]</p></td>
-	                                     <td>${letterimgList}<hr>${option_img}</td>
-	                                     <td>${orderdtolist.letter_name}<hr>${orderdtolist.option_name}</td>
-	                                     <td><fmt:formatNumber type="number" value="${orderdtolist.total_price }"/>원</td>
+	                                     <td><fmt:formatDate pattern="yyyy-MM-dd" value="${orderInfodtolist.order_date}"/>
+	                                    	 <p id="orderdate">[${orderInfodtolist.order_no}]</p></td>
+	                                     <td><img src="${orderInfodtolist.letter_img}" width="130"> &emsp; ${orderInfodtolist.letter_name}<hr>
+	                                     ${orderInfodtolist.option_img} &emsp; ${orderInfodtolist.option_name}</td>
+	                                     <td><fmt:formatNumber type="number" value="${orderInfodtolist.total_price }"/>원</td>
 	                                     <td>
-		                                     <c:if test="${review_noList ge 0 }">
-		                                     	<input type="button" id="reviewoff" value="작성완료" disabled/>
-		                                     </c:if>
-		                                     <c:if test="${empty review_noList }">
+	                                     <c:choose>
+		                                     <c:when test="${orderInfodtolist.review_no ge 1 }">
+		                                     	<input type="button" id="reviewoff" value="작성완료" style="background: lightgray;" disabled/>
+		                                     </c:when>
+		                                     <c:otherwise>
 			                                    <input type="button" value="리뷰작성" id="reviewbtn" 
-			                                     onclick="location.href='/review/reviewinsertform?order_no=${orderdtolist.order_no}'">
-		                                     </c:if>
-	                                    ${review_noList }
+			                                     onclick="location.href='/review/reviewinsertform?order_no=${orderInfodtolist.order_no}'">
+	                                    ${orderInfodtolist.order_no }
+	                                    ${orderInfodtolist.review_no }
+		                                     </c:otherwise>
+	                                    </c:choose>
 	                                     </td>
 	                                     <!-- 작성완료 시 status변경 >review_no!=null && >0 -> 리뷰작성버튼 hide(), .append(button[disable]"작성 완료") -->
 	                                 </tr>

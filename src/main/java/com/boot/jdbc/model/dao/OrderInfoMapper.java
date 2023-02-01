@@ -11,6 +11,7 @@ import com.boot.jdbc.model.dto.LetterDto;
 import com.boot.jdbc.model.dto.MemberDto;
 import com.boot.jdbc.model.dto.OptionDto;
 import com.boot.jdbc.model.dto.OrderDto;
+import com.boot.jdbc.model.dto.OrderInfoDto;
 import com.boot.jdbc.model.dto.ReviewDto;
 
 
@@ -35,7 +36,7 @@ public interface OrderInfoMapper {
 	ReviewDto selectReview(String order_no);
 
 	@Select(" SELECT OPTION_IMG FROM OPTION WHERE OPTION_NAME=#{option_name} ")
-	OptionDto selectOption(String option_name);
+	List<OrderInfoDto> selectOption(String option_name);
 
 	@Select(" SELECT LETTER_IMG FROM LETTER WHERE LETTER_NAME=#{letter_name} ")
 	LetterDto selectLetter(String letter_name);
