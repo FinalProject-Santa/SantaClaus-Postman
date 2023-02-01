@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<title>Profile</title>
+<link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 <link rel="stylesheet" href="/resources/css/main/profile.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
@@ -21,7 +23,7 @@
 			<div class="parentProfile">
 				<h3 id="p">•부모 계정•</h3>
 				<a href="/main/login?name=${memberDto.name }">
-					<img src="/resources/image/LJYFiles/${memberDto.rfileName}"><br>
+					<img src="/resources/image/uploadFiles/${memberDto.rfileName}"><br>
 				</a>
 				<span id="pname">${memberDto.name }</span>
 			</div>
