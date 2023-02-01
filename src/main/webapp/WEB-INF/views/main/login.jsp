@@ -8,6 +8,7 @@
 <title>Login</title>
 <link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 <link href="/resources/css/main/login.css" rel="stylesheet">
+<%@include file="../include/header.jsp"%>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <script>
    $(function(){
@@ -82,6 +83,7 @@
 </script>
 </head>
 <body>
+	<div class="inner">
    <div class="login">
         <div class="title">
             <h2>Login</h2>
@@ -89,10 +91,10 @@
             <div class="closebutton">
             <input type="button" value="x" id="closebutton" onclick="history.back()">
            </div>
-        <form id="login-form" action="/main/profile" method="post" onsubmit="return loginsubmit();">
-            <input type="text" name="user_id" id="memberid" class="memberinfo" placeholder="아이디*">
+        <form id="login-form" action="/main/profile" method="post" onsubmit="return loginsubmit();" style="width: 400px;">
+            <input type="text" name="user_id" id="memberid" class="memberinfo" placeholder="아이디*" style="margin-top:-24px; margin-bottom:21px; border-bottom: 1px solid #c7c4c4;">
                 <span id="errorid">아이디를 입력해 주세요.</span>
-            <input type="password" name="password" id="memberpw" class="memberinfo" placeholder="패스워드*">
+            <input type="password" name="password" id="memberpw" class="memberinfo" placeholder="패스워드*" style="border-bottom: 1px solid #c7c4c4;">
                 <span id="errorpw">비밀번호를 입력해 주세요.</span>
                 <p class="checkid">
                 <label for="remember-check" class="chk_box">
@@ -101,13 +103,20 @@
                     <span class="saveid">아이디 저장하기</span>
                 </label>
                 </p>
-                <p class="register"><a href="/main/signUpForm">회원가입</a></p>
+                <p class="register"><a id="a" href="/main/signUpForm">회원가입</a></p>
             <input type="submit" value="로그인">
             <c:if test="${result==0 }">
                <span id="errorlogin">아이디 또는 패스워드를 잘못 입력하셨습니다.</span>
             </c:if>
-                <p class="findInfo"><a href="/main/findIdForm">아이디 찾기</a> ㅣ <a href="/main/findPwForm">비밀번호 찾기</a></p>
+                <p class="findInfo"><a id="a"href="/main/findIdForm">아이디 찾기</a> | <a id="a" href="/main/findPwForm">비밀번호 찾기</a></p>
         </form>
+        
+        
+    
+        
     </div>
-</body>
-</html>
+    </div>
+    
+    
+<%@include file="../include/footer.jsp" %>
+    
