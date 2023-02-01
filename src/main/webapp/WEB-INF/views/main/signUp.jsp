@@ -9,6 +9,7 @@
 <script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
+
 $(function() {
     var $id = $("#id");
     var $pw = $("#pw");
@@ -188,11 +189,16 @@ $(function() {
 			<form action="/main/signUp" method="post" enctype="multipart/form-data" id="form">
 				<div>
 					<div class="mb-3">
-						<label for="inputGroupFile02">사진 등록</label>
-						<div class="input-group mb-3">
-						    <input type="file" class="form-control" id="inputGroupFile02" name="files">
-						    <label class="input-group-text" for="inputGroupFile02">Upload</label>
-						</div> 
+						<label id="imglabel" for="inputGroupFile02">사진 등록</label>
+						<div class="input-group mb-3" style="padding-top:5px;">
+							<label class="input-group-text" for="inputGroupFile02">&nbsp</label>
+						<br>
+						<span class="select_img">
+							<img id="img" alt="이미지를 업로드해 주세요." src="https://i0.wp.com/adventure.co.kr/wp-content/uploads/2020/09/no-image.jpg" width="250"><br>
+							<input type="file" class="form-control" id="inputGroupFile02" name="files">
+						</span>
+						<input type="hidden" name="rfileName" value="${memberdto.rfileName}" />
+						</div>
 					</div>
 					<label for="id">아이디</label>
 					<div class="info">
@@ -329,6 +335,17 @@ $(function() {
 			</form>
 		</div>
 	</div>
+	<script>
+$("#inputGroupFile02").change(function(){
+	if(this.files && this.files[0]) {
+		var reader = new FileReader;
+		reader.onload = function(data) {
+			$(".select_img img").attr("src", data.target.result).width(250);        
+		}
+		reader.readAsDataURL(this.files[0]);
+	}
+});
+</script>
 </body>
 </html>
 

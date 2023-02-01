@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Guheader</title>
+<link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 </head>
 <body>
     <header class="top-header">

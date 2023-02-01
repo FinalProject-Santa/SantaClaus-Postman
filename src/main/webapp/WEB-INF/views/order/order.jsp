@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<title>Letter Order</title>
+<link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 <link rel="stylesheet" href="/resources/css/order/order.css">
 <body>
 	<!-- header, 고객센터 -->

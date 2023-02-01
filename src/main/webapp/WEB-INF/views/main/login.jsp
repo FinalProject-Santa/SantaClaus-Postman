@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>Login</title>
+<link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 <link href="/resources/css/main/login.css" rel="stylesheet">
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <script>

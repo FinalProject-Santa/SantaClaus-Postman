@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>비밀번호 찾기</title>
+<title>Find Pw</title>
+<link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 <link href="/resources/css/main/findPw.css" rel="stylesheet">
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <script>

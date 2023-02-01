@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <title>마이페이지</title>
- 
+    <title>My Page</title>
+ <link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 <body>
 	<!-- header -->
 	<%@include file="../include/header.jsp" %>

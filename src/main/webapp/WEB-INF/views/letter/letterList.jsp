@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<title>Letter List</title>
+<link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 <link rel="stylesheet" href="/resources/css/letter/letterList.css">
 
 <body>

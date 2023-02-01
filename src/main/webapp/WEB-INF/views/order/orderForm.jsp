@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<title>Letter Order Form</title>
+<link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 <link rel="stylesheet" href="/resources/css/order/orderForm.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <!-- <script src="/resources/js/order/orderForm.js"></script> --> 
