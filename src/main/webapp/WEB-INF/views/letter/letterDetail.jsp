@@ -72,6 +72,7 @@
 				</div>
 			</div>
 		</form>
+		<br><br><br>
 		<hr class="hr2">
 		<div class="optionArea">
 			<c:forEach var="list" items="${optionList }">

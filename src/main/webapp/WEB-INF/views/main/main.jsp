@@ -63,10 +63,10 @@
         <div id="letterbox">
             <div class="letterdiv">
             <ul id="letter">
-                <li><a class="atag"><img src="/resources/image/main/letter1.jpg"><div>케빈엽서<br>\2,000</div></a></li>
-                <li><a class="atag"><img src="/resources/image/main/letter1.jpg"><div>케빈엽서<br>\2,000</div></a></li>
-                <li><a class="atag"><img src="/resources/image/main/letter1.jpg"><div>케빈엽서<br>\2,000</div></a></li>
-                <li><a class="atag"><img src="/resources/image/main/letter1.jpg"><div>케빈엽서<br>\2,000</div></a></li>
+                <li><a href="/letter/detail/73?letterName=벽난로&letterImg=/resources/image/letter/letter/page1/벽난로.jpg&letterPrice=12000"><img src="/resources/image/letter/letter/page1/벽난로.jpg"><div>벽난로<br>\12,000</div></a></li>
+                <li><a href="/letter/detail/84?letterName=산타케이크&letterImg=/resources/image/letter/letter/page1/산타케이크.png&letterPrice=4800"><img src="/resources/image/letter/letter/page1/산타케이크.png"><div>산타케이크<br>\4,800</div></a></li>
+                <li><a href="/letter/detail/83?letterName=산타곰&letterImg=/resources/image/letter/letter/page1/산타곰.png&letterPrice=6800"><img src="/resources/image/letter/letter/page1/산타곰.png"><div>산타곰<br>\6,800</div></a></li>
+                <li><a href="/letter/detail/82?letterName=루돌프카&letterImg=/resources/image/letter/letter/page1/루돌프카.png&letterPrice=12000"><img src="/resources/image/letter/letter/page1/루돌프카.png"><div>루돌프카<br>\12,000</div></a></li>
             </ul>
             </div>
         </div>
@@ -77,7 +77,7 @@
             <div id="moremsg">
             <span><br>더 다양한 엽서가 준비되어 있습니다.<br>
             행복한 추억을 선물해 보세요.</span><br>
-            <button id="more_btn">Letter More</button>
+            <a href="/letter/letterList"><button id="more_btn">Letter More</button></a>
             </div>
         </div>
     </div>

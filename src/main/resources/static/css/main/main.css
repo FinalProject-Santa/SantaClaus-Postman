@@ -2,6 +2,11 @@
 html{
     margin: 0;
 }
+a{
+	text-decoration: none;
+	color:black;
+	
+}
 body {
     height: auto;
     margin: 0;
@@ -80,8 +85,14 @@ hr{
     display: flex;
     justify-content: center;
 }
+#letter li:hover{
+	cursor: pointer;
+	transform: translateY(-7px);
+ 	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
 #letter li{
-    margin-right: 15px;
+    margin-right: 40px;
 }
 #letter li img{
     width: 300px;
