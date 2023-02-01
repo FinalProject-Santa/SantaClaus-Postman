@@ -1,11 +1,21 @@
-*{
-    box-sizing: border-box;
+#aio{
+	width: 1400px;
+	margin: 0 auto;
+}
+.headCategory{
+	float: right;
+	margin-top: 90px;
+	font-size: 19px; 
+}
+.headCategory a{
+	text-decoration:none;
+	color:black;
 }
 .wrapper{
 	width: 1200px;
 	margin: 0 auto;
 	padding-top: 200px;
-	padding-bottom: 240px;
+	padding-bottom: 300px;
 }
 .wrapper h1{
 	font-size: 32px;
@@ -16,17 +26,23 @@ hr{
 }
 #btn{
 	text-decoration: none;
-	color: black;
-	background: lightgray;
 	text-align: center;
-    width: 240px;
-    height: 50px;
-	padding-top: 12px;
-    border-radius: 10px;
-    border: 1px solid black;
     float: right;
     display: inline-block;
+	padding-top: 12px;
 	margin-top: -50px;
+	font-family: 'Nanum Myeongjo', serif;
+ 	color: black;
+	background-color: #ebebef;
+  	border: 1px solid #D8D8D8; /* Green */
+  	transition-duration: 0.4s;
+  	border-radius: 4px;
+  	width: 230px;
+  	height: 31px;
+}
+#btn:hover {
+  background-color: #D8D8D8; /* Green */
+  color: black;
 }
 #name{
 	font-size: 24px;
@@ -83,6 +99,6 @@ hr{
 	width: 210px;
 }
 .section>p>img:hover{
-  transform: scale(1.5);
+  transform: scale(1.1);
   transition-duration: 0.5s;
 }

@@ -224,23 +224,6 @@ public class MemberController {
 		return phoneNum;
 	}
 	
-	
-	/*
-	$("#update").click(function() {
-		$.ajax({
-			url: "/main/phoneChk",
-			type: 'POST',
-			data: {
-				"user_id" : id,
-				"phone" : phone
-			},
-			success: function(phone){
-				
-			}
-			});
-	
-	*/
-	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		

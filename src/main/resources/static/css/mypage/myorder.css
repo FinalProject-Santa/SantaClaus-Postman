@@ -1,57 +1,75 @@
-*{
-    box-sizing: border-box;
-}
+/* *{ */
+/*     box-sizing: border-box; */
+/* } */
 .hr{
-    width: 1140px;
+    width: 1075px;
     color: #444444;;
-    
+    margin-left: 8px;
+	margin-top:11.5px;
 }
-#wrapper{
+#aio{
 	width: 1400px;
 	margin: 0 auto;
+}
+.headCategory{
+	float: right;
+	margin-top: 90px;
+	font-size: 19px; 
+}
+.headCategory a{
+	text-decoration:none;
+	color:black;
+}
+#wrapper{
+	width: 1100px;
+	margin: 0 auto;
 	padding-top: 240px;
-	padding-bottom: 150px;
- 	padding-left: 130px;
-	padding-right: 130px;
+	padding-bottom: 350px;
+ 	padding-left: 120px;
+	padding-right: 120px;
 }
 .box1{
-    width: 400px;
-    height: 60px;
+    width: 330px;
+    height: 22px;
     border-radius: 5px;
     background-color: rgb(77, 77, 77);
     color: aliceblue;
     text-align: center;
     padding: 15px;
-    font-size: 18pt;
+    font-size: 16pt;
     font-weight: bold;
     margin-bottom: -12px;
 }
 .box2{
-    width: 1100px;
+    width: 1035px;
+    height: 68px; 
     text-align: center;
-    padding: 15px 10px 15px 10px;
-    margin: 20px 15px 20px 20px;
+    padding: 0;
+    margin: auto;
     border: 1px solid lightgray;
 }
-
 .box2>input{
     width: 80px;
     height: 40px;
-    background-color: rgb(56, 108, 206);
-    color: aliceblue;
-    border: 0px;
-    border-radius: 5px;
     margin-left: 30px;
-    cursor: pointer;
-    line-height: 20px;
+	font-family: 'Nanum Myeongjo', serif;
+ 	color: white;
+	background-color: black;
+  	border: 1px solid #D8D8D8; /* Green */
+  	transition-duration: 0.4s;
+  	border-radius: 4px;
     vertical-align: 15px;
+}
+.box2>input:hover {
+  background-color: #D8D8D8; /* Green */
+  color: black;
 }
 #orderlist{
 	margin-left: 30px;
 	margin-right: 30px;
 }
 table{
-    margin-top: 50px;
+    margin-top: 20px;
     border-collapse: collapse;
 }
 th, td {
@@ -77,16 +95,33 @@ ol,ul{list-style:none}
 .searchDate li .chkbox2 label{
 	display:block;
 	width:110px;
-		line-height:35px;
-	border: 2px solid rgb(165, 165, 165);
+	font-weight:bold;
+	line-height:35px;
 	margin-left: -5px;
 	margin-right: -5px;
-	font-weight:bold;
-	cursor:pointer;
-	background-color: rgb(230, 227, 227)}
-.searchDate li{position:relative;float:left;margin:0 7px 0 0}
-.searchDate li .chkbox2 input{position:absolute;z-index:-1}
-.searchDate li .chkbox2.on label{background:skyblue}
+	background-color: rgb(230, 227, 227);
+	font-family: 'Nanum Myeongjo', serif;
+ 	color: black;
+	border: 1px solid #D8D8D8; /* Green */
+	transition-duration: 0.4s;
+	border-radius: 4px;
+}
+.searchDate li .chkbox2 label:hover {
+  background-color: #D8D8D8; /* Green */
+  color: black;
+}
+.searchDate li{
+	position:relative;
+	float:left;
+	margin:0 7px 0 0
+}
+.searchDate li .chkbox2 input{
+	position:absolute;
+	z-index:-1
+}
+.searchDate li .chkbox2 on label{
+	background:skyblue
+}
 	
 .inpType{
 	width: 160px;
@@ -96,6 +131,7 @@ ol,ul{list-style:none}
 	text-align: center;
 	border:1px solid #dbdbdb;
 	vertical-align: 15px;
+	font-family: 'Nanum Myeongjo', serif;
 }
 .demi{
 		vertical-align: 15px;
