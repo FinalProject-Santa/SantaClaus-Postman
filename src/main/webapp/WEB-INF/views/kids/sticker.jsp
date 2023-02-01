@@ -30,7 +30,7 @@
 	        <div id="month"><p class="title" style="color: rgb(252, 0, 126);">12월</p>
 	        <p class="text" style="color: rgb(49, 172, 254);">칭찬스티커 개수: ${DecSize }개</p> <!-- ${DecSize } --></div>
 	        
-			<div id="month2"><p class="title2" style="color: rgb(252, 0, 126);">1월</p>
+			<div id="month2"><p class="title2" style="color: rgb(252, 0, 126);">2월</p>
 	        <p class="text2" style="color: rgb(49, 172, 254);">칭찬스티커 개수: ${JanSize }개</p></div>
 
 
@@ -78,7 +78,7 @@
 	    
         <div class="btn_group">
             <button id="Dec_btn">12월</button>
-            <button id="Jan_btn">1월</button>
+            <button id="Jan_btn">2월</button>
         </div>
         
         </div> <!-- stickerbody -->
