@@ -3,6 +3,7 @@ package com.boot.jdbc.controller;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -144,9 +146,6 @@ public class MypageController {
 		List<OrderDto> orderdtolist =  new ArrayList<OrderDto>();
 		orderdtolist = orderInfoBiz.orderDtoList(user_id);
 		
-		//datepicker 날짜 ajax로 받아서 기간설정에 해당되는 주문들 조회해주기
-//		orderdtolist =  orderInfoBiz.orderList(memberDto, startdate, enddate);
-		
 		String orderno = "";
 		String letter_name = "";
 		String option_name = "";
@@ -164,50 +163,67 @@ public class MypageController {
 
 		String[] ordernoArr =  orderno.split("/");
 		//주문 완료 된 상태의 주문번호들
-//		for(int i=0; i<ordernoArr.length; i++) {
-//			System.out.println(ordernoArr[i]);
-//		}
+		for(int i=0; i<ordernoArr.length; i++) {
+			System.out.println(ordernoArr[i]);
+		}
 		
 		ReviewDto review_noBox = new ReviewDto();
 		List<ReviewDto> review_noList = new ArrayList<ReviewDto>();
 		
 		for(int i=0; i<ordernoArr.length; i++) {
-			  //주문번호가 x인 리뷰컬럼(조회수) 가져오기
+			  //주문번호가 x인 리뷰컬럼(리뷰번호) 가져오기
 				review_noBox = orderInfoBiz.selectReview(ordernoArr[i]);
+				System.out.println("박스 " +review_noBox);
 				review_noList.add(review_noBox);
 		}
 			System.out.println(orderdtolist);
 			System.out.println(review_noList);
+			
+			
 		String[] letterNameArr =  letter_name.split("/");
+		LetterDto letterimg = new LetterDto();
+		List<LetterDto> letterimgList = new ArrayList<LetterDto>();
+		for(int i=0; i<letterNameArr.length; i++) {
+				letterimg = orderInfoBiz.selectLetter(letterNameArr[i]);
+				letterimgList.add(letterimg);
+		}
 		
 		
-		String[] optionNameArr =  option_name.split("/");
-		
-		
-//		orderdtolist.add(orderdto);
-		
+//		String[] optionNameArr =  option_name.split("/");
+//		System.out.println("1 : "+ optionNameArr);
+//		OptionDto optionimg = new OptionDto();
+//		List<Map<String, OrderDto>> optionimgList = new ArrayList<Map<String, OrderDto>>();
+//		for(int i=0; i<optionNameArr.length; i++) {
+//				optionimg = orderInfoBiz.selectOption(optionNameArr[i]);
+//				System.out.println("2 : "+ optionimg);
+//				optionimgList.add(optionimg);
+//		}
+//		System.out.println("3 : "+ optionimgList);
 		
 		
 		model.addAttribute("orderdtolist", orderdtolist);
-		model.addAttribute("review_noList", review_noList);
-		
-		return "mypage/myorder";
+		model.addAttribute("letterimgList", letterimgList);
+		model.addAttribute("review_noList", review_noBox);
+		return "/mypage/myorder";
 	}
+	
 	/*
 	order_date
 	order_no
 	<letter_img>
 	<option_img>
-	letter_name
-	option_name
-	total_price
+ 	total_price
 	*/
 	
-//	@RequestMapping("/selectOrder")
-//	public String selectOrder(Model model) {
-//		model.addAttribute("orderlist",orderBiz.selectOrder());
-//		return "mypage/myorder";
-//	}
+	@GetMapping("/selectOrder")
+	@ResponseBody
+	public List<OrderDto> selectOrder(Model model, HttpServletRequest request, String startdate, String enddate){
+		List<OrderDto> orderdtolist = new ArrayList<OrderDto>();
+		orderdtolist = orderInfoBiz.orderList(user_id, startdate, enddate);
+		model.addAttribute("orderdtolist", orderdtolist);
+		System.out.println("에이작스:"+orderdtolist);
+		return orderdtolist;
+	}
 
 	
 	

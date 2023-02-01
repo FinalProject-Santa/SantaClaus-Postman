@@ -1,10 +1,21 @@
-*{
-    box-sizing: border-box;
+#aio{
+	width: 1400px;
+	margin: 0 auto;
+}
+.headCategory{
+	float: right;
+	margin-top: 90px;
+	font-size: 19px; 
+}
+.headCategory a{
+	text-decoration:none;
+	color:black;
 }
 .wrapper{
-	width: 1350px;
+	width: 950px;
 	margin: 0 auto;
 	padding-top: 150px;
+	padding-bottom: 200px;
  	padding-left: 220px;
 	padding-right: 220px;
 }
@@ -12,20 +23,20 @@
     margin: 20px;
 }
 #inputGroupFile02{
-	vertical-align: 12px;
+	vertical-align: 18px;
 	height: 45px;
 }
-h1{
+#h1{
 	postion: absolute;
 	margin-top: 20px;
-	margin-left: 40px;
+	margin-left: 60px;
 	display: inline-block;
 }
 label{
 	font-weight: bold;
     float: left;
     padding-right: 10px;
-    width: 140px;
+    width: 110px;
     margin-top: 10px;
 }
 table {
@@ -33,16 +44,18 @@ table {
     border-collapse: collapse;
     border-left: none;
     border-right: none;
-    display: table;
+/*     display: table; */
     margin-left: auto;
     margin-right: auto;
 }
 th{
 	background: #efefed;
+	font-size: 20px;
 }
 td{
 	padding: 15px;
     vertical-align: middle;
+    font-size: 17px;
 }
 #ps{
 	padding: 15px 15px 5px 15px;
@@ -50,32 +63,46 @@ td{
 #id{
 	width:
 }
+#passwordck{
+	font-size:17px;
+	width: 243px;
+	height: 35px;
+}
 #psck{
 	height:10px;
 	padding: 5px 15px 10px 15px;
 }
-div {
+.div {
     padding: 5px 0px 5px 0px;
 }
 #image{
 	width: 200px;
 	height: 200px;
 }
-span{
+.span{
 	font-size: 19px;
+}
+#ps{
+	padding-right: 0px;
 }
 input{
 	font-size: 19px;
-    padding: 6px;
+    padding: 6px 6px 6px 9px;
     border-radius: 3px;
-    margin-bottom: 5px;
 }
 .usermodify .button{
     height: 40px;
-    cursor: pointer;
     background: #ebebef;
     border: none;
-    font-size: 21px;
+    font-size: 17px;
+   	font-family: 'Nanum Myeongjo', serif;
+}
+input[type=text]{
+	font-family: 'Nanum Myeongjo', serif;
+}
+.usermodify .button:hover {
+  background-color: #D8D8D8; /* Green */
+  color: black;
 }
 .end{
     text-align: center;
@@ -87,30 +114,54 @@ input{
 [type=text]{
 	border: 0.3px solid 
 }
-[type=button]{
-	cursor: pointer;
-}
 .readonly{
 	border: none;
+   	font-family: 'Nanum Myeongjo', serif;
 }
 #update{
     width: 130px;
     height: 50px;
-    background-color: #3eb0e8;
-    color: aliceblue;
     margin-right: 10px;
+	font-family: 'Nanum Myeongjo', serif;
+ 	color: black;
+	background-color: #ebebef;
+  	border: 1px solid #D8D8D8; /* Green */
+  	transition-duration: 0.4s;
+  	border-radius: 4px;
+}
+#update:hover {
+  background-color: #D8D8D8; /* Green */
+  color: black;
 }
 #cancel{
     margin-left: 10px;
     width: 130px;
     height: 50px;
+   	font-family: 'Nanum Myeongjo', serif;
+ 	color: black;
+    border: 1px solid #D8D8D8; /* Green */
+    transition-duration: 0.4s;
+    border-radius: 4px;
+}
+#cancel:hover {
+  background-color: #D8D8D8; /* Green */
+  color: black;
 }
 #delete{
 	position: relative;
 	float: right;
 	width: 120px;
 	height: 45px;
-	top: 42px;
-	right: 35px;
-	border: 0.1px solid lightgray;
+	top: 25px;
+	right: 55px;
+	font-family: 'Nanum Myeongjo', serif;
+ 	color: black;
+	background-color: ebebef;
+  	border: 1px solid #D8D8D8; /* Green */
+  	transition-duration: 0.4s;
+  	border-radius: 4px;
+}
+#delete:hover {
+  background-color: #D8D8D8; /* Green */
+  color: black;
 }

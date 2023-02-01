@@ -1,120 +1,121 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
     <title>내정보수정</title>
     <link rel="stylesheet" href="/resources/css/mypage/myinfoUpdate.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-</head>
 <body>
 	<!-- header -->
 	<%@include file="../include/header.jsp" %>
 	<%@include file="../include/floatingMenu.jsp" %>
-	
-    <div class="wrapper">
-        <form action="/mypage/main" id="submit" method="post" enctype="multipart/form-data">
-            <div id="info">
-           	<h1>회원정보 수정</h1>
-           		<input type="button" class="button" id="delete" value="회원탈퇴" >
-            	<table class="usermodify" border="1">
-            		<colgroup>
-	            		<col width="270">
-	            		<col width="700">
-            		</colgroup>
-            		<tr>
-            			<th>프로필 변경</th>
-					    <td>
-					    	<span class="select_img"><img src="/resources/image/JMLprofile/${memberdto.rfileName}" width="200"></span>
-					    	<input type="file" class="button" id="inputGroupFile02" name="files" value="test"  >
-					    </td>
-				    </tr>
-					<input type="hidden" name="rfileName" value="${memberdto.rfileName}" />
-	            	<tr>
-	            		<th>이름</th>
-	            		<td>
-	            			<input type="text" name="name" class="readonly" value="${memberdto.name }" readonly ><br>
-	            		</td>
-	            		<%-- <span>${memberdto.name }</span><br> --%>
-	           		</tr>
-	                <tr>
-	                	<th>아이디</th>
-	                	<td>
-	                    	<input type="text" name="user_id" id="id" class="readonly" value="${memberdto.user_id }" readonly><br>
-                    	</td>
-	                    <%-- <span>${memberdto.user_id }</span><br> --%>
-	                </tr>
-	                <tr>
-	                	<th>현재 비밀번호 <span style="color:red">*</span></th>
-	                	<td>
-		                    <input type="text" id="passwordck" required="required" placeholder="정보 수정/탈퇴 시 입력 필수">
-	                    </td>
-	                </tr>
-	                <tr style="border-bottom: 0px solid white;">
-	                	<th>변경할 비밀번호</th>
-	                	<td id="ps">
-		                    <input type="text" name="password" id="pw">
-	                    	<span id="pwChk" class="error"></span>
-	                    </td>
-	               	</tr>
-	               	<tr>
-	               		<th>비밀번호 확인</th>
-               			<td id="psck">
-	                	    <input type="text" id="pwConfirm" >
-	                    	<span id="pwConfirmChk" class="error"></span>
-                   		</td>
-	                </tr>
-	                <tr>
-	                	<th>주소</th>
-                		<td>
-                		<div>
-	           				 <label for="post_code">우편번호</label>
-	           				 <input name="post_code" id="post_code" type="text" value="${memberdto.post_code }" required="required">
-	                 		 <input class="button" type="button" value="주소찾기" onclick="userPostcode()"><br>
-                 		 </div>
-	                 	<div>	 
-			                 <label for="default_addr">기본 주소</label>
-			                 <input name="default_addr" id="default_addr" type="text" value="${memberdto.default_addr}" required="required"><br>
-			                 </div>
-			            <div>     
-			                 <label for="detail_addr">나머지 주소</label>
-			                 <input name="detail_addr" id="detail_addr" type="text" value="${memberdto.detail_addr}" required="required">
-			                 </div>
-	                 	</td>
-                 	</tr>
-	                <tr>
-	                	<th>이메일</th>
-	                	<td>
-		                	<input type="text" name="email" id="email" value="${memberdto.email}" required="required">
-	                	</td>
-	                </tr>
-	                <tr>
-	                	<th>휴대전화</th>
-	                	<td>
-	                		<div>
-	                			<label for="phone">핸드폰 번호</label>
-			                    <input type="text" name="phone" id="phone" value="${memberdto.phone}" placeholder="'-'없이 숫자만 입력해주세요" required="required">
-			                    <input type="hidden" id="phoneChk" value="${memberdto.phone}">
-			                    <input type="button" class="button" id="phoneAuth" value="인증번호 전송">
-								<span id="sendSucess"></span>                    
-							</div>
-							<div>
-								<label for="phoneckcode">인증코드 입력</label>
-								<input id="phoneckcode" type="text" >
-								<input id="phoneck" class="button" type="button" value="인증하기">
-								<span id="authSuccess"></span>
-								<br>기존의 핸드폰번호와 다른데 수정을 누를 시 alert("휴대폰 인증을 해주세요")
-							</div>
-						</td>
-	                </tr>
-				</table>
-                <div class="end">
-                    <input type="submit" class="button" id="update" value="수정">
-                    <input type="button" class="button" id="cancel" value="취소" onclick="location.href='/mypage/main'">
-                </div>
-		    </div>
-        </form>    
+	<div id="aio">
+    	<p class="headCategory" style="text-align: right">
+			<a href="/" >Home</a> > 
+			<a href="/mypage/main" >My Page</a> >
+			 Update Form
+		</p>
+	    <div class="wrapper">
+	        <form action="/mypage/main" id="submit" method="post" enctype="multipart/form-data">
+	            <div id="info">
+	           	<h1 id="h1">회원정보 수정</h1>
+	           		<input type="button" class="button" id="delete" value="회원탈퇴" >
+	            	<table class="usermodify" border="1">
+	            		<colgroup>
+		            		<col width="270">
+		            		<col width="700">
+	            		</colgroup>
+	            		<tr>
+	            			<th>프로필 변경</th>
+						    <td>
+						    	<span class="select_img"><img src="/resources/image/uploadFiles/${memberdto.rfileName}" width="200"></span>
+						    	<input type="file" class="button" id="inputGroupFile02" name="files" value="test"  >
+						    </td>
+					    </tr>
+						<input type="hidden" name="rfileName" value="${memberdto.rfileName}" />
+		            	<tr>
+		            		<th>이름</th>
+		            		<td>
+		            			<input type="text" name="name" class="readonly" value="${memberdto.name }" readonly ><br>
+		            		</td>
+		            		<%-- <span class="span"  >${memberdto.name }</span><br> --%>
+		           		</tr>
+		                <tr>
+		                	<th>아이디</th>
+		                	<td>
+		                    	<input type="text" name="user_id" id="id" class="readonly" value="${memberdto.user_id }" readonly><br>
+	                    	</td>
+		                    <%-- <span class="span"  >${memberdto.user_id }</span><br> --%>
+		                </tr>
+		                <tr>
+		                	<th>현재 비밀번호 <span style="color:red">*</span></th>
+		                	<td>
+			                    <input type="text" id="passwordck" required="required" placeholder="정보 수정/탈퇴 시 입력 필수">
+		                    </td>
+		                </tr>
+		                <tr style="border-bottom: 0px solid white;">
+		                	<th>변경할 비밀번호</th>
+		                	<td id="ps">
+			                    <input type="text" name="password" id="pw">
+		                    	<span class="span"  id="pwChk" class="error"></span>
+		                    </td>
+		               	</tr>
+		               	<tr>
+		               		<th>비밀번호 확인</th>
+	               			<td id="psck">
+		                	    <input type="text" id="pwConfirm" >
+		                    	<span class="span"  id="pwConfirmChk" class="error"></span>
+	                   		</td>
+		                </tr>
+		                <tr>
+		                	<th>주소</th>
+	                		<td>
+	                		<div class="div">
+		           				 <label for="post_code">우편번호</label>
+		           				 <input name="post_code" id="post_code" type="text" value="${memberdto.post_code }" required="required">
+		                 		 <input class="button" type="button" value="주소찾기" onclick="userPostcode()"><br>
+	                 		 </div>
+		                 	<div class="div">	 
+				                 <label for="default_addr">기본 주소</label>
+				                 <input name="default_addr" id="default_addr" type="text" value="${memberdto.default_addr}" required="required"><br>
+				                 </div>
+				            <div class="div">     
+				                 <label for="detail_addr">나머지 주소</label>
+				                 <input name="detail_addr" id="detail_addr" type="text" value="${memberdto.detail_addr}" required="required">
+				                 </div>
+		                 	</td>
+	                 	</tr>
+		                <tr>
+		                	<th>이메일</th>
+		                	<td>
+			                	<input type="text" name="email" id="email" value="${memberdto.email}" required="required">
+		                	</td>
+		                </tr>
+		                <tr>
+		                	<th>휴대전화</th>
+		                	<td>
+		                		<div class="div">
+		                			<label for="phone">핸드폰 번호</label>
+				                    <input type="text" name="phone" id="phone" value="${memberdto.phone}" placeholder="'-'없이 숫자만 입력해주세요" required="required">
+				                    <input type="hidden" id="phoneChk" value="${memberdto.phone}">
+				                    <input type="button" class="button" id="phoneAuth" value="인증번호 전송">
+									<span class="span"  id="sendSucess"></span>                    
+								</div>
+								<div class="div">
+									<label for="phoneckcode">인증코드 입력</label>
+									<input id="phoneckcode" type="text" >
+									<input id="phoneck" class="button" type="button" value="인증하기">
+									<span class="span"  id="authSuccess"></span>
+									<br>기존의 핸드폰번호와 다른데 수정을 누를 시 alert("휴대폰 인증을 해주세요")
+								</div>
+							</td>
+		                </tr>
+					</table>
+	                <div class="end">
+	                    <input type="submit" class="button" id="update" value="수정">
+	                    <input type="button" class="button" id="cancel" value="취소" onclick="location.href='/mypage/main'">
+	                </div>
+			    </div>
+	        </form>    
+	    </div>
     </div>
                 
 	<!-- footer -->
@@ -308,4 +309,3 @@
 		
 	</script> 
 </body>
-</html>
