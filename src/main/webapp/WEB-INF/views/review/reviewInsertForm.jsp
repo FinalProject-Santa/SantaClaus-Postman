@@ -19,7 +19,6 @@
 		<br>
 		<form name="form1" action="/review/reviewinsert" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="review_count" id="count" value="0">
-			<input type="hidden" name="or_no" id="count" value="2">
 			<div class="mb-3">
 				<label for="formGroupExampleInput" class="form-label">제목</label> <input
 					type="text" name="review_title" class="form-control"
