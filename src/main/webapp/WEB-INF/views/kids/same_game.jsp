@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<title>같은 그림 찾기</title>
+<link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 <link rel="stylesheet" href="/resources/css/kids/same.css">
 
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>

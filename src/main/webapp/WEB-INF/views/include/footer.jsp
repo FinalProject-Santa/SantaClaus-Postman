@@ -46,7 +46,7 @@ footer {
                 <p class="footerbr">CONTACT</p>
                 <p>T.02212061225 | am 10 ~ pm 5 , sat/sun/holiday off</p>
                 <p></p>business mail _ dearsanta@gmail.com</p>
-                <p>Instagram _ @dearsanta_official</p>
+                <p>Instagram _ <span id="content3"><a href="https://www.instagram.com/dearsanta_official/?next=%2F&hl=ko" target='_blank' class="atag">@dearsanta_official</a></span></p>
             </div>
         </div>
     </footer>
