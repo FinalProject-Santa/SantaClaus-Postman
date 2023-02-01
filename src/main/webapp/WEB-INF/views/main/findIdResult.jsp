@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Find ID Result</title>
+<title>Find ID</title>
 <link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 <link href="/resources/css/main/findIdResult.css" rel="stylesheet">
 </head>
 <body>
+
+	<%@include file="../include/header.jsp" %>
+	
+	<div class='inner'>
+	
 	<div class="findId">
 		<div class="closebutton">
 			<div id="title">
@@ -23,7 +23,7 @@
 		</div>
 		<div id="findId-Result">
 			<p id="IdResult">
-				회원님의 아이디는 <b><c:out value="${id }"/></b> 입니다.
+				회원님의 아이디는 <b id="find"><c:out value="${id }"/></b> 입니다.
 			</p>
 			<div id="buttongroup">
 				<p id="id">
@@ -35,5 +35,8 @@
 			</div>
 		</div>
 	</div>
+	
+	</div>
+	<%@include file="../include/footer.jsp" %>
 </body>
 </html>

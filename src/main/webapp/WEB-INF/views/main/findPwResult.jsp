@@ -1,24 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Find Pw Result</title>
+<title>Find Pw</title>
 <link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 <link href="/resources/css/main/findPwResult.css" rel="stylesheet">
 </head>
 <body>
+
+	<%@include file="../include/header.jsp" %>
+	
+	<div class='inner'>
+	
 	<div class="findPw">
 		<div id="title">
 			<h2>비밀번호 찾기</h2>
 		</div>
 		<div id="findPw-Result">
 			<form method="post" action="/main/findpw">
-           	<input type="text" name="number" id="number" class="memberinfo" placeholder="인증번호 입력*">
+           	<input type="text" name="number" id="number" class="memberinfo" placeholder="인증번호 입력*" style="border:none; border-bottom: 1px solid #c7c4c4;">
             <input type="hidden" name="temp" id="temp" class="memberinfo" value="${tempkey }">
             <input type="hidden" name="userId" id="userId" class="memberinfo" value="${userId }">
             <input type="submit" id="sendbutton" value="인증하기">
@@ -40,5 +39,9 @@
 			</div>
 		</div>
 	</div>
+	
+	</div>
+	<%@include file="../include/footer.jsp" %>
+	
 </body>
 </html>
