@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-    <title>내 포인트</title>
+    <title>My Point</title>
+    <link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
     <link rel="stylesheet" href="/resources/css/mypage/mypoint.css">
 <body>
 	<!-- header -->

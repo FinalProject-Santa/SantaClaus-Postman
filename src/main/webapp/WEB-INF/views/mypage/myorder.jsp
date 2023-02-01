@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-    <title>주문조회</title>
+    <title>My Order</title>
+    <link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
    	<link rel="stylesheet" href="/resources/css/mypage/myorder.css">
    	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -243,13 +244,13 @@
 	                                     <td>${orderdtolist.letter_name}<hr>${orderdtolist.option_name}</td>
 	                                     <td><fmt:formatNumber type="number" value="${orderdtolist.total_price }"/>원</td>
 	                                     <td>
-	<%-- 	                                     <c:if test="${review_noList ge 0 }"> --%>
-	<!-- 	                                     	<input type="button" id="reviewoff" value="작성완료" disabled/> -->
-	<%-- 	                                     </c:if> --%>
-	<%-- 	                                     <c:if test="${empty review_noList }"> --%>
-	<!-- 		                                    <input type="button" value="리뷰작성" id="reviewbtn"  -->
-	<%-- 		                                     onclick="location.href='/review/reviewinsertform?order_no=${orderdtolist.order_no}'"> --%>
-	<%-- 	                                     </c:if> --%>
+		                                     <c:if test="${review_noList ge 0 }">
+		                                     	<input type="button" id="reviewoff" value="작성완료" disabled/>
+		                                     </c:if>
+		                                     <c:if test="${empty review_noList }">
+			                                    <input type="button" value="리뷰작성" id="reviewbtn" 
+			                                     onclick="location.href='/review/reviewinsertform?order_no=${orderdtolist.order_no}'">
+		                                     </c:if>
 	                                    ${review_noList }
 	                                     </td>
 	                                     <!-- 작성완료 시 status변경 >review_no!=null && >0 -> 리뷰작성버튼 hide(), .append(button[disable]"작성 완료") -->
