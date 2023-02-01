@@ -3,6 +3,9 @@
 	    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<title>Review List</title>
+<link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 <link rel="stylesheet" href="/resources/css/review/reviewList.css">
 <body>
 <%@include file="../include/header.jsp" %>
@@ -23,27 +26,27 @@
 	
 				<table class="table table-bordered dataTable" id="dataTable"
 							role="grid"
-							aria-describedby="dataTable_info" >
+							aria-describedby="dataTable_info" style="table-layout:fixed">
 							<thead>
 								<tr role="row" style="">
-									<th style="border-right: hidden; border-left: hidden; text-align: center;">NO</th>
+									<th style="border-right: hidden; border-left: hidden; text-align: center;" width="100px";>NO</th>
 									<th style="border-right: hidden; text-align: center;">썸네일</th>
-									<th style="border-right: hidden;" id="title_id">제목</th>
+									<th style="border-right: hidden;" class="title_id" width="400px;">제목</th>
 									<th style="border-right: hidden; text-align: center;">작성자</th>
 									<th style="border-right: hidden; text-align: center;">별점</th>
 									<th style="border-right: hidden; text-align: center;">조회수</th>
 									<th style="border-right: hidden; text-align: center;">날짜</th>
 								</tr>
 							</thead>
+							
 							<tbody>
-
 								<c:choose>
 									<c:when test="${fn:length(list) > 0 }">
 										<c:forEach items="${list }" var="review">
 											<tr onclick="location.href='/review/reviewDetail/${review.REVIEW_NO}'" style="cursor:pointer;">
 												<td style="vertical-align: middle; text-align: center; border-right: hidden; border-left: hidden;">${review.REVIEW_NO }</td>
 												<td style="text-align: center; border-right: hidden;"><img alt="로딩 중" src="/resources/image/uploadFiles/${review.RIMG }" height="100" width="100"/></td>
-												<td style="vertical-align: middle; border-right: hidden;">${review.REVIEW_TITLE }</td>
+												<td style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis; max-width:200px; vertical-align: middle; border-right: hidden;" >${review.REVIEW_TITLE }</td>
 												<td style="vertical-align: middle; text-align: center; center; border-right: hidden;">${review.USER_ID}</td>
 												<td style="vertical-align: middle; text-align: center; center; border-right: hidden;"><span
 													class="star-prototype">${review.REVIEW_BEST}</span></td>
