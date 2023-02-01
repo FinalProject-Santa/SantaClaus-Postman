@@ -230,6 +230,7 @@ small{
 }
 
 .bt{
+	background: rgb(239,243,248);
     margin-top :10px;
 	padding : 0.3em;
     color:  #485563;

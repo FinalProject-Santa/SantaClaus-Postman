@@ -7,8 +7,8 @@
 
 <link rel="stylesheet" href="/resources/css/kidsAccount/kidsSetting.css">
 
-<body>
 
+<body>
 <div class="inner">
 
         <div class="kid-setting">

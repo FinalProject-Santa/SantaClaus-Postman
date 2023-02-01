@@ -37,7 +37,7 @@
         	  <label class="title" for="qna_title">제목</label>
         	<input type="text" name="qna_title" id="qna_title"><br>
         <br>
-      <textarea cols="80px" rows="20px" name="qna_content"></textarea><br>
+      <textarea cols="80px" rows="20px" name="qna_content" style="width: 900px; height: 400px;"></textarea><br>
             <div class="form-check form-check-inline mt-3">
      			<span>비밀글 설정</span>
 				<label><input class="form-check-input" type="checkbox" name="secret" value="false" checked="checked" onclick="doOpenCheck(this);">공개</label>
