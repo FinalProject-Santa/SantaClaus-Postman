@@ -2,11 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<title>Review Detail</title>	
+<link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 <link rel="stylesheet" href="/resources/css/review/reviewDetail.css">
 
 <body>
-<%@include file="../include/header.jsp" %>
+<%@include file="../include/header.jsp"%>
 <%@include file="../include/floatingMenu.jsp" %>
 
 <div class="inner">
