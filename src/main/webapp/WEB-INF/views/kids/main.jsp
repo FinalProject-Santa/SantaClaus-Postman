@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>디어산타</title>
+	<link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 	<link rel="stylesheet" href="/resources/css/kids/main.css">
 </head>
 <body>

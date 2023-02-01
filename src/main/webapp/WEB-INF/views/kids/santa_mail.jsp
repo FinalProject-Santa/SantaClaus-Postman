@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<title>산타 우편함</title>
+<link rel="shortcut icon" href="/resources/image/kids/favicon.ico">
 <link rel="stylesheet" href="/resources/css/kids/santa_mail.css">
 <link rel="stylesheet" href="/resources/css/kids/santa_mail2.css">
 <link rel="stylesheet" href="/resources/css/kids/snow.css">

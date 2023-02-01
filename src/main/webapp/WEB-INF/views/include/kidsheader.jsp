@@ -33,7 +33,7 @@ body {
     font-weight: bold;
     font-size: 48px;
     cursor: pointer;
-    padding-left: 80px;
+    padding-left: 100px;
 }
 #sidemenu{
     list-style: none;
