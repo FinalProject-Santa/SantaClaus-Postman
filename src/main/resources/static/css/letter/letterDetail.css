@@ -8,6 +8,7 @@ a{
 }
 .headCategory{
 	padding-top:100px;
+	padding-right:110px;
 }
 .letterInfoWrap {
 	padding-top:50px;
@@ -27,19 +28,39 @@ a{
 	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 table, table input, table textarea{
-	width:97%;
+	width:93%;
 }
 .shopList{
-	width:380px;
+	width:340px;
 	height:270px;
 	border: 1px solid;
-}
-
-.shopList{
 	text-align: center;
 	margin:20px auto;
 	overflow: scroll;
     overflow-x: hidden;
+}
+.shopList::-webkit-scrollbar {
+  width:8px;  /*스크롤바의 너비*/
+}
+.shopList::-webkit-scrollbar-thumb {
+  background-color:black; /*스크롤바의 색상*/
+  border-radius: 50px;
+}
+.shopList::-webkit-scrollbar-track {
+  background-color:white /*스크롤바 트랙 색상*/
+}
+/* #minus, #plus{
+	margin-right: 10px;
+} */
+#plus{
+	/* margin-left: 10px; */
+	margin-right: 10px;
+}
+.deleteItem{
+	margin-left:15px;
+	background-repeat: no-repeat;
+	width:20px;
+	vertical-align: middle;
 }
 .hr1{
     background: #d3d3d3;
@@ -71,14 +92,38 @@ table, table input, table textarea{
 	text-align: center;
 	width:300px;
 }
+.optionItem:hover{
+	-webkit-transform: translateY(-7px);
+    transform: translateY(-7px);
+ 	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
 .payBtn>input{
 	width:150px;
 	height:40px;
 	margin:0 20px;
+	font-size: 13pt;
 }
-/* input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.cartBtn:hover {
+  background-color: #D8D8D8;
+  color: black;
 }
-	 */
+.cartBtn {
+	color: white;
+	background-color: black;
+	border: 1px solid #D8D8D8;
+	transition-duration: 0.4s;
+	border-radius: 4px;
+}
+.orderBtn:hover {
+  background-color: D8D8D8;
+  color: black;
+}
+.orderBtn {
+	color: black;
+	background-color: white;
+	border: 1px solid #D8D8D8;
+	transition-duration: 0.4s;
+	border-radius: 4px;
+}

@@ -58,7 +58,6 @@ public class OrderController {
     
 		user_id = ((MemberDto)session.getAttribute("member")).getUser_id();
 		myPoint = pointBiz.pointAll(user_id);
-		System.out.println(myPoint);
 		// 회원 정보 가져오기
 		MemberDto memberDto = orderBiz.memberInfo(user_id);
 		model.addAttribute("memberDto", memberDto);

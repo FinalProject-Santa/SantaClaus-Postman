@@ -1,0 +1,135 @@
+@charset "UTF-8";
+.inner{
+    width: 1600px;
+    margin: 0 auto;  
+}
+.headCategory{
+	padding-top:100px;
+	padding-right:135px;
+}
+
+.flexCon{
+	padding-top: 50px;	
+	padding-left:170px;
+}
+
+img{ 
+	width: 200px;
+	height: 200px;
+}
+
+#treeImg{
+	width: 350px;
+	height: 450px;
+}
+
+.content {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	column-gap: 30px;
+	row-gap: 30px;
+}
+
+.orderList td {
+  text-align: center;
+}
+
+.delivTable th, td{
+	padding:7px 0px 7px 0px;
+}
+
+.orderList th{
+	padding:7px 0px 7px 0px;
+}
+.paymentInfo th{
+	padding:7px 0px 7px 0px;
+}
+.paymentInfo td{
+	padding:7px 0px 7px 0px;
+}
+
+.paymentInfo td:first-child{
+}
+
+table, td, th {
+	border-top: 1px solid #444444;
+	border-bottom: 1px solid #444444;
+	border-collapse: collapse;
+	border-right: hidden; 
+	border-left: hidden;
+};
+
+
+th, td{
+	border-top: 1px solid #444444;
+	border-bottom: 1px solid #444444;
+}
+.paymentInfo ul { margin-left:100px; display: table; border: none;}
+.paymentInfo ul li:first-child{ margin: 4px 0; background-color: #d1e0e0;}
+.postcodeBtn{
+	color: white;
+	background-color: black;
+  	border: 1px solid #D8D8D8; /* Green */
+  	transition-duration: 0.4s;
+  	border-radius: 4px;
+  	width: 80px;
+  	height: 25px;
+  	vertical-align: middle;
+}
+.postcodeBtn:hover {
+  background-color: #D8D8D8; /* Green */
+  color: black;
+}
+.divdiv .btn {
+ 	color: white;
+	background-color: black;
+  	border: 1px solid #D8D8D8; /* Green */
+  	transition-duration: 0.4s;
+  	border-radius: 4px;
+  	width: 367px;
+  	height: 50px;
+  	font-size: 13pt;
+}
+
+.divdiv .btn:hover {
+  background-color: #D8D8D8; /* Green */
+  color: black;
+}
+.orderList .btn {
+	color: white;
+	background-color: black;
+	border: 1px solid #D8D8D8; /* Green */
+	transition-duration: 0.4s;
+	border-radius: 4px;
+	width: 100px;
+	height: 30px;
+}
+
+.orderList .btn:hover {
+  background-color: #D8D8D8; /* Green */
+  color: black;
+}
+.headCategory{
+	padding-top:100px;
+	
+}
+.headCategory a{
+	padding-top:100px;
+	text-decoration: none;
+	color: black;
+	
+}
+
+#paymentInfo_totalPriceMinusPoint{
+	color:red;
+	font-size:13pt;
+	font-weight: bold;
+}
+
+#paymentInfo_totalPoint, #paymentInfo_totalPriceMinusPoint{
+	float:right;
+	vertical-align:middle;
+}
+.agreement{
+	margin-top:30px;
+}
