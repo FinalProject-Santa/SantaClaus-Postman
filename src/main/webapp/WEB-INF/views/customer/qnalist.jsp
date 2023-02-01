@@ -66,8 +66,8 @@
 
 										<%-- 선택1. 답글일때 --%>
 										<c:when test="${dto.dep > 0}">
-											<span style="padding-left: 30px"></span>
-											<span style="font-size: 10pt">답변:</span>
+											<span style="padding-left: 40px"></span>
+											<span style="font-size: 10pt; color: gray;">↪답변:</span>
 
 
 											<%-- 선택 1-1 : 공개글에 대한 답변 --%>
