@@ -429,7 +429,7 @@
                    <tr>
                        <th>휴대전화</th>
                        <td>
-                       	<input type="text" value="010">&nbsp;-<input type="text" id="frontNum">&nbsp;-<input type="text" id="backNum">&nbsp;
+                       	<input type="text" value="010">&nbsp; - <input type="text" id="frontNum">&nbsp; - <input type="text" id="backNum">&nbsp;
                        	<input type="hidden" id="phone" name="phone">
                       	</td>
                    </tr>
@@ -453,7 +453,7 @@
                    </tr>
                    <tr>
                            <th>배송메세지</th>
-                           <td><textarea name="delivery_message"></textarea></td>
+                           <td><textarea name="delivery_message" style="width:295px; height:100px;"></textarea></td>
                    </tr>	
                    				
                    <!-- <tr>

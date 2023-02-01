@@ -1,5 +1,8 @@
 package com.boot.jdbc.model.dto;
 
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 public class PageMaker {
 	 	private Criteria cri;
 	 	private Criteria_Letter cri_letter;
@@ -25,6 +28,30 @@ public class PageMaker {
 	    public int getTotalCount() {
 	        return totalCount;
 	    }
+	    public String makeSearch(Integer page){
+            
+	        UriComponents uriComponents = UriComponentsBuilder.newInstance()
+	            .queryParam("page", page)
+	            .queryParam("perPageNum", cri.getPerPageNum())
+	            .queryParam("searchType", ((SearchCriteria)cri).getSearchType())
+	            .queryParam("keyword", ((SearchCriteria)cri).getKeyword())
+	            .build();           
+	        return uriComponents.toUriString();
+	    }// makeSearch()
+	     
+	    // 리스트페이지에서 단일 게시글 클릭하면 해당 page정보를 가지고
+	    // page, perPageNum 파라미터를 포함한 URI 문자열을 만들어서 조회페이지로 이동한다 
+	    // 그러면 조회페이지에서 page, perPageNum, bno 값을 유지하고 있기 때문에 다시 리스트 페이지로 이동할때 원래 page로 이동
+	    public String makeQuery(Integer page){
+	             
+	        UriComponents uriComponents = 
+	            UriComponentsBuilder.newInstance()
+	            .queryParam("page", page)
+	            .queryParam("perPageNum", cri.getPerPageNum())
+	            .build();
+	             
+	        return uriComponents.toUriString();
+	    }// makeQuery() 
 	    public void setTotalCount(int totalCount) {
 	        this.totalCount = totalCount;
 	        calcData();

@@ -5,14 +5,14 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.boot.jdbc.model.dto.Criteria;
 import com.boot.jdbc.model.dto.ReviewDto;
+import com.boot.jdbc.model.dto.SearchCriteria;
 import com.boot.jdbc.model.dto.rFileDto;
 
 public interface ReviewBiz {
 	public int boardPrevNo(@Param("no")int no);
 	public int boardNextNo(@Param("no")int no);
-	public List<Map<String, Object>> reviewList(Criteria cri);
+	public List<Map<String, Object>> reviewList(SearchCriteria cri);
 	int countBoardListTotal();
 	public ReviewDto reviewDetail(int review_no);
 	public rFileDto rfileDetail(int review_no);

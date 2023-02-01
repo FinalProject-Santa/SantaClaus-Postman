@@ -11,7 +11,7 @@ public class ReviewDto {
 	private int review_count;
 	private Date review_date;
 	private String rimg;
-
+	
 
 	public ReviewDto() {
 		super();

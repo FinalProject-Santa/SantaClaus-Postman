@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.boot.jdbc.model.dao.ReviewMapper;
-import com.boot.jdbc.model.dto.Criteria;
 import com.boot.jdbc.model.dto.ReviewDto;
+import com.boot.jdbc.model.dto.SearchCriteria;
 import com.boot.jdbc.model.dto.rFileDto;
 
 @Service
@@ -18,7 +18,7 @@ public class ReviewBizImpl implements ReviewBiz{
 	private ReviewMapper reviewMapper;
 	
 	@Override
-	public List<Map<String, Object>> reviewList(Criteria cri) {
+	public List<Map<String, Object>> reviewList(SearchCriteria cri) {
 		// TODO Auto-generated method stub
 		return reviewMapper.reviewList(cri);
 	}

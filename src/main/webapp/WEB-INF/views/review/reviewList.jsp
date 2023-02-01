@@ -20,7 +20,7 @@
 					<!--  <i class="fa-duotone fa-list-ul"></i><h3>후기 목록</h3>-->
 				</div>
 			<div class="col-sm-12">
-
+	
 				<table class="table table-bordered dataTable" id="dataTable"
 							role="grid"
 							aria-describedby="dataTable_info" >
@@ -104,6 +104,24 @@
 		<script type="text/javascript"
 		src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 	<script>
+	
+	$(function(){   
+    $('.disabled').on('click', function(event){
+        event.preventDefault();
+    }); 
+    /* 검색 버튼 클릭 이벤트 핸들러 */
+    $('#searchBtn').on("click", function(event){        
+        // 검색옵션 값 가져오고
+        var searchType = $("select[name=searchType]").val();        
+        // 키워드 값 가져와서
+        var keyword = $("input[name=keyword]").val();       
+        self.location = "/notice/noticeList.do${pageMaker.makeQuery(1)}&searchType=" + searchType + "&keyword=" + encodeURI(keyword);
+    });//on()       
+});
+	
+	
+	
+	
 		$.fn.generateStars = function() {
 			return this.each(function(i, e) {
 				$(e).html($('<span/>').width($(e).text() * 16));

@@ -70,7 +70,6 @@ th, td{
 .paymentInfo ul li:first-child{ margin: 4px 0; background-color: #d1e0e0;}
 
 .divdiv .btn {
-	font-family: 'Nanum Myeongjo', serif;
  	color: white;
 	background-color: black;
   	border: 1px solid #D8D8D8; /* Green */
@@ -78,6 +77,7 @@ th, td{
   	border-radius: 4px;
   	width: 367px;
   	height: 50px;
+  	font-siz: 13px;
 }
 
 .divdiv .btn:hover {
@@ -85,9 +85,8 @@ th, td{
   color: black;
 }
 .orderList .btn {
-	font-family: 'Nanum Myeongjo', serif;
-  color: black;
-	background-color: white;
+  color: white;
+	background-color: black;
   border: 1px solid #D8D8D8; /* Green */
   transition-duration: 0.4s;
   border-radius: 4px;
@@ -122,3 +121,4 @@ th, td{
 .agreement{
 	margin-top:30px;
 }
+
