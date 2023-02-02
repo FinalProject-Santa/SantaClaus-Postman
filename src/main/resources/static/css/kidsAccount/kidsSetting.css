@@ -20,11 +20,12 @@
 	
 
 .login_text{
+	font-size:15pt;
 	font-weight:bold;
 	position: absolute;
 	width:auto;
 	left:50%;
-	margin-left:-85px;
+	margin-left:-110px;
 	margin-top: 70px;
 	
 }

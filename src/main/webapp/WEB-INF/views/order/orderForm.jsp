@@ -89,8 +89,8 @@
 			$("input[name=post_code]").val("${memberDto.post_code }");
 			$("input[name=default_addr]").val("${memberDto.default_addr }");
 			$("input[name=detail_addr]").val("${memberDto.detail_addr }");
-			$("#frontNum").val("${memberDto.phone }".substr(4,4));
-			$("#backNum").val("${memberDto.phone }".substr(9,4));
+			$("#frontNum").val("${memberDto.phone }".substr(3,4));
+			$("#backNum").val("${memberDto.phone }".substr(7,4));
 			var idx = "${memberDto.email }".indexOf('@');
 			$("#emailId").val("${memberDto.email }".substring(0, idx));
 			$("#emailDomain").val(("${memberDto.email }".substring(idx+1)).toLowerCase()).prop("selected", true);

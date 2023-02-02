@@ -26,7 +26,7 @@
 					<ul class="child">
 						<li>
 							<a href="/main/login?name=${dto.kids_nickname }">
-								<img src="/resources/image/LJYFiles/${dto.kids_thumbnail}"><br>
+								<img src="/resources/image/uploadFiles/${dto.kids_thumbnail}"><br>
 							</a>
 							<span id="nickname">${dto.kids_nickname}</span>
 						</li>

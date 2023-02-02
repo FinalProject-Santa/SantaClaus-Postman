@@ -40,7 +40,7 @@
 			<tr>
 				<td id="content">
 				 <c:if test="${not empty files.file_oname && files.file_oname != 'null'}">
-				   <div style="margin-bottom: 20px;"><img src="/resources/files/${files.file_name}" style="max-width:600px; max-height: 500px;">
+				   <div style="margin-bottom: 20px;"><img src="/resources/image/uploadFiles/${files.file_name}" style="max-width:600px; max-height: 500px;">
 			       </div> 
 			    </c:if>
 			  		  ${dto.qna_content}

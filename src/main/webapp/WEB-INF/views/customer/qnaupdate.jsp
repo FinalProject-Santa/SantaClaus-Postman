@@ -40,7 +40,7 @@
       		 <br>
       <c:if test="${!empty fileDto.file_name}">
        <div style="margin-bottom: 20px;">
-       <img src="/resources/files/${fileDto.file_name}" style="max-width:500px; max-height: 300px;">
+       <img src="/resources/image/uploadFiles/${fileDto.file_name}" style="max-width:500px; max-height: 300px;">
     	</div>
     	</c:if>
       <textarea cols="80px" rows="20px" name="qna_content">${dto.qna_content }</textarea><br>
