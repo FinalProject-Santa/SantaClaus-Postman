@@ -91,12 +91,12 @@
 						</tbody>	
 						</table>
 					</div>
-				
+<%-- 				
 	<c:if test="${sessionScope.member != null}">
 						<button class="btn btn-primary btn-sm"
 							style="float: right; font-size: 13px;"
 							onclick="location.href='/review/reviewinsertform'">후기 작성</button>
-					</c:if>
+					</c:if> --%>
 				</div>
 			</div>
 		

@@ -126,7 +126,7 @@ body {
         <ul id="sidemenu">
         <c:choose>
 	      	<c:when test="${sessionScope.member != null }">
-		      	<li><span>${member.name }님</span> 반갑습니다🎅</li>
+		      	<li><a href="/mypage/main" class="atag"><span>${member.name }님</span> 반갑습니다🎅</a></li>
 		      	<li onclick="location.href='/main/logout'">Log Out</li>
 		      	<li><a href="/mypage/mycart" class="atag">Cart</a></li>
 		      	<script>
