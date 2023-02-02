@@ -1,8 +1,13 @@
+body{
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+
 .inner {
 padding-top : 90px;
 min-height : 100%;
 height : 1200px;
 margin: auto;
+
 }
 .findPw{
     position: absolute;
@@ -29,12 +34,17 @@ margin: auto;
     outline: none;
 }
 #loginbutton{
-    background-color:black; 
-	color:white; 
-	margin-top: 30px;
-	padding: 10px 20px;
-	margin-left: 40px;
-	margin-top: 0;
+    font-size: 16px;
+    color: black;
+    background-color: white;
+    margin-top: 20px;
+    border-radius: 50px;
+    border: rgb(189, 185, 185) solid;
+    width: 100%;
+    height: 48px;
+    margin-left: 36px;
+    font-size: 14px;
+
 }
 #loginbutton:hover{
     background-color: white;
@@ -44,7 +54,6 @@ margin: auto;
     display: block;
     margin-bottom: 20px;
     font-size: 16px;
-    text-align: center;
 }
 .title{
     float: left;
