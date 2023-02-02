@@ -27,13 +27,15 @@
 				</a>
 				<span id="pname">${memberDto.name }</span>
 			</div>
-			<h3 id="c">•어린이 계정•</h3>
 			<div class="childrenProfile">
 				<c:forEach var="dto" items="${kidsDto }">
+				<c:if test="${!empty dto.kids_nickname  } ">
+					<h3 id="c">•어린이 계정•</h3>
+				</c:if>
 					<ul class="child">
 						<li>
 							<a href="/main/login?name=${dto.kids_nickname }">
-								<img src="/resources/image/LJYFiles/${dto.kids_thumbnail}"><br>
+								<img src="/resources/image/uploadFiles/${dto.kids_thumbnail}"><br>
 								<span id="cname">${dto.kids_nickname}</span>
 							</a>
 						</li>

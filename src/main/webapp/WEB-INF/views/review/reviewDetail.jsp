@@ -27,7 +27,7 @@
 					<th width=30% height=40px class="text-center ">제목</th>
 					<td width=40% height=40px class="text-left">${reviewdetail.review_title }</td>
 					<th width=30% height=40px class="text-center">별점</th>
-					<td width=40% height=40px class="text-left"><span class="star-prototype">${reviewdetail.review_best}</span></td>
+					<td width=40% height=40px class="text-left"><span class="star-prototype" style="margin-right :60px;">${reviewdetail.review_best}</span></td>
 				</tr>
 				<tr>
 					<th width=30% height=40px class="text-center ">이름</th>

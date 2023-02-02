@@ -150,7 +150,7 @@
 		    <br>
 		    <br>
 		    <div class="homeBtn">
-		        <input type="button" value="홈으로" class="btn">
+			    <input type="button" value="홈으로" class="btn" onclick="location.href='/'">
 		    </div>
 	   	   </div>
 	  	</div>

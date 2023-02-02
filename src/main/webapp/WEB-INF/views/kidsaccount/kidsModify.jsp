@@ -21,7 +21,7 @@
               <c:set var="i" value="${no-1}"/>
               
                 <c:if test="${!empty list[i].kids_thumbnail}">
-                 <img class="img-profile img-circle img-responsive center-block" src="/resources/files/${list[i].kids_thumbnail}" alt="프로필 사진이없습니다.">
+                 <img class="img-profile img-circle img-responsive center-block" src="/resources/image/uploadFiles/${list[i].kids_thumbnail}" alt="프로필 사진이없습니다.">
                 </c:if>
                                 
                  <c:if test="${empty list[i].kids_thumbnail}">
@@ -58,7 +58,7 @@
                     <h3 class="fieldset-title">프로필 변경</h3>
                       <div class="imgbox">
                        	<c:if test="${!empty list[i].kids_thumbnail}">
-                          <img src="/resources/files/${list[i].kids_thumbnail}" class="image-box" />
+                          <img src="/resources/image/uploadFiles/${list[i].kids_thumbnail}" class="image-box" />
                          </c:if>
                                 
                         <c:if test="${empty list[i].kids_thumbnail}">
@@ -96,7 +96,7 @@
                       <div class="imgbox">
                
                			<c:if test="${!empty list[i].kids_letter_img}">
-                          <img src="/resources/files/${list[i].kids_letter_img}" class="image-box" />
+                          <img src="/resources/image/uploadFiles/${list[i].kids_letter_img}" class="image-box" />
                          </c:if>
                                 
                         <c:if test="${empty list[i].kids_letter_img}">

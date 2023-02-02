@@ -46,7 +46,7 @@
                            	<div class="kid-img">     
                         
                            	<c:if test="${!empty list[0].kids_thumbnail}">                              	
-                       	<img src="/resources/files/${list[0].kids_thumbnail}" class="img-box" alt="프로필 사진" onclick="location.href='/kidsaccount/modify?no=1'">
+                       	<img src="/resources/image/uploadFiles/${list[0].kids_thumbnail}" class="img-box" alt="프로필 사진" onclick="location.href='/kidsaccount/modify?no=1'">
                     		</c:if>
                     	
                     		<c:if test="${empty list[0].kids_thumbnail}">  
@@ -89,7 +89,7 @@
                            	<div class="kid-img"> 
                            	     
  								<c:if test="${!empty list[1].kids_thumbnail}">       
-                       				<img src="/resources/files/${list[1].kids_thumbnail}" class="img-box" alt="프로필 사진" onclick="location.href='/kidsaccount/modify?no=2'">
+                       				<img src="/resources/image/uploadFiles/${list[1].kids_thumbnail}" class="img-box" alt="프로필 사진" onclick="location.href='/kidsaccount/modify?no=2'">
                     			</c:if>
                     	
                     			<c:if test="${empty list[1].kids_thumbnail}">  
@@ -131,7 +131,7 @@
                            
                            	<div class="kid-img">            
  								<c:if test="${!empty list[2].kids_thumbnail}">       
-                       				<img src="/resources/files/${list[2].kids_thumbnail}" class="img-box" alt="프로필 사진" onclick="location.href='/kidsaccount/modify?no=3'">
+                       				<img src="/resources/image/uploadFiles/${list[2].kids_thumbnail}" class="img-box" alt="프로필 사진" onclick="location.href='/kidsaccount/modify?no=3'">
                     			</c:if>
                     	
                     			<c:if test="${empty list[2].kids_thumbnail}">  
