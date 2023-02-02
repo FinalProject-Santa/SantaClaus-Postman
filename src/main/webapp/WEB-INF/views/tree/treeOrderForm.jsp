@@ -361,10 +361,10 @@
                		<button type="button" id="deleteOption" class="btn">삭제</button>
                	</td>
                    <td colspan="7" >
-                   <span style="padding-left:781px;"></span>
+                   <span style="padding-left:780px;"></span>
                   <span id="deliveryCharge">
                      <c:choose>
-                       <c:when test="${letterDto.letter_price + totalOptionPrice ge 20000}">
+                       <c:when test="${treePrice + totalOptionPrice ge 20000}">
                           [배송비] : <b>무료</b>
                        </c:when>
                        <c:otherwise>
@@ -372,12 +372,12 @@
                        </c:otherwise>
                      </c:choose>
                      </span>&nbsp;[합계] : <span id="totalPirce" style="font-weight: bold">
-                       <fmt:formatNumber type="number" value="${letterDto.letter_price + totalOptionPrice }"/>원
-                       <input type='hidden' value="${letterDto.letter_price + totalOptionPrice }"/>
+                       <fmt:formatNumber type="number" value="${treePrice + totalOptionPrice }"/>원
+                       <input type='hidden' value="${treePrice + totalOptionPrice }"/>
                     </span>
                     &nbsp;[포인트 적립] : <span id="totalPoint" style="font-weight: bold"> 
-                       <fmt:formatNumber type="number" value="${letterPoint + totalOptionPoint }"/>pt
-                       <input type='hidden' value="${letterPoint + totalOptionPoint }"/>
+                       <fmt:formatNumber type="number" value="${treePoint + totalOptionPoint }"/>pt
+                       <input type='hidden' value="${treePoint + totalOptionPoint }"/>
                     </span>
                    </td>
                </tr>
