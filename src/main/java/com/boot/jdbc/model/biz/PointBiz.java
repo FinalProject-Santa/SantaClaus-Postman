@@ -16,7 +16,7 @@ public interface PointBiz {
 	public List<PointDto> selectList(@Param("memberDto")MemberDto memberDto, @Param("cri")Criteria cri);
 	public int insertPoint(PointDto pointDto);
 	public PointDto selectpoint(String user_id);
-	
+	public void deletePoint(String user_id);
 	//결제 창에서 결제하기 눌렀을 때 삽입 실행
 //	public pointDto pointsave(pointDto dto);
 //	public pointDto pointUse(pointDto dto);

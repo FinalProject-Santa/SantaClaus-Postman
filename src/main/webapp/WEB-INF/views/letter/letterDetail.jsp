@@ -25,7 +25,7 @@
 						<input type="hidden" name="letter_img" value="${letterImg }">
 					</div>
 					<div class="contentImg">
-						<img src="/resources/image/letter/content.jpg">
+						<img src="/resources/image/letter/3.png">
 					</div>
 				</div>
 				<div class="letterDetailWrap">
