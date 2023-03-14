@@ -18,7 +18,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -195,6 +194,8 @@ public class MemberController {
 ////	}
 	 
 
+	 @Autowired
+	 PointBiz pointbiz;
 	 
 	@GetMapping("/delete")
 	public String delete(HttpServletRequest request) {
@@ -202,7 +203,9 @@ public class MemberController {
 		String user_id = ((MemberDto)session.getAttribute("member")).getUser_id();
 		
 		if(biz.delete(user_id)>0){
+			biz.logout(session);
 			System.out.println("삭제되었습니다");
+			pointbiz.deletePoint(user_id);
 			return "main/main";
 		}else {
 			System.out.println("삭제 실패");
