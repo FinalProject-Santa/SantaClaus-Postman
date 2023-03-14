@@ -23,7 +23,7 @@
 			<div class="parentProfile">
 				<h3 id="p">•부모 계정•</h3>
 				<a href="/main/login?name=${memberDto.name }">
-					<img src="/resources/image/uploadFiles/${memberDto.rfileName}"><br>
+					<img src="/resources/files/${memberDto.rfileName}"><br>
 				</a>
 				<span id="pname">${memberDto.name }</span>
 			</div>
@@ -35,7 +35,7 @@
 					<ul class="child">
 						<li>
 							<a href="/main/login?name=${dto.kids_nickname }">
-								<img src="/resources/image/uploadFiles/${dto.kids_thumbnail}"><br>
+								<img src="/resources/files/${dto.kids_thumbnail}"><br>
 								<span id="cname">${dto.kids_nickname}</span>
 							</a>
 						</li>

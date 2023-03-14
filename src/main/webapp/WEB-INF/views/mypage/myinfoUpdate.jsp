@@ -27,7 +27,7 @@
                      <tr>
                         <th>프로필 변경</th>
                       <td>
-                         <span class="select_img"><img src="/resources/image/uploadFiles/${memberdto.rfileName}" width="200"></span>
+                         <span class="select_img"><img src="/resources/files/${memberdto.rfileName}" width="200"></span>
                          <input type="file" class="button" id="inputGroupFile02" name="files" value="test"  >
                       </td>
                    </tr>

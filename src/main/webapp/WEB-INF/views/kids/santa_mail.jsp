@@ -87,7 +87,7 @@
 	    <div class="main2">
 		
 		    <div class="mailImg2">
-		        <img src="/resources/image/uploadFiles/${kids.kids_letter_img}" id="img2">
+		        <img src="/resources/files/${kids.kids_letter_img}" id="img2">
 		    </div>
 		    <h1>산타마을에서 편지가 도착했어요!</h1>
 		    <div class="message">

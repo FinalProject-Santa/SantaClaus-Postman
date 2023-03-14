@@ -68,7 +68,7 @@
 			});
 			
 			// 결제 금액의 총 주문금액, 배송비, 총 결제금액 표기
-			if(totalPrice > 20000 ){
+			if(totalPrice >= 20000 ){
 				$("#paymentInfo_totalPrice").html(totalPrice.toLocaleString()  + '원');
 				$("#paymentInfo_totalPricePlusDeliv").html(totalPrice.toLocaleString()  + '원');
 				$("#paymentInfo_totalPriceMinusPoint").html(totalPrice.toLocaleString()  + '원');
