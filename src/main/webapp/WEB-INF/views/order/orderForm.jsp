@@ -244,7 +244,7 @@
 				    buyer_email : data.user_email,
 				    merchant_uid: data.orderNum, // 주문번호
 				    name : data.name,
-				    amount : 100,
+				    amount : data.price,
 				    buyer_tel : '010-1234-5678',   //필수 파라미터 입니다.
 				    m_redirect_url : '{모바일에서 결제 완료 후 리디렉션 될 URL}',
 				    /* escrow : true, //에스크로 결제인 경우 설정
