@@ -11,6 +11,10 @@
 	text-decoration:none;
 	color:black;
 }
+#ne{
+	color: red;
+	font-size: 15px;
+}
 .wrapper{
 	width: 950px;
 	margin: 0 auto;
