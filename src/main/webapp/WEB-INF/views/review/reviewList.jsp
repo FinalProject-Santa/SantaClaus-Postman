@@ -45,7 +45,7 @@
 										<c:forEach items="${list }" var="review">
 											<tr onclick="location.href='/review/reviewDetail/${review.REVIEW_NO}'" style="cursor:pointer;">
 												<td style="vertical-align: middle; text-align: center; border-right: hidden; border-left: hidden;">${review.REVIEW_NO }</td>
-												<td style="text-align: center; border-right: hidden;"><img alt="로딩 중" src="/resources/image/uploadFiles/${review.RIMG }" height="100" width="100"/></td>
+												<td style="text-align: center; border-right: hidden;"><img alt="로딩 중" src="/resources/files/${review.RIMG }" height="100" width="100"/></td>
 												<td style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis; max-width:200px; vertical-align: middle; border-right: hidden;" >${review.REVIEW_TITLE }</td>
 												<td style="vertical-align: middle; text-align: center; center; border-right: hidden;">${review.USER_ID}</td>
 												<td style="vertical-align: middle; text-align: center; center; border-right: hidden;"><span

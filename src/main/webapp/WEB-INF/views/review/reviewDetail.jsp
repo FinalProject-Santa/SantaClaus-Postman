@@ -17,7 +17,7 @@
 	<div class="container">
 		<div class="col-sm-11" >
 			<div class="col-sm-12">
-						<img alt="" src="/resources/image/uploadFiles/${files.rfile_name}" height="300" width="300">
+						<img alt="" src="/resources/files/${files.rfile_name}" height="300" width="300">
 						<br>
 						<br>
 		

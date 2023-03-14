@@ -57,7 +57,7 @@
 	    <input type="file" class="form-control" id="inputGroupFile02" name="files" value="test">
 	    <label class="input-group-text" for="inputGroupFile02">&nbsp</label>
 	  <br>
-	  <div class="select_img"><img alt="이미지를 업로드해 주세요." src="/resources/image/uploadfiles/${rfiles.rfile_name}" height="100" width="100"></div>
+	  <div class="select_img"><img alt="이미지를 업로드해 주세요." src="/resources/files/${rfiles.rfile_name}" height="100" width="100"></div>
 	  </div> 
 	</div>
 	<br>
