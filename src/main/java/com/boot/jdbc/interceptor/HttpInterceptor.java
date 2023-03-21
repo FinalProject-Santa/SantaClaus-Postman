@@ -18,30 +18,35 @@ public class HttpInterceptor implements HandlerInterceptor{
 	@Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         logger.info("[preHandle]");
+        System.out.println("preHandle");
 
-        HttpSession session = request.getSession(false);
-
-        if (session.getAttribute("member") == null) {    /* 로그인 되어 있지 않은 경우 */
-        	
-        	System.out.println("로그인 되지 않음");
-        	
-            response.sendRedirect("/loginForm");
-            
-            System.out.println("리다이렉트");
-            
-            return false;
-        }
+//        HttpSession session = request.getSession(false);
         
-        return true;
+        String login = (String)request.getSession().getAttribute("member");
+
+        if (login != null) {    /* 로그인 되어 있는 경우 */
+        	
+        	return true;
+        	
+        }else { 				/* 로그인 되어 있지 않은 경우 */
+        	
+        	response.sendRedirect("/main/loginForm");
+        	
+        	return false;
+        	
+        }
+
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         logger.info("[postHandle]");
+        System.out.println("postHandle");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object object, Exception ex) throws Exception {
         logger.info("[afterCompletion]");
+        System.out.println("afterCompletion");
     }
 }
