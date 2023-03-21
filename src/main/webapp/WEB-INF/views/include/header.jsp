@@ -121,7 +121,7 @@ body {
                 </div>
         </div>
 
-        <h1 id="logo"><a href="/" class="atag">Dear Santa</a></h1>
+        <h1 id="logo"><a href="/main/main" class="atag">Dear Santa</a></h1>
 
         <ul id="sidemenu">
         <c:choose>
